@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1740258832 source:c:\users\pepeh\desktop\lista0aex5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

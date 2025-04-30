@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1742655819 source:c:\users\pepeh\desktop\lista2ex2\main.c
+	<stdio.h>
+	<stdlib.h>
+

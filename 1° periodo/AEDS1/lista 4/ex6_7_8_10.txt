@@ -1,0 +1,27 @@
+6)
+p++ - aponta a próxima posição de memoria de acordo com os dados.
+
+(*p)++ - incrementa em 1 o conteúdo apontado por p.
+
+*(p++) -p é utilizado para acessar o valor da posição de memória corrente , antes de ser incrementado.
+
+*(p+10) - aponta o endereço que esta 10 elementos depois de "p", portanto nenhuma dos tipos acima, mas o que mais se aproxima eh (*(p++)).
+
+
+
+
+7) 
+a)falso - valor é conteúdo e &valorPtr é endereço do ponteiro.
+b)verdadeiro - *valorPtr é o conteúdo de valor(*).
+c)verdadeiro - valorPtr é o endereço de valor.
+d)falso - *valor é inválido (valor não é ponteiro).
+
+
+8)
+Na linha 8 esta sendo impresso o endereço de "q" ao colocarmos o "&" no printf.
+o certo seria - printf("\n%d\n", **q).
+
+10)
+código 1- sera impresso "15" (*) acessa o conteúdo de ptr.
+código 2- sera impresso o endereço de ptr.
+o Código 1 modifica o conteúdo da memória alocada, enquanto o Código 2 modifica o endereço armazenado no ponteiro.
