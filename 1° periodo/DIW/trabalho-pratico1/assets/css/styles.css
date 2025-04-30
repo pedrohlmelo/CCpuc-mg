@@ -1,0 +1,320 @@
+/* Estilos gerais */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais agradável */
+    color: #333; /* Cor de texto padrão */
+    background-color: #f4f4f4; /* Fundo levemente acinzentado */
+}
+
+body {
+    padding-top: 60px; /* Espaço para o header fixo */
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: fixed; /* Fixa o header no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que o header fique acima de outros elementos */
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: #e65100; /* Laranja vibrante para o título */
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #e65100;
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+header form input[type="search"] {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+header form button {
+    background-color: #e65100;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header form button:hover {
+    background-color: #d84315;
+}
+
+header .dropdown {
+    margin-left: 10px;
+}
+
+header .dropdown-toggle {
+    background-color: #f9a825; /* Amarelo mostarda para o dropdown */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header .dropdown-toggle:hover {
+    background-color: #f57f17;
+}
+
+header .dropdown-menu {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .dropdown-item {
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+header .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+main {
+    flex: 1 0 auto;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#receitas-container {
+    padding-top: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #e65100;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #f9a825;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #f57f17;
+}
+
+#autor {
+    background-color: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #777;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Estilos para a página sobre.html */
+#sobre-o-site p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Estilos para a página de detalhes */
+#informacoes-gerais {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#informacoes-gerais h2 {
+    font-size: 2.2rem;
+    color: #e65100;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#informacoes-gerais img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+#informacoes-gerais h5 {
+    font-size: 1.5rem;
+    color: #e65100;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#informacoes-gerais ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#informacoes-gerais ul li {
+    line-height: 1.6;
+    color: #666;
+}
+
+#informacoes-gerais p {
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#fotos-vinculadas {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#fotos-vinculadas h2 {
+    font-size: 2rem;
+    color: #e65100;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#galeria-fotos .col {
+    margin-bottom: 20px;
+}
+
+#galeria-fotos .card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#galeria-fotos .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+#galeria-fotos .card-body {
+    padding: 15px;
+}
+
+#galeria-fotos .card-title {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 0;
+}
+
+/* Responsividade para a página de detalhes */
+@media (max-width: 768px) {
+    #informacoes-gerais .row {
+        flex-direction: column;
+    }
+
+    #informacoes-gerais .col-md-6 {
+        width: 100%;
+    }
+
+    #informacoes-gerais img {
+        max-height: none;
+    }
+}
