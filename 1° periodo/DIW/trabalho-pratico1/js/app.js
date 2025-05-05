@@ -94,7 +94,7 @@ const receitas = [
     }
 ];
 
-// Geração dos cards na página principal
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector("#receitas-container");
     const lancamentosLink = document.querySelector('header ul li:nth-child(4) a');
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Funcionalidade de pesquisa
+   
     botaoPesquisar.addEventListener('click', () => {
         const termoPesquisa = barraDePesquisa.value.toLowerCase();
         const resultadosPesquisa = receitas.filter(receita =>
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         exibirReceitas(resultadosPesquisa);
     });
 
-    // Permitir pesquisa ao pressionar Enter na barra de pesquisa
+    
     barraDePesquisa.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             botaoPesquisar.click();
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Carregamento dos dados da receita na página de detalhes
+
 if (window.location.pathname.includes('detalhe.html')) {
     const urlParams = new URLSearchParams(window.location.search);
     const receitaId = parseInt(urlParams.get('id'));
