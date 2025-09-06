@@ -1,50 +1,33 @@
 import java.util.Scanner;
-public class palindromo{
 
+public class palindromo {
 
-  public static boolean verificaPalindromo(String letras){
+    public static boolean verificaPalindromo(String letras) {//verifica palindromo
+        String invertida = "";
 
-            String a = new StringBuilder(letras).reverse().toString();
-	   if(a.equals(letras)) return true;
-	   else return false;
+        for (int i = letras.length() - 1; i >= 0; i--) {
+            invertida += letras.charAt(i);//inverte string
+        }
 
-
-
-
-	 }
- public static void main(String args[]){
- 
-    Scanner sc = new Scanner(System.in);
-    String texto = sc.nextLine();
-    
-
-    while(!texto.equalsIgnoreCase("FIM"))
-   {
-
-    if(verificaPalindromo(texto))
-    {
-	    System.out.println("SIM");
+        return invertida.equals(letras);//retorna a string invertida
     }
-    else{
-	    System.out.println("NAO");
-    
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String texto = sc.nextLine();
+
+        while (!texto.equals("FIM")) {
+
+            if (verificaPalindromo(texto)) {
+                System.out.println("SIM");
+            } else {
+                System.out.println("NAO");
+            }
+
+            texto = sc.nextLine();
+        }
+
+        sc.close(); 
     }
-    texto = sc.nextLine();
-   }
-
-
-
-
-
-
-
- }
-
-
-
-
-
-
-
-
 }
+
