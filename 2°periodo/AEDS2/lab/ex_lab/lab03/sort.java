@@ -19,19 +19,17 @@ public class sort {
         }
     }
 
-    // Função de comparação personalizada sem variáveis extras
     public static int compare(int a, int b, int M) {
         int modA = a % M;
         int modB = b % M;
 
         if (modA != modB) return modA - modB;
 
-        // ambos mod iguais, agora considera ímpar/par e valores
-        if (a % 2 != 0 && b % 2 == 0) return -1; // ímpar antes do par
-        if (a % 2 == 0 && b % 2 != 0) return 1;  // par depois do ímpar
+        if (a % 2 != 0 && b % 2 == 0) return -1;
+        if (a % 2 == 0 && b % 2 != 0) return 1;
 
-        if (a % 2 != 0) return b - a; // ambos ímpares: maior primeiro
-        return a - b;                  // ambos pares: menor primeiro
+        if (a % 2 != 0) return b - a;
+        return a - b;
     }
 
     public static void main(String args[]) {
@@ -41,7 +39,10 @@ public class sort {
             int N = sc.nextInt();
             int M = sc.nextInt();
 
-            if (N == 0 && M == 0) break;
+            if (N == 0 && M == 0) {
+                System.out.println("0 0");
+                break;
+            }
 
             int numeros[] = new int[N];
             for (int i = 0; i < N; i++) {
@@ -55,3 +56,4 @@ public class sort {
         sc.close();
     }
 }
+
