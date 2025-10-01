@@ -80,10 +80,11 @@ public class Main{
           Scanner sc = new Scanner(System.in);
           Game[] game =  new Game[2000];
           int i = 0;
+          scFile.nextLine();
           
           while(scFile.hasNext()){
             game[i] =  new Game();
-            String[14] atributos = new String[14];
+            String[] atributos = new String[14];
             set(game[i], atributos);
             i++;  
           }
