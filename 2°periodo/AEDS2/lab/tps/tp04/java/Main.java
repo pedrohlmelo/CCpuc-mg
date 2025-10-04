@@ -43,6 +43,16 @@ public void setPrice(float price) {
 public void setSupportedLanguages(String[] supportedLanguages) {
     this.supportedLanguages = supportedLanguages;
 }
+public void setMetacriticScore(int metacriticScore){
+    this.metacriticScore = metacriticScore;
+}
+public void setUserScore(float userScore){
+    this.userScore = userScore;
+}
+
+public void setAchievements(int achievements){
+    this.achievements = achievements;
+}
 
 public void setPublishers(String[] publishers) {
     this.publishers = publishers;
@@ -135,11 +145,17 @@ public class Main{
          contagem = 0;
          int contagemAspas = 0;
 
-         String auxsupportedLanguages = "";
+         String[] auxsupportedLanguages = "";
+         int contagemL = 0;
          for(int u = 0; u < linha.length(); u++){
             if(contagem < contagemVirgulas){
             if(linha.charAt(u) == ','){
                 contagem ++;
+            }
+            if(contagem == contagemVirgulas){
+               if(linha.charAt(u) == ','){
+                contagemL++;
+               }
             }
         }
         if(contagem == contagemVirgulas && linha.charAt(u) == '"'){
@@ -147,10 +163,62 @@ public class Main{
         }
         if(contagemAspas < 2){
             if(contagem == contagemVirgulas && linha.charAt(u) != '"' && linha.charAt(u) != '\''){
-                auxsupportedLanguages += linha.charAt(u);
+                auxsupportedLanguages[aux] += linha.charAt(u);
             }
          }
+         
         }
+        game.setSupportedLanguages(auxsupportedLanguages);
+        contagemVirgulas = 7 + contagemL;
+        contagem = 0;
+
+        String auxmetacriticScore = "";
+        for(int u = 0; u < linha.length(); u++){
+            if(linha.charAt(u) == ','){
+                contagem ++;
+            }
+            if(contagem == contagemVirgulas){
+                auxmetacriticScore += linha.charAt(u+1);
+            }
+         }
+         int metacriticScore = Integer.parseInt(auxmetacriticScore);
+         game.setMetacriticScore(metacriticScore);
+         contagemVirgulas = 8 + contagemL;
+         contagem = 0;
+           
+         String auxuserScore = "";
+         for(int u = 0; u < linha.length(); u++){
+            if(linha.charAt(u) == ','){
+                contagem ++;
+            }
+            if(contagem == contagemVirgulas){
+                auxuserScore += linha.charAt(u+1);
+            }
+         }
+         float UserScore = Float.parseFloat(auxuserScore);
+         game.setUserScore(UserScore);
+         contagemVirgulas = 9 + contagemL;
+         contagem = 0;
+
+         String auxAchieviments = "";
+         for(int u = 0; u < linha.length(); u++){
+            if(linha.charAt(u) == ','){
+                contagem ++;
+            }
+            if(contagem == contagemVirgulas){
+                auxAchieviments += linha.charAt(u+1);
+            }
+         }
+         int achievements = Integer.parseInt(auxAchieviments);
+         game.setAchievements(achievements);
+
+         
+
+
+         
+
+
+
 
             
             
