@@ -75,7 +75,7 @@ class Game {
             if (i < tags.length - 1) System.out.print(", ");
         }
         // para pular para a próxima linha após imprimir tudo.
-        System.out.println("]");
+        System.out.println("] ##");
     }
 }
 
@@ -139,7 +139,7 @@ public class Main {
         }
         String[] dataPartes = separarStringInterna(dataSemVirgula, ' ');
         
-        // AQUI ESTÁ A MUDANÇA: Inicializamos as variáveis com um valor padrão.
+        
         String diaStr = "01", mesStr = "Jan", anoStr = "1970";
 
         if (dataPartes.length >= 3) { 
@@ -152,6 +152,11 @@ public class Main {
             diaStr = "01"; 
         } 
         
+        
+        if (diaStr.length() == 1) {
+            diaStr = "0" + diaStr;
+        }
+
         String mesNum = "";
         switch (mesStr) {
             case "Jan": mesNum = "01"; break; case "Feb": mesNum = "02"; break;
@@ -177,10 +182,10 @@ public class Main {
         game.setMetacriticScore(Integer.parseInt(campos.get(6)));
         game.setUserScore(Float.parseFloat(campos.get(7)));
         game.setAchievements(Integer.parseInt(campos.get(8)));
-        game.setPublishers(new String[]{campos.get(9)});
-        game.setDevelopers(new String[]{campos.get(10)});
+        game.setPublishers(separarStringInterna(campos.get(9), ','));
+        game.setDevelopers(separarStringInterna(campos.get(10), ','));
         game.setCategories(separarStringInterna(campos.get(11), ','));
-        game.setGenres(new String[]{campos.get(12)});
+        game.setGenres(separarStringInterna(campos.get(12), ','));
         game.setTags(separarStringInterna(campos.get(13), ','));
     }
 
