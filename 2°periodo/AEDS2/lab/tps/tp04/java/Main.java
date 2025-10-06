@@ -193,7 +193,7 @@ public class Main {
         
         // Lê o arquivo "games.csv", chama o 'formatar' para cada linha
         // e guarda todos os objetos 'Game' em uma lista.
-        File arquivo = new File("games.csv");
+        File arquivo = new File("/temp/games.csv");
         List<Game> gamesList = new ArrayList<>();
         try (Scanner scFile = new Scanner(arquivo)) {
             scFile.nextLine(); // Pula o cabeçalho
