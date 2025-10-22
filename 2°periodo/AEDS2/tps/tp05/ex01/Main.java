@@ -225,7 +225,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        File arquivo = new File("/tmp/games.csv");
+        File arquivo = new File("games.csv");
         
         
         Game[] todosOsGames = new Game[1];
