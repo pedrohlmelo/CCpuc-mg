@@ -217,7 +217,7 @@ public class Main {
     }
 
     public static void criarLog(String matricula, double tempo, int comparacoes) throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("suamatricula_binaria.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("889841_binaria.txt"))) {
             
             String tempoStr = String.valueOf(tempo).replace(',', '.');
             writer.print(matricula + "\t" + tempoStr + "ms" + "\t" + comparacoes + "\n");
