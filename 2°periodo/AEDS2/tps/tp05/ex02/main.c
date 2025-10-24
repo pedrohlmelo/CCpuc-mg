@@ -79,7 +79,7 @@ void imprimir(const Game* game) {
         printf("%s", game->tags[i]);
         if (i < game->tags_count - 1) printf(", ");
     }
-    // para pular para a próxima linha após imprimir tudo.
+    
     printf("] ##\n");
 }
 
@@ -136,7 +136,8 @@ void formatar(Game* game, const char* linha) {
         mesStr = dataPartes[0]; anoStr = dataPartes[1]; diaStr = "01";
     }
     
-   char diaFinal[3];
+    
+    char diaFinal[3];
     if (strlen(diaStr) == 1) {
         diaFinal[0] = '0';
         diaFinal[1] = diaStr[0];
@@ -145,6 +146,7 @@ void formatar(Game* game, const char* linha) {
         strncpy(diaFinal, diaStr, 2); 
         diaFinal[2] = '\0'; 
     }
+    
 
     char mesNum[3] = "00";
     if (strcmp(mesStr, "Jan") == 0) strcpy(mesNum, "01"); else if (strcmp(mesStr, "Feb") == 0) strcpy(mesNum, "02");
@@ -206,19 +208,19 @@ void selectionSort(Game** games, int n, long* comparacoes, long* movimentacoes) 
 
 
 void criarLog(double tempo, long comparacoes, long movimentacoes) {
-    FILE* log = fopen("889841_selecao.txt", "w");
+    FILE* log = fopen("889841_selecao.txt", "w"); 
     if (log == NULL) {
         printf("ERRO: Nao foi possivel criar o arquivo de log.\n");
         return;
     }
     
-    fprintf(log, "889841\t%ld\t%ld\t%f\n", comparacoes, movimentacoes, tempo);
+    fprintf(log, "889841\t%ld\t%ld\t%f.ms\n", comparacoes, movimentacoes, tempo);
     fclose(log);
 }
 
 
 int main(void) {
-    
+    // Lê todos os jogos do CSV
     FILE* arquivo = fopen("/tmp/games.csv", "r");
     if (arquivo == NULL) {
         printf("ERRO: Nao foi possivel abrir o arquivo 'games.csv'\n");
@@ -230,7 +232,7 @@ int main(void) {
     Game* gamesList = malloc(games_capacity * sizeof(Game));
     char linha[8192]; 
 
-    fscanf(arquivo, "%[^\n]%*c", linha);
+    fscanf(arquivo, "%[^\n]%*c", linha); 
 
     while (fscanf(arquivo, " %[^\n]%*c", linha) != EOF) {
         if (games_size >= games_capacity) {
@@ -243,9 +245,8 @@ int main(void) {
     fclose(arquivo);
 
     
-    int vetor_capacity = 100; // Capacidade inicial
+    int vetor_capacity = 100; 
     int vetor_size = 0;
-    
     Game** vetorJogos = malloc(vetor_capacity * sizeof(Game*)); 
     
     char entrada[100];
@@ -258,12 +259,10 @@ int main(void) {
         bool achou = false;
         for (int i = 0; i < games_size; i++) {
             if (gamesList[i].id == idParaBuscar) {
-                // Redimensiona o vetor se necessário
                 if (vetor_size >= vetor_capacity) {
                     vetor_capacity *= 2;
                     vetorJogos = realloc(vetorJogos, vetor_capacity * sizeof(Game*));
                 }
-                
                 vetorJogos[vetor_size] = &gamesList[i];
                 vetor_size++;
                 achou = true;
@@ -272,21 +271,22 @@ int main(void) {
         }
     }
     
-    // 3. Ordena o vetor e registra o log
+    
     long comparacoes = 0;
     long movimentacoes = 0;
     
-    clock_t inicio = clock(); // Marca o início do tempo
+    clock_t inicio = clock(); 
     selectionSort(vetorJogos, vetor_size, &comparacoes, &movimentacoes);
-    clock_t fim = clock(); // Marca o fim do tempo
+    clock_t fim = clock(); 
     
-    // Calcula o tempo em segundos
-    double tempo = ((double)(fim - inicio)) / CLOCKS_PER_SEC; 
+    
+    
+    double tempo = ((double)(fim - inicio) * 1000) / CLOCKS_PER_SEC; 
     
     
     criarLog(tempo, comparacoes, movimentacoes);
     
-   
+    
     for (int i = 0; i < vetor_size; i++) {
         imprimir(vetorJogos[i]);
     }
@@ -294,7 +294,6 @@ int main(void) {
     
     free(vetorJogos); 
 
-    // Libera todos os jogos lidos do CSV 
     for (int i = 0; i < games_size; i++) {
         free_game_memory(&gamesList[i]);
     }
