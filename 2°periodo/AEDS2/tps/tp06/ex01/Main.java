@@ -71,8 +71,8 @@ class Game {
     public int getAchievements() { return this.achievements; }
     
     
-    public void imprimir() {
-        System.out.print("=> " + this.id + " ## " + this.name + " ## " + this.releaseDate + " ## " + this.estimatedOwners + " ## ");
+    public void imprimir(int n) {
+        System.out.print("[" + n + "]" + " " + "=> " + this.id + " ## " + this.name + " ## " + this.releaseDate + " ## " + this.estimatedOwners + " ## ");
         
         if (this.price == 0.0f) {
             System.out.print("0.0"); 
@@ -131,26 +131,113 @@ class Celula{
         this.prox = null;
     }
 }
-Class Lista{
+class Lista{
     public Celula primeiro;
     public Celula ultimo;
 
-    public Fila(){
+    public Lista(){
         primeiro = new Celula();
         ultimo = primeiro;
     }
+    public void imprimeJogoRemovido(Game game){
+        System.out.println("(R)" + " " + game.getName());
+    }
     public void Inserir(Game game){
-        ultimo.prox - new Celuna(game);
+        ultimo.prox = new Celula(game);
         ultimo = ultimo.prox;
     }
+    public void InserirInicio(Game game){
+        Celula novaCelula = new Celula(game);
+        novaCelula.prox = primeiro.prox;
+        primeiro.prox = novaCelula;
+        if (primeiro == ultimo) {
+            ultimo = novaCelula;
+        }
+    }
+    public void InserirPosicao(Game game, int posicao){
+          int tam = 0;
+          for(Celula i = primeiro.prox; i != null; i = i.prox){
+            tam++;
+          }
+
+          if(posicao == 0){
+            InserirInicio(game);
+          }
+          else if(posicao == tam){
+            Inserir(game);
+          }
+          else{
+            Celula i = primeiro;
+            for(int j = 0; j < posicao; j++){
+                i = i.prox;
+            }
+            Celula novaCelula = new Celula(game);
+            novaCelula.prox = i.prox;
+            i.prox = novaCelula;
+          }
+        }
+          public Game RemoverInicio(){
+              Celula tmp = primeiro.prox;
+              primeiro.prox = tmp.prox;
+              Game jogoRemovido = tmp.elemento;
+              if (tmp == ultimo) {
+                ultimo = primeiro; 
+              }
+              tmp.prox = null;
+              imprimeJogoRemovido(jogoRemovido);
+             return jogoRemovido;
+            }
+          public Game RemoverPosicao(int posicao){
+            int tam = 0;
+            Game jogoRemovido;
+            for(Celula i = primeiro.prox; i != null; i = i.prox){
+            tam++;
+          }
+          if(posicao == 0){
+            jogoRemovido = RemoverInicio();
+            imprimeJogoRemovido(jogoRemovido);
+            return RemoverInicio();
+          }
+          else if(posicao == tam-1){
+            jogoRemovido =  RemoverFinal();
+            imprimeJogoRemovido(jogoRemovido);
+            return RemoverFinal();
+          }
+          else{
+            Celula i = primeiro;
+            for(int j = 0; j < posicao; j++){
+                i = i.prox;
+            }
+            Celula tmp = i.prox;
+            i.prox = tmp.prox;
+            jogoRemovido = tmp.elemento;
+            tmp.prox = null;
+            imprimeJogoRemovido(jogoRemovido);
+            return jogoRemovido;
+          }
+        }
+          
+          public Game RemoverFinal(){
+            Celula i;
+            for(i = primeiro; i.prox != ultimo; i = i.prox);
+            Game jogoRemovido = ultimo.elemento;
+            ultimo = i;
+            ultimo.prox = null;
+            imprimeJogoRemovido(jogoRemovido);
+            return jogoRemovido;
+          }
+          public void Mostrar(){
+            int j = 0;
+            for(Celula i = primeiro.prox; i != null; i = i.prox){
+                i.elemento.imprimir(j);
+                j++;
+            }
+          }
 }
 
+
 public class Main {
-    
-
-
-    
-    private static String[] separarStringInterna(String texto, char separador, int[] count) {
+     private static String[] separarStringInterna(String texto, char separador, int[] count) {
         if (texto == null || texto.isEmpty()) {
             count[0] = 0;
             return new String[0];
@@ -287,11 +374,18 @@ public class Main {
         game.setTags(separarStringInterna(campos[13], ',', tag_count), tag_count[0]);
     }
  
-    
+    public static Game GameporID(int id, Game[] todosOsGames){
+             for(int i = 0; i < todosOsGames.length; i++){
+                if(id == todosOsGames[i].getId()){
+                    return todosOsGames[i];
+                }
+             }
+             return null;
+    }
 
    
     public static void main(String[] args) throws Exception {
-        File arquivo = new File("games.csv");
+        File arquivo = new File("/tmp/games.csv");
         
         Game[] todosOsGames = new Game[1];
         int totalGamesCount = 0; 
@@ -330,11 +424,20 @@ public class Main {
             int valor = Integer.parseInt(entrada);
             if(countId == ids.length){ 
                 int[] tempInt = new int[ids.length*2];
-                for(int i = 0; i < id.length; i++){ tempInt[i] = ids[i]; }
+                for(int i = 0; i < ids.length; i++){ tempInt[i] = ids[i]; }
                 ids = tempInt;
             }
             ids[countId] = valor;
             countId++;
+        }
+        Lista lista = new Lista();
+        for(int i = 0; i < countId; i++){
+                 for(int j = 0; j < totalGamesCount; j++){
+                    if(ids[i] == todosOsGames[j].getId()){
+                        lista.Inserir(todosOsGames[j]);
+                        break;
+                    }
+                 }
         }
         
         int qtd = sc.nextInt();
@@ -346,38 +449,39 @@ public class Main {
             ordem[i] = sc.next();
             switch(ordem[i]){
                 case "I*":
-                posicao = sc.NextInt();
-                id = sc.NextInt();
-                InserirPosicao(id,posicao);
+                posicao = sc.nextInt();
+                id = sc.nextInt();
+                lista.InserirPosicao(GameporID(id, todosOsGames),posicao);
                 break;
 
                 case "II":
-                id = sc.NextInt();
-                InserirInicio(id);
+                id = sc.nextInt();
+                lista.InserirInicio(GameporID(id, todosOsGames));
                 break;
 
                 case "IF":
-                id = sc.NextInt();
-                InserirFim(id);
+                id = sc.nextInt();
+                lista.Inserir(GameporID(id, todosOsGames));
                 break;
 
                 case "RI":
-                RemoverInico();
+                lista.RemoverInicio();
                 break;
 
                 case "R*":
-                posicao = sc.NextInt();
-                RemoverPosicao(posicao);
+                posicao = sc.nextInt();
+                lista.RemoverPosicao(posicao);
                 break;
 
                 case "RF":
-                RemoverFinal();
+                lista.RemoverFinal();
                 break;
 
             }
                
-
         }
+        lista.Mostrar();
+        
           
         sc.close();
     }
