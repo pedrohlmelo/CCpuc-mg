@@ -89,7 +89,7 @@ class Hash {
         
         if (tabela[pos] != null && tabela[pos].getName().equals(nome)) {
             comparacoes++;
-            System.out.println(nome + ": (Posicao: " + pos + ") SIM");
+            System.out.println(nome + ":  (Posicao: " + pos + ") SIM");
             return;
         } 
         comparacoes++; 
@@ -97,12 +97,12 @@ class Hash {
         for (int i = 0; i < reserva; i++) {
             comparacoes++;
             if (tabela[m1 + i].getName().equals(nome)) {
-                System.out.println(nome + ": (Posicao: " + (m1 + i) + ") SIM");
+                System.out.println(nome + ":  (Posicao: " + (m1 + i) + ") SIM");
                 return;
             }
         }
         
-        System.out.println(nome + ": (Posicao: " + pos + ") NAO");
+        System.out.println(nome + ":  (Posicao: " + pos + ") NAO");
     }
 }
 
@@ -179,7 +179,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         long inicioTempo = System.currentTimeMillis();
 
-        File arquivo = new File("games.csv"); 
+        File arquivo = new File("/tmp/games.csv"); 
         Game[] todosOsGames = new Game[5000];
         int totalGamesCount = 0; 
         
@@ -223,7 +223,7 @@ public class Main {
 
         long fimTempo = System.currentTimeMillis();
         
-        try (FileWriter writer = new FileWriter("matricula_hashReserva.txt")) { 
+        try (FileWriter writer = new FileWriter("889841_hashReserva.txt")) { 
             long tempoTotal = fimTempo - inicioTempo;
             writer.write("889841" + "\t" + tempoTotal + "ms\t" + tabelaHash.comparacoes);
         } catch (IOException e) {
