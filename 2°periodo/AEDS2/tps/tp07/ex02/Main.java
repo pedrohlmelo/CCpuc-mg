@@ -283,7 +283,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         long inicioTempo = System.currentTimeMillis();
 
-        File arquivo = new File("games.csv"); 
+        File arquivo = new File("/tmp/games.csv"); 
         Game[] todosOsGames = new Game[5000];
         int totalGamesCount = 0; 
         

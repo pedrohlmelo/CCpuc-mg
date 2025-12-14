@@ -273,7 +273,7 @@ int main(void) {
     clock_t inicio = clock();
 
     
-    FILE* arquivo = fopen("games.csv", "r");
+    FILE* arquivo = fopen("/tmp/games.csv", "r");
     if (!arquivo) {
         printf("Erro ao abrir arquivo.\n");
         return 1;
