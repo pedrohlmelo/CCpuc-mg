@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listings}
+
+
+\title{Encontro2}
+\author{pedrolopesmelo18}
+\date{April 2025}
+
+\begin{document}
+
+
+
+\maketitle
+
+\section{circunferência}
+\section*{curva base}
+\begin{lstlisting}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+x = np.linspace(-2, 2, 400)
+y = np.sqrt(4-x**2)
+y2 = -np.sqrt(4-x**2) circle
+
+plt.plot(x, y, x, y2)
+plt.title("Circulo")
+plt.grid(True) 
+plt.gca().set_aspect('equal')
+plt.show()
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[width=5cm, height=4cm]{download (5).png}    
+\end{center}
+
+
+\section*{elipse}
+\section*{curva base}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+x = np.linspace(-2, 2, 400)
+y = np.sqrt(4-x**2)
+y2 = -np.sqrt(4-x**2) 
+
+plt.plot(x, y, x, y2)
+plt.title("Circulo")
+plt.grid(True) 
+plt.gca().set_aspect('equal')
+plt.show()
+
+\end{lstlisting}
+\begin{center}
+\includegraphics[width=5cm, height=4cm]{download (6).png}    
+\end{center}
+
+
+\end{document}
