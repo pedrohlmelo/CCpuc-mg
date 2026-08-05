@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# SDK do Flutter instalado localmente (nao deve ser versionado)
+4°periodo/Lddm/flutter/
+
+# Flutter / Dart - artefatos de build e cache
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/build/
+**/*.iml
+.idea/
+
+# iOS / macOS
+**/Pods/
+**/.symlinks/
+**/Flutter/ephemeral/
+**/ephemeral/
+**/xcuserdata/
+
+# Android
+**/.gradle/
+**/local.properties
+**/*.keystore
+**/*.jks
