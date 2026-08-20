@@ -12,10 +12,10 @@ class Habito {
 
 Future<List<Habito>> carregarHabitos() async  {
   await Future.delayed(const Duration(seconds: 4));
-  throw Exception('Servidor fora do ar');
+  
 
   return const[
-     Habito('Beber água', 'Meta: 8 copos por dia', Icons.local_drink),
+    Habito('Beber água', 'Meta: 8 copos por dia', Icons.local_drink),
     Habito('Ler', 'Meta: 20 páginas por dia', Icons.menu_book),
     Habito('Caminhar', 'Meta: 30 minutos por dia', Icons.directions_walk),
     Habito('Dormir cedo', 'Meta: antes das 23h', Icons.bedtime),
