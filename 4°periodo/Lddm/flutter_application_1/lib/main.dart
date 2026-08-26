@@ -12,6 +12,7 @@ class Habito {
 
 Future<List<Habito>> carregarHabitos() async  {
   await Future.delayed(const Duration(seconds: 4));
+  //throw Exception("servidor fora do ar");
   
 
   return const[
