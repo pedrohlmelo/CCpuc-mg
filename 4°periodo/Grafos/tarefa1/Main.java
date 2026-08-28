@@ -34,8 +34,8 @@ public class Main {
         }
         scf.close();
 
-        if (vertice < 0 || vertice > n) {
-            System.out.println("Vertice " + vertice + " nao existe no grafo (faixa valida: 0 a " + n + ").");
+        if (vertice < 1 || vertice > n) {
+            System.out.println("Vertice " + vertice + " nao existe no grafo (faixa valida: 1 a " + n + ").");
             sc.close();
             return;
         }
