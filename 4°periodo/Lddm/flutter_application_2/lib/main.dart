@@ -33,7 +33,7 @@ class DiarioApp extends StatelessWidget {
     title: 'Diário de Hábitos',
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFF1A5276), // a cor semente
+        seedColor: const Color(0xFF1A5276), 
       ),
       useMaterial3: true,
     ),
