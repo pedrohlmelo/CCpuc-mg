@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'tela_detalhe.dart';
 
 void main() => runApp(const DiarioApp());
 
@@ -30,6 +31,12 @@ class DiarioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
     title: 'Diário de Hábitos',
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: const Color(0xFF1A5276), // a cor semente
+      ),
+      useMaterial3: true,
+    ),
     home: TelaHabitos(futuro: carregarHabitos()),
   );
 }
@@ -62,6 +69,10 @@ class TelaHabitos extends StatelessWidget {
                 leading: Icon(h.icone),
                 title: Text(h.nome),
                 subtitle: Text(h.meta),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const TelaDetalhe()),
+                ),
               ),
           ],
         );
