@@ -3,17 +3,14 @@ import 'package:flutter/material.dart';
 class TelaDetalhe extends StatelessWidget {
   const TelaDetalhe({super.key});
 
-  static const String nome = 'Beber água';
-  static const String meta = 'Meta: 8 copos por dia';
-  static const IconData icone = Icons.local_drink;
+  static const String nome = 'Ler';
+  static const String meta = 'Meta: 20 páginas por dia';
+  static const IconData icone = Icons.menu_book;
   static const String descricao =
-      'Manter o corpo hidratado ao longo do dia ajuda na disposição e na '
-      'concentração. Um copo a cada duas horas costuma ser suficiente para '
-      'fechar a meta sem esforço.';
+      'ler diariamente ajuda no foco e capacidade mental, auxiliando em atividades do dia a dia';
 
   static const String _endereco =
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05'
-      '?w=800&h=400&fit=crop';
+      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=400&fit=crop';
 
   static const double _alturaImagem = 180;
   static const double _raioAvatar = 28;
@@ -39,7 +36,7 @@ class TelaDetalhe extends StatelessWidget {
                       _endereco,
                       height: _alturaImagem,
                       width: double.infinity,
-                      fit: BoxFit.cover, 
+                      fit: BoxFit.cover,
                       loadingBuilder: (context, filho, progresso) =>
                           progresso == null
                           ? filho
@@ -59,12 +56,6 @@ class TelaDetalhe extends StatelessWidget {
                                   color: cores.onPrimaryContainer,
                                 ),
                                 const SizedBox(height: 8),
-                                Text(
-                                  'Imagem indisponível',
-                                  style: textos.bodySmall?.copyWith(
-                                    color: cores.onPrimaryContainer,
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -121,21 +112,21 @@ class TelaDetalhe extends StatelessWidget {
                   Expanded(
                     child: _Indicador(
                       icone: Icons.today,
-                      valor: '5 / 8',
+                      valor: '5 / 20',
                       rotulo: 'Hoje',
                     ),
                   ),
                   Expanded(
                     child: _Indicador(
                       icone: Icons.local_fire_department,
-                      valor: '12',
+                      valor: '10',
                       rotulo: 'Sequência',
                     ),
                   ),
                   Expanded(
                     child: _Indicador(
                       icone: Icons.calendar_month,
-                      valor: '80%',
+                      valor: '50%',
                       rotulo: 'Na semana',
                     ),
                   ),
@@ -143,7 +134,7 @@ class TelaDetalhe extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 24), 
+            const SizedBox(height: 24),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -154,7 +145,7 @@ class TelaDetalhe extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Sobre o hábito', style: textos.titleMedium),
-                      const SizedBox(height: 8), 
+                      const SizedBox(height: 8),
                       Row(
                         children: [
                           Icon(icone, color: cores.primary),
