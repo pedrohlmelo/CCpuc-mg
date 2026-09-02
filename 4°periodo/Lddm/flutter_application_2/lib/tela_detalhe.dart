@@ -7,13 +7,14 @@ class TelaDetalhe extends StatelessWidget {
   static const String meta = 'Meta: 20 páginas por dia';
   static const IconData icone = Icons.menu_book;
   static const String descricao =
-      'ler diariamente ajuda no foco e capacidade mental, auxiliando em atividades do dia a dia';
+      'Ler diariamente ajuda no foco e na capacidade mental, auxiliando em '
+      'atividades do dia a dia. Vinte páginas por dia somam cerca de um livro '
+      'por mês, sem precisar de longas sessões de leitura.';
 
-  static const String _endereco =
+  static const String url =
       'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=400&fit=crop';
 
   static const double _alturaImagem = 180;
-  static const double _raioAvatar = 28;
 
   @override
   Widget build(BuildContext context) {
@@ -21,94 +22,83 @@ class TelaDetalhe extends StatelessWidget {
     final textos = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text(nome)),
+      appBar: AppBar(
+        leading: const BackButton(),
+        title: const Text(nome),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Stack(
-                  children: [
-                    Image.network(
-                      _endereco,
-                      height: _alturaImagem,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, filho, progresso) =>
-                          progresso == null
-                          ? filho
-                          : _PlaceholderImagem(
-                              altura: _alturaImagem,
-                              child: const CircularProgressIndicator(),
-                            ),
-                      errorBuilder: (context, erro, pilha) =>
-                          _PlaceholderImagem(
-                            altura: _alturaImagem,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.image_not_supported_outlined,
-                                  size: 32,
-                                  color: cores.onPrimaryContainer,
-                                ),
-                                const SizedBox(height: 8),
-                              ],
-                            ),
-                          ),
-                    ),
-                    Positioned.fill(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: _raioAvatar,
-                              backgroundColor: cores.onPrimary,
-                              child: Icon(icone, color: cores.primary),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    nome,
-                                    style: textos.titleLarge?.copyWith(
-                                      color: cores.onPrimary,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Text(
-                                    meta,
-                                    style: textos.bodyMedium?.copyWith(
-                                      color: cores.onPrimary,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+            Stack(
+              children: [
+                Image.network(
+                  url,
+                  height: _alturaImagem,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, filho, progresso) =>
+                      progresso == null
+                      ? filho
+                      : const _FundoImagem(
+                          child: CircularProgressIndicator(),
                         ),
-                      ),
+                  errorBuilder: (context, erro, pilha) => _FundoImagem(
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      size: 32,
+                      color: cores.onPrimaryContainer,
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                Positioned.fill(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 28,
+                          backgroundColor: cores.onPrimary,
+                          child: Icon(icone, color: cores.primary),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                nome,
+                                style: textos.titleLarge?.copyWith(
+                                  color: cores.onPrimary,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              Text(
+                                meta,
+                                style: textos.bodyMedium?.copyWith(
+                                  color: cores.onPrimary,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+            const SizedBox(height: 24),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     child: _Indicador(
                       icone: Icons.today,
@@ -146,14 +136,6 @@ class TelaDetalhe extends StatelessWidget {
                     children: [
                       Text('Sobre o hábito', style: textos.titleMedium),
                       const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Icon(icone, color: cores.primary),
-                          const SizedBox(width: 8),
-                          Expanded(child: Text(meta)),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
                       Text(descricao, style: textos.bodyMedium),
                     ],
                   ),
@@ -169,15 +151,15 @@ class TelaDetalhe extends StatelessWidget {
   }
 }
 
-class _PlaceholderImagem extends StatelessWidget {
-  const _PlaceholderImagem({required this.altura, required this.child});
 
-  final double altura;
+class _FundoImagem extends StatelessWidget {
+  const _FundoImagem({required this.child});
+
   final Widget child;
 
   @override
   Widget build(BuildContext context) => Container(
-    height: altura,
+    height: TelaDetalhe._alturaImagem,
     width: double.infinity,
     color: Theme.of(context).colorScheme.primaryContainer,
     alignment: Alignment.center,

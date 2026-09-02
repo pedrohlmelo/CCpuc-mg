@@ -11,18 +11,15 @@ class Habito {
   const Habito(this.nome, this.meta, this.icone);
 }
 
-Future<List<Habito>> carregarHabitos() async  {
-  await Future.delayed(const Duration(seconds: 4));
-  //throw Exception("servidor fora do ar");
-  
+Future<List<Habito>> carregarHabitos() async {
+  await Future.delayed(const Duration(seconds: 2));
 
-  return const[
+  return const [
     Habito('Beber água', 'Meta: 8 copos por dia', Icons.local_drink),
     Habito('Ler', 'Meta: 20 páginas por dia', Icons.menu_book),
     Habito('Caminhar', 'Meta: 30 minutos por dia', Icons.directions_walk),
     Habito('Dormir cedo', 'Meta: antes das 23h', Icons.bedtime),
-  ]; 
-  
+  ];
 }
 
 class DiarioApp extends StatelessWidget {
@@ -32,12 +29,10 @@ class DiarioApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: 'Diário de Hábitos',
     theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFF1A5276), 
-      ),
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1A5276)),
       useMaterial3: true,
     ),
-    home: TelaHabitos(futuro: carregarHabitos()),
+    home: const TelaDetalhe(),
   );
 }
 
@@ -58,23 +53,23 @@ class TelaHabitos extends StatelessWidget {
         if (snapshot.hasError) {
           return const Center(child: Text('Não foi possível carregar'));
         }
-        final habitos = snapshot.data!;
+
+        final habitos = snapshot.data ?? const <Habito>[];
         if (habitos.isEmpty) {
           return const Center(child: Text('Nenhum hábito ainda'));
         }
-        return ListView(
-          children: [
-            for (final h in habitos)
-              ListTile(
-                leading: Icon(h.icone),
-                title: Text(h.nome),
-                subtitle: Text(h.meta),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const TelaDetalhe()),
-                ),
-              ),
-          ],
+
+        return ListView.builder(
+          itemCount: habitos.length,
+          itemBuilder: (context, i) => ListTile(
+            leading: Icon(habitos[i].icone),
+            title: Text(habitos[i].nome),
+            subtitle: Text(habitos[i].meta),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const TelaDetalhe()),
+            ),
+          ),
         );
       },
     ),
