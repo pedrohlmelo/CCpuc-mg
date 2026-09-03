@@ -6,6 +6,7 @@ import '../../../core/tema/app_tema.dart';
 import '../../../core/widgets/cartoes.dart';
 import '../../../core/widgets/marca.dart';
 import '../../../core/widgets/mascote.dart';
+import '../../../core/widgets/rodape_copyright.dart';
 import '../../../pilares/esquecimento/previsor_esquecimento.dart';
 import '../../autenticacao/application/sessao_controller.dart';
 import '../../materias/data/materia_repository.dart';
@@ -178,6 +179,7 @@ class HomeScreen extends ConsumerWidget {
                 ],
               ),
             ),
+            const RodapeCopyright(),
           ],
         ),
       ),

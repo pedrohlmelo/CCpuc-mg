@@ -45,3 +45,7 @@ CAPTURAS=1 flutter test test/capturas --tags capturas   # gera capturas/*.png
 
 Próximas sprints: fila de estudo (RF03), adaptação de dificuldade (RF06), painel de
 esquecimento (RF07/08), diagnóstico de causa-raiz (RF09), histórico (RF10), mapa do grafo.
+
+---
+
+© 2026 Adapta. Todos os direitos reservados.

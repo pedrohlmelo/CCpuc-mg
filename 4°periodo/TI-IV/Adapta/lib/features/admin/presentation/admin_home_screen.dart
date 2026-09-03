@@ -6,6 +6,7 @@ import '../../../core/tema/app_tema.dart';
 import '../../../core/widgets/cartoes.dart';
 import '../../../core/widgets/marca.dart';
 import '../../../core/widgets/mascote.dart';
+import '../../../core/widgets/rodape_copyright.dart';
 import '../../autenticacao/application/sessao_controller.dart';
 import '../data/admin_repository.dart';
 
@@ -182,6 +183,7 @@ class AdminHomeScreen extends ConsumerWidget {
                 ],
               ),
             ),
+            const RodapeCopyright(),
           ],
         ),
       ),

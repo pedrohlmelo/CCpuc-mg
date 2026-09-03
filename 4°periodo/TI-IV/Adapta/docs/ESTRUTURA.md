@@ -16,6 +16,7 @@ lib/
 │       ├── mascote.dart             Camu (poses normal/feliz/pensativo) + versão animada
 │       ├── marca.dart               logotipo "Adapta•"
 │       ├── cartoes.dart             AppCartao, CartaoGradiente, TileEstatistica, BarraSaude, EstadoVazio…
+│       ├── rodape_copyright.dart    InfoLegal.copyright + RodapeCopyright (rodapé das telas)
 │       └── paleta_materias.dart     ícone + cor por matéria
 ├── features/                        uma pasta por funcionalidade; domain / data / application / presentation
 │   ├── autenticacao/                RF01 — Usuario, UsuarioRepository, SessaoController, login e cadastro

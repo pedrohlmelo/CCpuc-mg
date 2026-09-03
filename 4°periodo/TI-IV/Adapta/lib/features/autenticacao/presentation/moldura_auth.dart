@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/tema/app_tema.dart';
 import '../../../core/widgets/marca.dart';
 import '../../../core/widgets/mascote.dart';
+import '../../../core/widgets/rodape_copyright.dart';
 
 /// Moldura das telas de login e cadastro: topo com gradiente, mascote e
 /// marca; corpo em painel claro arredondado que ocupa o resto da tela.
@@ -95,6 +96,7 @@ class MolduraAuth extends StatelessWidget {
                                 Text(titulo, style: texto.headlineMedium),
                                 const SizedBox(height: 20),
                                 child,
+                                const RodapeCopyright(),
                               ],
                             ),
                           ),
