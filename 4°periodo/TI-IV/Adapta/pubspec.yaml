@@ -1,0 +1,44 @@
+name: adapta
+description: "Adapta — app de estudos por questões que decide o que o aluno deve estudar agora (TI-IV)."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  crypto: ^3.0.7
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  go_router: ^18.0.1
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  sqflite: ^2.4.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  sqflite_common_ffi: ^2.4.2+1
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/mascote/
+  fonts:
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fontes/PlusJakartaSans.ttf
+        - asset: assets/fontes/PlusJakartaSans-Italic.ttf
+          style: italic
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: assets/icone/icone.png
+  adaptive_icon_background: "#4F46E5"
+  adaptive_icon_foreground: assets/icone/icone_foreground.png
+  adaptive_icon_monochrome: assets/icone/icone_foreground.png

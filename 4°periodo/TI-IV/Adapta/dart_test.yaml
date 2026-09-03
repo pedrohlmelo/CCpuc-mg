@@ -1,0 +1,3 @@
+tags:
+  capturas:
+    description: Gera capturas de tela em PNG. Rodar com CAPTURAS=1.
