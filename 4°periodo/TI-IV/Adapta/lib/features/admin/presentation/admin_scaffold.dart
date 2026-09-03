@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/widgets/botao_tema.dart';
+
 /// Moldura comum das telas do painel: AppBar com volta ao menu e FAB opcional.
 class AdminScaffold extends StatelessWidget {
   final String titulo;
@@ -34,6 +36,7 @@ class AdminScaffold extends StatelessWidget {
             if (subtitulo != null) Text(subtitulo!, style: texto.bodySmall),
           ],
         ),
+        actions: const [BotaoTema(), SizedBox(width: 4)],
       ),
       body: child,
       floatingActionButton: aoAdicionar == null

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/widgets/botao_tema.dart';
 import '../../../core/widgets/cartoes.dart';
 import '../../../core/widgets/mascote.dart';
 import '../../../pilares/recomendacao/recomendador.dart';
@@ -74,6 +75,7 @@ class SessaoScreen extends ConsumerWidget {
           ),
         ),
         actions: [
+          const BotaoTema(),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Center(

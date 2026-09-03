@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/tema/app_tema.dart';
+import '../../../core/widgets/botao_tema.dart';
 import '../../../core/widgets/cartoes.dart';
 import '../../../core/widgets/marca.dart';
 import '../../../core/widgets/mascote.dart';
@@ -28,6 +29,7 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const MarcaAdapta(compacto: true),
         actions: [
+          const BotaoTema(),
           IconButton(
             tooltip: 'Sair',
             icon: const Icon(Icons.logout_rounded),

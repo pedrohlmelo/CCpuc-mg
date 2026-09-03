@@ -12,11 +12,13 @@ lib/
 │   ├── seguranca/hash_senha.dart    SHA-256 + salt
 │   ├── router/app_router.dart       rotas + guarda de sessão/admin
 │   ├── tema/app_tema.dart           tokens (AppCores, CoresMemoria, AppMedidas), tema claro/escuro, tipografia
+│   ├── tema/tema_controller.dart    temaProvider (claro/escuro/sistema) + persistência em shared_preferences
 │   └── widgets/                     componentes compartilhados
 │       ├── mascote.dart             Camu (poses normal/feliz/pensativo) + versão animada
 │       ├── marca.dart               logotipo "Adapta•"
 │       ├── cartoes.dart             AppCartao, CartaoGradiente, TileEstatistica, BarraSaude, EstadoVazio…
 │       ├── rodape_copyright.dart    InfoLegal.copyright + RodapeCopyright (rodapé das telas)
+│       ├── botao_tema.dart          BotaoTema: ícone sol/lua que alterna claro/escuro
 │       └── paleta_materias.dart     ícone + cor por matéria
 ├── features/                        uma pasta por funcionalidade; domain / data / application / presentation
 │   ├── autenticacao/                RF01 — Usuario, UsuarioRepository, SessaoController, login e cadastro

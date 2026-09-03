@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/tema/app_tema.dart';
 import '../../../core/widgets/marca.dart';
+import '../../../core/widgets/botao_tema.dart';
 import '../../../core/widgets/mascote.dart';
 import '../../../core/widgets/rodape_copyright.dart';
 
@@ -40,32 +41,43 @@ class MolduraAuth extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: _alturaCabecalho,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(28, 20, 24, 16),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const MarcaAdapta(cor: Colors.white),
-                                const SizedBox(height: 10),
-                                Text(
-                                  subtitulo,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: texto.bodyLarge?.copyWith(
-                                    color: Colors.white.withValues(alpha: 0.85),
-                                  ),
+                    child: Stack(
+                      children: [
+                        const Positioned(
+                          top: 0,
+                          right: 8,
+                          child: BotaoTema(cor: Colors.white),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(28, 20, 24, 16),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const MarcaAdapta(cor: Colors.white),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      subtitulo,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: texto.bodyLarge?.copyWith(
+                                        color: Colors.white.withValues(
+                                          alpha: 0.85,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              const SizedBox(width: 8),
+                              MascoteAnimado(pose: pose, tamanho: 112),
+                            ],
                           ),
-                          const SizedBox(width: 8),
-                          MascoteAnimado(pose: pose, tamanho: 112),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   ConstrainedBox(

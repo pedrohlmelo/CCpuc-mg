@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/widgets/botao_tema.dart';
 import '../../../core/widgets/cartoes.dart';
 import '../../../core/widgets/marca.dart';
 import '../../../core/widgets/mascote.dart';
@@ -30,6 +31,7 @@ class EscolhaMateriaScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const MarcaAdapta(compacto: true),
         actions: [
+          const BotaoTema(),
           if (usuario?.isAdmin ?? false)
             IconButton(
               tooltip: 'Painel administrativo',
