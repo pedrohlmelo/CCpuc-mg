@@ -54,38 +54,25 @@ class TelaMuseus extends StatelessWidget {
         IconButton(icon: const Icon(Icons.search), onPressed: () {}),
       ],
     ),
-    backgroundColor: const Color(0xFFF2F4F5),
     body: Column(
       children: [
-        for (final m in museus)
-          Card(
-            color: Colors.white,
-            margin: const EdgeInsets.fromLTRB(12, 8, 12, 0),
-            child: ListTile(
-              title: Text(
-                m.nome,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text('${m.cidade} · ${m.salas} salas'),
-              trailing: const Icon(
-                Icons.circle,
-                color: Color(0xFFCFE3DC),
-                size: 34,
-              ),
-            ),
+        Expanded(
+          child: ListView(
+            children: [
+              for (final m in museus)
+                ListTile(
+                  title: Text(m.nome),
+                  subtitle: Text('${m.cidade} · ${m.salas} salas'),
+                  trailing: const Icon(Icons.circle, color: Colors.green, size: 14),
+                ),
+            ],
           ),
+        ),
         Container(
           width: double.infinity,
-          margin: const EdgeInsets.only(top: 8),
           padding: const EdgeInsets.all(12),
           color: Theme.of(context).colorScheme.secondaryContainer,
-          child: Text(
-            'maior acervo: ${maiorAcervo(museus)} salas',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          ),
+          child: Text('maior acervo: ${maiorAcervo(museus)} salas'),
         ),
       ],
     ),
