@@ -48,6 +48,8 @@ class TelaMuseus extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: const Text('Museus'),
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      foregroundColor: Colors.white,
       actions: [
         IconButton(icon: const Icon(Icons.search), onPressed: () {}),
       ],
