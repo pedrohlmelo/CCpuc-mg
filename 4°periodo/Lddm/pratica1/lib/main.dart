@@ -29,9 +29,14 @@ int maiorAcervo(List<Museu> lista) {
 class MuseusApp extends StatelessWidget {
   const MuseusApp({super.key});
 
+
   @override
   Widget build(BuildContext context) => MaterialApp(
     title: 'Museus',
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1A5276)),
+      useMaterial3: true,
+    ),
     home: const TelaMuseus(),
   );
 }
