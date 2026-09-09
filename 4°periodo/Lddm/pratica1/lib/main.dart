@@ -63,7 +63,7 @@ class TelaMuseus extends StatelessWidget {
                 ListTile(
                   title: Text(m.nome),
                   subtitle: Text('${m.cidade} · ${m.salas} salas'),
-                  trailing: const Icon(Icons.museum),
+                  trailing: const Icon(Icons.circle, color: Colors.green, size: 14),
                 ),
             ],
           ),
