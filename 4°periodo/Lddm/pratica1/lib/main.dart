@@ -16,8 +16,15 @@ const List<Museu> museus = [
   Museu('Pinacoteca', 'São Paulo', 14),
 ];
 
-int maiorAcervo(List<Museu> lista) =>
-    lista.map((m) => m.salas).reduce((a, b) => a > b ? a : b);
+int maiorAcervo(List<Museu> lista) {
+  int maior = lista.first.salas;
+  for (final m in lista) {
+    if (m.salas > maior) {
+      maior = m.salas;
+    }
+  }
+  return maior;
+}
 
 class MuseusApp extends StatelessWidget {
   const MuseusApp({super.key});
