@@ -1,0 +1,13 @@
+Imputação,Balanceamento,Otimizador,max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,CV F1-macro,Tempo (s)
+KNN Imputer,Sem balanceamento,Random Search,10,,5,2,269,0.8038,9.7
+KNN Imputer,Sem balanceamento,Bayesiana (Optuna),9,,4,18,109,0.8048,12.6
+KNN Imputer,SMOTE-NC,Random Search,10,log2,2,16,103,0.7981,11.7
+KNN Imputer,SMOTE-NC,Bayesiana (Optuna),12,log2,5,25,128,0.8022,14.7
+KNN Imputer,RandomUnderSampler,Random Search,10,,5,2,269,0.7977,10.1
+KNN Imputer,RandomUnderSampler,Bayesiana (Optuna),13,,6,11,214,0.7986,12.9
+MissForest,Sem balanceamento,Random Search,10,log2,2,16,103,0.796,9.8
+MissForest,Sem balanceamento,Bayesiana (Optuna),14,,2,19,58,0.7965,13.0
+MissForest,SMOTE-NC,Random Search,6,sqrt,7,11,106,0.7958,12.6
+MissForest,SMOTE-NC,Bayesiana (Optuna),10,log2,9,15,215,0.7994,18.3
+MissForest,RandomUnderSampler,Random Search,10,,5,2,269,0.7912,8.9
+MissForest,RandomUnderSampler,Bayesiana (Optuna),16,,1,18,100,0.7951,11.7

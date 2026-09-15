@@ -1,0 +1,13 @@
+Imputação,Balanceamento,Otimizador,criterion,max_depth,min_samples_leaf,min_samples_split,CV F1-macro,Tempo (s)
+KNN Imputer,Sem balanceamento,Random Search,entropy,6,1,26,0.7888,0.6
+KNN Imputer,Sem balanceamento,Bayesiana (Optuna),entropy,7,2,30,0.7906,1.6
+KNN Imputer,SMOTE-NC,Random Search,gini,5,17,8,0.7857,3.2
+KNN Imputer,SMOTE-NC,Bayesiana (Optuna),entropy,6,3,20,0.783,4.9
+KNN Imputer,RandomUnderSampler,Random Search,entropy,7,1,14,0.7804,1.0
+KNN Imputer,RandomUnderSampler,Bayesiana (Optuna),gini,6,3,15,0.787,1.9
+MissForest,Sem balanceamento,Random Search,entropy,6,1,26,0.7826,0.7
+MissForest,Sem balanceamento,Bayesiana (Optuna),gini,5,2,26,0.7863,1.4
+MissForest,SMOTE-NC,Random Search,gini,5,17,8,0.7792,2.1
+MissForest,SMOTE-NC,Bayesiana (Optuna),gini,4,11,9,0.7805,3.3
+MissForest,RandomUnderSampler,Random Search,gini,3,3,13,0.7785,0.5
+MissForest,RandomUnderSampler,Bayesiana (Optuna),gini,4,8,26,0.7795,1.4

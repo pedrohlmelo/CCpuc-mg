@@ -1,0 +1,9 @@
+Imputação,Conjunto / técnica,Não sobreviveu (0),Sobreviveu (1),Total,% sobreviveu,Razão 0:1
+KNN Imputer,Treino — antes (original),566,350,916,38.2,1.62
+KNN Imputer,Treino — depois do SMOTE-NC,566,566,1132,50.0,1.0
+KNN Imputer,Treino — depois do RandomUnderSampler,350,350,700,50.0,1.0
+KNN Imputer,Teste (nunca balanceado),243,150,393,38.2,1.62
+MissForest,Treino — antes (original),566,350,916,38.2,1.62
+MissForest,Treino — depois do SMOTE-NC,566,566,1132,50.0,1.0
+MissForest,Treino — depois do RandomUnderSampler,350,350,700,50.0,1.0
+MissForest,Teste (nunca balanceado),243,150,393,38.2,1.62

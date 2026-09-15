@@ -1,0 +1,25 @@
+Modelo,Imputação,Balanceamento,Otimizador,criterion,max_depth,min_samples_leaf,min_samples_split,CV F1-macro,Tempo (s),max_features,n_estimators
+Árvore de Decisão,KNN Imputer,Sem balanceamento,Random Search,entropy,6,1,26,0.7888,0.6,,
+Árvore de Decisão,KNN Imputer,Sem balanceamento,Bayesiana (Optuna),entropy,7,2,30,0.7906,1.6,,
+Árvore de Decisão,KNN Imputer,SMOTE-NC,Random Search,gini,5,17,8,0.7857,3.2,,
+Árvore de Decisão,KNN Imputer,SMOTE-NC,Bayesiana (Optuna),entropy,6,3,20,0.783,4.9,,
+Árvore de Decisão,KNN Imputer,RandomUnderSampler,Random Search,entropy,7,1,14,0.7804,1.0,,
+Árvore de Decisão,KNN Imputer,RandomUnderSampler,Bayesiana (Optuna),gini,6,3,15,0.787,1.9,,
+Árvore de Decisão,MissForest,Sem balanceamento,Random Search,entropy,6,1,26,0.7826,0.7,,
+Árvore de Decisão,MissForest,Sem balanceamento,Bayesiana (Optuna),gini,5,2,26,0.7863,1.4,,
+Árvore de Decisão,MissForest,SMOTE-NC,Random Search,gini,5,17,8,0.7792,2.1,,
+Árvore de Decisão,MissForest,SMOTE-NC,Bayesiana (Optuna),gini,4,11,9,0.7805,3.3,,
+Árvore de Decisão,MissForest,RandomUnderSampler,Random Search,gini,3,3,13,0.7785,0.5,,
+Árvore de Decisão,MissForest,RandomUnderSampler,Bayesiana (Optuna),gini,4,8,26,0.7795,1.4,,
+Random Forest,KNN Imputer,Sem balanceamento,Random Search,,10,5,2,0.8038,9.7,,269.0
+Random Forest,KNN Imputer,Sem balanceamento,Bayesiana (Optuna),,9,4,18,0.8048,12.6,,109.0
+Random Forest,KNN Imputer,SMOTE-NC,Random Search,,10,2,16,0.7981,11.7,log2,103.0
+Random Forest,KNN Imputer,SMOTE-NC,Bayesiana (Optuna),,12,5,25,0.8022,14.7,log2,128.0
+Random Forest,KNN Imputer,RandomUnderSampler,Random Search,,10,5,2,0.7977,10.1,,269.0
+Random Forest,KNN Imputer,RandomUnderSampler,Bayesiana (Optuna),,13,6,11,0.7986,12.9,,214.0
+Random Forest,MissForest,Sem balanceamento,Random Search,,10,2,16,0.796,9.8,log2,103.0
+Random Forest,MissForest,Sem balanceamento,Bayesiana (Optuna),,14,2,19,0.7965,13.0,,58.0
+Random Forest,MissForest,SMOTE-NC,Random Search,,6,7,11,0.7958,12.6,sqrt,106.0
+Random Forest,MissForest,SMOTE-NC,Bayesiana (Optuna),,10,9,15,0.7994,18.3,log2,215.0
+Random Forest,MissForest,RandomUnderSampler,Random Search,,10,5,2,0.7912,8.9,,269.0
+Random Forest,MissForest,RandomUnderSampler,Bayesiana (Optuna),,16,1,18,0.7951,11.7,,100.0

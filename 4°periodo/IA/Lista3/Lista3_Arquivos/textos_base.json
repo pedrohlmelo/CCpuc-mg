@@ -1,0 +1,144 @@
+{
+  "link_colab": "https://colab.research.google.com/drive/13TsV-Fd7gyBMaZSYCPnt3u2Sez8Orhgi?usp=sharing",
+  "intro": [
+    "Esta lista continua a Questão 03 da Lista 2, com a mesma base <i>titanic completo.csv</i> (1.309 passageiros, 14 atributos), a mesma codificação e o mesmo holdout estratificado 70/30 com random_state = 23 (916 passageiros de treino e 393 de teste). A codificação remove <i>boat</i>, <i>body</i> e <i>home.dest</i> por vazamento de dados, extrai <i>titulo</i> do nome e deriva <i>tem_cabine</i>, <i>tam_familia</i> e <i>sozinho</i>. O conjunto de teste nunca participa da imputação, do balanceamento nem da otimização: todos esses passos são ajustados apenas no treino.",
+    "Foram treinados 24 modelos: 2 algoritmos (Árvore de Decisão e Random Forest), 2 imputações (KNN Imputer e MissForest), 3 opções de balanceamento (sem balanceamento, SMOTE-NC e RandomUnderSampler) e 2 otimizadores (Random Search e Otimização Bayesiana com Optuna). O caso sem balanceamento serve de referência para medir o efeito real das técnicas. As saídas do notebook foram geradas com scikit-learn 1.9.1, imbalanced-learn 0.14.2 e optuna 5.0.0 em uma CPU de 8 núcleos, com 4 processos paralelos. Em outra máquina, como o Colab, os tempos absolutos mudam; com as mesmas versões as métricas se repetem, porque todas as sementes aleatórias são fixas."
+  ],
+  "imputacao_metodo": [
+    "Os atributos com valores ausentes são <i>age</i> (263 registros, 20,1%), <i>embarked</i> (2) e <i>fare</i> (1). <i>cabin</i> (77,5% ausente) não é imputado: a ausência é informativa e já vira o indicador <i>tem_cabine</i>. Os dois métodos recebem todos os atributos codificados; <i>embarked</i> entra como código (S = 0, C = 1, Q = 2), arredondado depois da imputação.",
+    "• <b>KNN Imputer</b> (KNNImputer, k = 5): cada valor ausente recebe a média dos 5 passageiros mais próximos. Os atributos são escalados para [0, 1] antes do cálculo da distância e revertidos depois; sem a escala, <i>fare</i> (0 a 512) dominaria a distância euclidiana.",
+    "• <b>MissForest</b> (IterativeImputer com RandomForestRegressor de 100 árvores, até 10 iterações): cada atributo com ausentes é previsto por uma Random Forest treinada nos demais atributos, e o ciclo se repete até estabilizar. A biblioteca missingpy não funciona com as versões atuais do scikit-learn, por isso foi usada a alternativa indicada no enunciado.",
+    "• A <b>mediana por título</b>, estratégia da Lista 2, aparece apenas como referência.",
+    "Além das estatísticas descritivas e dos testes de distribuição (Kolmogorov-Smirnov e distância de Wasserstein, sempre contra as 742 idades observadas no treino), foi medido o <b>erro de imputação mascarado</b>: 20% das idades conhecidas do treino são escondidas, imputadas e comparadas com o valor real (MAE e RMSE, média de 3 repetições)."
+  ],
+  "imputacao": [
+    "<b>Efeito sobre a distribuição.</b> Os dois métodos preservam a média (29,9 contra 30,1 da original) e a correlação de <i>age</i> com <i>pclass</i> (−0,45 contra −0,44), e ambos reduzem o desvio padrão de 14,07 para cerca de 13,25. Essa redução é esperada: um valor estimado a partir de vizinhos ou de uma floresta é uma média condicional e fica sempre mais perto do centro que um valor real. As diferenças aparecem nos detalhes:",
+    "• O <b>MissForest</b> tem a menor estatística KS (0,036, p = 0,66), contra 0,064 (p = 0,067) do KNN. A distribuição completa depois do MissForest é estatisticamente indistinguível da original, e a do KNN fica no limite da significância. O MissForest também mantém a assimetria (0,336 contra 0,333 da original), espalha os valores imputados de forma mais contínua (Figura 1, centro) e tem o menor erro mascarado: MAE de 8,55 ± 0,13 anos, contra 8,68 ± 0,25 do KNN.",
+    "• O <b>KNN Imputer</b> tem uma distância de Wasserstein um pouco menor (0,84 contra 0,91) e é muito mais rápido ([[t_knn_imp]] s contra [[t_mf_imp]] s). Por outro lado, concentra os imputados em poucos valores (pico em torno de 25 anos), porque a média de 5 vizinhos com o mesmo título e a mesma classe se repete.",
+    "• A <b>mediana por título</b> (Lista 2) é a pior em quase todos os critérios: coloca a maior parte dos imputados em um único valor por título (pico em 30 anos na Figura 1), o desvio dos imputados cai para 6,17 e o MAE sobe para 9,00.",
+    "Nos dois ausentes de <i>embarked</i> (Amelie Icard e Martha Stone, 1ª classe, mesma cabine e tarifa de 80), os dois métodos imputaram C (Cherbourg). Segundo a Encyclopedia Titanica, as duas embarcaram em Southampton (S), então os dois métodos erraram da mesma forma, com efeito desprezível sobre 2 registros. No único <i>fare</i> ausente (3ª classe, no teste), o KNN imputou 8,18 e o MissForest 6,74, ambos valores típicos da 3ª classe.",
+    "<b>Método adotado: MissForest.</b> Foi o que melhor preservou a forma da distribuição original (menor KS e assimetria mantida) e o que mais acertou idades reais escondidas, com erro também mais estável entre as repetições. O custo de [[t_mf_imp]] s é irrelevante nesta base. Mesmo assim, o item 4 avalia as duas imputações, como o enunciado pede."
+  ],
+  "balanceamento_metodo": [
+    "No treino há 566 não sobreviventes e 350 sobreviventes (61,8% e 38,2%, razão de 1,62 : 1). É um desbalanceamento moderado, com <b>sobreviveu (1)</b> como classe minoritária. Foram comparadas duas técnicas, mais o caso sem balanceamento como referência:",
+    "• <b>SMOTE, na versão SMOTE-NC</b>: cria exemplos sintéticos da classe minoritária interpolando cada exemplo com um de seus 5 vizinhos mais próximos. O SMOTE clássico interpola <i>todos</i> os atributos, e nesta base isso cria passageiros impossíveis: 65,7% dos 216 sintéticos têm algum atributo nominal fracionário, 32,4% com <i>sexo</i> fracionário (por exemplo 0,37) e 19,4% com <i>pclass</i> fracionário. Em um teste preliminar com o SMOTE clássico, a árvore otimizada criou cortes como <font face='CourierNew'>sexo ≤ 0,996</font>, que só separam exemplos sintéticos, e uma das regras teve só 17% de confiança no teste. Por isso foi usado o <b>SMOTE-NC</b> (SMOTENC do imbalanced-learn), a variante do SMOTE para dados mistos definida no próprio artigo original (Chawla et al., 2002, seção 6.1). Ele interpola apenas os atributos contínuos e, nos categóricos (<i>pclass</i>, <i>sexo</i>, <i>titulo</i>, <i>embarked</i>, <i>tem_cabine</i> e <i>sozinho</i>), usa o valor mais frequente entre os vizinhos. Com o SMOTE-NC, nenhum exemplo sintético tem categoria inválida.",
+    "• <b>RandomUnderSampler</b>: descarta aleatoriamente 216 não sobreviventes (38% da classe majoritária) até as duas classes ficarem com 350 exemplos.",
+    "O balanceamento é aplicado <b>somente ao treino</b>. Nas buscas de hiperparâmetros ele fica dentro de um imblearn.Pipeline, então em cada fold da validação cruzada só a parte de treino do fold é reamostrada e a parte de validação mantém a proporção real. O conjunto de teste (243 e 150) nunca é reamostrado."
+  ],
+  "balanceamento": [
+    "As duas técnicas chegam ao mesmo equilíbrio (50% e 50%) por caminhos opostos. O SMOTE-NC aumenta o treino para 1.132 exemplos e preserva toda a informação original. O RandomUnderSampler reduz o treino para 700 e perde 38% dos exemplos de não sobreviventes. O efeito de cada técnica sobre precisão e recall é discutido no item 4.e."
+  ],
+  "protocolo": [
+    "As otimizações dos itens 2.b e 3.b seguem o mesmo protocolo, para que a comparação entre otimizadores seja justa:",
+    "• <b>Otimizadores:</b> Random Search (RandomizedSearchCV) e Otimização Bayesiana com Optuna (amostrador TPE, cujas 10 primeiras tentativas são aleatórias).",
+    "• <b>Mesmo orçamento e mesma validação:</b> 50 configurações por busca, StratifiedKFold com os mesmos 5 folds para os dois otimizadores e os mesmos 4 processos paralelos nos dois casos.",
+    "• <b>Métrica otimizada:</b> F1-macro, a média do F1 das duas classes, que não favorece a classe majoritária como a acurácia.",
+    "• <b>Espaço da Árvore de Decisão:</b> criterion em {gini, entropy}, max_depth de 2 a 15, min_samples_split de 2 a 50 e min_samples_leaf de 1 a 30.",
+    "• <b>Espaço da Random Forest:</b> n_estimators de 50 a 300, max_depth de 2 a 20, min_samples_split de 2 a 30, min_samples_leaf de 1 a 15 e max_features em {sqrt, log2, None}.",
+    "Cada busca foi repetida nas 6 combinações de imputação e balanceamento, num total de 24 buscas. A Tabela 3 consolida os melhores hiperparâmetros e o tempo de cada uma."
+  ],
+  "hiperparametros": [
+    "<b>Árvore de Decisão (2.c).</b> As melhores árvores ficaram entre profundidade 3 e 7, com gini em 7 das 12 buscas e entropy em 5, e o F1-macro de validação variou pouco, de 0,779 a 0,791. O Random Search levou em média [[t_ad_rs]] s por busca e o Optuna, [[t_ad_op]] s.",
+    "<b>Random Forest (3.c).</b> As florestas preferiram árvores mais profundas (max_depth de 6 a 16), já que a média de várias árvores compensa a variância de cada uma, e escolheram max_features = None em 7 das 12 buscas. O número de árvores variou muito, de 58 a 269, sem mudar a validação (0,791 a 0,805), o que indica que esse hiperparâmetro pesa pouco nesta base. Tempo médio por busca: [[t_rf_rs]] s no Random Search e [[t_rf_op]] s no Optuna.",
+    "Algumas configurações do Random Search se repetem entre combinações, como n_estimators = 269, max_depth = 10, min_samples_leaf = 5 e max_features = None em três delas. Isso ocorre porque a mesma semente sorteia os mesmos 50 candidatos em todas as buscas, e só muda qual deles vence conforme os dados de cada combinação."
+  ],
+  "regras_intro": [
+    "As regras vêm da árvore com maior F1-macro na validação cruzada entre as 6 configurações com MissForest: <b>sem balanceamento + Optuna</b>, com criterion = gini, max_depth = 5, min_samples_split = 26 e min_samples_leaf = 2. A escolha pela validação cruzada, e não pelo teste, evita ajustar a decisão ao conjunto de teste. A árvore tem 21 folhas e, portanto, 21 regras. Na Tabela 4, cada folha foi convertida em uma regra SE–ENTÃO: limites repetidos sobre o mesmo atributo foram fundidos e os atributos binários aparecem como categoria. A qualidade de cada regra é medida pela cobertura (fração dos passageiros que satisfazem o antecedente) e pela confiança (fração desses em que a classe prevista está correta), no treino original e no teste. Importância dos atributos: sexo 0,59; pclass 0,13; fare 0,09; age 0,09; tem_cabine 0,06; sibsp 0,04."
+  ],
+  "regras": [
+    "<b>Padrão de sobrevivência e mortalidade encontrado:</b>",
+    "• <b>O sexo continua sendo o fator dominante</b>, com 59% da importância e posição de raiz na árvore. A maior regra, R12, cobre 43% dos passageiros do teste: <i>homem com mais de 12,5 anos, sem cabine registrada, de 2ª ou 3ª classe</i> morreu em 87,5% dos casos.",
+    "• <b>Mulheres de 1ª e 2ª classe sobreviveram</b> em quase todas as situações: R1, R5, R6, R8 e R9 têm confiança de 83% a 100% no teste. Só R1 cobre 9,4% do teste, com 97,3% de acerto.",
+    "• <b>Na 3ª classe, a tarifa separa as mulheres.</b> Com tarifa acima de 23,4 (bilhetes coletivos de famílias numerosas), elas morreram em 100% dos casos do teste (R17), o mesmo padrão da regra de famílias grandes da Lista 2. Com tarifa intermediária, as de até 27,7 anos sobreviveram em apenas 55% dos casos (R2), praticamente um sorteio.",
+    "• <b>\"Mulheres e crianças primeiro\" valeu para meninos de famílias pequenas.</b> Meninos de até 12,5 anos sem cabine sobreviveram em 86% dos casos quando tinham no máximo 2 irmãos a bordo (R4) e morreram em 86% quando tinham 3 ou mais (R18). Entre os homens com cabine, os menores de 17,8 anos sobreviveram (R11).",
+    "• <b>Regras frágeis:</b> R3 (homem com cabine, tarifa entre 26,1 e 31,7, sobreviveu) tem 64% de confiança no treino e só 30% no teste, e R13 cai de 86,5% para 53,8%. São folhas pequenas que capturaram ruído do treino e seriam as primeiras a desaparecer com uma poda mais agressiva.",
+    "Em resumo, o padrão da Lista 2 se confirma com mais detalhe: sobreviveram as mulheres das classes altas e as crianças de famílias pequenas; morreram os homens adultos, principalmente de 2ª e 3ª classe, e as famílias numerosas da 3ª classe."
+  ],
+  "4a_intro": [
+    "A Tabela 5 reúne os 24 modelos, já com os hiperparâmetros otimizados, avaliados no conjunto de teste. Precisão, recall e F1 referem-se à classe <b>sobreviveu (1)</b>, a minoritária; o F1-macro é a média do F1 das duas classes. Com 393 passageiros no teste, o erro padrão da acurácia fica em torno de ±2 pontos percentuais, e diferenças menores que isso entre dois modelos isolados não são conclusivas. Por isso as comparações a seguir usam médias sobre várias combinações e a validação cruzada, além do teste."
+  ],
+  "4b": [
+    "Médias sobre as 12 combinações de cada modelo:"
+  ],
+  "4b_tabela": {
+    "cabecalho": ["Modelo", "Acurácia treino", "CV F1-macro", "Acurácia teste", "F1 (1) teste", "F1-macro teste", "Gap treino − teste"],
+    "linhas": [
+      ["Random Forest", "0,851", "0,798", "0,810", "0,755", "0,800", "0,041"],
+      ["Árvore de Decisão", "0,831", "0,784", "0,798", "0,739", "0,787", "0,033"]
+    ],
+    "larguras": [1.6, 1, 1, 1, 1, 1, 1.1],
+    "legenda": "Tabela 6 — Médias por modelo (12 combinações de imputação, balanceamento e otimizador)."
+  },
+  "4b_pos": [
+    "<b>A Random Forest generaliza melhor.</b> Seu F1-macro de validação cruzada é maior que o da Árvore de Decisão nas 12 combinações, e o F1-macro de teste é maior em 11 das 12. A única exceção (MissForest sem balanceamento, com Optuna) é um empate: 0,807 contra 0,808. A RF também é mais estável diante das escolhas de pré-processamento: a acurácia de teste varia de 0,794 a 0,830, contra 0,779 a 0,819 da árvore, cujo recall vai de 0,667 a 0,813.",
+    "O gap treino − teste um pouco maior da RF (4,1 contra 3,3 p.p.) não indica overfitting pior: ela ajusta melhor o treino e mesmo assim acerta mais fora dele, que é o que define a generalização. A Figura 4 compara os modelos escolhidos pela validação cruzada. A árvore sem balanceamento deixa passar mais sobreviventes (37 falsos negativos); a RF treinada com SMOTE-NC recupera 4 sobreviventes a mais ao custo de 9 falsos positivos a mais. Nesse par isolado a árvore teve F1-macro de teste um pouco maior (0,808 contra 0,798), uma diferença dentro do erro de ±2 p.p. que mostra por que decidir com base em um único modelo no teste seria arriscado."
+  ],
+  "4c": [
+    "Médias por modelo e otimizador (24 buscas com 50 avaliações cada):"
+  ],
+  "4c_tabela": {
+    "cabecalho": ["Modelo", "Otimizador", "Tempo médio por busca (s)", "CV F1-macro médio", "F1-macro teste médio", "Buscas com o maior CV"],
+    "linhas": [
+      ["Árvore de Decisão", "Random Search", "[[t_ad_rs]]", "0,783", "0,785", "1 de 6"],
+      ["Árvore de Decisão", "Bayesiana (Optuna)", "[[t_ad_op]]", "0,784", "0,789", "5 de 6"],
+      ["Random Forest", "Random Search", "[[t_rf_rs]]", "0,797", "0,802", "0 de 6"],
+      ["Random Forest", "Bayesiana (Optuna)", "[[t_rf_op]]", "0,799", "0,798", "6 de 6"]
+    ],
+    "larguras": [1.3, 1.3, 1.1, 1, 1, 1],
+    "legenda": "Tabela 7 — Comparação dos otimizadores de hiperparâmetros."
+  },
+  "4c_pos": [
+    "<b>Hiperparâmetros encontrados.</b> Na mesma combinação, os valores escolhidos pelos dois otimizadores mudam bastante. Na RF com MissForest e sem balanceamento, o Optuna escolheu 58 árvores com max_depth = 14 e max_features = None, e o Random Search escolheu 103 árvores com max_depth = 10 e max_features = log2. Na árvore, o criterion trocou entre gini e entropy em 3 das 6 combinações. Ainda assim a qualidade é praticamente a mesma. O Optuna teve CV maior em 11 das 12 buscas, mas com ganho de no máximo 0,007 (0,002 em média). No teste, o F1-macro médio empatou (0,7935 contra 0,7934), com o Optuna à frente em só 6 das 12 combinações. <b>A diferença nos hiperparâmetros é grande, mas a diferença na qualidade não é significativa.</b> A superfície de desempenho é um platô largo, em que configurações muito diferentes chegam ao mesmo F1.",
+    "<b>Eficiência.</b> Na Figura 5, o Optuna começa atrás na árvore, porque suas 10 primeiras tentativas são aleatórias, passa o Random Search por volta da 17ª iteração e termina com 99,9% do melhor valor, contra 99,7%. Na RF ele fica à frente desde as primeiras iterações. Em tempo, porém, o Optuna custou em média [[r_ad]] vezes o tempo do Random Search na árvore e [[r_rf]] vezes na RF. O RandomizedSearchCV envia os 250 treinos (50 configurações × 5 folds) de uma vez para os processos paralelos. O Optuna precisa concluir uma tentativa para escolher a próxima, o que deixa núcleos ociosos e pesa mais quando cada treino dura milissegundos, como na árvore. <b>Neste problema, o Random Search teve a melhor relação entre tempo e qualidade:</b> chegou, em média, a 99,7% do melhor valor gastando menos tempo. A vantagem do Optuna aparece quando cada avaliação é cara ou o espaço de busca é grande, e aqui, com 4 ou 5 hiperparâmetros e uma base pequena, nenhuma das duas condições vale."
+  ],
+  "4d": [
+    "Médias por modelo e método de imputação:"
+  ],
+  "4d_tabela": {
+    "cabecalho": ["Modelo", "Imputação", "CV F1-macro", "Acurácia teste", "Precisão (1)", "Recall (1)", "F1-macro teste"],
+    "linhas": [
+      ["Árvore de Decisão", "KNN Imputer", "0,786", "0,791", "0,722", "0,739", "0,779"],
+      ["Árvore de Decisão", "MissForest", "0,781", "0,805", "0,738", "0,761", "0,795"],
+      ["Random Forest", "KNN Imputer", "0,801", "0,807", "0,741", "0,764", "0,797"],
+      ["Random Forest", "MissForest", "0,796", "0,813", "0,748", "0,771", "0,803"]
+    ],
+    "larguras": [1.4, 1.2, 1, 1, 1, 1, 1],
+    "legenda": "Tabela 8 — Desempenho médio por método de imputação (6 modelos cada)."
+  },
+  "4d_pos": [
+    "<b>Desempenho final: não houve diferença relevante.</b> Os dois critérios apontam em sentidos opostos. No teste, o MissForest ficou à frente (+1,6 p.p. de F1-macro na árvore e +0,6 p.p. na RF); na validação cruzada, calculada em 5 folds sobre os 916 passageiros de treino, o KNN ficou à frente (+0,5 p.p. nos dois modelos). Diferenças desse tamanho e com sinais trocados estão dentro do ruído de amostragem. Isso é coerente com o problema: <i>age</i> é só o 4º atributo em importância (0,09), os ausentes são 20% de um único atributo e as idades imputadas pelos dois métodos são parecidas em média (28,9 e 29,1 anos).",
+    "<b>Distribuição original: o MissForest a preservou melhor</b> (Tabela 1). Teve KS de 0,036 (p = 0,66) contra 0,064 (p = 0,067), assimetria igual à original e menor erro ao recuperar idades escondidas (MAE de 8,55 contra 8,68). O KNN só leva vantagem na distância de Wasserstein (0,84 contra 0,91) e no tempo de execução."
+  ],
+  "4e": [
+    "Médias por modelo e técnica de balanceamento (classe 1 = sobreviveu, minoritária):"
+  ],
+  "4e_tabela": {
+    "cabecalho": ["Modelo", "Balanceamento", "Precisão (1)", "Recall (1)", "|Precisão − Recall|", "F1 (1)", "Recall (0)", "F1-macro"],
+    "linhas": [
+      ["Árvore de Decisão", "Sem balanceamento", "0,749", "0,720", "0,029", "0,734", "0,851", "0,787"],
+      ["Árvore de Decisão", "SMOTE-NC", "0,734", "0,762", "0,028", "0,747", "0,829", "0,793"],
+      ["Árvore de Decisão", "RandomUnderSampler", "0,707", "0,768", "0,061", "0,736", "0,802", "0,780"],
+      ["Random Forest", "Sem balanceamento", "0,779", "0,747", "0,033", "0,763", "0,869", "0,810"],
+      ["Random Forest", "SMOTE-NC", "0,737", "0,773", "0,037", "0,754", "0,829", "0,798"],
+      ["Random Forest", "RandomUnderSampler", "0,718", "0,783", "0,066", "0,749", "0,810", "0,791"]
+    ],
+    "larguras": [1.3, 1.45, 0.9, 0.85, 1, 0.75, 0.85, 0.85],
+    "legenda": "Tabela 9 — Precisão e recall por técnica de balanceamento (4 modelos cada)."
+  },
+  "4e_pos": [
+    "<b>O SMOTE-NC produziu o melhor equilíbrio entre precisão e recall da classe minoritária.</b> Nos dois modelos ele manteve precisão e recall próximos (diferença de 2,8 p.p. na árvore e 3,7 p.p. na RF) e obteve F1 da classe sobreviveu maior que o do RandomUnderSampler. O RandomUnderSampler dá o maior recall (0,768 e 0,783), mas com a menor precisão (0,707 e 0,718) e a maior distância entre as duas (6,1 e 6,6 p.p.). Ao descartar 38% dos não sobreviventes, o modelo vê menos exemplos de quem morreu e passa a prever \"sobreviveu\" com mais facilidade, gerando mais falsos positivos: o recall da classe 0 cai para 0,80 e 0,81. Na Figura 6, os triângulos (RandomUnderSampler) ficam abaixo e à direita da diagonal, e os quadrados (SMOTE-NC) ficam mais perto dela.",
+    "Em relação a não balancear, o efeito depende do modelo. Na árvore, o SMOTE-NC aumentou o recall dos sobreviventes em 4,2 p.p. e o F1 em 1,3 p.p. Na RF, o melhor F1 e o melhor F1-macro vieram <i>sem</i> balanceamento: com um desbalanceamento de apenas 1,62 : 1, a floresta já separa bem as classes, e balancear apenas desloca o ponto de operação, trocando precisão por recall. Para não deixar de identificar sobreviventes, o SMOTE-NC é a melhor escolha; para acertar o máximo no geral, não balancear foi suficiente na RF."
+  ],
+  "4f": [
+    "<b>Não da mesma forma.</b> A Árvore de Decisão escolhida tem 21 regras com profundidade de até 5, e cada previsão segue um único caminho legível (Tabela 4). A Random Forest escolhida (MissForest + SMOTE-NC + Optuna: 215 árvores, max_depth = 10, max_features = log2) tem árvores com profundidade média de 9,3 e cerca de 36 folhas cada, ou seja, <b>7.798 regras</b>, e a previsão é o voto de todas elas. Não existe \"a regra\" da floresta.",
+    "As árvores da floresta também não repetem a árvore única. <i>sexo</i>, raiz da Árvore de Decisão, é raiz de só 41 das 215 árvores (19%); as demais começam por <i>titulo_Mr</i> (43), <i>titulo_Mrs</i> (30), <i>titulo_Miss</i> (26), <i>tem_cabine</i> (24), <i>fare</i> (20), <i>pclass</i> (16) e outros. Com max_features = log2, cada divisão sorteia só 4 dos 16 atributos, e quando <i>sexo</i> não é sorteado a árvore usa um substituto, como o título. Na Figura 7, a importância concentrada em <i>sexo</i> na árvore (0,59) aparece dividida na floresta entre <i>titulo_Mr</i> (0,21), <i>sexo</i> (0,20) e os outros títulos. O padrão global continua o mesmo (sexo e título, tarifa, idade, classe), mas só pode ser lido de forma agregada, pela importância dos atributos, e não como regras SE–ENTÃO.",
+    "<b>Por que a RF prevê melhor?</b> Uma única árvore tem baixo viés e alta variância: pequenas mudanças no treino alteram os cortes, como na Lista 2, em que a raiz mudou conforme a amostra de treino. A RF treina cada árvore em uma amostra bootstrap e sorteia atributos a cada divisão, o que gera árvores diferentes e pouco correlacionadas. A média dos votos cancela boa parte dos erros individuais e reduz a variância sem aumentar o viés. Foi isso que produziu o CV maior nas 12 combinações e os resultados mais estáveis entre pré-processamentos.",
+    "<b>Por que é menos interpretável?</b> Pelo mesmo motivo: a decisão fica distribuída entre centenas de árvores diferentes. A importância dos atributos mostra <i>quais</i> atributos pesam, mas não <i>como</i> pesam (limiares, interações, direção do efeito), e reunir 7.798 regras em uma explicação legível não é viável. Explicar uma RF exige aproximações, como importância por permutação, SHAP ou uma árvore substituta treinada para imitar a floresta, e essas aproximações já não são o modelo em si. É o compromisso clássico: a Árvore de Decisão entrega regras auditáveis com F1-macro cerca de 1,3 p.p. menor, e a Random Forest ganha desempenho e estabilidade às custas da transparência."
+  ],
+  "conclusao": [
+    "A imputação e o balanceamento importaram menos que a escolha do modelo. Entre os imputadores, o MissForest preservou melhor a distribuição de <i>age</i> (KS de 0,036 contra 0,064, assimetria mantida e menor erro nas idades escondidas), mas o desempenho final dos modelos não mudou de forma relevante: o MissForest ficou à frente no teste e o KNN na validação cruzada, sempre por menos de 2 p.p. (4.d). Entre as técnicas de balanceamento, o SMOTE-NC deu o melhor equilíbrio entre precisão e recall dos sobreviventes, enquanto o RandomUnderSampler ganhou recall à custa de precisão ao descartar 38% dos não sobreviventes. Com um desbalanceamento moderado (1,62 : 1), porém, não balancear continuou competitivo, sobretudo na Random Forest (4.e). O SMOTE clássico foi substituído pelo SMOTE-NC porque gerava categorias impossíveis, como sexo = 0,37, que produziam regras falsas.",
+    "Entre os otimizadores, Random Search e Otimização Bayesiana chegaram a hiperparâmetros bem diferentes, mas de qualidade equivalente. O Optuna venceu na validação em 11 das 12 buscas com ganho médio de apenas 0,002 e empatou no teste, enquanto o Random Search foi mais rápido. Neste problema, com espaço de busca pequeno e modelos baratos, o Random Search teve a melhor relação entre tempo e qualidade (4.c). A Random Forest generalizou melhor que a Árvore de Decisão: F1-macro de validação maior nas 12 combinações, maior no teste em 11 delas e menor variação entre pré-processamentos (4.b), graças à redução de variância obtida com bootstrap e sorteio de atributos. O preço é a interpretabilidade: as 21 regras da árvore dão lugar a 7.798 regras espalhadas por 215 árvores com raízes diferentes, e o padrão só pode ser lido de forma agregada (4.f).",
+    "O padrão de sobrevivência se manteve em todas as análises e confirma a Lista 2. O sexo é o fator decisivo: tem 59% da importância na árvore e, na floresta, sexo e títulos somam [[imp_sexo_titulo_rf]], com Mr, Mrs e Miss atuando como substitutos do sexo. Sobreviveram as mulheres de 1ª e 2ª classe e os meninos de famílias pequenas; morreram os homens adultos de 2ª e 3ª classe e as famílias numerosas da 3ª classe."
+  ],
+  "destaque": "Achado principal: sobreviveram as mulheres das classes altas e as crianças de famílias pequenas; morreram os homens adultos de 2ª e 3ª classe e as famílias numerosas da 3ª classe. A Random Forest prevê esse padrão melhor, mas só a Árvore de Decisão o explica em regras."
+}
