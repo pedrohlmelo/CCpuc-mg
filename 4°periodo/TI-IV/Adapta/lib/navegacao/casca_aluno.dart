@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// Moldura das abas do aluno: Início e Perfil.
+/// Moldura das três abas do aluno: Início, Histórico e Perfil.
 ///
 /// A barra de baixo é a navegação principal do app. Telas que abrem por cima
 /// (matérias, sessão, login, painel admin) ficam fora desta moldura e sempre
@@ -49,6 +49,12 @@ class CascaAluno extends StatelessWidget {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home_rounded),
             label: 'Início',
+          ),
+          NavigationDestination(
+            key: Key('aba_historico'),
+            icon: Icon(Icons.history_rounded),
+            selectedIcon: Icon(Icons.history_toggle_off_rounded),
+            label: 'Histórico',
           ),
           NavigationDestination(
             key: Key('aba_perfil'),

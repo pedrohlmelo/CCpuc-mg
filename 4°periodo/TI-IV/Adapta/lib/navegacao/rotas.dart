@@ -7,6 +7,8 @@ import '../telas/admin/admin_grafo_screen.dart';
 import '../telas/admin/admin_home_screen.dart';
 import '../telas/admin/admin_materias_screen.dart';
 import '../telas/admin/admin_questoes_screen.dart';
+import '../telas/aluno/historico_detalhe_screen.dart';
+import '../telas/aluno/historico_screen.dart';
 import '../telas/aluno/home_screen.dart';
 import '../telas/aluno/materias_screen.dart';
 import '../telas/aluno/perfil_screen.dart';
@@ -24,9 +26,12 @@ import 'casca_aluno.dart';
 /// | Rota                  | Tela                        |
 /// |-----------------------|-----------------------------|
 /// | `/`                   | inicial do aluno            |
+/// | `/historico`          | histórico de estudo         |
+/// | `/historico/:id`      | resolução de uma questão    |
 /// | `/perfil`             | perfil e acessos            |
 /// | `/materias`           | escolha de matéria          |
 /// | `/sessao`             | questão sendo feita         |
+/// | `/sessao?questao=:id` | refazer uma questão         |
 /// | `/login`, `/cadastro` | entrar e criar conta        |
 /// | `/admin/...`          | painel administrativo       |
 final routerProvider = Provider<GoRouter>((ref) {
@@ -41,13 +46,38 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           StatefulShellBranch(
             routes: [
+              GoRoute(
+                path: '/historico',
+                builder: (_, _) => const HistoricoScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':idQuestao',
+                    builder: (_, estado) => HistoricoDetalheScreen(
+                      idQuestao:
+                          int.tryParse(
+                            estado.pathParameters['idQuestao'] ?? '',
+                          ) ??
+                          0,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
               GoRoute(path: '/perfil', builder: (_, _) => const PerfilScreen()),
             ],
           ),
         ],
       ),
       GoRoute(path: '/materias', builder: (_, _) => const MateriasScreen()),
-      GoRoute(path: '/sessao', builder: (_, _) => const SessaoScreen()),
+      GoRoute(
+        path: '/sessao',
+        builder: (_, estado) => SessaoScreen(
+          idQuestao: int.tryParse(estado.uri.queryParameters['questao'] ?? ''),
+        ),
+      ),
       GoRoute(path: '/login', builder: (_, _) => const LoginScreen()),
       GoRoute(path: '/cadastro', builder: (_, _) => const CadastroScreen()),
       GoRoute(

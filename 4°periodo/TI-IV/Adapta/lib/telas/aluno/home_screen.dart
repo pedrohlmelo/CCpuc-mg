@@ -125,6 +125,32 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 24),
+          const TituloSecao('Seu estudo'),
+          AppCartao(
+            key: const Key('atalho_historico'),
+            padding: const EdgeInsets.all(16),
+            aoTocar: () => context.go('/historico'),
+            child: Row(
+              children: [
+                IconeCaixa(icone: Icons.history_rounded, cor: AppCores.violeta),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Histórico de estudo', style: texto.titleSmall),
+                      Text(
+                        'Rever questões antigas e suas resoluções.',
+                        style: texto.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right_rounded),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
           const TituloSecao('Em breve'),
           AppCartao(
             padding: EdgeInsets.zero,

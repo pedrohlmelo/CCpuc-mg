@@ -50,6 +50,12 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
 
   void _avancar() => setState(() => _indice++);
 
+  void _verHistorico() {
+    // Fecha a sessão antes de trocar de aba, para não deixá-la na pilha.
+    if (context.canPop()) context.pop();
+    context.go('/historico');
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -113,10 +119,22 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
               descricao: refazendo
                   ? 'A nova tentativa entrou no seu histórico.'
                   : 'Você respondeu todas as questões desta fila.',
-              acao: FilledButton(
-                onPressed: () =>
-                    context.canPop() ? context.pop() : context.go('/'),
-                child: const Text('Voltar ao início'),
+              acao: Column(
+                children: [
+                  FilledButton.icon(
+                    key: const Key('botao_ver_historico'),
+                    icon: const Icon(Icons.history_rounded),
+                    label: const Text('Ver histórico'),
+                    onPressed: _verHistorico,
+                  ),
+                  const SizedBox(height: 10),
+                  OutlinedButton(
+                    onPressed: () => context.canPop()
+                        ? context.pop()
+                        : context.go('/'),
+                    child: const Text('Voltar ao início'),
+                  ),
+                ],
               ),
             )
           : QuestaoWidget(

@@ -65,6 +65,50 @@ void main() {
     expect(tela('inicial'), findsOneWidget);
   });
 
+  testWidgets('histórico: lista, abre a resolução antiga e volta', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await assentar(tester);
+
+    await tocar(tester, find.byKey(const Key('aba_historico')));
+    expect(tela('historico'), findsOneWidget);
+
+    await tocar(tester, find.byKey(const Key('item_historico_5')));
+    expect(tela('resolucao'), findsOneWidget);
+    expect(find.byKey(const Key('botao_refazer')), findsOneWidget);
+    expect(find.textContaining('O gabarito é'), findsOneWidget);
+
+    await tocar(tester, find.byKey(const Key('botao_voltar')));
+    expect(tela('resolucao'), findsNothing);
+    expect(tela('historico'), findsOneWidget);
+  });
+
+  testWidgets('a tela inicial tem atalho para o histórico', (tester) async {
+    await tester.pumpWidget(app());
+    await assentar(tester);
+
+    await tocar(tester, find.byKey(const Key('atalho_historico')));
+    expect(tela('historico'), findsOneWidget);
+  });
+
+  testWidgets('refazer questão a partir da resolução', (tester) async {
+    await tester.pumpWidget(app());
+    await assentar(tester);
+
+    await tocar(tester, find.byKey(const Key('aba_historico')));
+    await tocar(tester, find.byKey(const Key('item_historico_5')));
+    await tocar(tester, find.byKey(const Key('botao_refazer')));
+
+    // A questão abre em branco, pronta para ser respondida de novo.
+    expect(tela('sessao'), findsOneWidget);
+    expect(find.byKey(const Key('feedback_resposta')), findsNothing);
+
+    await tocar(tester, find.byKey(const Key('alternativa_B')));
+    await tocar(tester, find.byKey(const Key('botao_proxima')));
+    expect(find.text('Questão refeita'), findsOneWidget);
+  });
+
   testWidgets('matérias: tem botão de voltar e aplica o filtro', (
     tester,
   ) async {
