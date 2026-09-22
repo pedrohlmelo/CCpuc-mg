@@ -40,7 +40,13 @@ O histórico também só aparece com conta; sem ela, a aba convida a entrar.
 | Questões | `admin_questoes_screen.dart` | `/admin/questoes` |
 | Moldura das internas | `admin_scaffold.dart` | — |
 
-Chega-se ao painel por Perfil → Painel administrativo.
+Chega-se ao painel por Perfil → Painel administrativo, **e essa linha só aparece para
+quem entrou como administrador**. Para aluno ou visitante ela não existe, e as rotas
+`/admin` redirecionam para a tela inicial.
+
+No protótipo, entrar com o e-mail `admin@adapta.app` (senha qualquer, com seis
+caracteres) cria a sessão de administrador. Isso está no código, não na interface: o
+aluno não deve descobrir o painel pelo app.
 
 ## Navegação
 

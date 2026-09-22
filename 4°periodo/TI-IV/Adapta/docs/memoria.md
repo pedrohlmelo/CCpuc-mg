@@ -217,6 +217,8 @@ Leitura do fluxo:
 - Estudar e ver o histórico **exigem entrar**, porque a fila e o progresso são de uma
   pessoa; quem toca em "Entrar para estudar" vai ao login e volta direto para a questão
 - Cadastro e login ficam acessíveis pela tela inicial e pelo perfil
+- O aluno **não vê nem alcança o painel administrativo**: a opção some do perfil e as
+  rotas do painel caem na tela inicial para quem não é do grupo
 - Seleção de matérias/áreas de interesse
 - Perfil com nível estimado por assunto
 
@@ -300,7 +302,7 @@ Requisitos consolidados para a apresentação. Escritos em linguagem de usuário
 | RF08 | Avisar quando um assunto precisa de revisão e permitir iniciar uma sessão focada só no que está esquecendo |
 | RF09 | Apontar o assunto anterior (pré-requisito) que está causando os erros |
 | RF10 | Apresentar o histórico de desempenho por matéria e assunto |
-| RF11 | Acessar painel de administrador para gerenciar matérias, assuntos, dependências do grafo e cadastrar questões |
+| RF11 | Acessar painel de administrador para gerenciar matérias, assuntos, dependências do grafo e cadastrar questões. O painel é de uso interno: só quem entra como administrador vê que ele existe, e as telas dele não abrem para aluno |
 | RF12 | Rever as questões já respondidas e a resolução de cada uma (alternativa marcada, gabarito e explicação) |
 | RF13 | Refazer uma questão já respondida, mantendo o registro das tentativas |
 | RF14 | Abrir o app direto na tela inicial, sem passar por tela de login |
@@ -421,7 +423,7 @@ próximo passo de integração, e nenhuma tela precisa mudar por causa disso.
 | Sessão de estudo | uma questão por vez, com feedback e explicação |
 | Histórico | questões já respondidas, por dia, com filtro de acerto e erro |
 | Resolução | a questão antiga com a resposta dada, o gabarito, a explicação e o botão de refazer |
-| Perfil | acesso a login, cadastro, tema e painel administrativo |
+| Perfil | acesso a login, cadastro e tema; o painel administrativo só aparece para administrador |
 | Login e cadastro | formulários, alcançados pelo perfil |
 | Painel administrativo | menu, matérias, assuntos, grafo de dependências e questões |
 

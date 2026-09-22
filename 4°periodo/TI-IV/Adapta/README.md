@@ -24,8 +24,11 @@ flutter analyze
 
 O app abre direto na tela inicial do aluno, sem tela de login e sem mostrar nome algum.
 Para estudar ou ver o histórico é preciso entrar, e o app volta sozinho para a questão
-depois do login. Entrar e criar conta ficam na própria tela inicial e na aba **Perfil**,
-que também dá acesso ao painel administrativo.
+depois do login. Entrar e criar conta ficam na própria tela inicial e na aba **Perfil**.
+
+O painel administrativo é de uso interno do grupo: ele só aparece no perfil de quem entra
+como administrador, e suas rotas não abrem para aluno. Na demonstração, entre com
+`admin@adapta.app` e qualquer senha de seis caracteres para vê-lo.
 
 ## Telas
 

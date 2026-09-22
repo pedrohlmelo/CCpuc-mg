@@ -85,8 +85,11 @@ alimentadas desde a Sprint 2**, mesmo sem modelo algum rodando — são o datase
 7. Adiante: mapa de conhecimento (grafo colorido) e trilha até um objetivo
 
 ### Admin (uso interno do grupo, RF11)
-1. Entra pelo perfil, em "Painel administrativo"
+1. Entra com uma conta de administrador; só então o perfil mostra "Painel administrativo"
 2. Matérias, assuntos, arestas do grafo e questões + alternativas
+
+Para o aluno o painel não existe: a opção não aparece no perfil e as rotas `/admin`
+levam de volta à tela inicial.
 
 ---
 
@@ -144,7 +147,9 @@ O mapa tela a tela está em `docs/TELAS.md`; o detalhe das pastas, em `docs/ESTR
 | Abertura do app | **tela inicial do aluno**, sem login | instrução do professor (RF14) |
 | Identidade na abertura | nenhuma: sem conta a tela não mostra nome | não fingir uma sessão que não existe |
 | Acesso ao estudo | `/sessao` exige conta; o `redirect` do go_router manda ao login com `?apos=` e devolve à questão | a fila e o histórico são de uma pessoa (RF15) |
-| Login e painel admin | alcançados pela tela inicial e pelo **perfil** | tirar a autenticação do caminho de entrada |
+| Login | alcançado pela tela inicial e pelo **perfil** | tirar a autenticação do caminho de entrada |
+| Painel administrativo | visível no perfil e acessível **só para `TipoUsuario.admin`**; `/admin*` redireciona os demais para `/` | é de uso interno do grupo, e o aluno não deve saber que existe (RF11) |
+| Papel do usuário | no protótipo, entrar com `admin@adapta.app` cria um administrador | sem backend, algo precisa distinguir os dois; quem devolve o papel será o servidor |
 | Voltar | `BotaoVoltar` em toda tela empilhada | com queda para a tela inicial quando não há pilha |
 | Dependências | só `flutter_riverpod`, `go_router` e `shared_preferences` | saíram `sqflite`, `crypto`, `path`, `path_provider` |
 | Nomes no código | português sem acento | casar com o modelo de dados |
