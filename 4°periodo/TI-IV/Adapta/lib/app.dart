@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/router/app_router.dart';
-import 'core/tema/app_tema.dart';
-import 'core/tema/tema_controller.dart';
+import 'navegacao/rotas.dart';
+import 'tema/app_tema.dart';
+import 'tema/tema_controller.dart';
 
 class AdaptaApp extends ConsumerWidget {
   const AdaptaApp({super.key});

@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
-import 'core/database/app_database.dart';
-import 'core/tema/tema_controller.dart';
+import 'tema/tema_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final db = await abrirBanco();
+  // Única coisa lida do disco: a preferência de tema claro/escuro.
   final tema = await carregarTemaSalvo();
   runApp(
     ProviderScope(
-      overrides: [
-        databaseProvider.overrideWithValue(db),
-        temaInicialProvider.overrideWithValue(tema),
-      ],
+      overrides: [temaInicialProvider.overrideWithValue(tema)],
       child: const AdaptaApp(),
     ),
   );
