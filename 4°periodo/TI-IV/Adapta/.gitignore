@@ -43,4 +43,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-capturas/
+# PNGs gerados pelos testes de captura (o gerador em test/ é versionado)
+/capturas/
