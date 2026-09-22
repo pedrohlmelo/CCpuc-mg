@@ -35,19 +35,25 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
 
   void _cadastrar() {
     if (!_form.currentState!.validate()) return;
-    ref.read(alunoProvider.notifier).state = Aluno(
+    // Cadastro pelo app cria aluno; contas do grupo são criadas por fora.
+    ref.read(usuarioProvider.notifier).state = Usuario(
       nome: _nome.text.trim(),
       email: _email.text.trim(),
     );
 
-    final destino = widget.apos;
-    if (destino != null && destino.isNotEmpty) {
-      context.pushReplacement(Uri.decodeComponent(destino));
-    } else if (context.canPop()) {
-      context.pop();
-    } else {
-      context.go('/');
-    }
+    // A navegação espera o próximo frame: preencher a sessão faz o go_router
+    // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final destino = widget.apos;
+      if (destino != null && destino.isNotEmpty) {
+        context.pushReplacement(Uri.decodeComponent(destino));
+      } else if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
+    });
   }
 
   @override

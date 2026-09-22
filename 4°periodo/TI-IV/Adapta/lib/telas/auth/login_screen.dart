@@ -36,21 +36,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     if (!_form.currentState!.validate()) return;
     final email = _email.text.trim();
     final apelido = email.split('@').first;
-    ref.read(alunoProvider.notifier).state = Aluno(
-      nome: apelido.isEmpty
+    // Sem backend, o papel sai do e-mail. Quem confere credenciais e devolve
+    // o tipo do usuário é o servidor, quando ele existir.
+    final admin = email.toLowerCase() == emailAdminDemo;
+    ref.read(usuarioProvider.notifier).state = Usuario(
+      nome: admin
+          ? 'Administração'
+          : apelido.isEmpty
           ? 'Aluno'
           : apelido[0].toUpperCase() + apelido.substring(1),
       email: email,
+      tipo: admin ? TipoUsuario.admin : TipoUsuario.aluno,
     );
 
-    final destino = widget.apos;
-    if (destino != null && destino.isNotEmpty) {
-      context.pushReplacement(Uri.decodeComponent(destino));
-    } else if (context.canPop()) {
-      context.pop();
-    } else {
-      context.go('/');
-    }
+    // A navegação espera o próximo frame: preencher a sessão faz o go_router
+    // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final destino = widget.apos;
+      if (destino != null && destino.isNotEmpty) {
+        context.pushReplacement(Uri.decodeComponent(destino));
+      } else if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
+    });
   }
 
   @override

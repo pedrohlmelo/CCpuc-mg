@@ -1,6 +1,7 @@
 import 'package:adapta/app.dart';
 import 'package:adapta/dados/estado_prototipo.dart';
 import 'package:adapta/dados/modelos.dart';
+import 'package:adapta/navegacao/rotas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,14 +12,19 @@ import 'package:flutter_test/flutter_test.dart';
 /// Cada tela tem uma chave (`tela_...`) no seu Scaffold. Como as telas
 /// empilhadas continuam na árvore de widgets, o teste confirma que a de cima
 /// apareceu e que, ao voltar, ela saiu.
-Widget app({Aluno? aluno}) => ProviderScope(
+Widget app({Usuario? usuario}) => ProviderScope(
   overrides: [
-    if (aluno != null) alunoProvider.overrideWith((_) => aluno),
+    if (usuario != null) usuarioProvider.overrideWith((_) => usuario),
   ],
   child: const AdaptaApp(),
 );
 
-const alunoDeTeste = Aluno(nome: 'Ana Souza', email: 'ana@x.com');
+const alunoDeTeste = Usuario(nome: 'Ana Souza', email: 'ana@x.com');
+const adminDeTeste = Usuario(
+  nome: 'Administração',
+  email: 'admin@adapta.app',
+  tipo: TipoUsuario.admin,
+);
 
 Future<void> assentar(WidgetTester tester) async {
   await tester.pump();
@@ -124,19 +130,23 @@ void main() {
       expect(find.text('Olá, Ana'), findsOneWidget);
     });
 
-    testWidgets('matérias e painel administrativo seguem abertos', (
-      tester,
-    ) async {
+    testWidgets('a escolha de matéria segue aberta', (tester) async {
       await tester.pumpWidget(app());
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('chip_materia')));
       expect(tela('materias'), findsOneWidget);
       await tocar(tester, find.byKey(const Key('botao_voltar')));
+      expect(tela('materias'), findsNothing);
+    });
+
+    testWidgets('o perfil não revela o painel administrativo', (tester) async {
+      await tester.pumpWidget(app());
+      await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('aba_perfil')));
-      await tocar(tester, find.byKey(const Key('item_admin')));
-      expect(tela('admin_menu'), findsOneWidget);
+      expect(find.byKey(const Key('item_admin')), findsNothing);
+      expect(find.text('Painel administrativo'), findsNothing);
     });
   });
 
@@ -144,7 +154,7 @@ void main() {
     testWidgets('a tela inicial saúda pelo nome e mostra o resumo', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       expect(find.text('Olá, Ana'), findsOneWidget);
@@ -158,7 +168,7 @@ void main() {
     testWidgets('sessão de estudo: responder, ver feedback e fechar', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('botao_estudar')));
@@ -175,7 +185,7 @@ void main() {
     testWidgets('histórico: lista, abre a resolução antiga e volta', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('aba_historico')));
@@ -191,7 +201,7 @@ void main() {
     });
 
     testWidgets('refazer questão a partir da resolução', (tester) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('aba_historico')));
@@ -207,7 +217,7 @@ void main() {
     });
 
     testWidgets('a tela inicial tem atalho para o histórico', (tester) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('atalho_historico')));
@@ -217,7 +227,7 @@ void main() {
     testWidgets('matérias: tem botão de voltar e aplica o filtro', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('chip_materia')));
@@ -233,29 +243,33 @@ void main() {
       expect(find.text('História'), findsOneWidget);
     });
 
-    testWidgets('painel administrativo abre e volta pelo perfil', (
+    testWidgets('o aluno não vê o painel administrativo no perfil', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('aba_perfil')));
-      await tocar(tester, find.byKey(const Key('item_admin')));
-      expect(tela('admin_menu'), findsOneWidget);
+      expect(find.byKey(const Key('item_admin')), findsNothing);
+      expect(find.text('Painel administrativo'), findsNothing);
+    });
 
-      await tocar(tester, find.byKey(const Key('menu_admin_/admin/grafo')));
-      expect(tela('admin_interna'), findsOneWidget);
+    testWidgets('a rota do painel não abre para o aluno', (tester) async {
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
+      await assentar(tester);
 
-      await tocar(tester, find.byKey(const Key('botao_voltar')));
-      expect(tela('admin_interna'), findsNothing);
-      await tocar(tester, find.byKey(const Key('botao_voltar')));
-      expect(tela('perfil'), findsOneWidget);
+      final contexto = tester.element(find.byType(MaterialApp));
+      ProviderScope.containerOf(contexto).read(routerProvider).go('/admin');
+      await assentar(tester);
+
+      expect(tela('admin_menu'), findsNothing);
+      expect(tela('inicial'), findsOneWidget);
     });
 
     testWidgets('responder uma questão aumenta o contador da tela inicial', (
       tester,
     ) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('botao_estudar')));
@@ -269,7 +283,7 @@ void main() {
     });
 
     testWidgets('sair da conta devolve a tela inicial neutra', (tester) async {
-      await tester.pumpWidget(app(aluno: alunoDeTeste));
+      await tester.pumpWidget(app(usuario: alunoDeTeste));
       await assentar(tester);
 
       await tocar(tester, find.byKey(const Key('aba_perfil')));
@@ -278,6 +292,45 @@ void main() {
       await tocar(tester, find.byIcon(Icons.home_outlined));
       expect(find.text('Vamos estudar?'), findsOneWidget);
       expect(find.text('Olá, Ana'), findsNothing);
+    });
+  });
+
+  group('com administrador na sessão', () {
+    testWidgets('o painel aparece no perfil e abre', (tester) async {
+      await tester.pumpWidget(app(usuario: adminDeTeste));
+      await assentar(tester);
+
+      await tocar(tester, find.byKey(const Key('aba_perfil')));
+      expect(find.byKey(const Key('item_admin')), findsOneWidget);
+
+      await tocar(tester, find.byKey(const Key('item_admin')));
+      expect(tela('admin_menu'), findsOneWidget);
+
+      await tocar(tester, find.byKey(const Key('menu_admin_/admin/grafo')));
+      expect(tela('admin_interna'), findsOneWidget);
+
+      await tocar(tester, find.byKey(const Key('botao_voltar')));
+      expect(tela('admin_interna'), findsNothing);
+      await tocar(tester, find.byKey(const Key('botao_voltar')));
+      expect(tela('perfil'), findsOneWidget);
+    });
+
+    testWidgets('entrar com o e-mail da administração dá acesso ao painel', (
+      tester,
+    ) async {
+      await tester.pumpWidget(app());
+      await assentar(tester);
+
+      await tocar(tester, find.byKey(const Key('aba_perfil')));
+      await tocar(tester, find.byKey(const Key('item_entrar')));
+      await tester.enterText(
+        find.byKey(const Key('campo_email')),
+        'admin@adapta.app',
+      );
+      await tester.enterText(find.byKey(const Key('campo_senha')), '123456');
+      await tocar(tester, find.byKey(const Key('botao_entrar')));
+
+      expect(find.byKey(const Key('item_admin')), findsOneWidget);
     });
   });
 }

@@ -22,7 +22,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final aluno = ref.watch(alunoProvider);
+    final aluno = ref.watch(usuarioProvider);
     final materia = ref.watch(materiaSelecionadaProvider);
     final historico = ref.watch(historicoProvider);
     final texto = Theme.of(context).textTheme;

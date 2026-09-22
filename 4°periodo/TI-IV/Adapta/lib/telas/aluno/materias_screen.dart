@@ -27,7 +27,7 @@ class MateriasScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final aluno = ref.watch(alunoProvider);
+    final aluno = ref.watch(usuarioProvider);
     final selecionada = ref.watch(materiaSelecionadaProvider);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;

@@ -24,7 +24,12 @@ void main() {
   final dir = Directory(Platform.environment['CAPTURAS_DIR'] ?? 'capturas');
   final chaveRaiz = GlobalKey();
 
-  const aluno = Aluno(nome: 'Ana Souza', email: 'ana@adapta.app');
+  const aluno = Usuario(nome: 'Ana Souza', email: 'ana@adapta.app');
+  const admin = Usuario(
+    nome: 'Administração',
+    email: 'admin@adapta.app',
+    tipo: TipoUsuario.admin,
+  );
 
   setUpAll(() async {
     if (!ativo) return;
@@ -37,12 +42,14 @@ void main() {
     await icones.load();
   });
 
-  /// Sem [comConta], o app aparece como quem abre pela primeira vez.
-  Widget app({bool comConta = true}) => RepaintBoundary(
+  /// Sem [comConta], o app aparece como quem abre pela primeira vez. Com
+  /// [comoAdmin], quem entrou é do grupo e enxerga o painel.
+  Widget app({bool comConta = true, bool comoAdmin = false}) => RepaintBoundary(
     key: chaveRaiz,
     child: ProviderScope(
       overrides: [
-        if (comConta) alunoProvider.overrideWith((_) => aluno),
+        if (comConta)
+          usuarioProvider.overrideWith((_) => comoAdmin ? admin : aluno),
       ],
       child: const AdaptaApp(),
     ),
@@ -88,6 +95,7 @@ void main() {
     WidgetTester tester, {
     bool escuro = false,
     bool comConta = true,
+    bool comoAdmin = false,
   }) async {
     tester.view.physicalSize = const Size(390 * 2, 844 * 2);
     tester.view.devicePixelRatio = 2;
@@ -96,7 +104,7 @@ void main() {
         : Brightness.light;
     addTearDown(tester.view.reset);
     addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
-    await tester.pumpWidget(app(comConta: comConta));
+    await tester.pumpWidget(app(comConta: comConta, comoAdmin: comoAdmin));
     await assentar(tester);
     await precarregarImagens(tester);
   }
@@ -142,7 +150,7 @@ void main() {
   }, skip: !ativo);
 
   testWidgets('painel administrativo', (tester) async {
-    await iniciar(tester);
+    await iniciar(tester, comoAdmin: true);
     ir(tester, '/admin');
     await capturar(tester, '12_admin_inicial');
 
@@ -165,7 +173,7 @@ void main() {
   }, skip: !ativo);
 
   testWidgets('tema escuro com conta', (tester) async {
-    await iniciar(tester, escuro: true);
+    await iniciar(tester, escuro: true, comoAdmin: true);
     await capturar(tester, '18_inicial_escuro');
 
     ir(tester, '/historico');

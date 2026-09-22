@@ -18,13 +18,23 @@ final materiaSelecionadaProvider = StateProvider<Materia?>((_) => null);
 /// abre: a tela inicial não inventa um nome nem deixa estudar.
 ///
 /// As telas de login e cadastro apenas preenchem este valor. Não há
-/// autenticação: conferir e-mail e senha é trabalho do backend.
-final alunoProvider = StateProvider<Aluno?>((_) => null);
+/// autenticação: conferir e-mail, senha e papel é trabalho do backend.
+final usuarioProvider = StateProvider<Usuario?>((_) => null);
 
 /// Atalho de leitura: `true` depois que alguém entrou.
 final entrouProvider = Provider<bool>(
-  (ref) => ref.watch(alunoProvider) != null,
+  (ref) => ref.watch(usuarioProvider) != null,
 );
+
+/// `true` só quando quem entrou é do grupo. O painel administrativo não
+/// aparece nem abre para aluno.
+final ehAdminProvider = Provider<bool>(
+  (ref) => ref.watch(usuarioProvider)?.isAdmin ?? false,
+);
+
+/// E-mail que entra como administrador enquanto não há backend. Fica aqui,
+/// e não na interface, porque o aluno não deve saber que o painel existe.
+const emailAdminDemo = 'admin@adapta.app';
 
 /// Questões respondidas, da mais recente para a mais antiga.
 ///
@@ -33,7 +43,7 @@ final entrouProvider = Provider<bool>(
 class HistoricoPrototipo extends Notifier<List<Resposta>> {
   @override
   List<Resposta> build() {
-    if (ref.watch(alunoProvider) == null) return const [];
+    if (ref.watch(usuarioProvider) == null) return const [];
     return historicoExemplo()..sort((a, b) => b.quando.compareTo(a.quando));
   }
 

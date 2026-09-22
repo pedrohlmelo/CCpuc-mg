@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../dados/estado_prototipo.dart';
+import '../dados/modelos.dart';
 import '../telas/admin/admin_assuntos_screen.dart';
 import '../telas/admin/admin_grafo_screen.dart';
 import '../telas/admin/admin_home_screen.dart';
@@ -22,9 +23,12 @@ import 'casca_aluno.dart';
 ///
 /// O app abre em `/`, a tela inicial do aluno: não há tela de login na
 /// abertura. A tela inicial se apresenta sem nome e, para estudar, manda
-/// entrar: `/sessao` é a única rota que exige alguém na sessão, e quem chega
-/// nela sem ter entrado é levado ao login e volta para a sessão depois.
-/// Login, cadastro e painel admin abrem por cima, sempre com botão de voltar.
+/// entrar: quem chega em `/sessao` sem ter entrado é levado ao login e volta
+/// para a sessão depois.
+///
+/// O painel administrativo é de uso interno do grupo. As rotas `/admin` só
+/// existem para quem entrou como administrador; para qualquer outra pessoa
+/// elas caem na tela inicial, como se não existissem.
 ///
 /// | Rota                  | Tela                        |
 /// |-----------------------|-----------------------------|
@@ -40,18 +44,30 @@ import 'casca_aluno.dart';
 final routerProvider = Provider<GoRouter>((ref) {
   // Um ValueNotifier para o go_router reavaliar as rotas quando alguém entra
   // ou sai, sem que ele precise conhecer o Riverpod.
-  final sessao = ValueNotifier<bool>(ref.read(entrouProvider));
-  ref.listen(entrouProvider, (_, atual) => sessao.value = atual);
+  final sessao = ValueNotifier<Usuario?>(ref.read(usuarioProvider));
+  ref.listen(usuarioProvider, (_, atual) => sessao.value = atual);
   ref.onDispose(sessao.dispose);
 
   return GoRouter(
     initialLocation: '/',
     refreshListenable: sessao,
     redirect: (_, estado) {
-      final indoEstudar = estado.matchedLocation == '/sessao';
-      if (!indoEstudar || sessao.value) return null;
-      final destino = Uri.encodeComponent(estado.uri.toString());
-      return '/login?apos=$destino';
+      final usuario = sessao.value;
+      final local = estado.matchedLocation;
+
+      // Painel administrativo: invisível e inacessível para quem não é do
+      // grupo. Vai para a tela inicial em vez de avisar que a rota existe.
+      if (local.startsWith('/admin')) {
+        return (usuario?.isAdmin ?? false) ? null : '/';
+      }
+
+      // Estudar exige conta; depois do login a pessoa volta para a questão.
+      if (local == '/sessao' && usuario == null) {
+        final destino = Uri.encodeComponent(estado.uri.toString());
+        return '/login?apos=$destino';
+      }
+
+      return null;
     },
     routes: [
       StatefulShellRoute.indexedStack(

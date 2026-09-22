@@ -6,13 +6,25 @@
 /// modelos passam a ser preenchidos pela resposta da API.
 library;
 
+/// Papel de quem entrou. O painel administrativo é de uso interno do grupo:
+/// quem entra como aluno não vê que ele existe.
+enum TipoUsuario { aluno, admin }
+
 /// Quem está usando o app na demonstração. O backend é que vai autenticar de
 /// verdade; aqui o objeto só existe depois que alguém preenche login ou
-/// cadastro, e serve para as telas saberem que há alguém na sessão.
-class Aluno {
+/// cadastro, e serve para as telas saberem quem está na sessão.
+class Usuario {
   final String nome;
   final String email;
-  const Aluno({required this.nome, required this.email});
+  final TipoUsuario tipo;
+
+  const Usuario({
+    required this.nome,
+    required this.email,
+    this.tipo = TipoUsuario.aluno,
+  });
+
+  bool get isAdmin => tipo == TipoUsuario.admin;
 
   /// Primeiro nome, para as saudações.
   String get primeiroNome => nome.split(' ').first;

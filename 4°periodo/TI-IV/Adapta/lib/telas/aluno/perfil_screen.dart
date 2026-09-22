@@ -17,8 +17,8 @@ class PerfilScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final aluno = ref.watch(alunoProvider);
-    final entrou = aluno != null;
+    final usuario = ref.watch(usuarioProvider);
+    final entrou = usuario != null;
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -41,14 +41,14 @@ class PerfilScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        aluno?.nome ?? 'Você ainda não entrou',
+                        usuario?.nome ?? 'Você ainda não entrou',
                         style: texto.headlineSmall?.copyWith(
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        aluno?.email ??
+                        usuario?.email ??
                             'Entre para estudar e guardar seu progresso.',
                         style: texto.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: 0.85),
@@ -74,7 +74,7 @@ class PerfilScreen extends ConsumerWidget {
                     titulo: 'Sair da conta',
                     descricao: 'Volta a estudar sem conta',
                     aoTocar: () =>
-                        ref.read(alunoProvider.notifier).state = null,
+                        ref.read(usuarioProvider.notifier).state = null,
                   )
                 else ...[
                   _Item(
@@ -113,15 +113,19 @@ class PerfilScreen extends ConsumerWidget {
                   aoTocar: () =>
                       ref.read(temaProvider.notifier).alternar(context),
                 ),
-                Divider(height: 1, indent: 72, color: scheme.outline),
-                _Item(
-                  key: const Key('item_admin'),
-                  icone: Icons.admin_panel_settings_outlined,
-                  cor: scheme.onSurfaceVariant,
-                  titulo: 'Painel administrativo',
-                  descricao: 'Uso interno do grupo',
-                  aoTocar: () => context.push('/admin'),
-                ),
+                // O painel é de uso interno: para o aluno, esta linha não
+                // existe, e a rota /admin também não abre.
+                if (usuario?.isAdmin ?? false) ...[
+                  Divider(height: 1, indent: 72, color: scheme.outline),
+                  _Item(
+                    key: const Key('item_admin'),
+                    icone: Icons.admin_panel_settings_outlined,
+                    cor: scheme.onSurfaceVariant,
+                    titulo: 'Painel administrativo',
+                    descricao: 'Uso interno do grupo',
+                    aoTocar: () => context.push('/admin'),
+                  ),
+                ],
               ],
             ),
           ),
