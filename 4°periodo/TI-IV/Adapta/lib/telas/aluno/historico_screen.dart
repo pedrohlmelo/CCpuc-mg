@@ -28,6 +28,7 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
   @override
   Widget build(BuildContext context) {
     final historico = ref.watch(historicoProvider);
+    final entrou = ref.watch(entrouProvider);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -47,7 +48,19 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
         title: const Text('Histórico de estudo'),
         actions: const [BotaoTema(), SizedBox(width: 4)],
       ),
-      body: historico.isEmpty
+      body: !entrou
+          ? EstadoVazio(
+              ilustracao: const Mascote(pose: PoseCamu.pensativo, tamanho: 130),
+              titulo: 'Seu histórico fica guardado na sua conta',
+              descricao:
+                  'Entre para ver as questões que você respondeu e rever as resoluções.',
+              acao: FilledButton(
+                key: const Key('botao_entrar_historico'),
+                onPressed: () => context.push('/login'),
+                child: const Text('Entrar'),
+              ),
+            )
+          : historico.isEmpty
           ? const EstadoVazio(
               ilustracao: Mascote(pose: PoseCamu.pensativo, tamanho: 130),
               titulo: 'Você ainda não respondeu nada',

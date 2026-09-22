@@ -5,6 +5,8 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:adapta/app.dart';
+import 'package:adapta/dados/estado_prototipo.dart';
+import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/navegacao/rotas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -22,6 +24,8 @@ void main() {
   final dir = Directory(Platform.environment['CAPTURAS_DIR'] ?? 'capturas');
   final chaveRaiz = GlobalKey();
 
+  const aluno = Aluno(nome: 'Ana Souza', email: 'ana@adapta.app');
+
   setUpAll(() async {
     if (!ativo) return;
     dir.createSync(recursive: true);
@@ -33,9 +37,15 @@ void main() {
     await icones.load();
   });
 
-  Widget app() => RepaintBoundary(
+  /// Sem [comConta], o app aparece como quem abre pela primeira vez.
+  Widget app({bool comConta = true}) => RepaintBoundary(
     key: chaveRaiz,
-    child: const ProviderScope(child: AdaptaApp()),
+    child: ProviderScope(
+      overrides: [
+        if (comConta) alunoProvider.overrideWith((_) => aluno),
+      ],
+      child: const AdaptaApp(),
+    ),
   );
 
   Future<void> assentar(WidgetTester tester) async {
@@ -74,7 +84,11 @@ void main() {
     ProviderScope.containerOf(contexto).read(routerProvider).go(rota);
   }
 
-  Future<void> iniciar(WidgetTester tester, {bool escuro = false}) async {
+  Future<void> iniciar(
+    WidgetTester tester, {
+    bool escuro = false,
+    bool comConta = true,
+  }) async {
     tester.view.physicalSize = const Size(390 * 2, 844 * 2);
     tester.view.devicePixelRatio = 2;
     tester.platformDispatcher.platformBrightnessTestValue = escuro
@@ -82,69 +96,82 @@ void main() {
         : Brightness.light;
     addTearDown(tester.view.reset);
     addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
-    await tester.pumpWidget(app());
+    await tester.pumpWidget(app(comConta: comConta));
     await assentar(tester);
     await precarregarImagens(tester);
   }
 
-  testWidgets('telas do aluno', (tester) async {
-    await iniciar(tester);
-    await capturar(tester, '01_inicial_aluno');
+  testWidgets('abertura sem conta', (tester) async {
+    await iniciar(tester, comConta: false);
+    await capturar(tester, '01_inicial_sem_conta');
 
     ir(tester, '/historico');
-    await capturar(tester, '02_historico');
+    await capturar(tester, '02_historico_sem_conta');
+  }, skip: !ativo);
+
+  testWidgets('telas do aluno', (tester) async {
+    await iniciar(tester);
+    await capturar(tester, '03_inicial_aluno');
+
+    ir(tester, '/historico');
+    await capturar(tester, '04_historico');
 
     ir(tester, '/historico/5');
-    await capturar(tester, '03_historico_resolucao');
+    await capturar(tester, '05_historico_resolucao');
 
     ir(tester, '/sessao');
-    await capturar(tester, '04_questao');
+    await capturar(tester, '06_questao');
 
     await tester.tap(find.byKey(const Key('alternativa_B')));
-    await capturar(tester, '05_questao_feedback');
+    await capturar(tester, '07_questao_feedback');
 
     ir(tester, '/materias');
-    await capturar(tester, '06_materias');
+    await capturar(tester, '08_materias');
 
     ir(tester, '/perfil');
-    await capturar(tester, '07_perfil');
+    await capturar(tester, '09_perfil');
   }, skip: !ativo);
 
   testWidgets('telas de conta', (tester) async {
-    await iniciar(tester);
+    await iniciar(tester, comConta: false);
     ir(tester, '/login');
-    await capturar(tester, '08_login');
+    await capturar(tester, '10_login');
 
     ir(tester, '/cadastro');
-    await capturar(tester, '09_cadastro');
+    await capturar(tester, '11_cadastro');
   }, skip: !ativo);
 
   testWidgets('painel administrativo', (tester) async {
     await iniciar(tester);
     ir(tester, '/admin');
-    await capturar(tester, '10_admin_inicial');
+    await capturar(tester, '12_admin_inicial');
 
     ir(tester, '/admin/grafo');
-    await capturar(tester, '11_admin_grafo');
+    await capturar(tester, '13_admin_grafo');
 
     ir(tester, '/admin/questoes');
-    await capturar(tester, '12_admin_questoes');
+    await capturar(tester, '14_admin_questoes');
 
     ir(tester, '/admin/assuntos');
-    await capturar(tester, '13_admin_assuntos');
+    await capturar(tester, '15_admin_assuntos');
 
     ir(tester, '/admin/materias');
-    await capturar(tester, '14_admin_materias');
+    await capturar(tester, '16_admin_materias');
   }, skip: !ativo);
 
-  testWidgets('tema escuro', (tester) async {
+  testWidgets('tema escuro sem conta', (tester) async {
+    await iniciar(tester, escuro: true, comConta: false);
+    await capturar(tester, '17_inicial_sem_conta_escuro');
+  }, skip: !ativo);
+
+  testWidgets('tema escuro com conta', (tester) async {
     await iniciar(tester, escuro: true);
-    await capturar(tester, '15_inicial_escuro');
+    await capturar(tester, '18_inicial_escuro');
 
     ir(tester, '/historico');
-    await capturar(tester, '16_historico_escuro');
+    await capturar(tester, '19_historico_escuro');
 
     ir(tester, '/admin');
-    await capturar(tester, '17_admin_escuro');
+    await capturar(tester, '20_admin_escuro');
   }, skip: !ativo);
 }

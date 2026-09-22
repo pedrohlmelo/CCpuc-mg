@@ -6,7 +6,7 @@ Onde está cada tela do Adapta. Todas ficam em `lib/telas/`, uma pasta por públ
 
 | Tela | Arquivo | Rota | Como se chega |
 |---|---|---|---|
-| Inicial do aluno | `home_screen.dart` | `/` | abre o app |
+| Inicial do aluno | `home_screen.dart` | `/` | abre o app (sem conta, aparece sem nome) |
 | Histórico de estudo | `historico_screen.dart` | `/historico` | aba "Histórico" ou atalho na inicial |
 | Resolução de uma questão | `historico_detalhe_screen.dart` | `/historico/:idQuestao` | tocar num item do histórico |
 | Escolher matéria | `materias_screen.dart` | `/materias` | chip da matéria na inicial |
@@ -18,11 +18,16 @@ Onde está cada tela do Adapta. Todas ficam em `lib/telas/`, uma pasta por públ
 
 | Tela | Arquivo | Rota | Como se chega |
 |---|---|---|---|
-| Entrar | `login_screen.dart` | `/login` | Perfil → Entrar |
-| Criar conta | `cadastro_screen.dart` | `/cadastro` | Perfil → Criar conta |
+| Entrar | `login_screen.dart` | `/login` | tela inicial ou Perfil → Entrar |
+| Criar conta | `cadastro_screen.dart` | `/cadastro` | tela inicial ou Perfil → Criar conta |
 | Moldura das duas | `moldura_auth.dart` | — | cabeçalho com gradiente e mascote |
 
-O app **não abre em tela de login**. Dá para estudar sem conta.
+O app **não abre em tela de login**: a tela inicial vem antes e não mostra nome nenhum
+enquanto ninguém entrou.
+
+Estudar exige conta. Quem toca em "Entrar para estudar" vai para `/login?apos=/sessao` e,
+ao entrar, cai direto na questão. O mesmo vale para quem abre `/sessao` por um link.
+O histórico também só aparece com conta; sem ela, a aba convida a entrar.
 
 ## Painel administrativo — `lib/telas/admin/`
 

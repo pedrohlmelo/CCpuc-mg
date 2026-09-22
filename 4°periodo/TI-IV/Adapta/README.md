@@ -22,8 +22,10 @@ flutter test         # navegação, dados de exemplo e tema
 flutter analyze
 ```
 
-O app abre direto na tela inicial do aluno. Não há tela de login na abertura: entrar e
-criar conta ficam na aba **Perfil**, junto com o acesso ao painel administrativo.
+O app abre direto na tela inicial do aluno, sem tela de login e sem mostrar nome algum.
+Para estudar ou ver o histórico é preciso entrar, e o app volta sozinho para a questão
+depois do login. Entrar e criar conta ficam na própria tela inicial e na aba **Perfil**,
+que também dá acesso ao painel administrativo.
 
 ## Telas
 

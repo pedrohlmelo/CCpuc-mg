@@ -12,15 +12,17 @@ import '../../widgets/marca.dart';
 import '../../widgets/mascote.dart';
 import '../../widgets/saude_memoria.dart';
 
-/// Tela inicial do aluno: saudação, resumo, saúde da memória, atalho para o
-/// histórico e o botão principal de estudar. Primeira tela do app — não há
-/// login antes dela.
+/// Tela inicial do aluno e primeira tela do app: o Adapta não abre em login.
+///
+/// Enquanto ninguém entrou, ela se apresenta sem nome nenhum e mostra a saúde
+/// da memória como amostra do que o app faz. Estudar e ver o próprio histórico
+/// exigem entrar.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nome = ref.watch(nomeAlunoProvider);
+    final aluno = ref.watch(alunoProvider);
     final materia = ref.watch(materiaSelecionadaProvider);
     final historico = ref.watch(historicoProvider);
     final texto = Theme.of(context).textTheme;
@@ -49,10 +51,16 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Olá, $nome', style: texto.headlineMedium),
+                    Text(
+                      aluno == null ? 'Vamos estudar?' : 'Olá, ${aluno.primeiroNome}',
+                      key: const Key('saudacao'),
+                      style: texto.headlineMedium,
+                    ),
                     const SizedBox(height: 4),
                     Text(
-                      'Pronto para mais um passo?',
+                      aluno == null
+                          ? 'Entre para o Camu montar a sua fila.'
+                          : 'Pronto para mais um passo?',
                       style: texto.bodyMedium?.copyWith(
                         color: scheme.onSurfaceVariant,
                       ),
@@ -77,37 +85,45 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            height: 120,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: TileEstatistica(
-                    valor: '$respondidas',
-                    rotulo: 'questões respondidas',
-                    icone: Icons.quiz_rounded,
-                    cor: scheme.primary,
+          if (aluno == null)
+            const _ConviteEntrar()
+          else
+            SizedBox(
+              height: 120,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: TileEstatistica(
+                      valor: '$respondidas',
+                      rotulo: 'questões respondidas',
+                      icone: Icons.quiz_rounded,
+                      cor: scheme.primary,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: TileEstatistica(
-                    valor: '$taxa%',
-                    rotulo: 'de acerto',
-                    icone: Icons.track_changes_rounded,
-                    cor: AppCores.teal,
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: TileEstatistica(
+                      valor: '$taxa%',
+                      rotulo: 'de acerto',
+                      icone: Icons.track_changes_rounded,
+                      cor: AppCores.teal,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
           const SizedBox(height: 24),
-          if (emRisco.isNotEmpty) ...[
+          if (aluno != null && emRisco.isNotEmpty) ...[
             _AlertaRevisao(assunto: emRisco.first),
             const SizedBox(height: 24),
           ],
-          const TituloSecao('Saúde da memória'),
+          Row(
+            children: [
+              const Expanded(child: TituloSecao('Saúde da memória')),
+              if (aluno == null) const _SeloExemplo(),
+            ],
+          ),
           AppCartao(
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
             child: Column(
@@ -124,32 +140,37 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
           ),
-          const SizedBox(height: 24),
-          const TituloSecao('Seu estudo'),
-          AppCartao(
-            key: const Key('atalho_historico'),
-            padding: const EdgeInsets.all(16),
-            aoTocar: () => context.go('/historico'),
-            child: Row(
-              children: [
-                IconeCaixa(icone: Icons.history_rounded, cor: AppCores.violeta),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Histórico de estudo', style: texto.titleSmall),
-                      Text(
-                        'Rever questões antigas e suas resoluções.',
-                        style: texto.bodySmall,
-                      ),
-                    ],
+          if (aluno != null) ...[
+            const SizedBox(height: 24),
+            const TituloSecao('Seu estudo'),
+            AppCartao(
+              key: const Key('atalho_historico'),
+              padding: const EdgeInsets.all(16),
+              aoTocar: () => context.go('/historico'),
+              child: Row(
+                children: [
+                  IconeCaixa(
+                    icone: Icons.history_rounded,
+                    cor: AppCores.violeta,
                   ),
-                ),
-                const Icon(Icons.chevron_right_rounded),
-              ],
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Histórico de estudo', style: texto.titleSmall),
+                        Text(
+                          'Rever questões antigas e suas resoluções.',
+                          style: texto.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.chevron_right_rounded),
+                ],
+              ),
             ),
-          ),
+          ],
           const SizedBox(height: 24),
           const TituloSecao('Em breve'),
           AppCartao(
@@ -174,6 +195,76 @@ class HomeScreen extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// Cartão que aparece no lugar das estatísticas enquanto ninguém entrou.
+class _ConviteEntrar extends StatelessWidget {
+  const _ConviteEntrar();
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = Theme.of(context).textTheme;
+    return CartaoGradiente(
+      key: const Key('convite_entrar'),
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Sua fila de estudo é sua',
+            style: texto.titleLarge?.copyWith(color: Colors.white),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Entre para responder questões, acompanhar o que você lembra e '
+            'rever suas resoluções.',
+            style: texto.bodyMedium?.copyWith(
+              color: Colors.white.withValues(alpha: 0.9),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              FilledButton(
+                key: const Key('botao_entrar_home'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: AppCores.indigo,
+                  minimumSize: const Size(120, 44),
+                ),
+                onPressed: () => context.push('/login'),
+                child: const Text('Entrar'),
+              ),
+              const SizedBox(width: 10),
+              TextButton(
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                onPressed: () => context.push('/cadastro'),
+                child: const Text('Criar conta'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Etiqueta que avisa que os números ao lado são só uma amostra.
+class _SeloExemplo extends StatelessWidget {
+  const _SeloExemplo();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(99),
+      ),
+      child: Text('exemplo', style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }

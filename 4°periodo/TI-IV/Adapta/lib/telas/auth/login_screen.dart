@@ -3,12 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_prototipo.dart';
+import '../../dados/modelos.dart';
 import 'moldura_auth.dart';
 
 /// Tela de login (RF01). Aqui ela só valida o formulário e volta para o app:
 /// não há autenticação, que é trabalho do backend.
+///
+/// [apos] é a rota que a pessoa tentou abrir antes de entrar, como `/sessao`.
+/// Existindo, é para lá que ela segue ao entrar, no lugar de voltar.
 class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+  final String? apos;
+  const LoginScreen({this.apos, super.key});
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
@@ -29,12 +34,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   void _entrar() {
     if (!_form.currentState!.validate()) return;
-    final apelido = _email.text.split('@').first.trim();
-    ref.read(nomeAlunoProvider.notifier).state = apelido.isEmpty
-        ? 'Bruno'
-        : apelido[0].toUpperCase() + apelido.substring(1);
-    ref.read(entrouProvider.notifier).state = true;
-    if (context.canPop()) {
+    final email = _email.text.trim();
+    final apelido = email.split('@').first;
+    ref.read(alunoProvider.notifier).state = Aluno(
+      nome: apelido.isEmpty
+          ? 'Aluno'
+          : apelido[0].toUpperCase() + apelido.substring(1),
+      email: email,
+    );
+
+    final destino = widget.apos;
+    if (destino != null && destino.isNotEmpty) {
+      context.pushReplacement(Uri.decodeComponent(destino));
+    } else if (context.canPop()) {
       context.pop();
     } else {
       context.go('/');
@@ -101,7 +113,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               children: [
                 Text('Primeira vez por aqui?', style: texto.bodyMedium),
                 TextButton(
-                  onPressed: () => context.pushReplacement('/cadastro'),
+                  onPressed: () => context.pushReplacement(
+                    widget.apos == null
+                        ? '/cadastro'
+                        : '/cadastro?apos=${widget.apos}',
+                  ),
                   child: const Text('Criar conta'),
                 ),
               ],

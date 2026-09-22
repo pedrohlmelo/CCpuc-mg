@@ -27,7 +27,7 @@ class MateriasScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nome = ref.watch(nomeAlunoProvider);
+    final aluno = ref.watch(alunoProvider);
     final selecionada = ref.watch(materiaSelecionadaProvider);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -42,7 +42,12 @@ class MateriasScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
         children: [
-          Text('O que vamos estudar, $nome?', style: texto.headlineMedium),
+          Text(
+            aluno == null
+                ? 'O que vamos estudar?'
+                : 'O que vamos estudar, ${aluno.primeiroNome}?',
+            style: texto.headlineMedium,
+          ),
           const SizedBox(height: 6),
           Text(
             'Escolha uma matéria ou deixe o Camu decidir por você.',

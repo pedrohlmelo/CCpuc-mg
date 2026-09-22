@@ -17,8 +17,8 @@ class PerfilScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nome = ref.watch(nomeAlunoProvider);
-    final entrou = ref.watch(entrouProvider);
+    final aluno = ref.watch(alunoProvider);
+    final entrou = aluno != null;
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -41,16 +41,15 @@ class PerfilScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        nome,
+                        aluno?.nome ?? 'Você ainda não entrou',
                         style: texto.headlineSmall?.copyWith(
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        entrou
-                            ? 'Conta de demonstração'
-                            : 'Você está estudando sem conta',
+                        aluno?.email ??
+                            'Entre para estudar e guardar seu progresso.',
                         style: texto.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: 0.85),
                         ),
@@ -74,10 +73,8 @@ class PerfilScreen extends ConsumerWidget {
                     cor: scheme.error,
                     titulo: 'Sair da conta',
                     descricao: 'Volta a estudar sem conta',
-                    aoTocar: () {
-                      ref.read(entrouProvider.notifier).state = false;
-                      ref.read(nomeAlunoProvider.notifier).state = 'Bruno';
-                    },
+                    aoTocar: () =>
+                        ref.read(alunoProvider.notifier).state = null,
                   )
                 else ...[
                   _Item(

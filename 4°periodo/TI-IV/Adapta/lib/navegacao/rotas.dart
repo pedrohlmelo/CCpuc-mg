@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../dados/estado_prototipo.dart';
 import '../telas/admin/admin_assuntos_screen.dart';
 import '../telas/admin/admin_grafo_screen.dart';
 import '../telas/admin/admin_home_screen.dart';
@@ -20,8 +21,10 @@ import 'casca_aluno.dart';
 /// Mapa de navegação do app.
 ///
 /// O app abre em `/`, a tela inicial do aluno: não há tela de login na
-/// abertura e nenhuma rota exige sessão. Login, cadastro e painel admin são
-/// alcançados pela aba Perfil e abrem por cima, sempre com botão de voltar.
+/// abertura. A tela inicial se apresenta sem nome e, para estudar, manda
+/// entrar: `/sessao` é a única rota que exige alguém na sessão, e quem chega
+/// nela sem ter entrado é levado ao login e volta para a sessão depois.
+/// Login, cadastro e painel admin abrem por cima, sempre com botão de voltar.
 ///
 /// | Rota                  | Tela                        |
 /// |-----------------------|-----------------------------|
@@ -35,8 +38,21 @@ import 'casca_aluno.dart';
 /// | `/login`, `/cadastro` | entrar e criar conta        |
 /// | `/admin/...`          | painel administrativo       |
 final routerProvider = Provider<GoRouter>((ref) {
+  // Um ValueNotifier para o go_router reavaliar as rotas quando alguém entra
+  // ou sai, sem que ele precise conhecer o Riverpod.
+  final sessao = ValueNotifier<bool>(ref.read(entrouProvider));
+  ref.listen(entrouProvider, (_, atual) => sessao.value = atual);
+  ref.onDispose(sessao.dispose);
+
   return GoRouter(
     initialLocation: '/',
+    refreshListenable: sessao,
+    redirect: (_, estado) {
+      final indoEstudar = estado.matchedLocation == '/sessao';
+      if (!indoEstudar || sessao.value) return null;
+      final destino = Uri.encodeComponent(estado.uri.toString());
+      return '/login?apos=$destino';
+    },
     routes: [
       StatefulShellRoute.indexedStack(
         builder: (_, _, shell) => CascaAluno(shell: shell),
@@ -78,8 +94,16 @@ final routerProvider = Provider<GoRouter>((ref) {
           idQuestao: int.tryParse(estado.uri.queryParameters['questao'] ?? ''),
         ),
       ),
-      GoRoute(path: '/login', builder: (_, _) => const LoginScreen()),
-      GoRoute(path: '/cadastro', builder: (_, _) => const CadastroScreen()),
+      GoRoute(
+        path: '/login',
+        builder: (_, estado) =>
+            LoginScreen(apos: estado.uri.queryParameters['apos']),
+      ),
+      GoRoute(
+        path: '/cadastro',
+        builder: (_, estado) =>
+            CadastroScreen(apos: estado.uri.queryParameters['apos']),
+      ),
       GoRoute(
         path: '/admin',
         builder: (_, _) => const AdminHomeScreen(),

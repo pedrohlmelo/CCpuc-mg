@@ -3,13 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_prototipo.dart';
+import '../../dados/modelos.dart';
 import '../../widgets/mascote.dart';
 import 'moldura_auth.dart';
 
 /// Tela de cadastro (RF01). Valida o formulário e volta para o app; o cadastro
 /// de verdade é trabalho do backend.
+///
+/// [apos] é a rota que a pessoa tentou abrir antes de criar a conta.
 class CadastroScreen extends ConsumerStatefulWidget {
-  const CadastroScreen({super.key});
+  final String? apos;
+  const CadastroScreen({this.apos, super.key});
 
   @override
   ConsumerState<CadastroScreen> createState() => _CadastroScreenState();
@@ -31,10 +35,15 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
 
   void _cadastrar() {
     if (!_form.currentState!.validate()) return;
-    final primeiro = _nome.text.trim().split(' ').first;
-    ref.read(nomeAlunoProvider.notifier).state = primeiro;
-    ref.read(entrouProvider.notifier).state = true;
-    if (context.canPop()) {
+    ref.read(alunoProvider.notifier).state = Aluno(
+      nome: _nome.text.trim(),
+      email: _email.text.trim(),
+    );
+
+    final destino = widget.apos;
+    if (destino != null && destino.isNotEmpty) {
+      context.pushReplacement(Uri.decodeComponent(destino));
+    } else if (context.canPop()) {
       context.pop();
     } else {
       context.go('/');
@@ -105,7 +114,11 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
               children: [
                 Text('Já tem conta?', style: texto.bodyMedium),
                 TextButton(
-                  onPressed: () => context.pushReplacement('/login'),
+                  onPressed: () => context.pushReplacement(
+                    widget.apos == null
+                        ? '/login'
+                        : '/login?apos=${widget.apos}',
+                  ),
                   child: const Text('Entrar'),
                 ),
               ],

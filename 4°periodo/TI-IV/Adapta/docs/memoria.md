@@ -211,8 +211,12 @@ Leitura do fluxo:
 
 **Autenticação e perfil**
 - O app **não abre em tela de login** (instrução do professor): a primeira tela é a
-  inicial do aluno, e dá para estudar sem conta
-- Cadastro e login ficam acessíveis pelo perfil, para quem quiser guardar o progresso
+  inicial do aluno
+- Sem ninguém na sessão, essa tela se apresenta **sem nome**: nada de saudar um aluno
+  que não entrou
+- Estudar e ver o histórico **exigem entrar**, porque a fila e o progresso são de uma
+  pessoa; quem toca em "Entrar para estudar" vai ao login e volta direto para a questão
+- Cadastro e login ficam acessíveis pela tela inicial e pelo perfil
 - Seleção de matérias/áreas de interesse
 - Perfil com nível estimado por assunto
 
@@ -299,7 +303,8 @@ Requisitos consolidados para a apresentação. Escritos em linguagem de usuário
 | RF11 | Acessar painel de administrador para gerenciar matérias, assuntos, dependências do grafo e cadastrar questões |
 | RF12 | Rever as questões já respondidas e a resolução de cada uma (alternativa marcada, gabarito e explicação) |
 | RF13 | Refazer uma questão já respondida, mantendo o registro das tentativas |
-| RF14 | Usar o app sem conta: o acesso não começa por tela de login |
+| RF14 | Abrir o app direto na tela inicial, sem passar por tela de login |
+| RF15 | Exigir conta para estudar e para ver o histórico, levando ao login e voltando ao ponto de origem |
 
 ### 8.3 Requisitos Não Funcionais (RNF)
 
@@ -319,9 +324,9 @@ Requisitos consolidados para a apresentação. Escritos em linguagem de usuário
 | RF03, RF06 | Pilar 1 — Recomendação Adaptativa |
 | RF07, RF08 | Pilar 2 — Previsor de Esquecimento |
 | RF09 | Pilar 3 — Grafo de Conhecimento |
-| RF01, RF02, RF04, RF05, RF10, RF11, RF12, RF13, RF14 | Base do app |
+| RF01, RF02, RF04, RF05, RF10, RF11, RF12, RF13, RF14, RF15 | Base do app |
 
-> `⬜ EM ABERTO` — não há RF cobrindo o **mapa de conhecimento** (seção 7.1), embora o RNF06 pressuponha essa tela. Decidir: entra como RF15 ou sai do escopo junto com o RNF06?
+> `⬜ EM ABERTO` — não há RF cobrindo o **mapa de conhecimento** (seção 7.1), embora o RNF06 pressuponha essa tela. Decidir: entra como RF16 ou sai do escopo junto com o RNF06?
 
 > `⬜ EM ABERTO` — não há RF cobrindo a **trilha até um objetivo** (seção 7.1). Provável adiamento pós-MVP; confirmar e registrar.
 
@@ -411,7 +416,7 @@ próximo passo de integração, e nenhuma tela precisa mudar por causa disso.
 
 | Tela | O que mostra |
 |---|---|
-| Inicial do aluno | saudação, resumo, saúde da memória, alerta de revisão, botão de estudar |
+| Inicial do aluno | sem conta: apresentação sem nome, convite para entrar e a saúde da memória como amostra. Com conta: saudação pelo nome, resumo, alerta de revisão e botão de estudar |
 | Matérias | escolha da matéria ou estudo guiado |
 | Sessão de estudo | uma questão por vez, com feedback e explicação |
 | Histórico | questões já respondidas, por dia, com filtro de acerto e erro |
@@ -421,7 +426,8 @@ próximo passo de integração, e nenhuma tela precisa mudar por causa disso.
 | Painel administrativo | menu, matérias, assuntos, grafo de dependências e questões |
 
 Navegação: três abas fixas na base (Início, Histórico, Perfil). As demais telas abrem por
-cima e sempre têm botão de voltar.
+cima e sempre têm botão de voltar. A sessão de estudo é a única que exige conta: sem ela,
+o app leva ao login e devolve a pessoa à questão depois de entrar.
 
 ---
 

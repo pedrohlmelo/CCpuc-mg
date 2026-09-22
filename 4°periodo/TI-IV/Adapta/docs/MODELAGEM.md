@@ -75,8 +75,10 @@ alimentadas desde a Sprint 2**, mesmo sem modelo algum rodando — são o datase
 
 ### Aluno
 1. Abre o app direto na tela inicial, sem login (RF14)
-2. Vê saúde da memória por assunto, alertas e o botão "Estudar agora"
-3. Se quiser, filtra por matéria ou fica no "estudo guiado" (RF02)
+2. Sem conta, a tela se apresenta sem nome e convida a entrar; a saúde da memória
+   aparece marcada como exemplo
+3. Ao tocar em "Entrar para estudar", passa pelo login e volta direto para a questão (RF15)
+4. Se quiser, filtra por matéria ou fica no "estudo guiado" (RF02)
 4. Sessão: fila → questão → responde → feedback imediato + explicação (RF04, RF05) → grava histórico
 5. Histórico: questões respondidas por dia, resolução de cada uma e refazer (RF10, RF12, RF13)
 6. Perfil: entrar, criar conta, tema e painel administrativo (RF01)
@@ -140,7 +142,9 @@ O mapa tela a tela está em `docs/TELAS.md`; o detalhe das pastas, em `docs/ESTR
 | Estado de interface | **flutter_riverpod** | providers testáveis, sem `BuildContext` |
 | Navegação | **go_router** com `StatefulShellRoute` | abas com pilha própria e rotas nomeadas |
 | Abertura do app | **tela inicial do aluno**, sem login | instrução do professor (RF14) |
-| Login e painel admin | alcançados pelo **perfil** | tirar a autenticação do caminho de entrada |
+| Identidade na abertura | nenhuma: sem conta a tela não mostra nome | não fingir uma sessão que não existe |
+| Acesso ao estudo | `/sessao` exige conta; o `redirect` do go_router manda ao login com `?apos=` e devolve à questão | a fila e o histórico são de uma pessoa (RF15) |
+| Login e painel admin | alcançados pela tela inicial e pelo **perfil** | tirar a autenticação do caminho de entrada |
 | Voltar | `BotaoVoltar` em toda tela empilhada | com queda para a tela inicial quando não há pilha |
 | Dependências | só `flutter_riverpod`, `go_router` e `shared_preferences` | saíram `sqflite`, `crypto`, `path`, `path_provider` |
 | Nomes no código | português sem acento | casar com o modelo de dados |
