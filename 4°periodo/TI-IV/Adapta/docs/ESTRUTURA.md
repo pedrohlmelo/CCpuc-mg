@@ -1,65 +1,74 @@
 # Estrutura do código
 
+O app desta etapa é um **protótipo de telas e navegação**: sem banco, sem rede e sem
+regra de estudo. As pastas são organizadas por tipo de arquivo, não por funcionalidade,
+para que achar uma tela seja imediato.
+
 ```
 lib/
-├── main.dart                        abre o banco e sobe o app com ProviderScope
-├── app.dart                         MaterialApp.router + tema
-├── core/
-│   ├── database/
-│   │   ├── tabelas.dart             DDL das 9 tabelas (seção 9 da memória)
-│   │   ├── seed.dart                dados iniciais (admin, 2 matérias, grafo pequeno, questões)
-│   │   └── app_database.dart        abrirBanco() + databaseProvider
-│   ├── seguranca/hash_senha.dart    SHA-256 + salt
-│   ├── router/app_router.dart       rotas + guarda de sessão/admin
-│   ├── tema/app_tema.dart           tokens (AppCores, CoresMemoria, AppMedidas), tema claro/escuro, tipografia
-│   ├── tema/tema_controller.dart    temaProvider (claro/escuro/sistema) + persistência em shared_preferences
-│   └── widgets/                     componentes compartilhados
-│       ├── mascote.dart             Camu (poses normal/feliz/pensativo) + versão animada
-│       ├── marca.dart               logotipo "Adapta•"
-│       ├── cartoes.dart             AppCartao, CartaoGradiente, TileEstatistica, BarraSaude, EstadoVazio…
-│       ├── rodape_copyright.dart    InfoLegal.copyright + RodapeCopyright (rodapé das telas)
-│       ├── botao_tema.dart          BotaoTema: ícone sol/lua que alterna claro/escuro
-│       └── paleta_materias.dart     ícone + cor por matéria
-├── features/                        uma pasta por funcionalidade; domain / data / application / presentation
-│   ├── autenticacao/                RF01 — Usuario, UsuarioRepository, SessaoController, login e cadastro
-│   ├── materias/                    RF02 — Materia, Assunto, MateriaRepository, tela de escolha
-│   ├── questoes/                    RF04/05 — Questao, Alternativa, HistoricoEstudo, repositórios, sessão
-│   ├── home/                        tela inicial: resumo, saúde da memória (via previsor), alertas
-│   └── admin/                       RF11 — GrafoRepository e telas do painel
-└── pilares/                         contratos + stubs dos três motores
-    ├── grafo/                       GrafoConhecimento (DAG, ciclo, topológica, BFS reversa)
-    ├── recomendacao/                Recomendador (stub sequencial)
-    └── esquecimento/                PrevisorEsquecimento (stub exponencial)
+├── main.dart                     sobe o app (só lê a preferência de tema)
+├── app.dart                      MaterialApp.router + tema
+├── telas/                        TODAS as telas ficam aqui — ver docs/TELAS.md
+│   ├── aluno/                    inicial, matérias, sessão, histórico, resolução, perfil
+│   ├── auth/                     login, cadastro e a moldura das duas
+│   └── admin/                    painel: menu, matérias, assuntos, grafo, questões
+├── navegacao/
+│   ├── rotas.dart                mapa de rotas (go_router)
+│   └── casca_aluno.dart          barra inferior: Início, Histórico, Perfil
+├── dados/
+│   ├── modelos.dart              classes simples que as telas desenham
+│   ├── dados_exemplo.dart        listas fixas de matérias, assuntos, questões e histórico
+│   └── estado_prototipo.dart     estado em memória: aba, matéria, nome, respostas
+├── tema/
+│   ├── app_tema.dart             tokens (AppCores, CoresMemoria, AppMedidas) e tipografia
+│   └── tema_controller.dart      claro/escuro, salvo em shared_preferences
+└── widgets/                      peças reutilizadas pelas telas
+    ├── cartoes.dart              AppCartao, CartaoGradiente, TileEstatistica, BarraSaude…
+    ├── questao_widget.dart       enunciado + alternativas + feedback (e modo leitura)
+    ├── botao_voltar.dart         volta uma tela, ou vai para o início se não houver
+    ├── botao_tema.dart           ícone sol/lua
+    ├── saude_memoria.dart        cor, rótulo e legenda dos estados de memória
+    ├── formato_data.dart         "Hoje", "Ontem", "20 de set", "09:12"
+    ├── mascote.dart              Camu (normal / feliz / pensativo)
+    ├── marca.dart                logotipo "Adapta•"
+    ├── paleta_materias.dart      ícone e cor por matéria
+    └── rodape_copyright.dart     linha de copyright
 
 assets/
-├── mascote/                         camu_normal / camu_feliz / camu_pensativo (PNG 768px)
-├── icone/                           fontes do ícone do app (flutter_launcher_icons)
-└── fontes/                          Plus Jakarta Sans (variável, OFL)
+├── mascote/                      camu_normal / camu_feliz / camu_pensativo (PNG)
+├── icone/                        fontes do ícone do app (flutter_launcher_icons)
+└── fontes/                       Plus Jakarta Sans (OFL)
 
 test/
-├── test_helpers.dart                bancoDeTeste(): SQLite em memória com seed
-├── capturas/                        gera PNGs das telas (CAPTURAS=1 flutter test test/capturas --tags capturas)
-├── core/                            schema, seed, hash
-├── features/                        repositórios
-├── pilares/                         grafo e previsor
-└── widget/                          fluxo completo login → matéria → questão
+├── widget/navegacao_test.dart    as telas abrem, voltam e registram respostas
+├── widget/tema_toggle_test.dart  alternância de tema
+├── dados/dados_exemplo_test.dart coerência dos dados de exemplo
+└── capturas/                     gera PNGs das telas (ver README)
 ```
+
+## O que ficou fora do app, de propósito
+
+Banco de dados, autenticação, montagem da fila de estudo e os três pilares
+(recomendação, esquecimento e grafo) são responsabilidade do **backend Java + Spring**,
+ainda a ser criado. Ver `docs/memoria.md`, seção 10.1.
+
+Enquanto ele não existe, as telas leem `lib/dados/dados_exemplo.dart`. A integração
+futura troca esse arquivo por chamadas de API sem alterar as telas.
 
 ## Identidade visual
 
-- Mascote: **Camu**, um camaleão (adaptação = a proposta do app). Vetor gerado por script; PNGs em `assets/mascote/`.
+- Mascote: **Camu**, um camaleão (adaptação = a proposta do app). PNGs em `assets/mascote/`.
 - Marca: índigo `#4F46E5` → violeta `#7C3AED`. Camu em teal `#14B8A6` → lima `#A3E635`.
 - Saúde da memória: verde / âmbar / vermelho fixos (`CoresMemoria`), iguais nos dois temas.
 - Tipografia: Plus Jakarta Sans, títulos com peso 700–800 e tracking negativo.
-- Superfícies: cartões com borda fina de 1px, raio 20, sem elevação; sombra só em destaque.
-- Tema escuro segue o sistema (`ThemeMode.system`).
+- Superfícies: cartões com borda fina de 1px, raio 20, sem elevação.
 
-Para regenerar mascote e ícone: script Python usado está em `docs/` (ver `mascote.py`); ícones com `dart run flutter_launcher_icons`.
+Para regenerar mascote e ícone: script em `docs/mascote.py`; ícones com
+`dart run flutter_launcher_icons`.
 
 ## Convenções
 
 - Nomes em português sem acento no código; acentos só em strings de interface.
-- Tela nova = pasta em `features/<nome>/presentation/` + rota em `core/router/app_router.dart`.
-- Acesso a banco só em `data/*_repository.dart`. Widgets nunca falam SQL.
-- Cada repositório expõe um `Provider`; nos testes, sobrescreva `databaseProvider`.
-- Trocar o algoritmo de um pilar = trocar a implementação no `Provider` correspondente.
+- Tela nova: seguir o passo a passo no fim de `docs/TELAS.md`.
+- Nenhum widget conhece SQL, HTTP ou regra de negócio. Dados vêm de `lib/dados/`.
+- Cada `Scaffold` de tela tem a chave `Key('tela_<nome>')`, usada pelos testes.

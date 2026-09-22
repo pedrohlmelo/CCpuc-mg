@@ -74,104 +74,99 @@ alimentadas desde a Sprint 2**, mesmo sem modelo algum rodando — são o datase
 ## 3. Fluxos de usuário
 
 ### Aluno
-1. Cadastro / login (RF01)
-2. Escolhe matéria ou "estudo geral" (RF02)
-3. Home: saúde da memória por assunto, alertas, lacuna detectada, botão "Estudar hoje"
+1. Abre o app direto na tela inicial, sem login (RF14)
+2. Vê saúde da memória por assunto, alertas e o botão "Estudar agora"
+3. Se quiser, filtra por matéria ou fica no "estudo guiado" (RF02)
 4. Sessão: fila → questão → responde → feedback imediato + explicação (RF04, RF05) → grava histórico
-5. Mapa de conhecimento (grafo colorido), trilha até objetivo, histórico (RF10)
+5. Histórico: questões respondidas por dia, resolução de cada uma e refazer (RF10, RF12, RF13)
+6. Perfil: entrar, criar conta, tema e painel administrativo (RF01)
+7. Adiante: mapa de conhecimento (grafo colorido) e trilha até um objetivo
 
 ### Admin (uso interno do grupo, RF11)
-1. Login com `tipo = admin`
-2. CRUD de matérias, assuntos, arestas do grafo (com validação de ciclo), questões + alternativas
+1. Entra pelo perfil, em "Painel administrativo"
+2. Matérias, assuntos, arestas do grafo e questões + alternativas
 
 ---
 
-## 4. O que a Sprint 2 entrega (escopo deste scaffold)
+## 4. O que esta etapa entrega
 
-| Item da sprint | O que existe no código |
+Depois da revisão do professor, o escopo do app Flutter foi redefinido: **telas e
+navegação, sem funcionalidade implementada**. O que existia de consulta a banco,
+autenticação e algoritmo saiu do app e passa a ser trabalho do backend.
+
+| Item | Situação |
 |---|---|
-| Setup Flutter + banco local | projeto criado, `sqflite`, DDL das 9 tabelas, seed inicial |
-| Cadastro e autenticação (RF01) | telas de login/cadastro, `UsuarioRepository`, hash SHA-256 + salt |
-| Estrutura do Painel Admin (RF11) | rota `/admin` com menu e telas-esqueleto (matérias, assuntos, grafo, questões) |
-| Fluxo de escolha de matérias (RF02) | tela lista matérias do banco + opção "Estudo geral" |
-| Interface básica de questões (RF04) | tela mostra enunciado + alternativas, marca acerto/erro, grava `Historico_Estudo` |
+| Telas do aluno (inicial, matérias, sessão, histórico, resolução, perfil) | prontas |
+| Telas de conta (login, cadastro) | prontas, fora da abertura do app |
+| Painel administrativo (menu, matérias, assuntos, grafo, questões) | prontas |
+| Navegação com abas e botão de voltar em toda tela interna | pronta |
+| Banco local, repositórios, hash de senha, pilares | removidos do app |
+| Dados de exemplo em memória para as telas | prontos |
 
-Fora da Sprint 2 (só pastas/interfaces reservadas): fila de estudo (RF03), adaptação de
-dificuldade (RF06), painel de esquecimento (RF07/08), diagnóstico de causa-raiz (RF09),
-histórico (RF10), mapa do grafo, trilha.
+Fora desta etapa: qualquer persistência, a fila real de estudo (RF03), a adaptação de
+dificuldade (RF06), o painel de esquecimento calculado (RF07/08), o diagnóstico de
+causa-raiz (RF09), o mapa do grafo e a trilha.
 
 ---
 
 ## 5. Arquitetura do app Flutter
 
-Feature-first com três camadas por feature. Os pilares ficam isolados em `lib/pilares/`
-porque são o diferencial do projeto e serão desenvolvidos por pessoas diferentes.
+Pastas por tipo de arquivo. A regra é que encontrar uma tela não dependa de saber a que
+funcionalidade ela pertence.
 
 ```
 lib/
 ├── main.dart                   ponto de entrada (ProviderScope)
 ├── app.dart                    MaterialApp.router + tema
-├── core/                       infraestrutura compartilhada
-│   ├── database/               abertura do SQLite, DDL, seed, provider
-│   ├── seguranca/              hash de senha
-│   ├── router/                 rotas (go_router)
-│   └── tema/                   cores e tipografia
-├── features/                   telas e regras por funcionalidade
-│   ├── autenticacao/           RF01
-│   ├── materias/               RF02
-│   ├── questoes/               RF04 / RF05
-│   ├── home/                   tela inicial (esqueleto)
-│   └── admin/                  RF11
-└── pilares/                    os três motores (interfaces + stubs)
-    ├── grafo/                  Pilar 3 — DAG, travessias
-    ├── recomendacao/           Pilar 1 — próxima questão
-    └── esquecimento/           Pilar 2 — retenção estimada
+├── telas/                      todas as telas: aluno/, auth/, admin/
+├── navegacao/                  rotas (go_router) e a casca com a barra inferior
+├── dados/                      modelos de apresentação, dados de exemplo e estado de UI
+├── tema/                       cores, tipografia e claro/escuro
+└── widgets/                    peças reutilizadas pelas telas
 ```
 
-Camadas dentro de cada feature:
+Regra de dependência: `telas → widgets → dados/tema`. Nenhum widget conhece SQL, HTTP ou
+regra de negócio.
 
-- `domain/` — classes puras (sem Flutter, sem SQL). Testáveis sozinhas.
-- `data/` — repositórios que falam com o `Database`. Testados com SQLite em memória.
-- `presentation/` — widgets. Recebem dados via Riverpod.
-
-Regra de dependência: `presentation → data → domain`. `pilares/` só dependem de `domain/`
-e de `core/database` — nunca de widgets.
+O mapa tela a tela está em `docs/TELAS.md`; o detalhe das pastas, em `docs/ESTRUTURA.md`.
 
 ---
 
-## 6. Decisões técnicas fechadas nesta sprint
+## 6. Decisões técnicas desta etapa
 
 | Decisão | Escolha | Motivo |
 |---|---|---|
-| Banco local | **sqflite** (SQLite) | RNF04 offline-first; DDL direta da seção 9; sem codegen; testável em memória com `sqflite_common_ffi` |
-| Gerência de estado | **flutter_riverpod** | providers testáveis sem `BuildContext`; fácil injetar banco em memória nos testes |
-| Navegação | **go_router** | rotas nomeadas, guarda de rota para admin |
-| Hash de senha | **SHA-256 + salt por usuário** (`package:crypto`) | atende "nunca texto puro" sem dependência nativa. Trocar por bcrypt/argon2 se sair do escopo acadêmico |
-| Alternativas por questão | **variável** (tabela própria, `letra` ordena) | memória já modela como 1:N; 5 fixas vira só validação no admin |
-| Representação do grafo em memória | **lista de adjacência** dupla (`saida` e `entrada`) | RF09 caminha para trás, propagação caminha para frente; índices nas duas colunas no SQL |
-| Onde o grafo roda | **no dispositivo** | dezenas de vértices no MVP; RNF02 (2 s) e RNF04 (offline) |
-| Nomes no código | português sem acento, como a memória | casar com o modelo de dados |
-| Linguagens | **app: 100 % Dart/Flutter; backend: Java + Spring** (projeto separado, ainda não criado) | restrição do grupo. A casca Android gerada usa `MainActivity.java`; os scripts Gradle `.kts` são ferramenta de build do Flutter, não código do app |
+| Dados | **listas fixas em memória** (`lib/dados/dados_exemplo.dart`) | o app é protótipo de telas; persistência é do backend |
+| Estado de interface | **flutter_riverpod** | providers testáveis, sem `BuildContext` |
+| Navegação | **go_router** com `StatefulShellRoute` | abas com pilha própria e rotas nomeadas |
+| Abertura do app | **tela inicial do aluno**, sem login | instrução do professor (RF14) |
+| Login e painel admin | alcançados pelo **perfil** | tirar a autenticação do caminho de entrada |
+| Voltar | `BotaoVoltar` em toda tela empilhada | com queda para a tela inicial quando não há pilha |
+| Dependências | só `flutter_riverpod`, `go_router` e `shared_preferences` | saíram `sqflite`, `crypto`, `path`, `path_provider` |
+| Nomes no código | português sem acento | casar com o modelo de dados |
+| Linguagens | app 100 % Dart/Flutter; backend Java + Spring (a criar) | restrição do grupo |
 
 ---
 
 ## 7. Estratégia de testes
 
-- **Repositórios**: `sqflite_common_ffi` com `inMemoryDatabasePath`. Cada teste sobe o schema do zero.
-- **Domínio / pilares**: testes unitários puros (ex.: detecção de ciclo no grafo).
-- **Widgets**: `flutter_test` com `ProviderScope(overrides: [...])` injetando repositórios fake.
+- **Navegação** (`test/widget/navegacao_test.dart`): cada tela abre, cada volta funciona,
+  responder uma questão aparece no histórico. Usa as chaves `Key('tela_<nome>')`.
+- **Dados de exemplo** (`test/dados/dados_exemplo_test.dart`): ids únicos, uma alternativa
+  correta por questão, referências válidas entre questão, assunto e matéria.
+- **Tema** (`test/widget/tema_toggle_test.dart`): alternância claro/escuro.
+- **Capturas** (`test/capturas/`): gera PNGs das telas para os slides.
 
 Rodar: `flutter test`.
 
 ---
 
-## 8. Continua em aberto (não bloqueia a Sprint 2)
+## 8. Continua em aberto
 
-- Algoritmos dos Pilares 1 e 2, geração dos datasets sintéticos, métricas.
-- Backend Java + Spring: definido como stack, mas ainda sem projeto. Hoje o app é 100 % local (SQLite).
-  Quando o backend existir, os repositórios em `data/` viram a fronteira de sincronização.
-- Matéria do MVP e curadoria do grafo (seed atual usa Matemática só como exemplo).
-- `Nivel_Memoria` × `Proficiencia`: mantidas separadas (conceitos diferentes); fundir depois se atrapalhar.
-- Tabela `Sessao_Estudo`: não criada. `Historico_Estudo` atende RF10.
-- RF12 (mapa) e trilha: sem RF; pasta `pilares/grafo` já prevê as travessias.
-- Biblioteca de visualização do grafo.
+- Backend Java + Spring: definido como stack, ainda sem projeto. É ele que passa a
+  responder pelas 9 tabelas da seção 2, pela autenticação e pelos três pilares.
+- Algoritmos dos Pilares 1 e 2, datasets sintéticos e métricas.
+- Onde os algoritmos de grafo rodam depois que o backend existir.
+- Matéria do MVP e curadoria do grafo (os dados de exemplo usam Matemática e História).
+- Telas do mapa de conhecimento e da trilha até um objetivo.
+- Como o app fará a integração: cliente HTTP, tratamento de erro e modo offline (RNF04).

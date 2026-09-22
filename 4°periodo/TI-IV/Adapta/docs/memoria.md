@@ -210,7 +210,9 @@ Leitura do fluxo:
 ### 7.1 Essenciais (escopo mínimo da entrega)
 
 **Autenticação e perfil**
-- Cadastro e login
+- O app **não abre em tela de login** (instrução do professor): a primeira tela é a
+  inicial do aluno, e dá para estudar sem conta
+- Cadastro e login ficam acessíveis pelo perfil, para quem quiser guardar o progresso
 - Seleção de matérias/áreas de interesse
 - Perfil com nível estimado por assunto
 
@@ -243,6 +245,10 @@ Leitura do fluxo:
 - Desempenho por matéria e por assunto
 - Evolução ao longo do tempo
 - Pontos fortes e gargalos identificados
+- Lista das questões já respondidas, agrupada por dia e filtrável por acerto/erro
+- Abrir uma questão antiga e rever a resolução: enunciado, alternativa marcada,
+  gabarito e explicação
+- Refazer uma questão já respondida; cada tentativa fica registrada
 
 **Agenda de revisões**
 - Lista do que revisar hoje / esta semana, ordenada por urgência
@@ -291,6 +297,9 @@ Requisitos consolidados para a apresentação. Escritos em linguagem de usuário
 | RF09 | Apontar o assunto anterior (pré-requisito) que está causando os erros |
 | RF10 | Apresentar o histórico de desempenho por matéria e assunto |
 | RF11 | Acessar painel de administrador para gerenciar matérias, assuntos, dependências do grafo e cadastrar questões |
+| RF12 | Rever as questões já respondidas e a resolução de cada uma (alternativa marcada, gabarito e explicação) |
+| RF13 | Refazer uma questão já respondida, mantendo o registro das tentativas |
+| RF14 | Usar o app sem conta: o acesso não começa por tela de login |
 
 ### 8.3 Requisitos Não Funcionais (RNF)
 
@@ -310,9 +319,9 @@ Requisitos consolidados para a apresentação. Escritos em linguagem de usuário
 | RF03, RF06 | Pilar 1 — Recomendação Adaptativa |
 | RF07, RF08 | Pilar 2 — Previsor de Esquecimento |
 | RF09 | Pilar 3 — Grafo de Conhecimento |
-| RF01, RF02, RF04, RF05, RF10, RF11 | Base do app |
+| RF01, RF02, RF04, RF05, RF10, RF11, RF12, RF13, RF14 | Base do app |
 
-> `⬜ EM ABERTO` — não há RF cobrindo o **mapa de conhecimento** (seção 7.1), embora o RNF06 pressuponha essa tela. Decidir: entra como RF12 ou sai do escopo junto com o RNF06?
+> `⬜ EM ABERTO` — não há RF cobrindo o **mapa de conhecimento** (seção 7.1), embora o RNF06 pressuponha essa tela. Decidir: entra como RF15 ou sai do escopo junto com o RNF06?
 
 > `⬜ EM ABERTO` — não há RF cobrindo a **trilha até um objetivo** (seção 7.1). Provável adiamento pós-MVP; confirmar e registrar.
 
@@ -382,6 +391,38 @@ Modelo de dados consolidado. Nomes em português sem acento, para casar com o c�
 
 > `⬜ EM ABERTO` — backend, banco de dados, onde os algoritmos de grafo rodam (cliente ou servidor?), forma de servir os modelos e hospedagem.
 
+### 10.1 Divisão de responsabilidades
+
+Decisão após a revisão do professor: **o app Flutter desta etapa é um protótipo de telas
+e navegação**. Ele não tem banco, consulta nem regra de estudo.
+
+| Fica no app Flutter | Fica no backend |
+|---|---|
+| Telas, layout e identidade visual | Persistência dos dados (as 9 tabelas da seção 9) |
+| Navegação entre telas e botões de voltar | Autenticação e hash de senha |
+| Estado de interface (aba atual, matéria escolhida, tema) | Montagem da fila de estudo |
+| Dados de exemplo, fixos e em memória, só para as telas terem conteúdo | Os três pilares: recomendação, esquecimento e grafo |
+
+Consequência prática: enquanto o backend não existe, o app carrega listas fixas de
+matérias, assuntos, questões e histórico. Trocar esses dados por chamadas de API é o
+próximo passo de integração, e nenhuma tela precisa mudar por causa disso.
+
+### 10.2 Telas entregues nesta etapa
+
+| Tela | O que mostra |
+|---|---|
+| Inicial do aluno | saudação, resumo, saúde da memória, alerta de revisão, botão de estudar |
+| Matérias | escolha da matéria ou estudo guiado |
+| Sessão de estudo | uma questão por vez, com feedback e explicação |
+| Histórico | questões já respondidas, por dia, com filtro de acerto e erro |
+| Resolução | a questão antiga com a resposta dada, o gabarito, a explicação e o botão de refazer |
+| Perfil | acesso a login, cadastro, tema e painel administrativo |
+| Login e cadastro | formulários, alcançados pelo perfil |
+| Painel administrativo | menu, matérias, assuntos, grafo de dependências e questões |
+
+Navegação: três abas fixas na base (Início, Histórico, Perfil). As demais telas abrem por
+cima e sempre têm botão de voltar.
+
 ---
 
 ## 11. Decisões em aberto (checklist)
@@ -419,13 +460,14 @@ Modelo de dados consolidado. Nomes em português sem acento, para casar com o c�
 
 O projeto é considerado bem-sucedido se:
 
-1. O app roda em dispositivo móvel e completa o fluxo: login → home com saúde da memória → sessão de estudo → registro do resultado → atualização da recomendação
+1. O app roda em dispositivo móvel e completa o fluxo: abertura na home com saúde da memória → sessão de estudo → registro do resultado → histórico com a resolução → atualização da recomendação
 2. Os dois modelos estão treinados, avaliados e efetivamente influenciando o que o aluno vê
 3. O grafo está implementado com algoritmos reais de travessia — não apenas desenhado na tela — e influencia a fila de estudo
 4. A recomendação demonstra adaptação: dois alunos com históricos diferentes recebem filas diferentes
 5. O diagnóstico de causa-raiz funciona: o app consegue apontar um pré-requisito falho a partir de erros em um assunto avançado
 6. O mapa de conhecimento é navegável e reflete o estado real do aluno
-7. É possível explicar e defender as escolhas técnicas na apresentação
+7. O aluno consegue voltar a qualquer questão antiga, ver como a resolveu e refazê-la
+8. É possível explicar e defender as escolhas técnicas na apresentação
 
 ---
 
@@ -451,4 +493,4 @@ O projeto é considerado bem-sucedido se:
 
 ---
 
-*Última atualização: 26/08/2026*
+*Última atualização: 22/09/2026*

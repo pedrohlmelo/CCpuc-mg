@@ -3,29 +3,42 @@
 App mobile (Flutter) de estudo por questões que **decide pelo aluno o que estudar agora**.
 Trabalho Interdisciplinar IV.
 
-Stack: app **Flutter/Dart**; backend **Java + Spring** (repositório separado, a criar).
-Não há código Kotlin no app: `android/` é só a casca gerada pelo Flutter, com `MainActivity.java`.
+Esta entrega é um **protótipo de telas e navegação**: nenhuma funcionalidade está
+implementada no app. Não há banco de dados, autenticação nem algoritmo de estudo — isso é
+trabalho do backend **Java + Spring** (repositório separado, a criar). As telas usam dados
+de exemplo fixos, em memória.
 
 > Fonte de verdade do projeto: [`docs/memoria.md`](docs/memoria.md).
-> Modelagem derivada e decisões técnicas: [`docs/MODELAGEM.md`](docs/MODELAGEM.md).
+> Onde fica cada tela: [`docs/TELAS.md`](docs/TELAS.md).
 > Mapa do código: [`docs/ESTRUTURA.md`](docs/ESTRUTURA.md).
+> Modelagem e decisões técnicas: [`docs/MODELAGEM.md`](docs/MODELAGEM.md).
 
 ## Rodar
 
 ```bash
 flutter pub get
 flutter run          # emulador / dispositivo
-flutter test         # testes unitários e de widget (SQLite em memória)
+flutter test         # navegação, dados de exemplo e tema
 flutter analyze
 ```
 
-Usuário administrador do seed: `admin@adapta.app` / `admin123`.
-Alunos são criados pela tela "Criar conta".
+O app abre direto na tela inicial do aluno. Não há tela de login na abertura: entrar e
+criar conta ficam na aba **Perfil**, junto com o acesso ao painel administrativo.
+
+## Telas
+
+**Aluno:** inicial, escolher matéria, sessão de estudo, histórico de estudo, resolução de
+uma questão antiga e perfil.
+**Conta:** entrar e criar conta.
+**Painel administrativo:** menu, matérias, assuntos, grafo de dependências e questões.
+
+Navegação: três abas na base (Início, Histórico, Perfil); as demais telas abrem por cima e
+sempre têm botão de voltar.
 
 ## Identidade
 
-Mascote **Camu** (camaleão) e ícone do app já configurados para Android e iOS.
-Tema claro e escuro, fonte Plus Jakarta Sans embarcada (funciona offline).
+Mascote **Camu** (camaleão) e ícone do app configurados para Android e iOS. Tema claro e
+escuro, fonte Plus Jakarta Sans embarcada (funciona offline).
 
 Capturas de tela para slides:
 
@@ -33,18 +46,10 @@ Capturas de tela para slides:
 CAPTURAS=1 flutter test test/capturas --tags capturas   # gera capturas/*.png
 ```
 
-## Estado atual — Sprint 2
+## Próximo passo
 
-- [x] Projeto Flutter + banco local SQLite (9 tabelas da memória, seed)
-- [x] Cadastro e autenticação com hash de senha (RF01)
-- [x] Painel administrativo: matérias, assuntos, grafo (com validação de ciclo), listagem de questões (RF11)
-- [x] Escolha de matéria ou estudo geral (RF02)
-- [x] Tela de questão com feedback, explicação e registro no histórico (RF04, RF05)
-- [x] Contratos dos três pilares com implementações provisórias (`lib/pilares/`)
-- [x] Design system (tokens, tema claro/escuro, componentes), mascote e ícone
-
-Próximas sprints: fila de estudo (RF03), adaptação de dificuldade (RF06), painel de
-esquecimento (RF07/08), diagnóstico de causa-raiz (RF09), histórico (RF10), mapa do grafo.
+Criar o backend e trocar `lib/dados/dados_exemplo.dart` por chamadas de API. As telas não
+precisam mudar para isso: nenhuma delas conhece a origem dos dados.
 
 ---
 
