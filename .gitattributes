@@ -1,0 +1,8 @@
+# Notebooks carregam saídas (imagens/tabelas) e distorcem as estatísticas de linguagem
+*.ipynb linguist-detectable=false
+
+# Código gerado automaticamente pelo Flutter para cada plataforma
+**/windows/** linguist-generated
+**/linux/** linguist-generated
+**/macos/** linguist-generated
+**/ios/** linguist-generated
