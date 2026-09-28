@@ -43,7 +43,6 @@ public class Main {
             return;
         }
 
-        // ordem lexicografica
         for (int i = 1; i <= n; i++) {
             Collections.sort(sucessores[i]);
         }
