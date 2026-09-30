@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'habitos_store.dart';
+import 'tela_detalhe_habito.dart';
 import 'tela_novo_habito.dart';
 
 void main() => runApp(
@@ -65,23 +66,14 @@ class TelaHabitos extends StatelessWidget {
       appBar: AppBar(title: const Text('Meus Hábitos')),
       body: ListView.builder(
         itemCount: habitos.length,
-        itemBuilder: (_, i) => Dismissible(
-          key: ObjectKey(habitos[i]),
-          direction: DismissDirection.endToStart,
-          background: Container(
-            color: Colors.red,
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.only(right: 16),
-            child: const Icon(Icons.delete, color: Colors.white),
-          ),
-          onDismissed: (_) => context.read<HabitosStore>().remover(habitos[i]),
-          child: ListTile(
-            leading: Icon(habitos[i].icone),
-            title: Text(habitos[i].nome),
-            subtitle: Text(habitos[i].meta),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () => context.read<HabitosStore>().remover(habitos[i]),
+        itemBuilder: (_, i) => ListTile(
+          leading: Icon(habitos[i].icone),
+          title: Text(habitos[i].nome),
+          subtitle: Text(habitos[i].meta),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => TelaDetalheHabito(habito: habitos[i]),
             ),
           ),
         ),

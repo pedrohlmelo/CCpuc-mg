@@ -41,19 +41,19 @@ void main() {
 
     expect(find.text('Ler'), findsOneWidget);
 
-    await tester.tap(find.byIcon(Icons.delete).at(1));
+    await tester.tap(find.text('Ler'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Meta: 20 páginas por dia'), findsOneWidget);
+
+    await tester.tap(find.text('Excluir'));
     await tester.pumpAndSettle();
 
     expect(find.text('Ler'), findsNothing);
 
-    await tester.drag(find.text('Beber água'), const Offset(-500, 0));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Beber água'), findsNothing);
-
     await tester.tap(find.text('Resumo'));
     await tester.pumpAndSettle();
 
-    expect(find.text('2 hábitos'), findsOneWidget);
+    expect(find.text('3 hábitos'), findsOneWidget);
   });
 }
