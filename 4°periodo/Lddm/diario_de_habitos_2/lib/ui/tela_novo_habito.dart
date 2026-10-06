@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'habitos_store.dart';
+import '../dominio/habito.dart';
+import '../dominio/habitos_store.dart';
 
 class TelaNovoHabito extends StatefulWidget {
   const TelaNovoHabito({super.key});
@@ -34,7 +35,7 @@ class _TelaNovoHabitoState extends State<TelaNovoHabito> {
             decoration: const InputDecoration(labelText: 'Nome'),
             validator: (v) {
               if (v == null || v.trim().isEmpty) return 'Informe o nome';
-              if (v.trim().length < 3) return 'Use ao menos 3 letras';
+              if (!Habito.nomeValido(v)) return 'Use ao menos 3 letras';
               return null;
             },
           ),
@@ -42,7 +43,7 @@ class _TelaNovoHabitoState extends State<TelaNovoHabito> {
             controller: _meta,
             decoration: const InputDecoration(labelText: 'Meta'),
             validator: (v) {
-              if (v == null || v.trim().isEmpty) return 'Informe a meta';
+              if (v == null || !Habito.metaValida(v)) return 'Informe a meta';
               return null;
             },
           ),
@@ -50,7 +51,7 @@ class _TelaNovoHabitoState extends State<TelaNovoHabito> {
             onPressed: () {
               if (_chave.currentState!.validate()) {
                 context.read<HabitosStore>().adicionar(
-                  Habito(_nome.text, _meta.text, Icons.check_circle),
+                  Habito(_nome.text, _meta.text),
                 );
                 Navigator.pop(context);
               }

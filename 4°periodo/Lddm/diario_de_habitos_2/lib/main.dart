@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'habitos_store.dart';
-import 'tela_detalhe_habito.dart';
-import 'tela_novo_habito.dart';
+import 'dados/habitos_repositorio.dart';
+import 'dominio/habitos_store.dart';
+import 'ui/tela_habitos.dart';
 
-void main() => runApp(
-  ChangeNotifierProvider(
-    create: (_) => HabitosStore(),
-    child: const DiarioApp(),
-  ),
-);
+void main() {
+  final repo = HabitosRepositorio();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => HabitosStore(repo)..carregar(),
+      child: const DiarioApp(),
+    ),
+  );
+}
 
 class DiarioApp extends StatelessWidget {
   const DiarioApp({super.key});
@@ -53,52 +57,4 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       ],
     ),
   );
-}
-
-class TelaHabitos extends StatelessWidget {
-  const TelaHabitos({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final habitos = context.watch<HabitosStore>().habitos;
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Meus Hábitos')),
-      body: ListView.builder(
-        itemCount: habitos.length,
-        itemBuilder: (_, i) => ListTile(
-          leading: Icon(habitos[i].icone),
-          title: Text(habitos[i].nome),
-          subtitle: Text(habitos[i].meta),
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => TelaDetalheHabito(habito: habitos[i]),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const TelaNovoHabito()),
-        ),
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class TelaResumo extends StatelessWidget {
-  const TelaResumo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final total = context.watch<HabitosStore>().habitos.length;
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Resumo')),
-      body: Center(child: Text('$total hábitos')),
-    );
-  }
 }

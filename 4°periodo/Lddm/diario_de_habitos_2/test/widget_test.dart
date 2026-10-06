@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-import 'package:diario_de_habitos_2/habitos_store.dart';
+import 'package:diario_de_habitos_2/dados/habitos_repositorio.dart';
+import 'package:diario_de_habitos_2/dominio/habitos_store.dart';
 import 'package:diario_de_habitos_2/main.dart';
 
 void main() {
   testWidgets('novo hábito aparece na lista e no resumo', (tester) async {
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        create: (_) => HabitosStore(),
+        create: (_) => HabitosStore(HabitosRepositorio())..carregar(),
         child: const DiarioApp(),
       ),
     );
+    await tester.pumpAndSettle();
 
     expect(find.text('Beber água'), findsOneWidget);
 
@@ -34,10 +36,11 @@ void main() {
   testWidgets('hábito removido some da lista e do resumo', (tester) async {
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        create: (_) => HabitosStore(),
+        create: (_) => HabitosStore(HabitosRepositorio())..carregar(),
         child: const DiarioApp(),
       ),
     );
+    await tester.pumpAndSettle();
 
     expect(find.text('Ler'), findsOneWidget);
 
