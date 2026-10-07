@@ -76,6 +76,13 @@ class TelaDetalheHabito extends StatelessWidget {
           },
           child: const Text('Arquivar'),
         ),
+        FilledButton(
+          onPressed: () {
+            context.read<HabitosStore>().priorizar(habito);
+            Navigator.pop(context);
+          },
+          child: const Text('Priorizar'),
+        ),
       ],
     ),
   );

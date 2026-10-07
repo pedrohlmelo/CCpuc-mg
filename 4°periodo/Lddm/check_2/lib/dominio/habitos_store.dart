@@ -35,4 +35,10 @@ class HabitosStore extends ChangeNotifier {
     _habitos = await _repo.carregar();
     notifyListeners();
   }
+   void priorizar(Habito h){
+    if(_habitos.remove(h)){
+      _habitos.insert(0, h);
+      notifyListeners();
+     }
+  }
 }
