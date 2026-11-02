@@ -128,21 +128,6 @@ class ConteudoRepositorio {
       whereArgs: [idQuestao],
     );
   }
-
-  /// Preenche, só onde ainda está vazia, a dificuldade treinada de cada questão.
-  Future<void> preencherDificuldades(Map<int, double> dificuldades) async {
-    final db = await _banco.db;
-    final lote = db.batch();
-    dificuldades.forEach((id, valor) {
-      lote.update(
-        'Questao',
-        {'dificuldade_calibrada': valor},
-        where: 'id = ? AND dificuldade_calibrada IS NULL',
-        whereArgs: [id],
-      );
-    });
-    await lote.commit(noResult: true);
-  }
 }
 
 final conteudoRepositorioProvider = Provider<ConteudoRepositorio>(

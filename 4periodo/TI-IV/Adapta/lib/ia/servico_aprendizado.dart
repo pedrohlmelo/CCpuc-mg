@@ -77,7 +77,6 @@ class ServicoAprendizado {
   final HistoricoRepositorio _historico;
   final AprendizadoRepositorio _aprendizado;
   final ModeloEsquecimento _esquecimento;
-  final ModeloProficiencia _proficiencia;
 
   /// Sem eles (nos testes de fila), toda questão conta como disponível.
   final Conectividade? _conectividade;
@@ -88,8 +87,7 @@ class ServicoAprendizado {
     this._grafo,
     this._historico,
     this._aprendizado,
-    this._esquecimento,
-    this._proficiencia, [
+    this._esquecimento, [
     this._conectividade,
     this._cacheImagens,
   ]);
@@ -263,9 +261,7 @@ class ServicoAprendizado {
   }
 
   double _dificuldadeDe(Questao q) =>
-      q.dificuldadeCalibrada ??
-      _proficiencia.dificuldades[q.id] ??
-      (q.dificuldade - 2).toDouble();
+      q.dificuldadeCalibrada ?? (q.dificuldade - 2).toDouble();
 
   /// Fila da próxima sessão.
   Future<List<Questao>> montarFila(
@@ -380,19 +376,13 @@ final servicoAprendizadoProvider = FutureProvider<ServicoAprendizado>((
     jsonDecode(await rootBundle.loadString('assets/modelos/esquecimento.json'))
         as Map<String, dynamic>,
   );
-  final proficiencia = ModeloProficiencia.deJson(
-    jsonDecode(await rootBundle.loadString('assets/modelos/dificuldades.json'))
-        as Map<String, dynamic>,
-  );
   final conteudo = ref.watch(conteudoRepositorioProvider);
-  await conteudo.preencherDificuldades(proficiencia.dificuldades);
   return ServicoAprendizado(
     conteudo,
     ref.watch(grafoRepositorioProvider),
     ref.watch(historicoRepositorioProvider),
     ref.watch(aprendizadoRepositorioProvider),
     esquecimento,
-    proficiencia,
     ref.watch(conectividadeProvider),
     ref.watch(cacheImagensProvider),
   );

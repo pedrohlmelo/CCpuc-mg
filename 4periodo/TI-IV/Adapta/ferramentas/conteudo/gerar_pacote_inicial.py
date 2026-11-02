@@ -16,6 +16,8 @@ DESTINO = Path(__file__).parents[2] / "lib/dados/banco/pacote_inicial.g.dart"
 ULTIMO_ID_DE_TREINO = 44
 EXTRAS = 60
 MINIMO_POR_MATERIA = 4
+# Estequiometria: a lacuna da conta de demonstração precisa funcionar offline.
+ASSUNTOS_DA_DEMO = {701}
 
 
 def tem_imagem_remota(q):
@@ -35,6 +37,10 @@ def escolher(questoes):
                          and not tem_imagem_remota(q)), key=prioridade)
     assuntos = {q["assunto"] for q in escolhidas.values()}
     extras = []
+    for q in candidatas:
+        if q["assunto"] in ASSUNTOS_DA_DEMO:
+            escolhidas[q["id"]] = q
+            extras.append(q)
 
     def incluir(q):
         escolhidas[q["id"]] = q

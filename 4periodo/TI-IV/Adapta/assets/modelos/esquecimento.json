@@ -1,10 +1,10 @@
 {
   "modelo": "regressao_logistica",
-  "intercepto": -0.08451423683752524,
+  "intercepto": -0.14539311113529602,
   "coeficientes": {
-    "log1p_dias": -1.2229840390102429,
-    "qtd_revisoes": 0.17185652713844665,
-    "dificuldade": -0.23171901306455517,
-    "taxa_acerto_aluno": 3.3328055009595388
+    "log1p_dias": -1.218771689586041,
+    "qtd_revisoes": 0.18562241014032796,
+    "dificuldade": -0.2649411612015069,
+    "taxa_acerto_aluno": 3.5293385844846408
   }
 }

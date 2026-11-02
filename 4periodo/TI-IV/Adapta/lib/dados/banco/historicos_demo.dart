@@ -4,12 +4,13 @@ library;
 import 'dart:math';
 
 import '../modelos.dart';
+import 'pacote_inicial.g.dart';
 
 enum PerfilDemo { ana, bruno }
 
-/// Só as questões de treino: as importadas mudam quando o conteúdo cresce, e o
-/// histórico precisa sair igual.
-const _ultimaDeTreino = 44;
+/// Só as questões do pacote inicial: a demonstração funciona offline, e as
+/// outras mudam quando o banco cresce.
+final _idsDoPacote = {for (final q in pacoteInicialQuestoes) q['id'] as int};
 
 /// Estudo de um assunto: em quantos dias atrás e com que taxa de acerto.
 class _Roteiro {
@@ -19,15 +20,16 @@ class _Roteiro {
   const _Roteiro(this.idAssunto, this.diasAtras, this.taxaAcerto);
 }
 
-/// Ana erra muito Logaritmo e Potenciação; o resto vai bem.
+/// Ana erra Razão e proporção e, por isso, Estequiometria: a lacuna atravessa
+/// matérias. Vai bem em História e Inglês.
 const _roteiroAna = [
   _Roteiro(8, [28, 20, 8], 0.9),
   _Roteiro(9, [27, 18, 6], 0.85),
-  _Roteiro(1, [25, 14, 6, 2], 0.2),
-  _Roteiro(2, [24, 12, 3], 0.8),
-  _Roteiro(4, [22, 10, 4], 0.8),
-  _Roteiro(3, [20, 9, 3], 0.75),
-  _Roteiro(5, [15, 7, 1], 0.1),
+  _Roteiro(16, [25, 14, 6, 2], 0.2),
+  _Roteiro(706, [22, 10, 4], 0.8),
+  _Roteiro(6, [20, 9, 3], 0.8),
+  _Roteiro(1101, [19, 8, 3], 0.85),
+  _Roteiro(701, [15, 7, 1], 0.1),
 ];
 
 /// Bruno vai bem em tudo, mas não vê Funções há quase um mês.
@@ -38,9 +40,9 @@ const _roteiroBruno = [
   _Roteiro(2, [25, 11, 2], 0.95),
   _Roteiro(3, [22, 10, 1], 0.9),
   _Roteiro(4, [29, 27], 0.85),
-  _Roteiro(14, [18, 6, 1], 0.9),
-  _Roteiro(5, [17, 6, 1], 0.9),
-  _Roteiro(15, [16, 5, 1], 0.9),
+  _Roteiro(6, [18, 6, 1], 0.9),
+  _Roteiro(1101, [17, 6, 1], 0.9),
+  _Roteiro(801, [16, 5, 1], 0.9),
 ];
 
 /// Gera as respostas do perfil, da mais antiga para a mais recente. A semente
@@ -57,7 +59,8 @@ List<Resposta> historicoDemo(
       in perfil == PerfilDemo.ana ? _roteiroAna : _roteiroBruno) {
     final questoes = todas
         .where(
-          (q) => q.idAssunto == roteiro.idAssunto && q.id <= _ultimaDeTreino,
+          (q) =>
+              q.idAssunto == roteiro.idAssunto && _idsDoPacote.contains(q.id),
         )
         .toList();
     for (final dias in roteiro.diasAtras) {

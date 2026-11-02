@@ -1,15 +1,17 @@
 """Treina os dois modelos do Adapta e exporta os coeficientes para o app.
 
 Uso, a partir da raiz do projeto Flutter (depois de ia/gerar_dataset.py):
-    python3 ia/treinar.py
+    python3 ia/treinar.py [--simular]
 
 Saída:
   assets/modelos/esquecimento.json   regressão logística do esquecimento
-  assets/modelos/dificuldades.json   dificuldade b de cada questão
+  questoes/{id}.dificuldade_irt      dificuldade b de cada questão, no Firestore
   ia/relatorio.md, ia/roc.png, ia/calibracao.png
 """
+import argparse
 import csv
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -26,6 +28,9 @@ from sklearn.model_selection import GroupShuffleSplit
 PASTA = Path(__file__).resolve().parent
 DADOS = PASTA / "dados"
 MODELOS = PASTA.parent / "assets" / "modelos"
+sys.path.insert(0, str(PASTA.parent / "ferramentas" / "conteudo"))
+import comum  # noqa: E402
+
 INDIGO = "#4F46E5"
 CINZA = "#9CA3AF"
 
@@ -114,7 +119,7 @@ def graficos(y, p_modelo, p_fixa, metricas):
     plt.close(fig)
 
 
-def treinar_dificuldades():
+def treinar_dificuldades(simular):
     d = ler_csv("respostas.csv")
     alunos, ia = np.unique(d["id_aluno"], return_inverse=True)
     questoes, iq = np.unique(d["id_questao"], return_inverse=True)
@@ -132,18 +137,38 @@ def treinar_dificuldades():
     # O coeficiente da questão é a facilidade; b é o oposto, centrado em zero.
     b = -modelo.coef_[0][len(alunos):]
     b = b - b.mean()
-    dificuldades = {str(int(q)): round(float(v), 4) for q, v in zip(questoes, b)}
-    json.dump(dificuldades, open(MODELOS / "dificuldades.json", "w"), indent=2)
+    gravar_dificuldades(
+        {int(q): round(float(v), 4) for q, v in zip(questoes, b)}, simular
+    )
 
     reais = json.loads((DADOS / "dificuldades_reais.json").read_text())
     real = np.array([reais[str(int(q))] for q in questoes])
     return float(np.corrcoef(b, real)[0, 1]), n, len(questoes)
 
 
+def gravar_dificuldades(dificuldades, simular):
+    db = comum.conectar(simular)
+    atuais = comum.ler_questoes(db)
+    relogio = comum.Relogio()
+    mudancas = {
+        id_questao: {"dificuldade_irt": b, "atualizado_em": relogio.proximo()}
+        for id_questao, b in dificuldades.items()
+        if atuais[id_questao].get("dificuldade_irt") != b
+    }
+    comum.gravar_lotes(db, "questoes", mudancas, simular)
+    print(f"{len(mudancas)} dificuldades gravadas")
+    if mudancas:
+        comum.subir_versao(db, relogio, simular)
+
+
 def main():
+    args = argparse.ArgumentParser()
+    args.add_argument("--simular", action="store_true")
+    args = args.parse_args()
+
     MODELOS.mkdir(parents=True, exist_ok=True)
     metricas, eventos, teste = treinar_esquecimento()
-    correlacao, respostas, questoes = treinar_dificuldades()
+    correlacao, respostas, questoes = treinar_dificuldades(args.simular)
     m, f = metricas["modelo"], metricas["fixa"]
     relatorio = f"""# Relatório dos modelos
 

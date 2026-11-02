@@ -2,10 +2,11 @@
 
 Uso, a partir da raiz do projeto Flutter:
     python3 -m pip install -r ia/requirements.txt
-    dart run ferramentas/exportar_seed.dart   # gera ia/seed.json
     python3 ia/gerar_dataset.py
 
-Os dados são simulados: o app ainda não tem alunos reais. Saída em ia/dados/:
+Lê as questões ativas do Firestore, com a credencial de
+ferramentas/conteudo/README.md. Os dados são simulados: o app ainda não tem
+alunos reais. Saída em ia/dados/:
   eventos.csv    uma linha por revisão de um assunto (modelo de esquecimento)
   respostas.csv  aluno × questão (dificuldade de Rasch)
   dificuldades_reais.json  dificuldade `b` usada na simulação, para conferência
@@ -14,11 +15,16 @@ import csv
 import json
 import math
 import random
+import sys
 from pathlib import Path
 
 PASTA = Path(__file__).resolve().parent
+sys.path.insert(0, str(PASTA.parent / "ferramentas" / "conteudo"))
+import comum  # noqa: E402
+
 DADOS = PASTA / "dados"
 ALUNOS = 500
+RESPOSTAS_POR_ALUNO = 60
 SEMENTE = 2026
 
 
@@ -61,7 +67,7 @@ def gerar_respostas(aleatorio, questoes):
     linhas = []
     for aluno in range(ALUNOS):
         theta = aleatorio.gauss(0, 1)
-        for q in aleatorio.sample(questoes, k=min(30, len(questoes))):
+        for q in aleatorio.sample(questoes, k=min(RESPOSTAS_POR_ALUNO, len(questoes))):
             chance = 1 / (1 + math.exp(-(theta - reais[q["id"]])))
             linhas.append([aluno, q["id"], int(aleatorio.random() < chance)])
     return linhas, reais
@@ -69,10 +75,13 @@ def gerar_respostas(aleatorio, questoes):
 
 def main():
     aleatorio = random.Random(SEMENTE)
-    seed = json.loads((PASTA / "seed.json").read_text())
+    questoes = sorted(
+        (q for q in comum.ler_questoes(comum.conectar()).values() if q["ativo"]),
+        key=lambda q: q["id"],
+    )
     questoes_por_assunto = {}
-    for q in seed["questoes"]:
-        questoes_por_assunto.setdefault(q["id_assunto"], []).append(q)
+    for q in questoes:
+        questoes_por_assunto.setdefault(q["assunto"], []).append(q)
 
     DADOS.mkdir(exist_ok=True)
     eventos = gerar_eventos(aleatorio, questoes_por_assunto)
@@ -90,7 +99,7 @@ def main():
         )
         saida.writerows(eventos)
 
-    respostas, reais = gerar_respostas(aleatorio, seed["questoes"])
+    respostas, reais = gerar_respostas(aleatorio, questoes)
     with open(DADOS / "respostas.csv", "w", newline="") as arquivo:
         saida = csv.writer(arquivo)
         saida.writerow(["id_aluno", "id_questao", "acertou"])

@@ -40,23 +40,16 @@ void main() {
   late BancoLocal banco;
   late ServicoAprendizado servico;
   late Usuario usuario;
-  late ModeloProficiencia proficiencia;
 
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     banco = bancoDeTeste();
-    proficiencia = ModeloProficiencia.deJson(
-      lerJson('assets/modelos/dificuldades.json'),
-    );
-    final conteudo = ConteudoRepositorio(banco);
-    await conteudo.preencherDificuldades(proficiencia.dificuldades);
     servico = ServicoAprendizado(
-      conteudo,
+      ConteudoRepositorio(banco),
       GrafoRepositorio(banco),
       HistoricoRepositorio(banco),
       AprendizadoRepositorio(banco),
       ModeloEsquecimento.deJson(lerJson('assets/modelos/esquecimento.json')),
-      proficiencia,
     );
     usuario = await UsuarioRepositorio(banco).criarVisitante();
   });
@@ -100,7 +93,6 @@ void main() {
           ModeloEsquecimento.deJson(
             lerJson('assets/modelos/esquecimento.json'),
           ),
-          proficiencia,
           ConectividadeFalsa(conectado: online),
           cache,
         );
@@ -181,8 +173,12 @@ void main() {
       expect(lembrar(taxa: 0.9), greaterThan(lembrar(taxa: 0.2)));
     });
 
-    test('toda questão do seed tem dificuldade treinada', () {
-      expect(proficiencia.dificuldades, hasLength(44));
+    test('toda questão do pacote já vem com a dificuldade treinada', () async {
+      final conteudo = await ConteudoRepositorio(banco).carregar();
+      expect(
+        conteudo.questoes.where((q) => q.dificuldadeCalibrada == null),
+        isEmpty,
+      );
     });
 
     test('Rasch: acertar sobe θ e baixa b', () {
@@ -201,14 +197,14 @@ void main() {
   });
 
   group('demonstração', () {
-    test('Ana: Logaritmo vermelho, lacuna em Potenciação', () async {
+    test('Ana: a lacuna em Estequiometria vem de outra matéria', () async {
       await servico.carregarDemo(usuario, PerfilDemo.ana);
       final p = await servico.recalcular(usuario);
 
-      expect(estadoDaRetencao(p.retencoes[5]), EstadoMemoria.critico);
-      expect(estadoDaRetencao(p.retencoes[1]), EstadoMemoria.critico);
-      expect(p.lacuna?.assunto, 'Logaritmo');
-      expect(p.lacuna?.raiz, 'Potenciação');
+      expect(estadoDaRetencao(p.retencoes[701]), EstadoMemoria.critico);
+      expect(estadoDaRetencao(p.retencoes[16]), EstadoMemoria.critico);
+      expect(p.lacuna?.assunto, 'Estequiometria');
+      expect(p.lacuna?.raiz, 'Razão e proporção');
       expect(p.alerta, isNotNull);
     });
 
@@ -233,14 +229,14 @@ void main() {
       final filaBruno = await servico.montarFila(bruno);
 
       expect(filaAna.map((q) => q.id), isNot(filaBruno.map((q) => q.id)));
-      expect(filaAna.where((q) => q.idAssunto == 1), isNotEmpty);
+      expect(filaAna.where((q) => q.idAssunto == 16), isNotEmpty);
       expect(filaAna.map((q) => q.id).toSet(), hasLength(filaAna.length));
     });
 
     test('a fila da Ana não traz assunto com pré-requisito vermelho', () async {
       await servico.carregarDemo(usuario, PerfilDemo.ana);
       final fila = await servico.montarFila(usuario);
-      expect(fila.where((q) => q.idAssunto == 5), isEmpty);
+      expect(fila.where((q) => q.idAssunto == 701), isEmpty);
     });
 
     test('recalcular de novo não cria pendências novas', () async {

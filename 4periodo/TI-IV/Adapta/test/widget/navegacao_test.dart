@@ -385,7 +385,10 @@ void main() {
 
       await esperar(tester, find.byKey(const Key('card_lacuna')));
       expect(find.byKey(const Key('card_lacuna')), findsOneWidget);
-      expect(find.textContaining('lacuna em Potenciação'), findsOneWidget);
+      expect(
+        find.textContaining('lacuna em Razão e proporção'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('o aluno não vê o painel administrativo no perfil', (
