@@ -38,20 +38,40 @@ final materiaSelecionadaProvider = Provider<Materia?>((ref) {
 class SessaoController extends AsyncNotifier<Usuario> {
   @override
   Future<Usuario> build() =>
-      ref.watch(usuarioRepositorioProvider).criarOuObterVisitante();
+      ref.watch(usuarioRepositorioProvider).sessaoInicial();
 
-  Future<void> entrarLocal(String nome, String email, TipoUsuario tipo) async {
-    final usuario = await ref
+  /// Lança [ErroConta] com a mensagem para a tela.
+  Future<void> entrar(String email, String senha) async {
+    final resultado = await ref
         .read(usuarioRepositorioProvider)
-        .entrarLocal(nome, email, tipo);
-    state = AsyncData(usuario);
+        .entrar(email, senha);
+    state = AsyncData(resultado.usuario);
+  }
+
+  /// Lança [ErroConta] com a mensagem para a tela.
+  Future<void> cadastrar(String nome, String email, String senha) async {
+    final atual = await future;
+    state = AsyncData(
+      await ref
+          .read(usuarioRepositorioProvider)
+          .cadastrar(atual, nome: nome, email: email, senha: senha),
+    );
   }
 
   /// Volta para um visitante novo.
   Future<void> sair() async {
-    state = AsyncData(
-      await ref.read(usuarioRepositorioProvider).criarVisitante(),
-    );
+    state = AsyncData(await ref.read(usuarioRepositorioProvider).sair());
+  }
+
+  /// Visitante criado offline ganha o login anônimo quando a internet volta.
+  Future<void> vincularVisitante() async {
+    final atual = await future;
+    final vinculado = await ref
+        .read(usuarioRepositorioProvider)
+        .vincularVisitante(atual);
+    if (vinculado.uidFirebase != atual.uidFirebase) {
+      state = AsyncData(vinculado);
+    }
   }
 }
 

@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
-import '../../dados/modelos.dart';
+import '../../dados/repositorios/usuario_repositorio.dart';
 import '../../widgets/mascote.dart';
 import 'moldura_auth.dart';
 
-/// Tela de cadastro (RF01). Valida o formulário e volta para o app; o cadastro
-/// de verdade é trabalho do backend.
+/// Tela de cadastro (RF01). A conta nasce do visitante atual, mantendo o
+/// progresso dele.
 ///
 /// [apos] é a rota que a pessoa tentou abrir antes de criar a conta.
 class CadastroScreen extends ConsumerStatefulWidget {
@@ -24,6 +24,8 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
   final _nome = TextEditingController();
   final _email = TextEditingController();
   final _senha = TextEditingController();
+  bool _enviando = false;
+  String? _erro;
 
   @override
   void dispose() {
@@ -34,11 +36,25 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
   }
 
   Future<void> _cadastrar() async {
-    if (!_form.currentState!.validate()) return;
-    // Cadastro pelo app cria aluno; contas do grupo são criadas por fora.
-    await ref
-        .read(sessaoProvider.notifier)
-        .entrarLocal(_nome.text.trim(), _email.text.trim(), TipoUsuario.aluno);
+    if (_enviando || !_form.currentState!.validate()) return;
+    setState(() {
+      _enviando = true;
+      _erro = null;
+    });
+    try {
+      // Cadastro pelo app cria aluno; contas do grupo são criadas por fora.
+      await ref
+          .read(sessaoProvider.notifier)
+          .cadastrar(_nome.text.trim(), _email.text.trim(), _senha.text);
+    } on ErroConta catch (erro) {
+      if (mounted) {
+        setState(() {
+          _enviando = false;
+          _erro = erro.mensagem;
+        });
+      }
+      return;
+    }
 
     // A navegação espera o próximo frame: preencher a sessão faz o go_router
     // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.
@@ -107,9 +123,19 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
               onFieldSubmitted: (_) => _cadastrar(),
             ),
             const SizedBox(height: 22),
+            if (_erro != null) ...[
+              Text(
+                _erro!,
+                key: const Key('erro_conta'),
+                style: texto.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
             FilledButton(
               key: const Key('botao_cadastrar'),
-              onPressed: _cadastrar,
+              onPressed: _enviando ? null : _cadastrar,
               child: const Text('Cadastrar'),
             ),
             const SizedBox(height: 16),

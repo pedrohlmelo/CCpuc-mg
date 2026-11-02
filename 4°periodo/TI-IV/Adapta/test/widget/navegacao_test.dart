@@ -1,5 +1,8 @@
 import 'package:adapta/dados/banco/banco_local.dart';
+import 'package:adapta/dados/firebase.dart';
 import 'package:adapta/navegacao/rotas.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,13 +20,26 @@ import '../apoio/app_teste.dart';
 enum Quem { visitante, aluno, admin }
 
 /// Abre o app sobre um banco em memória. O aluno já tem 8 questões respondidas.
-Future<void> abrir(WidgetTester tester, [Quem quem = Quem.visitante]) async {
+Future<void> abrir(
+  WidgetTester tester, [
+  Quem quem = Quem.visitante,
+  MockFirebaseAuth? auth,
+  FakeFirebaseFirestore? firestore,
+]) async {
   final banco = bancoDeTeste();
   await tester.runAsync(() async {
     await banco.db;
     await prepararSessao(banco, quem);
   });
-  await tester.pumpWidget(appDeTeste(banco));
+  await tester.pumpWidget(
+    appDeTeste(
+      banco,
+      overrides: [
+        if (auth != null) firebaseAuthProvider.overrideWithValue(auth),
+        if (firestore != null) firestoreProvider.overrideWithValue(firestore),
+      ],
+    ),
+  );
   await assentar(tester);
 }
 
@@ -158,7 +174,15 @@ void main() {
     testWidgets('entrar pelo perfil passa a usar o nome de quem entrou', (
       tester,
     ) async {
-      await abrir(tester);
+      final firestore = FakeFirebaseFirestore();
+      await firestore.collection('usuarios').doc('u1').set({
+        'nome': 'Ana Souza',
+        'email': 'ana@x.com',
+        'tipo': 'aluno',
+      });
+      final auth = MockFirebaseAuth();
+      await abrir(tester, Quem.visitante, auth, firestore);
+      auth.mockUser = MockUser(uid: 'u1', email: 'ana@x.com');
 
       await tocar(tester, find.byKey(const Key('aba_perfil')));
       await tocar(tester, find.byKey(const Key('item_entrar')));
@@ -341,10 +365,18 @@ void main() {
       expect(tela('perfil'), findsOneWidget);
     });
 
-    testWidgets('entrar com o e-mail da administração dá acesso ao painel', (
+    testWidgets('conta com tipo admin no Firestore dá acesso ao painel', (
       tester,
     ) async {
-      await abrir(tester);
+      final firestore = FakeFirebaseFirestore();
+      await firestore.collection('usuarios').doc('adm').set({
+        'nome': 'Administração',
+        'email': 'admin@adapta.app',
+        'tipo': 'admin',
+      });
+      final auth = MockFirebaseAuth();
+      await abrir(tester, Quem.visitante, auth, firestore);
+      auth.mockUser = MockUser(uid: 'adm', email: 'admin@adapta.app');
 
       await tocar(tester, find.byKey(const Key('aba_perfil')));
       await tocar(tester, find.byKey(const Key('item_entrar')));

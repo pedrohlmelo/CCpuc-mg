@@ -3,11 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
-import '../../dados/modelos.dart';
+import '../../dados/repositorios/usuario_repositorio.dart';
 import 'moldura_auth.dart';
 
-/// Tela de login (RF01). Aqui ela só valida o formulário e volta para o app:
-/// não há autenticação, que é trabalho do backend.
+/// Tela de login (RF01), pelo Firebase Auth.
 ///
 /// [apos] é a rota que a pessoa tentou abrir antes de entrar, como `/sessao`.
 /// Existindo, é para lá que ela segue ao entrar, no lugar de voltar.
@@ -24,6 +23,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _email = TextEditingController();
   final _senha = TextEditingController();
   bool _mostrarSenha = false;
+  bool _enviando = false;
+  String? _erro;
 
   @override
   void dispose() {
@@ -33,23 +34,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _entrar() async {
-    if (!_form.currentState!.validate()) return;
-    final email = _email.text.trim();
-    final apelido = email.split('@').first;
-    // Sem backend, o papel sai do e-mail. Quem confere credenciais e devolve
-    // o tipo do usuário é o servidor, quando ele existir.
-    final admin = email.toLowerCase() == 'admin@adapta.app';
-    await ref
-        .read(sessaoProvider.notifier)
-        .entrarLocal(
-          admin
-              ? 'Administração'
-              : apelido.isEmpty
-              ? 'Aluno'
-              : apelido[0].toUpperCase() + apelido.substring(1),
-          email,
-          admin ? TipoUsuario.admin : TipoUsuario.aluno,
-        );
+    if (_enviando || !_form.currentState!.validate()) return;
+    setState(() {
+      _enviando = true;
+      _erro = null;
+    });
+    try {
+      await ref
+          .read(sessaoProvider.notifier)
+          .entrar(_email.text.trim(), _senha.text);
+    } on ErroConta catch (erro) {
+      if (mounted) {
+        setState(() {
+          _enviando = false;
+          _erro = erro.mensagem;
+        });
+      }
+      return;
+    }
 
     // A navegação espera o próximo frame: preencher a sessão faz o go_router
     // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.
@@ -114,9 +116,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               onFieldSubmitted: (_) => _entrar(),
             ),
             const SizedBox(height: 22),
+            if (_erro != null) ...[
+              Text(
+                _erro!,
+                key: const Key('erro_conta'),
+                style: texto.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
             FilledButton(
               key: const Key('botao_entrar'),
-              onPressed: _entrar,
+              onPressed: _enviando ? null : _entrar,
               child: const Text('Entrar'),
             ),
             const SizedBox(height: 16),

@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function dono(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    match /usuarios/{uid} {
+      allow read: if dono(uid);
+
+      // Conta nova é sempre aluno; admin é criado pelo console.
+      allow create: if dono(uid)
+        && request.resource.data.keys().hasOnly(['nome', 'email', 'tipo'])
+        && request.resource.data.tipo == 'aluno';
+
+      // Ninguém muda o próprio tipo.
+      allow update: if dono(uid)
+        && request.resource.data.keys().hasOnly(['nome', 'email', 'tipo'])
+        && request.resource.data.tipo == resource.data.tipo;
+
+      match /{subcolecao}/{id} {
+        allow read, write: if dono(uid)
+          && subcolecao in ['historico', 'memoria', 'proficiencia'];
+      }
+    }
+
+    // Nada além de usuarios/{uid} é acessível.
+    match /{documento=**} {
+      allow read, write: if false;
+    }
+  }
+}
