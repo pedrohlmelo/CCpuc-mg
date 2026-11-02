@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Preferencias {
   static const temaModo = 'tema_modo';
   static const idMateriaSelecionada = 'id_materia_selecionada';
+  static const linguaEstrangeira = 'lingua_estrangeira';
   static const seedConcluido = 'seed_concluido';
   static const versaoConteudo = 'versao_conteudo';
   static const ultimaSincronizacao = 'ultima_sincronizacao';
@@ -49,6 +50,13 @@ class Preferencias {
         ? p.remove(idMateriaSelecionada)
         : p.setInt(idMateriaSelecionada, id),
   );
+
+  /// `ingles` ou `espanhol`; nulo enquanto o aluno não escolheu.
+  Future<String?> lerLinguaEstrangeira() =>
+      _ler((p) => p.getString(linguaEstrangeira));
+
+  Future<void> gravarLinguaEstrangeira(String lingua) =>
+      _gravar((p) => p.setString(linguaEstrangeira, lingua));
 
   Future<int?> lerVersaoConteudo() => _ler((p) => p.getInt(versaoConteudo));
 

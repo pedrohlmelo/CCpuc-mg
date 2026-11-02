@@ -12,6 +12,8 @@ import 'mascote.dart';
 /// Em [somenteLeitura] o widget desenha uma resolução antiga: já abre com a
 /// alternativa [escolhidaInicial] marcada, sem aceitar toque e sem rolagem
 /// própria, para poder ser embutido em outra tela.
+const _enunciadoLongo = 200;
+
 class QuestaoWidget extends StatefulWidget {
   final Questao questao;
   final void Function(Alternativa escolhida)? aoResponder;
@@ -61,14 +63,36 @@ class _QuestaoWidgetState extends State<QuestaoWidget> {
     final texto = Theme.of(context).textTheme;
 
     final conteudo = <Widget>[
-      Row(children: [_Dificuldade(nivel: q.dificuldade)]),
+      Row(
+        children: [
+          _Dificuldade(nivel: q.dificuldade),
+          if (q.fonte != null) ...[
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                q.fonte!,
+                key: const Key('fonte_questao'),
+                textAlign: TextAlign.end,
+                style: texto.labelSmall,
+              ),
+            ),
+          ],
+        ],
+      ),
       const SizedBox(height: 14),
       AppCartao(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(q.enunciado, style: texto.titleLarge?.copyWith(height: 1.4)),
+            Text(
+              q.enunciado,
+              style:
+                  (q.enunciado.length > _enunciadoLongo
+                          ? texto.bodyLarge
+                          : texto.titleLarge)
+                      ?.copyWith(height: 1.4),
+            ),
             if (q.imagemUrl != null || q.imagemLocal != null) ...[
               const SizedBox(height: 14),
               ImagemQuestao(

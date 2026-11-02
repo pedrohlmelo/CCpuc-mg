@@ -142,6 +142,26 @@ void main() {
     });
   });
 
+  test(
+    'o estudo guiado mistura matérias e respeita a língua escolhida',
+    () async {
+      final fila = await servico.montarFila(usuario, idMateriaOculta: 12);
+      final conteudo = await ConteudoRepositorio(banco).carregar();
+      final materias = fila
+          .map((q) => conteudo.materiaDaQuestao(q)!.id)
+          .toSet();
+      expect(materias.length, greaterThan(1));
+      expect(materias, isNot(contains(12)));
+
+      final soEspanhol = await servico.montarFila(
+        usuario,
+        idMateria: 12,
+        idMateriaOculta: 12,
+      );
+      expect(soEspanhol, isNotEmpty);
+    },
+  );
+
   group('modelos', () {
     final modelo = ModeloEsquecimento.deJson(
       lerJson('assets/modelos/esquecimento.json'),

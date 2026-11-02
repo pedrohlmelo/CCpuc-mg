@@ -65,6 +65,7 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
     return servico.montarFila(
       usuario,
       idMateria: ref.read(idMateriaSelecionadaProvider),
+      idMateriaOculta: ref.read(idMateriaOcultaProvider),
     );
   }
 

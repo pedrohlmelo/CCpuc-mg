@@ -2,6 +2,7 @@ import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/banco/historicos_demo.dart';
 import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/firebase.dart';
+import 'package:adapta/dados/repositorios/conteudo_repositorio.dart';
 import 'package:adapta/dados/repositorios/grafo_repositorio.dart';
 import 'package:adapta/ia/servico_aprendizado.dart';
 import 'package:adapta/navegacao/rotas.dart';
@@ -9,6 +10,7 @@ import 'package:adapta/telas/aluno/mapa_screen.dart';
 import 'package:adapta/widgets/cartoes.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
+import 'package:adapta/grafo/grafo_conhecimento.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -199,6 +201,17 @@ void main() {
       await tocar(tester, find.byKey(const Key('aba_perfil')));
       expect(find.text('Você ainda não entrou'), findsOneWidget);
       expect(find.byKey(const Key('item_entrar')), findsOneWidget);
+    });
+
+    testWidgets('matérias vêm por área e a língua é escolhida uma vez', (
+      tester,
+    ) async {
+      await abrir(tester);
+
+      await tocar(tester, find.byKey(const Key('chip_materia')));
+      expect(find.byKey(const Key('area_linguagens')), findsOneWidget);
+      await tocar(tester, find.byKey(const Key('escolher_espanhol')));
+      expect(find.byKey(const Key('escolha_lingua')), findsNothing);
     });
 
     testWidgets('o perfil mostra o banco de questões do aparelho', (
@@ -467,15 +480,50 @@ void main() {
       final canvas = find.byKey(const Key('mapa_canvas'));
       final contexto = tester.element(canvas);
       final container = ProviderScope.containerOf(contexto);
-      final grafo = await tester.runAsync(
-        () => container.read(grafoProvider.future),
+      Future<void> tocarVertice(int idMateria, int idAssunto) async {
+        final dados = (await tester.runAsync(
+          () async => (
+            await container.read(conteudoProvider.future),
+            await container.read(dependenciasProvider.future),
+          ),
+        ))!;
+        final ids = dados.$1.assuntosDaMateria(idMateria).map((a) => a.id);
+        final area = LayoutMapa.de(
+          GrafoConhecimento(ids.toList(), [
+            for (final d in dados.$2)
+              if (ids.contains(d.prerequisito) && ids.contains(d.dependente)) d,
+          ]),
+        ).vertices[idAssunto]!;
+        tester.widget<GestureDetector>(canvas).onTapUp!(
+          TapUpDetails(
+            kind: PointerDeviceKind.touch,
+            localPosition: area.center,
+          ),
+        );
+        await assentar(tester);
+      }
+
+      Future<void> escolherChip(int id) async {
+        final chip = find.byKey(Key('chip_mapa_$id'));
+        await tester.ensureVisible(chip);
+        await assentar(tester);
+        await tester.tap(chip);
+        await assentar(tester);
+      }
+
+      await escolherChip(7);
+      await tocarVertice(7, 701);
+      expect(
+        find.textContaining('Razão e proporção (Matemática)'),
+        findsOneWidget,
       );
-      final area = LayoutMapa.de(grafo!).vertices[8]!;
-      tester.widget<GestureDetector>(canvas).onTapUp!(
-        TapUpDetails(kind: PointerDeviceKind.touch, localPosition: area.center),
-      );
+      Navigator.of(
+        tester.element(find.byKey(const Key('detalhe_vertice'))),
+      ).pop();
       await assentar(tester);
 
+      await escolherChip(1);
+      await tocarVertice(1, 8);
       expect(find.byKey(const Key('detalhe_vertice')), findsOneWidget);
       expect(find.textContaining('Operações básicas'), findsWidgets);
 

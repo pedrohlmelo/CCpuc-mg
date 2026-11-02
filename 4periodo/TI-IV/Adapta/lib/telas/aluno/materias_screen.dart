@@ -11,6 +11,14 @@ import '../../widgets/cartoes.dart';
 import '../../widgets/mascote.dart';
 import '../../widgets/paleta_materias.dart';
 
+/// Áreas do ENEM, na ordem da prova.
+const areasDoEnem = [
+  ('linguagens', 'Linguagens e Códigos'),
+  ('humanas', 'Ciências Humanas'),
+  ('natureza', 'Ciências da Natureza'),
+  ('matematica', 'Matemática'),
+];
+
 /// Escolha da matéria, ou estudo guiado com todas. Abre por cima da tela
 /// inicial e volta para ela com o filtro aplicado.
 class MateriasScreen extends ConsumerWidget {
@@ -121,45 +129,113 @@ class MateriasScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 28),
-          const TituloSecao('Ou filtre por matéria'),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 220,
-              mainAxisExtent: 140,
-              crossAxisSpacing: 12,
+          if (ref.watch(linguaEstrangeiraProvider) == null) ...[
+            const _EscolhaLingua(),
+            const SizedBox(height: 24),
+          ],
+          for (final (area, nome) in areasDoEnem) ...[
+            TituloSecao(nome),
+            GridView.count(
+              key: Key('area_$area'),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
               mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: 1.25,
+              children: [
+                for (final m in conteudo?.materias ?? const <Materia>[])
+                  if (m.area == area)
+                    _CartaoMateria(
+                      materia: m,
+                      assuntos: conteudo!.assuntosDaMateria(m.id).length,
+                      ativa: selecionada?.id == m.id,
+                      aoTocar: () => _escolher(context, ref, m),
+                    ),
+              ],
             ),
-            itemCount: conteudo?.materias.length ?? 0,
-            itemBuilder: (_, i) {
-              final m = conteudo!.materias[i];
-              final estilo = estiloMateria(m.nome, m.id);
-              final ativa = selecionada?.id == m.id;
-              return AppCartao(
-                key: Key('opcao_materia_${m.id}'),
-                aoTocar: () => _escolher(context, ref, m),
-                padding: const EdgeInsets.all(16),
-                cor: ativa ? estilo.cor.withValues(alpha: 0.10) : null,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconeCaixa(icone: estilo.icone, cor: estilo.cor),
-                    const Spacer(),
-                    Text(
-                      m.nome,
-                      style: texto.titleMedium,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      '${conteudo.assuntosDaMateria(m.id).length} assuntos',
-                      style: texto.bodySmall,
-                    ),
-                  ],
+            const SizedBox(height: 24),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _CartaoMateria extends StatelessWidget {
+  final Materia materia;
+  final int assuntos;
+  final bool ativa;
+  final VoidCallback aoTocar;
+
+  const _CartaoMateria({
+    required this.materia,
+    required this.assuntos,
+    required this.ativa,
+    required this.aoTocar,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = Theme.of(context).textTheme;
+    final estilo = estiloMateria(materia.nome, materia.id);
+    return AppCartao(
+      key: Key('opcao_materia_${materia.id}'),
+      aoTocar: aoTocar,
+      padding: const EdgeInsets.all(16),
+      cor: ativa ? estilo.cor.withValues(alpha: 0.10) : null,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IconeCaixa(icone: estilo.icone, cor: estilo.cor),
+          const Spacer(),
+          Text(
+            materia.nome,
+            style: texto.titleMedium,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text('$assuntos assuntos', style: texto.bodySmall),
+        ],
+      ),
+    );
+  }
+}
+
+/// Aparece até o aluno escolher; depois, a troca fica no Perfil.
+class _EscolhaLingua extends ConsumerWidget {
+  const _EscolhaLingua();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final texto = Theme.of(context).textTheme;
+    final lingua = ref.read(linguaEstrangeiraProvider.notifier);
+    return AppCartao(
+      key: const Key('escolha_lingua'),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('Qual língua você fará no ENEM?', style: texto.titleSmall),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(
+                child: OutlinedButton(
+                  key: const Key('escolher_ingles'),
+                  onPressed: () => lingua.escolher('ingles'),
+                  child: const Text('Inglês'),
                 ),
-              );
-            },
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: OutlinedButton(
+                  key: const Key('escolher_espanhol'),
+                  onPressed: () => lingua.escolher('espanhol'),
+                  child: const Text('Espanhol'),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -13,12 +13,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final tema = await carregarTemaSalvo();
   final idMateria = await const Preferencias().lerIdMateria();
+  final lingua = await const Preferencias().lerLinguaEstrangeira();
   final comFirebase = await iniciarFirebase();
   runApp(
     ProviderScope(
       overrides: [
         temaInicialProvider.overrideWithValue(tema),
         idMateriaInicialProvider.overrideWithValue(idMateria),
+        linguaInicialProvider.overrideWithValue(lingua),
         if (comFirebase) ...[
           firebaseAuthProvider.overrideWithValue(FirebaseAuth.instance),
           firestoreProvider.overrideWithValue(FirebaseFirestore.instance),

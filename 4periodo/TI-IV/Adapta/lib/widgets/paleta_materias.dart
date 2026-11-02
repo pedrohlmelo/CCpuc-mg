@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 ({IconData icone, Color cor}) estiloMateria(String nome, int id) {
   final n = nome.toLowerCase();
   const regras = <(List<String>, IconData, Color)>[
+    (['educa'], Icons.sports_gymnastics_rounded, Color(0xFFEA580C)),
+    (['arte'], Icons.palette_rounded, Color(0xFFC026D3)),
     (['matem'], Icons.functions_rounded, Color(0xFF4F46E5)),
     (['hist'], Icons.account_balance_rounded, Color(0xFFD97706)),
     (['fís', 'fis'], Icons.bolt_rounded, Color(0xFF0EA5E9)),

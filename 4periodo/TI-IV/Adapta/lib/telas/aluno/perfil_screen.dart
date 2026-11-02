@@ -23,6 +23,7 @@ class PerfilScreen extends ConsumerWidget {
     final entrou = ref.watch(entrouProvider);
     final status = ref.watch(statusSincronizacaoProvider).valueOrNull;
     final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final lingua = ref.watch(linguaEstrangeiraProvider);
     final versaoBanco = ref.watch(versaoBancoProvider).valueOrNull;
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
@@ -146,6 +147,21 @@ class PerfilScreen extends ConsumerWidget {
                   descricao: 'Alternar a aparência do app',
                   aoTocar: () =>
                       ref.read(temaProvider.notifier).alternar(context),
+                ),
+                Divider(height: 1, indent: 72, color: scheme.outline),
+                _Item(
+                  key: const Key('item_lingua'),
+                  icone: Icons.translate_rounded,
+                  cor: AppCores.teal,
+                  titulo: switch (lingua) {
+                    'ingles' => 'Língua estrangeira: Inglês',
+                    'espanhol' => 'Língua estrangeira: Espanhol',
+                    _ => 'Escolher língua estrangeira',
+                  },
+                  descricao: 'Toque para trocar entre Inglês e Espanhol',
+                  aoTocar: () => ref
+                      .read(linguaEstrangeiraProvider.notifier)
+                      .escolher(lingua == 'ingles' ? 'espanhol' : 'ingles'),
                 ),
                 // O painel é de uso interno: para o aluno, esta linha não
                 // existe, e a rota /admin também não abre.

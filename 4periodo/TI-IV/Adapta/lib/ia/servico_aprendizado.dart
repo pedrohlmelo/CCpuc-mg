@@ -268,7 +268,11 @@ class ServicoAprendizado {
       (q.dificuldade - 2).toDouble();
 
   /// Fila da próxima sessão.
-  Future<List<Questao>> montarFila(Usuario usuario, {int? idMateria}) async {
+  Future<List<Questao>> montarFila(
+    Usuario usuario, {
+    int? idMateria,
+    int? idMateriaOculta,
+  }) async {
     final panorama = await recalcular(usuario);
     final conteudo = await _conteudo.carregar();
     final online = await _conectividade?.online() ?? true;
@@ -278,7 +282,11 @@ class ServicoAprendizado {
       retencoes: panorama.retencoes,
       proficiencias: await _aprendizado.proficiencias(usuario.id),
       historico: await _historico.listar(usuario.id),
-      indisponiveis: online ? const {} : await _semImagem(conteudo),
+      indisponiveis: {
+        if (!online) ...await _semImagem(conteudo),
+        if (idMateria == null && idMateriaOculta != null)
+          ...conteudo.questoesDaMateria(idMateriaOculta).map((q) => q.id),
+      },
     ).montar(idMateria: idMateria, idCausaRaiz: panorama.lacuna?.idRaiz);
     if (online) unawaited(_preCarregarImagens(fila));
     return fila;

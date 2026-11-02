@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../ia/servico_aprendizado.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
@@ -16,6 +17,15 @@ import '../../widgets/saude_memoria.dart';
 ///
 /// Quem não tem conta estuda como visitante: a tela se apresenta sem nome e
 /// convida a criar uma conta para guardar o progresso na nuvem.
+const _assuntosNaHome = 5;
+
+Widget _barra(SaudeAssunto s) => BarraSaude(
+  nome: s.nome,
+  retencao: s.retencao,
+  cor: corDaMemoria(s.estado),
+  rotulo: rotuloDaMemoria(s.estado),
+);
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -32,6 +42,11 @@ class HomeScreen extends ConsumerWidget {
     final acertos = historico.where((r) => r.acertou).length;
     final taxa = respondidas == 0 ? 0 : (acertos / respondidas * 100).round();
     final panorama = ref.watch(panoramaProvider).valueOrNull ?? Panorama.vazio;
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final oculta = ref.watch(idMateriaOcultaProvider);
+    final saude = panorama.saude
+        .where((s) => conteudo?.assuntoPorId(s.idAssunto)?.idMateria != oculta)
+        .toList();
     final alerta = panorama.alerta;
     final lacuna = panorama.lacuna;
 
@@ -128,7 +143,7 @@ class HomeScreen extends ConsumerWidget {
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
             child: Column(
               children: [
-                if (panorama.saude.isEmpty)
+                if (saude.isEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
@@ -138,12 +153,25 @@ class HomeScreen extends ConsumerWidget {
                       ),
                     ),
                   ),
-                for (final s in panorama.saude.take(5))
-                  BarraSaude(
-                    nome: s.nome,
-                    retencao: s.retencao,
-                    cor: corDaMemoria(s.estado),
-                    rotulo: rotuloDaMemoria(s.estado),
+                for (final s in saude.take(_assuntosNaHome)) _barra(s),
+                if (saude.length > _assuntosNaHome)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      key: const Key('ver_todos_saude'),
+                      onPressed: () => showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (_) => SafeArea(
+                          child: ListView(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(20),
+                            children: [for (final s in saude) _barra(s)],
+                          ),
+                        ),
+                      ),
+                      child: const Text('Ver todos'),
+                    ),
                   ),
                 const SizedBox(height: 6),
                 const LegendaMemoria(),

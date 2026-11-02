@@ -35,6 +35,36 @@ final materiaSelecionadaProvider = Provider<Materia?>((ref) {
   return ref.watch(conteudoProvider).valueOrNull?.materiaPorId(id);
 });
 
+const idIngles = 11;
+const idEspanhol = 12;
+
+/// Língua salva nas preferências, lida antes do app subir em `main.dart`.
+final linguaInicialProvider = Provider<String?>((_) => null);
+
+/// Língua estrangeira do aluno, como a que ele escolhe na prova do ENEM.
+class LinguaEstrangeira extends Notifier<String?> {
+  @override
+  String? build() => ref.watch(linguaInicialProvider);
+
+  void escolher(String lingua) {
+    state = lingua;
+    ref.read(preferenciasProvider).gravarLinguaEstrangeira(lingua);
+  }
+}
+
+final linguaEstrangeiraProvider = NotifierProvider<LinguaEstrangeira, String?>(
+  LinguaEstrangeira.new,
+);
+
+/// A língua não escolhida some do estudo guiado, da home e do mapa.
+final idMateriaOcultaProvider = Provider<int?>(
+  (ref) => switch (ref.watch(linguaEstrangeiraProvider)) {
+    'ingles' => idEspanhol,
+    'espanhol' => idIngles,
+    _ => null,
+  },
+);
+
 /// Sessão: sempre há alguém, nem que seja um visitante.
 class SessaoController extends AsyncNotifier<Usuario> {
   @override

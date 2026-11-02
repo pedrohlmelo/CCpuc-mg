@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
+import '../aluno/materias_screen.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
@@ -116,6 +117,39 @@ class AdminHomeScreen extends ConsumerWidget {
               ),
             ],
           ),
+          if (conteudo != null) ...[
+            const SizedBox(height: 24),
+            const TituloSecao('Questões por matéria'),
+            AppCartao(
+              key: const Key('contadores_conteudo'),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (final (area, nome) in areasDoEnem) ...[
+                    Text(
+                      '$nome: ${_totalDaArea(conteudo, area)}',
+                      style: texto.titleSmall,
+                    ),
+                    const SizedBox(height: 4),
+                    for (final m in conteudo.materias)
+                      if (m.area == area)
+                        Text(
+                          '${m.nome}: '
+                          '${conteudo.questoesDaMateria(m.id).length}',
+                          style: texto.bodySmall,
+                        ),
+                    const SizedBox(height: 10),
+                  ],
+                  Text(
+                    'Não revisadas: '
+                    '${conteudo.questoes.where((q) => !q.revisado).length}',
+                    style: texto.titleSmall,
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 24),
           const TituloSecao('Gerenciar'),
           AppCartao(
@@ -162,6 +196,10 @@ class AdminHomeScreen extends ConsumerWidget {
     );
   }
 }
+
+int _totalDaArea(Conteudo conteudo, String area) => conteudo.materias
+    .where((m) => m.area == area)
+    .fold(0, (total, m) => total + conteudo.questoesDaMateria(m.id).length);
 
 class _ItemMenu extends StatelessWidget {
   final IconData icone;
