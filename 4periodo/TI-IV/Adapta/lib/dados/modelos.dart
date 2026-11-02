@@ -88,6 +88,9 @@ class Questao {
   final String explicacao;
   final int dificuldade; // 1..3
   final double? dificuldadeCalibrada;
+
+  /// `b` treinado pela IA, que vem com a questão no conteúdo.
+  final double? dificuldadeIrt;
   final String? imagemUrl;
   final String? imagemLocal;
   final String? imagemDescricao;
@@ -96,6 +99,9 @@ class Questao {
   final String? fonte;
   final bool explicacaoGerada;
   final bool revisado;
+
+  /// Falso tira a questão do app sem apagar; o histórico continua válido.
+  final bool ativo;
   final List<Alternativa> alternativas;
 
   const Questao({
@@ -106,12 +112,14 @@ class Questao {
     required this.dificuldade,
     required this.alternativas,
     this.dificuldadeCalibrada,
+    this.dificuldadeIrt,
     this.imagemUrl,
     this.imagemLocal,
     this.imagemDescricao,
     this.fonte,
     this.explicacaoGerada = false,
     this.revisado = false,
+    this.ativo = true,
   });
 
   /// A tela avisa quando a explicação ainda não passou pelo grupo.

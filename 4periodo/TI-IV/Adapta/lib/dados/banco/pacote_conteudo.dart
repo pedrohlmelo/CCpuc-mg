@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../grafo/grafo_conhecimento.dart';
@@ -14,8 +15,9 @@ class PacoteInvalido implements Exception {
   String toString() => 'PacoteInvalido: $motivo';
 }
 
-/// Conteúdo completo do app (índice + matérias), vindo dos assets ou do
-/// Firestore. Os dois caminhos entregam os mesmos mapas a [PacoteConteudo.deMapas].
+/// Conteúdo do app, vindo do pacote inicial ou do Firestore. Os dois caminhos
+/// entregam documentos iguais a [PacoteConteudo.deDocumentos], e uma página de
+/// questões do Firestore é um pacote só com questões.
 class PacoteConteudo {
   final int versao;
   final List<Materia> materias;
@@ -31,46 +33,41 @@ class PacoteConteudo {
     required this.questoes,
   });
 
-  /// [indice] é o `indice.json`; [arquivos] são os documentos das matérias.
-  factory PacoteConteudo.deMapas(
-    Map<String, dynamic> indice,
-    List<Map<String, dynamic>> arquivos,
+  /// [meta] é `meta/conteudo`, [materias] são os documentos de `materias/*` e
+  /// [questoes] os de `questoes/*`. Questão malformada é descartada e logada.
+  factory PacoteConteudo.deDocumentos(
+    Map<String, dynamic> meta,
+    List<Map<String, dynamic>> materias,
+    List<Map<String, dynamic>> questoes,
   ) {
     try {
-      final assuntos = <Assunto>[];
-      final dependencias = <Dependencia>[
-        for (final d in _lista(indice['dependencias_entre_materias']))
-          _dependencia(d),
-      ];
-      final questoes = <Questao>[];
-      for (final arquivo in arquivos) {
-        final idMateria = arquivo['materia'] as int;
-        for (final a in _lista(arquivo['assuntos'])) {
-          assuntos.add(
-            Assunto(
-              id: a['id'] as int,
-              idMateria: idMateria,
-              nome: a['nome'] as String,
-              descricao: a['descricao'] as String? ?? '',
-            ),
-          );
-        }
-        dependencias.addAll(_lista(arquivo['dependencias']).map(_dependencia));
-        questoes.addAll(_lista(arquivo['questoes']).map(_questao));
-      }
       return PacoteConteudo(
-        versao: indice['versao'] as int,
+        versao: meta['versao'] as int,
         materias: [
-          for (final m in _lista(indice['materias']))
+          for (final m in materias)
             Materia(
               id: m['id'] as int,
               nome: m['nome'] as String,
               area: m['area'] as String,
             ),
         ],
-        assuntos: assuntos,
-        dependencias: dependencias,
-        questoes: questoes,
+        assuntos: [
+          for (final m in materias)
+            for (final a in _lista(m['assuntos']))
+              Assunto(
+                id: a['id'] as int,
+                idMateria: m['id'] as int,
+                nome: a['nome'] as String,
+                descricao: a['descricao'] as String? ?? '',
+              ),
+        ],
+        dependencias: [
+          for (final d in _lista(meta['dependencias_entre_materias']))
+            _dependencia(d),
+          for (final m in materias)
+            for (final d in _lista(m['dependencias'])) _dependencia(d),
+        ],
+        questoes: questoes.map(_questaoOuNulo).nonNulls.toList(),
       );
     } on TypeError catch (erro) {
       throw PacoteInvalido('campo ausente ou de tipo errado: $erro');
@@ -86,17 +83,28 @@ class PacoteConteudo {
     peso: (d['peso'] as num).toDouble(),
   );
 
+  static Questao? _questaoOuNulo(Map<String, dynamic> q) {
+    try {
+      return _questao(q);
+    } on TypeError catch (erro) {
+      _descartar(q['id'], 'campo ausente ou de tipo errado: $erro');
+      return null;
+    }
+  }
+
   static Questao _questao(Map<String, dynamic> q) => Questao(
     id: q['id'] as int,
     idAssunto: q['assunto'] as int,
     enunciado: q['enunciado'] as String,
     explicacao: q['explicacao'] as String,
     dificuldade: q['dificuldade'] as int,
+    dificuldadeIrt: (q['dificuldade_irt'] as num?)?.toDouble(),
     imagemUrl: q['imagem'] as String?,
     imagemDescricao: q['imagem_descricao'] as String?,
     fonte: q['fonte'] as String?,
     explicacaoGerada: q['explicacao_gerada'] as bool? ?? false,
     revisado: q['revisado'] as bool? ?? false,
+    ativo: q['ativo'] as bool? ?? true,
     alternativas: [
       for (final a in _lista(q['alternativas']))
         Alternativa(
@@ -109,11 +117,11 @@ class PacoteConteudo {
     ],
   );
 
-  /// Lança [PacoteInvalido] no primeiro problema encontrado.
+  /// Valida o que sustenta o app: matérias, assuntos e o grafo. Lança
+  /// [PacoteInvalido] no primeiro problema, e nada do pacote é aplicado.
   void validar() {
     final idsMaterias = _unicos(materias.map((m) => m.id), 'matéria');
     final idsAssuntos = _unicos(assuntos.map((a) => a.id), 'assunto');
-    _unicos(questoes.map((q) => q.id), 'questão');
 
     for (final m in materias) {
       if (!areasValidas.contains(m.area)) {
@@ -136,25 +144,42 @@ class PacoteConteudo {
     if (GrafoConhecimento(idsAssuntos.toList(), dependencias).temCiclo) {
       throw const PacoteInvalido('o grafo tem ciclo');
     }
+  }
+
+  /// Questões que podem ser gravadas; as outras são descartadas e logadas, sem
+  /// derrubar o resto. [idsAssuntos] inclui os assuntos que já estão no banco.
+  List<Questao> questoesValidas(Set<int> idsAssuntos) {
+    final vistas = <int>{};
+    final validas = <Questao>[];
     for (final q in questoes) {
-      if (!idsAssuntos.contains(q.idAssunto)) {
-        throw PacoteInvalido('questão ${q.id} sem assunto');
-      }
-      if (q.dificuldade < 1 || q.dificuldade > 3) {
-        throw PacoteInvalido('questão ${q.id} com dificuldade inválida');
-      }
-      if (q.alternativas.where((a) => a.correta).length != 1) {
-        throw PacoteInvalido('questão ${q.id} sem exatamente uma correta');
-      }
-      final letras = q.alternativas.map((a) => a.letra).toSet();
-      if (letras.length != q.alternativas.length) {
-        throw PacoteInvalido('questão ${q.id} com letra repetida');
-      }
-      if (q.alternativas.any((a) => a.texto == null && a.imagemUrl == null)) {
-        throw PacoteInvalido('questão ${q.id} com alternativa vazia');
+      final problema = !vistas.add(q.id)
+          ? 'repetida'
+          : _problemaDaQuestao(q, idsAssuntos);
+      if (problema == null) {
+        validas.add(q);
+      } else {
+        _descartar(q.id, problema);
       }
     }
+    return validas;
   }
+
+  static String? _problemaDaQuestao(Questao q, Set<int> idsAssuntos) {
+    if (!idsAssuntos.contains(q.idAssunto)) return 'sem assunto';
+    if (q.dificuldade < 1 || q.dificuldade > 3) return 'dificuldade inválida';
+    if (q.alternativas.where((a) => a.correta).length != 1) {
+      return 'sem exatamente uma correta';
+    }
+    final letras = q.alternativas.map((a) => a.letra).toSet();
+    if (letras.length != q.alternativas.length) return 'letra repetida';
+    if (q.alternativas.any((a) => a.texto == null && a.imagemUrl == null)) {
+      return 'alternativa vazia';
+    }
+    return null;
+  }
+
+  static void _descartar(Object? id, String motivo) =>
+      debugPrint('Questão $id descartada: $motivo');
 
   static Set<int> _unicos(Iterable<int> ids, String nome) {
     final vistos = <int>{};
@@ -172,11 +197,17 @@ void _upsert(Batch lote, String tabela, Map<String, Object?> linha) {
   lote.insert(tabela, linha, conflictAlgorithm: ConflictAlgorithm.ignore);
 }
 
-/// Grava o pacote numa transação. As colunas que não vêm do pacote
-/// (`dificuldade_calibrada`, `imagem_local`) e o progresso ficam como estão.
+/// Grava o pacote numa transação. O progresso e a `imagem_local` ficam como
+/// estão, e a `dificuldade_calibrada` só é preenchida se ainda estiver vazia.
+/// O grafo só é reescrito quando o pacote traz arestas.
 Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
   pacote.validar();
   await db.transaction((txn) async {
+    final assuntosNoBanco = await txn.query('Assunto', columns: ['id']);
+    final questoes = pacote.questoesValidas({
+      ...pacote.assuntos.map((a) => a.id),
+      ...assuntosNoBanco.map((a) => a['id'] as int),
+    });
     final lote = txn.batch();
     for (final m in pacote.materias) {
       _upsert(lote, 'Materia', {'id': m.id, 'nome': m.nome, 'area': m.area});
@@ -189,7 +220,7 @@ Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
         'descricao': a.descricao,
       });
     }
-    lote.delete('Grafo_Dependencia');
+    if (pacote.dependencias.isNotEmpty) lote.delete('Grafo_Dependencia');
     for (final d in pacote.dependencias) {
       lote.insert('Grafo_Dependencia', {
         'id_prerequisito': d.prerequisito,
@@ -197,7 +228,7 @@ Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
         'peso': d.peso,
       });
     }
-    for (final q in pacote.questoes) {
+    for (final q in questoes) {
       _upsert(lote, 'Questao', {
         'id': q.id,
         'id_assunto': q.idAssunto,
@@ -209,7 +240,16 @@ Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
         'fonte': q.fonte,
         'explicacao_gerada': q.explicacaoGerada ? 1 : 0,
         'revisado': q.revisado ? 1 : 0,
+        'ativo': q.ativo ? 1 : 0,
       });
+      if (q.dificuldadeIrt != null) {
+        lote.update(
+          'Questao',
+          {'dificuldade_calibrada': q.dificuldadeIrt},
+          where: 'id = ? AND dificuldade_calibrada IS NULL',
+          whereArgs: [q.id],
+        );
+      }
       _trocarAlternativas(lote, q);
     }
     await lote.commit(noResult: true);

@@ -52,7 +52,8 @@ CREATE TABLE Questao (
   imagem_descricao TEXT,
   fonte TEXT,
   explicacao_gerada INTEGER NOT NULL DEFAULT 0,
-  revisado INTEGER NOT NULL DEFAULT 0
+  revisado INTEGER NOT NULL DEFAULT 0,
+  ativo INTEGER NOT NULL DEFAULT 1
 )''',
   '''
 CREATE TABLE Alternativa (
@@ -117,11 +118,15 @@ const _migracaoV2 = [
   _indiceAlternativa,
 ];
 
+const _migracaoV3 = [
+  'ALTER TABLE Questao ADD COLUMN ativo INTEGER NOT NULL DEFAULT 1',
+];
+
 /// Abre o `adapta.db`, a fonte de verdade do app no aparelho, e garante o
 /// conteúdo inicial. A abertura é feita uma vez, no primeiro acesso.
 class BancoLocal {
   static const nomeArquivo = 'adapta.db';
-  static const versao = 2;
+  static const versao = 3;
 
   /// Nos testes, a fábrica do `sqflite_common_ffi` e um banco em memória.
   final DatabaseFactory? fabrica;
@@ -186,8 +191,11 @@ class BancoLocal {
             }
           },
           onUpgrade: (db, de, _) async {
-            if (de >= 2 || !await _schemaAtual(db)) return;
-            for (final comando in _migracaoV2) {
+            if (!await _schemaAtual(db)) return;
+            for (final comando in [
+              if (de < 2) ..._migracaoV2,
+              if (de < 3) ..._migracaoV3,
+            ]) {
               await db.execute(comando);
             }
           },

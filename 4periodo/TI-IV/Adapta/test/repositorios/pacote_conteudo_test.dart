@@ -93,8 +93,7 @@ void main() {
       recusa(_pacote(dependencias: [_d(1, 99)]));
     });
 
-    test('recusa ids repetidos', () {
-      recusa(_pacote(questoes: [_questao(1), _questao(1)]));
+    test('recusa assuntos repetidos', () {
       recusa(
         _pacote(
           assuntos: const [
@@ -105,28 +104,37 @@ void main() {
       );
     });
 
-    test('recusa questão sem exatamente uma alternativa correta', () {
-      recusa(
-        _pacote(
-          questoes: [
-            _questao(1, corretas: [false, false]),
-          ],
-        ),
-      );
-      recusa(
-        _pacote(
-          questoes: [
-            _questao(1, corretas: [true, true]),
-          ],
-        ),
+    test('documento de matéria malformado vira PacoteInvalido', () {
+      expect(
+        () =>
+            PacoteConteudo.deDocumentos({'versao': 'dois'}, const [], const []),
+        throwsA(isA<PacoteInvalido>()),
       );
     });
 
-    test('mapa malformado vira PacoteInvalido', () {
-      expect(
-        () => PacoteConteudo.deMapas({'versao': 'dois'}, const []),
-        throwsA(isA<PacoteInvalido>()),
+    test('questão inválida é descartada sem derrubar as outras', () {
+      final validas = _pacote(
+        questoes: [
+          _questao(1),
+          _questao(1),
+          _questao(2, idAssunto: 99),
+          _questao(3, corretas: [false, false]),
+          _questao(4, corretas: [true, true]),
+          _questao(5),
+        ],
+      ).questoesValidas({1, 2});
+      expect(validas.map((q) => q.id), [1, 5]);
+    });
+
+    test('questão malformada não entra no pacote', () {
+      final pacote = PacoteConteudo.deDocumentos(
+        {'versao': 1},
+        const [],
+        const [
+          {'id': 1, 'assunto': null},
+        ],
       );
+      expect(pacote.questoes, isEmpty);
     });
   });
 
@@ -139,6 +147,113 @@ void main() {
       throwsA(isA<PacoteInvalido>()),
     );
     expect(await _contar(db, 'Grafo_Dependencia'), antes);
+    await banco.fechar();
+  });
+
+  test('questão inválida não entra no banco, e as válidas entram', () async {
+    final banco = bancoDeTeste();
+    final db = await banco.db;
+    await aplicarConteudo(
+      db,
+      _pacote(
+        questoes: [
+          _questao(900),
+          _questao(901, corretas: [false, false]),
+        ],
+      ),
+    );
+    expect(await db.query('Questao', where: 'id = 900'), hasLength(1));
+    expect(await db.query('Questao', where: 'id = 901'), isEmpty);
+    await banco.fechar();
+  });
+
+  test(
+    'página só com questões usa os assuntos do banco e mantém o grafo',
+    () async {
+      final banco = bancoDeTeste();
+      final db = await banco.db;
+      final arestas = await _contar(db, 'Grafo_Dependencia');
+      expect(arestas, greaterThan(0));
+
+      await aplicarConteudo(
+        db,
+        PacoteConteudo(
+          versao: 9,
+          materias: const [],
+          assuntos: const [],
+          dependencias: const [],
+          questoes: [_questao(900, idAssunto: 2)],
+        ),
+      );
+
+      expect(await db.query('Questao', where: 'id = 900'), hasLength(1));
+      expect(await _contar(db, 'Grafo_Dependencia'), arestas);
+      await banco.fechar();
+    },
+  );
+
+  test(
+    'questão inativa some do conteúdo, mas o histórico ainda a acha',
+    () async {
+      final banco = bancoDeTeste();
+      final db = await banco.db;
+      await aplicarConteudo(
+        db,
+        _pacote(
+          questoes: [
+            Questao(
+              id: 1,
+              idAssunto: 1,
+              enunciado: 'e',
+              explicacao: 'x',
+              dificuldade: 1,
+              ativo: false,
+              alternativas: const [
+                Alternativa(letra: 'A', texto: 't', correta: true),
+              ],
+            ),
+          ],
+        ),
+      );
+
+      final conteudo = await ConteudoRepositorio(banco).carregar();
+      expect(conteudo.questoes.map((q) => q.id), isNot(contains(1)));
+      expect(
+        conteudo.questoesDaMateria(1).map((q) => q.id),
+        isNot(contains(1)),
+      );
+      expect(conteudo.questaoPorId(1)?.ativo, isFalse);
+      expect(await _contar(db, 'Questao'), greaterThan(0));
+      await banco.fechar();
+    },
+  );
+
+  test('dificuldade da IA só preenche a questão ainda não calibrada', () async {
+    final banco = bancoDeTeste();
+    final db = await banco.db;
+    await db.update('Questao', {'dificuldade_calibrada': 0.7}, where: 'id = 1');
+    await db.update('Questao', {
+      'dificuldade_calibrada': null,
+    }, where: 'id = 2');
+    Questao comB(int id) => Questao(
+      id: id,
+      idAssunto: 1,
+      enunciado: 'e',
+      explicacao: 'x',
+      dificuldade: 1,
+      dificuldadeIrt: -1.5,
+      alternativas: const [Alternativa(letra: 'A', texto: 't', correta: true)],
+    );
+
+    await aplicarConteudo(db, _pacote(questoes: [comB(1), comB(2)]));
+
+    Future<Object?> b(int id) async => (await db.query(
+      'Questao',
+      where: 'id = ?',
+      whereArgs: [id],
+    )).single['dificuldade_calibrada'];
+    expect(await b(1), 0.7);
+    expect(await b(2), -1.5);
     await banco.fechar();
   });
 
@@ -222,7 +337,7 @@ void main() {
     await banco.fechar();
   });
 
-  test('migração 1 → 2 preserva o progresso', () async {
+  test('migração 1 → 3 preserva o progresso', () async {
     sqfliteFfiInit();
     SharedPreferences.setMockInitialValues({
       'seed_concluido': true,
@@ -303,6 +418,7 @@ void main() {
     expect(await _contar(db, 'Questao'), pacote.questoes.length);
     final questao = (await db.query('Questao', where: 'id = 1')).single;
     expect(questao['enunciado'], isNot('velho'));
+    expect(questao['ativo'], 1);
     expect(questao['dificuldade_calibrada'], 0.3);
     final alternativa = await db.query(
       'Alternativa',
@@ -314,6 +430,34 @@ void main() {
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getInt('versao_conteudo'), pacote.versao);
     await banco.fechar();
+  });
+
+  test('migração 2 → 3 ativa as questões e mantém o conteúdo', () async {
+    sqfliteFfiInit();
+    final pasta = Directory.systemTemp.createTempSync('adapta');
+    addTearDown(() => pasta.delete(recursive: true));
+    final caminho = '${pasta.path}/adapta.db';
+    BancoLocal abrir() => BancoLocal(
+      fabrica: databaseFactoryFfiNoIsolate,
+      caminho: caminho,
+      lerAsset: lerAssetDoDisco,
+    );
+
+    final atual = abrir();
+    final db = await atual.db;
+    await db.execute('ALTER TABLE Questao DROP COLUMN ativo');
+    await db.setVersion(2);
+    final questoes = await _contar(db, 'Questao');
+    await atual.fechar();
+
+    final migrado = abrir();
+    final novo = await migrado.db;
+    expect(await novo.getVersion(), BancoLocal.versao);
+    final ativas = await novo.rawQuery(
+      'SELECT COUNT(*) AS n FROM Questao WHERE ativo = 1',
+    );
+    expect(ativas.first['n'], questoes);
+    await migrado.fechar();
   });
 
   test('versão dos assets igual à salva não reaplica o pacote', () async {

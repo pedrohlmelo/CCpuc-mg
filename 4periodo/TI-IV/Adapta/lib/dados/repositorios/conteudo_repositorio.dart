@@ -7,13 +7,21 @@ import '../modelos.dart';
 class Conteudo {
   final List<Materia> materias;
   final List<Assunto> assuntos;
+
+  /// Só as ativas. As inativas ficam em [questaoPorId], para o histórico.
   final List<Questao> questoes;
+  final List<Questao> inativas;
 
   Conteudo({
     required this.materias,
     required this.assuntos,
     required this.questoes,
+    this.inativas = const [],
   });
+
+  late final _questoesPorId = {
+    for (final q in [...questoes, ...inativas]) q.id: q,
+  };
 
   Materia? materiaPorId(int id) =>
       materias.where((m) => m.id == id).firstOrNull;
@@ -21,8 +29,7 @@ class Conteudo {
   Assunto? assuntoPorId(int id) =>
       assuntos.where((a) => a.id == id).firstOrNull;
 
-  Questao? questaoPorId(int id) =>
-      questoes.where((q) => q.id == id).firstOrNull;
+  Questao? questaoPorId(int id) => _questoesPorId[id];
 
   String nomeDoAssunto(int id) => assuntoPorId(id)?.nome ?? 'Assunto #$id';
 
@@ -68,6 +75,26 @@ class ConteudoRepositorio {
       );
     }
 
+    final todas = [
+      for (final q in questoes)
+        Questao(
+          id: q['id'] as int,
+          idAssunto: q['id_assunto'] as int,
+          enunciado: q['enunciado'] as String,
+          explicacao: q['explicacao'] as String,
+          dificuldade: q['dificuldade'] as int,
+          dificuldadeCalibrada: q['dificuldade_calibrada'] as double?,
+          imagemUrl: q['imagem_url'] as String?,
+          imagemLocal: q['imagem_local'] as String?,
+          imagemDescricao: q['imagem_descricao'] as String?,
+          fonte: q['fonte'] as String?,
+          explicacaoGerada: q['explicacao_gerada'] == 1,
+          revisado: q['revisado'] == 1,
+          ativo: q['ativo'] == 1,
+          alternativas: porQuestao[q['id'] as int] ?? const [],
+        ),
+    ];
+
     return Conteudo(
       materias: [
         for (final m in materias)
@@ -86,24 +113,8 @@ class ConteudoRepositorio {
             descricao: a['descricao'] as String,
           ),
       ],
-      questoes: [
-        for (final q in questoes)
-          Questao(
-            id: q['id'] as int,
-            idAssunto: q['id_assunto'] as int,
-            enunciado: q['enunciado'] as String,
-            explicacao: q['explicacao'] as String,
-            dificuldade: q['dificuldade'] as int,
-            dificuldadeCalibrada: q['dificuldade_calibrada'] as double?,
-            imagemUrl: q['imagem_url'] as String?,
-            imagemLocal: q['imagem_local'] as String?,
-            imagemDescricao: q['imagem_descricao'] as String?,
-            fonte: q['fonte'] as String?,
-            explicacaoGerada: q['explicacao_gerada'] == 1,
-            revisado: q['revisado'] == 1,
-            alternativas: porQuestao[q['id'] as int] ?? const [],
-          ),
-      ],
+      questoes: todas.where((q) => q.ativo).toList(),
+      inativas: todas.where((q) => !q.ativo).toList(),
     );
   }
 
