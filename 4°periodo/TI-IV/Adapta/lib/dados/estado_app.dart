@@ -10,6 +10,7 @@ import 'preferencias.dart';
 import 'repositorios/conteudo_repositorio.dart';
 import 'repositorios/historico_repositorio.dart';
 import 'repositorios/usuario_repositorio.dart';
+import 'sincronizacao/servico_sincronizacao.dart';
 
 /// Matéria salva nas preferências, lida antes do app subir em `main.dart`.
 final idMateriaInicialProvider = Provider<int?>((_) => null);
@@ -45,6 +46,11 @@ class SessaoController extends AsyncNotifier<Usuario> {
     final resultado = await ref
         .read(usuarioRepositorioProvider)
         .entrar(email, senha);
+    if (resultado.novo) {
+      await ref
+          .read(servicoSincronizacaoProvider)
+          .baixarProgresso(resultado.usuario);
+    }
     state = AsyncData(resultado.usuario);
   }
 
@@ -60,6 +66,11 @@ class SessaoController extends AsyncNotifier<Usuario> {
 
   /// Volta para um visitante novo.
   Future<void> sair() async {
+    // Depois do logout as regras do Firestore barram o envio destes dados.
+    final atual = state.valueOrNull;
+    if (atual != null) {
+      await ref.read(servicoSincronizacaoProvider).sincronizar(atual);
+    }
     state = AsyncData(await ref.read(usuarioRepositorioProvider).sair());
   }
 

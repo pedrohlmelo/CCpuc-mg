@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
+import '../../dados/sincronizacao/servico_sincronizacao.dart';
 import '../../tema/app_tema.dart';
 import '../../tema/tema_controller.dart';
 import '../../widgets/botao_tema.dart';
@@ -19,6 +20,7 @@ class PerfilScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioProvider);
     final entrou = ref.watch(entrouProvider);
+    final status = ref.watch(statusSincronizacaoProvider).valueOrNull;
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -62,6 +64,26 @@ class PerfilScreen extends ConsumerWidget {
               ],
             ),
           ),
+          if (status != null) ...[
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(
+                  status.online
+                      ? Icons.cloud_done_outlined
+                      : Icons.cloud_off_outlined,
+                  size: 18,
+                  color: scheme.onSurfaceVariant,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  status.texto(DateTime.now()),
+                  key: const Key('status_sincronizacao'),
+                  style: texto.bodySmall,
+                ),
+              ],
+            ),
+          ],
           const SizedBox(height: 24),
           const TituloSecao('Conta'),
           AppCartao(

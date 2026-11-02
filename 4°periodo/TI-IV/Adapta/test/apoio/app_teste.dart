@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:adapta/app.dart';
 import 'package:adapta/dados/banco/banco_local.dart';
+import 'package:adapta/dados/sincronizacao/servico_sincronizacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -14,8 +17,31 @@ BancoLocal bancoDeTeste() {
   );
 }
 
+/// Rede controlada pelo teste. Começa em modo avião.
+class ConectividadeFalsa implements Conectividade {
+  bool conectado;
+  final _mudancas = StreamController<bool>.broadcast();
+
+  ConectividadeFalsa({this.conectado = false});
+
+  void mudar(bool valor) {
+    conectado = valor;
+    _mudancas.add(valor);
+  }
+
+  @override
+  Future<bool> online() async => conectado;
+
+  @override
+  Stream<bool> get mudancas => _mudancas.stream;
+}
+
 Widget appDeTeste(BancoLocal banco, {List<Override> overrides = const []}) =>
     ProviderScope(
-      overrides: [bancoProvider.overrideWithValue(banco), ...overrides],
+      overrides: [
+        bancoProvider.overrideWithValue(banco),
+        conectividadeProvider.overrideWithValue(ConectividadeFalsa()),
+        ...overrides,
+      ],
       child: const AdaptaApp(),
     );
