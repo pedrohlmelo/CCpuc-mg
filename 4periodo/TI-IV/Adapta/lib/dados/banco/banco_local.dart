@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -133,14 +132,10 @@ class BancoLocal {
   final String? caminho;
   final Preferencias preferencias;
 
-  /// Nos testes, a leitura dos assets vem do disco.
-  final LeitorAsset? lerAsset;
-
   BancoLocal({
     this.fabrica,
     this.caminho,
     this.preferencias = const Preferencias(),
-    this.lerAsset,
   });
 
   Future<Database>? _aberto;
@@ -205,12 +200,11 @@ class BancoLocal {
   /// A versão salva evita reaplicar o pacote; a contagem cobre o caso de o
   /// banco ter sido apagado enquanto a preferência sobreviveu.
   Future<void> _garantirSeed(Database banco) async {
-    final ler = lerAsset ?? rootBundle.loadString;
     final linhas = await banco.rawQuery('SELECT COUNT(*) AS n FROM Materia');
     final vazio = (linhas.first['n'] as int) == 0;
     final versaoLocal = await preferencias.lerVersaoConteudo() ?? 0;
-    if (!vazio && await lerVersaoDosAssets(ler) <= versaoLocal) return;
-    final pacote = await lerPacoteDosAssets(ler);
+    if (!vazio && versaoPacoteInicial <= versaoLocal) return;
+    final pacote = lerPacoteInicial();
     await aplicarConteudo(banco, pacote);
     await preferencias.marcarSeedConcluido(pacote.versao);
   }

@@ -1,0 +1,6553 @@
+// Gerado por gerar_pacote_inicial.py — não edite.
+// ignore_for_file: type=lint
+
+const Map<String, dynamic> pacoteInicialMeta = {
+  "atualizado_em": "2026-11-02T20:37:15.555Z",
+  "dependencias_entre_materias": [
+    {
+      "dep": 701,
+      "peso": 0.7,
+      "pre": 16
+    },
+    {
+      "dep": 702,
+      "peso": 0.6,
+      "pre": 16
+    },
+    {
+      "dep": 601,
+      "peso": 0.7,
+      "pre": 12
+    },
+    {
+      "dep": 601,
+      "peso": 0.5,
+      "pre": 13
+    },
+    {
+      "dep": 604,
+      "peso": 0.5,
+      "pre": 12
+    },
+    {
+      "dep": 303,
+      "peso": 0.5,
+      "pre": 11
+    },
+    {
+      "dep": 303,
+      "peso": 0.5,
+      "pre": 102
+    },
+    {
+      "dep": 301,
+      "peso": 0.6,
+      "pre": 16
+    },
+    {
+      "dep": 804,
+      "peso": 0.4,
+      "pre": 14
+    },
+    {
+      "dep": 802,
+      "peso": 0.6,
+      "pre": 101
+    },
+    {
+      "dep": 801,
+      "peso": 0.4,
+      "pre": 706
+    },
+    {
+      "dep": 603,
+      "peso": 0.4,
+      "pre": 704
+    },
+    {
+      "dep": 705,
+      "peso": 0.4,
+      "pre": 604
+    },
+    {
+      "dep": 305,
+      "peso": 0.6,
+      "pre": 804
+    },
+    {
+      "dep": 501,
+      "peso": 0.4,
+      "pre": 7
+    },
+    {
+      "dep": 404,
+      "peso": 0.5,
+      "pre": 6
+    },
+    {
+      "dep": 304,
+      "peso": 0.5,
+      "pre": 204
+    },
+    {
+      "dep": 1001,
+      "peso": 0.7,
+      "pre": 901
+    },
+    {
+      "dep": 1004,
+      "peso": 0.6,
+      "pre": 901
+    },
+    {
+      "dep": 1101,
+      "peso": 0.6,
+      "pre": 901
+    },
+    {
+      "dep": 1201,
+      "peso": 0.6,
+      "pre": 901
+    }
+  ],
+  "total_questoes": 410,
+  "versao": 4
+};
+
+const List<Map<String, dynamic>> pacoteInicialMaterias = [
+  {
+    "area": "matematica",
+    "assuntos": [
+      {
+        "descricao": "Produto de fatores iguais e propriedades das potências.",
+        "id": 1,
+        "nome": "Potenciação"
+      },
+      {
+        "descricao": "Igualdades com a incógnita no primeiro grau.",
+        "id": 2,
+        "nome": "Equação do 1º grau"
+      },
+      {
+        "descricao": "Raízes de ax² + bx + c = 0.",
+        "id": 3,
+        "nome": "Equação do 2º grau"
+      },
+      {
+        "descricao": "Relação entre grandezas, domínio e imagem.",
+        "id": 4,
+        "nome": "Funções"
+      },
+      {
+        "descricao": "Operação inversa da potenciação.",
+        "id": 5,
+        "nome": "Logaritmo"
+      },
+      {
+        "descricao": "As quatro operações em situações do dia a dia.",
+        "id": 8,
+        "nome": "Operações básicas"
+      },
+      {
+        "descricao": "Partes de um inteiro e operações com frações.",
+        "id": 9,
+        "nome": "Frações"
+      },
+      {
+        "descricao": "Raízes e simplificação de radicais.",
+        "id": 10,
+        "nome": "Radiciação"
+      },
+      {
+        "descricao": "Partes de cem, aumentos e descontos.",
+        "id": 11,
+        "nome": "Porcentagem"
+      },
+      {
+        "descricao": "Funções do tipo f(x) = ax + b e seus gráficos.",
+        "id": 12,
+        "nome": "Função afim"
+      },
+      {
+        "descricao": "Parábolas, vértice e pontos de máximo e mínimo.",
+        "id": 13,
+        "nome": "Função quadrática"
+      },
+      {
+        "descricao": "Crescimento e decaimento por um fator constante.",
+        "id": 14,
+        "nome": "Função exponencial"
+      },
+      {
+        "descricao": "Áreas e perímetros de figuras planas.",
+        "id": 15,
+        "nome": "Geometria plana"
+      },
+      {
+        "descricao": "Comparação entre grandezas e regra de três.",
+        "id": 16,
+        "nome": "Razão e proporção"
+      },
+      {
+        "descricao": "Chance de um evento e eventos combinados.",
+        "id": 101,
+        "nome": "Probabilidade"
+      },
+      {
+        "descricao": "Médias, mediana, moda e leitura de gráficos e tabelas.",
+        "id": 102,
+        "nome": "Estatística"
+      },
+      {
+        "descricao": "Princípio da contagem, arranjos e combinações.",
+        "id": 103,
+        "nome": "Análise combinatória"
+      },
+      {
+        "descricao": "Volumes e áreas de sólidos.",
+        "id": 104,
+        "nome": "Geometria espacial"
+      },
+      {
+        "descricao": "Razões no triângulo e funções periódicas.",
+        "id": 105,
+        "nome": "Trigonometria"
+      },
+      {
+        "descricao": "Sequências aritméticas e geométricas.",
+        "id": 106,
+        "nome": "Progressões"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 102,
+        "peso": 0.6,
+        "pre": 11
+      },
+      {
+        "dep": 103,
+        "peso": 0.7,
+        "pre": 8
+      },
+      {
+        "dep": 101,
+        "peso": 0.9,
+        "pre": 103
+      },
+      {
+        "dep": 101,
+        "peso": 0.6,
+        "pre": 9
+      },
+      {
+        "dep": 104,
+        "peso": 0.9,
+        "pre": 15
+      },
+      {
+        "dep": 105,
+        "peso": 0.7,
+        "pre": 15
+      },
+      {
+        "dep": 105,
+        "peso": 0.5,
+        "pre": 4
+      },
+      {
+        "dep": 106,
+        "peso": 0.6,
+        "pre": 12
+      },
+      {
+        "dep": 106,
+        "peso": 0.5,
+        "pre": 14
+      },
+      {
+        "dep": 3,
+        "peso": 0.9,
+        "pre": 2
+      },
+      {
+        "dep": 4,
+        "peso": 0.8,
+        "pre": 2
+      },
+      {
+        "dep": 5,
+        "peso": 0.6,
+        "pre": 3
+      },
+      {
+        "dep": 5,
+        "peso": 0.7,
+        "pre": 4
+      },
+      {
+        "dep": 5,
+        "peso": 1.0,
+        "pre": 1
+      },
+      {
+        "dep": 9,
+        "peso": 0.9,
+        "pre": 8
+      },
+      {
+        "dep": 1,
+        "peso": 0.7,
+        "pre": 9
+      },
+      {
+        "dep": 10,
+        "peso": 0.8,
+        "pre": 1
+      },
+      {
+        "dep": 2,
+        "peso": 0.8,
+        "pre": 8
+      },
+      {
+        "dep": 16,
+        "peso": 0.8,
+        "pre": 9
+      },
+      {
+        "dep": 11,
+        "peso": 0.9,
+        "pre": 16
+      },
+      {
+        "dep": 12,
+        "peso": 0.9,
+        "pre": 4
+      },
+      {
+        "dep": 13,
+        "peso": 0.8,
+        "pre": 12
+      },
+      {
+        "dep": 13,
+        "peso": 0.7,
+        "pre": 3
+      },
+      {
+        "dep": 14,
+        "peso": 0.8,
+        "pre": 1
+      },
+      {
+        "dep": 14,
+        "peso": 0.7,
+        "pre": 4
+      },
+      {
+        "dep": 5,
+        "peso": 0.8,
+        "pre": 14
+      },
+      {
+        "dep": 15,
+        "peso": 0.6,
+        "pre": 8
+      },
+      {
+        "dep": 15,
+        "peso": 0.5,
+        "pre": 10
+      }
+    ],
+    "id": 1,
+    "nome": "Matemática"
+  },
+  {
+    "area": "humanas",
+    "assuntos": [
+      {
+        "descricao": "Movimento de ideias do século XVIII.",
+        "id": 6,
+        "nome": "Iluminismo"
+      },
+      {
+        "descricao": "Mudanças na produção a partir do século XVIII.",
+        "id": 7,
+        "nome": "Revolução Industrial"
+      },
+      {
+        "descricao": "Sociedades antigas e o mundo medieval.",
+        "id": 201,
+        "nome": "Antiguidade e Idade Média"
+      },
+      {
+        "descricao": "Colonização, escravidão e formação do Estado.",
+        "id": 202,
+        "nome": "Brasil Colônia e Império"
+      },
+      {
+        "descricao": "Da República Velha à ditadura e à redemocratização.",
+        "id": 203,
+        "nome": "Brasil República"
+      },
+      {
+        "descricao": "Guerras mundiais, totalitarismos e Guerra Fria.",
+        "id": 204,
+        "nome": "Mundo no século XX"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 6,
+        "peso": 0.3,
+        "pre": 201
+      },
+      {
+        "dep": 7,
+        "peso": 0.8,
+        "pre": 6
+      },
+      {
+        "dep": 202,
+        "peso": 0.4,
+        "pre": 6
+      },
+      {
+        "dep": 204,
+        "peso": 0.6,
+        "pre": 7
+      },
+      {
+        "dep": 203,
+        "peso": 0.8,
+        "pre": 202
+      },
+      {
+        "dep": 203,
+        "peso": 0.4,
+        "pre": 204
+      }
+    ],
+    "id": 2,
+    "nome": "História"
+  },
+  {
+    "area": "humanas",
+    "assuntos": [
+      {
+        "descricao": "Escalas, projeções e leitura de mapas.",
+        "id": 301,
+        "nome": "Cartografia"
+      },
+      {
+        "descricao": "Dinâmicas climáticas, solos e formas do relevo.",
+        "id": 302,
+        "nome": "Clima e relevo"
+      },
+      {
+        "descricao": "Cidades, migrações e dados demográficos.",
+        "id": 303,
+        "nome": "Urbanização e população"
+      },
+      {
+        "descricao": "Conflitos, blocos e fluxos globais.",
+        "id": 304,
+        "nome": "Geopolítica e globalização"
+      },
+      {
+        "descricao": "Impactos, recursos naturais e sustentabilidade.",
+        "id": 305,
+        "nome": "Questão ambiental"
+      },
+      {
+        "descricao": "Espaço agrário, energia e produção.",
+        "id": 306,
+        "nome": "Agropecuária e indústria"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 302,
+        "peso": 0.5,
+        "pre": 301
+      },
+      {
+        "dep": 304,
+        "peso": 0.4,
+        "pre": 301
+      },
+      {
+        "dep": 304,
+        "peso": 0.6,
+        "pre": 303
+      },
+      {
+        "dep": 305,
+        "peso": 0.7,
+        "pre": 302
+      },
+      {
+        "dep": 305,
+        "peso": 0.6,
+        "pre": 306
+      },
+      {
+        "dep": 306,
+        "peso": 0.5,
+        "pre": 303
+      }
+    ],
+    "id": 3,
+    "nome": "Geografia"
+  },
+  {
+    "area": "humanas",
+    "assuntos": [
+      {
+        "descricao": "Pré-socráticos, Sócrates, Platão e Aristóteles.",
+        "id": 401,
+        "nome": "Filosofia antiga"
+      },
+      {
+        "descricao": "Racionalismo, empirismo e Kant.",
+        "id": 402,
+        "nome": "Filosofia moderna"
+      },
+      {
+        "descricao": "Valores, dever e responsabilidade.",
+        "id": 403,
+        "nome": "Ética"
+      },
+      {
+        "descricao": "Contratualismo, poder e Estado.",
+        "id": 404,
+        "nome": "Filosofia política"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 402,
+        "peso": 0.7,
+        "pre": 401
+      },
+      {
+        "dep": 403,
+        "peso": 0.6,
+        "pre": 401
+      },
+      {
+        "dep": 404,
+        "peso": 0.5,
+        "pre": 403
+      },
+      {
+        "dep": 404,
+        "peso": 0.5,
+        "pre": 402
+      }
+    ],
+    "id": 4,
+    "nome": "Filosofia"
+  },
+  {
+    "area": "humanas",
+    "assuntos": [
+      {
+        "descricao": "Durkheim, Marx e Weber.",
+        "id": 501,
+        "nome": "Pensadores clássicos"
+      },
+      {
+        "descricao": "Etnocentrismo, diversidade e indústria cultural.",
+        "id": 502,
+        "nome": "Cultura e identidade"
+      },
+      {
+        "descricao": "Classes, relações de trabalho e exclusão.",
+        "id": 503,
+        "nome": "Trabalho e desigualdade"
+      },
+      {
+        "descricao": "Direitos, participação e democracia.",
+        "id": 504,
+        "nome": "Cidadania e movimentos sociais"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 502,
+        "peso": 0.5,
+        "pre": 501
+      },
+      {
+        "dep": 503,
+        "peso": 0.7,
+        "pre": 501
+      },
+      {
+        "dep": 504,
+        "peso": 0.6,
+        "pre": 503
+      }
+    ],
+    "id": 5,
+    "nome": "Sociologia"
+  },
+  {
+    "area": "natureza",
+    "assuntos": [
+      {
+        "descricao": "Velocidade, aceleração e gráficos do movimento.",
+        "id": 601,
+        "nome": "Cinemática"
+      },
+      {
+        "descricao": "Leis de Newton, forças e hidrostática.",
+        "id": 602,
+        "nome": "Dinâmica"
+      },
+      {
+        "descricao": "Trabalho, potência, calor e conservação da energia.",
+        "id": 603,
+        "nome": "Energia e termologia"
+      },
+      {
+        "descricao": "Circuitos, potência elétrica e consumo.",
+        "id": 604,
+        "nome": "Eletricidade"
+      },
+      {
+        "descricao": "Ondas, som e luz.",
+        "id": 605,
+        "nome": "Ondulatória e óptica"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 602,
+        "peso": 0.9,
+        "pre": 601
+      },
+      {
+        "dep": 603,
+        "peso": 0.8,
+        "pre": 602
+      },
+      {
+        "dep": 604,
+        "peso": 0.6,
+        "pre": 603
+      },
+      {
+        "dep": 605,
+        "peso": 0.5,
+        "pre": 601
+      }
+    ],
+    "id": 6,
+    "nome": "Física"
+  },
+  {
+    "area": "natureza",
+    "assuntos": [
+      {
+        "descricao": "Cálculo das quantidades em reações.",
+        "id": 701,
+        "nome": "Estequiometria"
+      },
+      {
+        "descricao": "Concentração, pH e equilíbrio químico.",
+        "id": 702,
+        "nome": "Soluções e equilíbrio"
+      },
+      {
+        "descricao": "Funções, cadeias e reações do carbono.",
+        "id": 703,
+        "nome": "Química orgânica"
+      },
+      {
+        "descricao": "Calor nas reações e combustíveis.",
+        "id": 704,
+        "nome": "Termoquímica"
+      },
+      {
+        "descricao": "Pilhas, eletrólise e oxirredução.",
+        "id": 705,
+        "nome": "Eletroquímica"
+      },
+      {
+        "descricao": "Estrutura do átomo, tabela periódica e ligações.",
+        "id": 706,
+        "nome": "Atomística e ligações"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 701,
+        "peso": 0.8,
+        "pre": 706
+      },
+      {
+        "dep": 702,
+        "peso": 0.8,
+        "pre": 701
+      },
+      {
+        "dep": 703,
+        "peso": 0.6,
+        "pre": 706
+      },
+      {
+        "dep": 704,
+        "peso": 0.7,
+        "pre": 701
+      },
+      {
+        "dep": 705,
+        "peso": 0.6,
+        "pre": 702
+      }
+    ],
+    "id": 7,
+    "nome": "Química"
+  },
+  {
+    "area": "natureza",
+    "assuntos": [
+      {
+        "descricao": "Célula, metabolismo e divisão celular.",
+        "id": 801,
+        "nome": "Citologia"
+      },
+      {
+        "descricao": "Hereditariedade, DNA e biotecnologia.",
+        "id": 802,
+        "nome": "Genética"
+      },
+      {
+        "descricao": "Seleção natural e origem das espécies.",
+        "id": 803,
+        "nome": "Evolução"
+      },
+      {
+        "descricao": "Cadeias, ciclos e relações entre seres vivos.",
+        "id": 804,
+        "nome": "Ecologia"
+      },
+      {
+        "descricao": "Sistemas do corpo e saúde.",
+        "id": 805,
+        "nome": "Fisiologia humana"
+      },
+      {
+        "descricao": "Diversidade, vírus, bactérias, plantas e animais.",
+        "id": 806,
+        "nome": "Seres vivos"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 802,
+        "peso": 0.8,
+        "pre": 801
+      },
+      {
+        "dep": 803,
+        "peso": 0.8,
+        "pre": 802
+      },
+      {
+        "dep": 806,
+        "peso": 0.5,
+        "pre": 803
+      },
+      {
+        "dep": 804,
+        "peso": 0.6,
+        "pre": 806
+      },
+      {
+        "dep": 805,
+        "peso": 0.7,
+        "pre": 801
+      }
+    ],
+    "id": 8,
+    "nome": "Biologia"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Tese, argumento e sentido global.",
+        "id": 901,
+        "nome": "Interpretação de texto"
+      },
+      {
+        "descricao": "Finalidade e forma dos textos.",
+        "id": 902,
+        "nome": "Gêneros textuais"
+      },
+      {
+        "descricao": "Usos da língua e norma-padrão.",
+        "id": 903,
+        "nome": "Variação linguística"
+      },
+      {
+        "descricao": "Intenção comunicativa do texto.",
+        "id": 904,
+        "nome": "Funções da linguagem"
+      },
+      {
+        "descricao": "Recursos linguísticos e coesão.",
+        "id": 905,
+        "nome": "Gramática em contexto"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 902,
+        "peso": 0.8,
+        "pre": 901
+      },
+      {
+        "dep": 904,
+        "peso": 0.7,
+        "pre": 902
+      },
+      {
+        "dep": 903,
+        "peso": 0.6,
+        "pre": 901
+      },
+      {
+        "dep": 905,
+        "peso": 0.5,
+        "pre": 901
+      }
+    ],
+    "id": 9,
+    "nome": "Língua Portuguesa"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Do Barroco ao Realismo.",
+        "id": 1001,
+        "nome": "Escolas literárias"
+      },
+      {
+        "descricao": "Vanguardas e literatura brasileira moderna.",
+        "id": 1002,
+        "nome": "Modernismo"
+      },
+      {
+        "descricao": "Prosa e poesia atuais.",
+        "id": 1003,
+        "nome": "Literatura contemporânea"
+      },
+      {
+        "descricao": "Recursos poéticos e construção de sentido.",
+        "id": 1004,
+        "nome": "Análise de poemas"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 1002,
+        "peso": 0.8,
+        "pre": 1001
+      },
+      {
+        "dep": 1003,
+        "peso": 0.7,
+        "pre": 1002
+      },
+      {
+        "dep": 1002,
+        "peso": 0.4,
+        "pre": 1004
+      }
+    ],
+    "id": 10,
+    "nome": "Literatura"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Ideia central e finalidade do texto.",
+        "id": 1101,
+        "nome": "Interpretação de texto em inglês"
+      },
+      {
+        "descricao": "Sentido de palavras e expressões.",
+        "id": 1102,
+        "nome": "Vocabulário em contexto (inglês)"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 1102,
+        "peso": 0.6,
+        "pre": 1101
+      }
+    ],
+    "id": 11,
+    "nome": "Inglês"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Ideia central e finalidade do texto.",
+        "id": 1201,
+        "nome": "Interpretação de texto em espanhol"
+      },
+      {
+        "descricao": "Sentido de palavras e expressões.",
+        "id": 1202,
+        "nome": "Vocabulário em contexto (espanhol)"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 1202,
+        "peso": 0.6,
+        "pre": 1201
+      }
+    ],
+    "id": 12,
+    "nome": "Espanhol"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Pintura, escultura e vanguardas.",
+        "id": 1301,
+        "nome": "Artes visuais"
+      },
+      {
+        "descricao": "Teatro, dança e música.",
+        "id": 1302,
+        "nome": "Música e artes cênicas"
+      },
+      {
+        "descricao": "Patrimônio e manifestações brasileiras.",
+        "id": 1303,
+        "nome": "Arte e cultura popular"
+      },
+      {
+        "descricao": "Intervenções, performance e tecnologia.",
+        "id": 1304,
+        "nome": "Arte contemporânea"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 1304,
+        "peso": 0.6,
+        "pre": 1301
+      },
+      {
+        "dep": 1302,
+        "peso": 0.4,
+        "pre": 1303
+      }
+    ],
+    "id": 13,
+    "nome": "Artes"
+  },
+  {
+    "area": "linguagens",
+    "assuntos": [
+      {
+        "descricao": "Atividade física e qualidade de vida.",
+        "id": 1401,
+        "nome": "Corpo, saúde e exercício"
+      },
+      {
+        "descricao": "Mídia, inclusão e regras.",
+        "id": 1402,
+        "nome": "Esporte e sociedade"
+      },
+      {
+        "descricao": "Jogos, lutas e práticas corporais.",
+        "id": 1403,
+        "nome": "Dança e cultura corporal"
+      },
+      {
+        "descricao": "Estética, consumo e identidade.",
+        "id": 1404,
+        "nome": "Padrões de beleza e corpo"
+      }
+    ],
+    "dependencias": [
+      {
+        "dep": 1402,
+        "peso": 0.4,
+        "pre": 1401
+      },
+      {
+        "dep": 1404,
+        "peso": 0.4,
+        "pre": 1403
+      }
+    ],
+    "id": 14,
+    "nome": "Educação Física"
+  }
+];
+
+const List<Map<String, dynamic>> pacoteInicialQuestoes = [
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "16"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "32"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "64"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "10"
+      }
+    ],
+    "assunto": 1,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.431Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Qual o valor de 2³ · 2²?",
+    "explicacao": "Bases iguais: somam-se os expoentes. 2³ · 2² = 2⁵ = 32.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 1,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "x = 9"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "x = −3"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "x = 3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "x = 0"
+      }
+    ],
+    "assunto": 2,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.432Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Qual a solução de 3x − 9 = 0?",
+    "explicacao": "Isolando x: 3x = 9, logo x = 3.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 2,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "1 e 6"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "2 e 3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "−2 e −3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "5 e 6"
+      }
+    ],
+    "assunto": 3,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.433Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
+    "explicacao": "Soma 5 e produto 6: as raízes são 2 e 3.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 3,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "7"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "8"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "9"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "10"
+      }
+    ],
+    "assunto": 4,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.434Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Se f(x) = 2x + 1, qual o valor de f(4)?",
+    "explicacao": "Substituindo: f(4) = 2 · 4 + 1 = 9.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 4,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "5"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "6"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "16"
+      }
+    ],
+    "assunto": 5,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.435Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "Qual o valor de log₂ 32?",
+    "explicacao": "32 = 2⁵, portanto log₂ 32 = 5.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 5,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Voltaire"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Rousseau"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Montesquieu"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "John Locke"
+      }
+    ],
+    "assunto": 6,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.436Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Qual pensador iluminista defendeu a separação dos três poderes?",
+    "explicacao": "Montesquieu, em \"O Espírito das Leis\" (1748).",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 6,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "França"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Inglaterra"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Alemanha"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Estados Unidos"
+      }
+    ],
+    "assunto": 7,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.437Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Em que país teve início a Revolução Industrial?",
+    "explicacao": "Na Inglaterra, na segunda metade do século XVIII.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 7,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "27"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "81"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "729"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "243"
+      }
+    ],
+    "assunto": 1,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.438Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Qual o valor de (3²)³?",
+    "explicacao": "Potência de potência: multiplicam-se os expoentes. 3⁶ = 729.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 8,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "x = 2"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "x = 4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "x = 6"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "x = 8"
+      }
+    ],
+    "assunto": 2,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.439Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Qual o valor de x em 5x + 2 = 3x + 10?",
+    "explicacao": "Agrupando: 2x = 8, logo x = 4.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 9,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "7"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "3"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "−3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "−7"
+      }
+    ],
+    "assunto": 4,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.440Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "Qual é o coeficiente angular da reta y = −3x + 7?",
+    "explicacao": "Na forma y = ax + b, o coeficiente angular é a, ou seja, −3.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 10,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "15 mil"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "48 mil"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "96 mil"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "192 mil"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "243 mil"
+      }
+    ],
+    "assunto": 1,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.441Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma cultura de bactérias dobra de tamanho a cada hora. Se ela começa com 3 mil bactérias, quantas haverá depois de 5 horas?",
+    "explicacao": "São 5 duplicações: 3 000 · 2⁵ = 3 000 · 32 = 96 000.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 11,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "8"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "12"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "14"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "20"
+      }
+    ],
+    "assunto": 2,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.442Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um táxi cobra R\$ 5,00 de bandeirada e R\$ 2,50 por quilômetro rodado. Uma corrida custou R\$ 30,00. Quantos quilômetros foram percorridos?",
+    "explicacao": "5 + 2,5x = 30, logo 2,5x = 25 e x = 10.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 12,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "5"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "6"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "10"
+      }
+    ],
+    "assunto": 3,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.443Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um terreno retangular tem 40 m² de área, e o comprimento é 3 m maior que a largura. Qual é a largura, em metros?",
+    "explicacao": "x(x + 3) = 40 leva a x² + 3x − 40 = 0, com raízes 5 e −8. A medida positiva é 5.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 13,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "1 e 16"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "4 e 6"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "2 e 8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "−2 e −8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "3 e 7"
+      }
+    ],
+    "assunto": 3,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.444Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "O lucro de uma fábrica é dado por L(x) = −x² + 10x − 16, em que x é a quantidade produzida. Para quais valores de x o lucro é zero?",
+    "explicacao": "x² − 10x + 16 = 0 tem soma 10 e produto 16: as raízes são 2 e 8.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 14,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "362"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "600"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "900"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "1 200"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "1 500"
+      }
+    ],
+    "assunto": 4,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.445Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "O custo, em reais, para produzir n camisetas é C(n) = 12n + 300. Qual é o custo de produzir 50 camisetas?",
+    "explicacao": "C(50) = 12 · 50 + 300 = 600 + 300 = 900.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 15,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "−4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "0,4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "14"
+      }
+    ],
+    "assunto": 5,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.446Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O pH de uma solução é pH = −log [H⁺]. Qual é o pH de uma solução com [H⁺] = 10⁻⁴ mol/L?",
+    "explicacao": "log 10⁻⁴ = −4, portanto pH = −(−4) = 4.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 16,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "2 anos"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "3 anos"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "4 anos"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "6 anos"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "8 anos"
+      }
+    ],
+    "assunto": 5,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.447Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "Um capital evolui segundo M(t) = 1 000 · 2ᵗ, com t em anos. Em quanto tempo ele chega a R\$ 8 000,00?",
+    "explicacao": "2ᵗ = 8, então t = log₂ 8 = 3 anos.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 17,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "R\$ 1,20"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "R\$ 1,50"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "R\$ 1,80"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "R\$ 2,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "R\$ 2,40"
+      }
+    ],
+    "assunto": 8,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.448Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Uma caixa com 24 latas custa R\$ 36,00. Qual é o preço de cada lata?",
+    "explicacao": "36 ÷ 24 = 1,50.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 18,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "7"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "8"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "9"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "12"
+      }
+    ],
+    "assunto": 8,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.449Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma excursão levará 350 pessoas em ônibus de 42 lugares. Qual é o menor número de ônibus necessário?",
+    "explicacao": "350 ÷ 42 ≈ 8,3. Oito ônibus não bastam, então são necessários 9.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 19,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "R\$ 120,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "R\$ 160,00"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "R\$ 180,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "R\$ 240,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "R\$ 280,00"
+      }
+    ],
+    "assunto": 8,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.450Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Com um salário de R\$ 1 800,00, uma pessoa paga R\$ 650,00 de aluguel e R\$ 430,00 de alimentação. O restante é dividido igualmente em 4 metas. Quanto vai para cada meta?",
+    "explicacao": "1 800 − 650 − 430 = 720, e 720 ÷ 4 = 180.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 20,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "1 1/2"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "1 3/4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "1 7/8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "2 1/4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "2 1/2"
+      }
+    ],
+    "assunto": 9,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.451Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma receita usa 3/4 de xícara de açúcar. Quantas xícaras são necessárias para fazer 2 receitas e meia?",
+    "explicacao": "3/4 · 5/2 = 15/8 = 1 7/8 xícaras.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 21,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "12"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "15"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "18"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "20"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "24"
+      }
+    ],
+    "assunto": 9,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.452Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Em uma turma de 30 estudantes, 2/5 são meninos. Quantas são as meninas?",
+    "explicacao": "São 2/5 · 30 = 12 meninos, logo 30 − 12 = 18 meninas.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 22,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "5"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "15"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "20"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "25"
+      }
+    ],
+    "assunto": 9,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.453Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "De um tanque de 60 litros, gastou-se 1/2 do total pela manhã e 1/3 do total à tarde. Quantos litros restaram?",
+    "explicacao": "1/2 + 1/3 = 5/6. Resta 1/6 de 60, que são 10 litros.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 23,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "0,4 km"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "4 km"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "8 km"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "40 km"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "400 km"
+      }
+    ],
+    "assunto": 16,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.454Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Em um mapa na escala 1 : 50 000, duas cidades estão a 8 cm de distância. Qual é a distância real?",
+    "explicacao": "8 · 50 000 = 400 000 cm, que são 4 km.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 24,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "3 h"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "6 h"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "8 h"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "10 h"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "12 h"
+      }
+    ],
+    "assunto": 16,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.455Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Cinco torneiras iguais enchem um tanque em 6 horas. Em quanto tempo três dessas torneiras enchem o mesmo tanque?",
+    "explicacao": "Grandezas inversas: 5 · 6 = 3 · t, então t = 10 horas.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 25,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "12"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "16"
+      }
+    ],
+    "assunto": 16,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.456Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Uma tinta é feita com 2 partes de azul para 3 de branco. Quantos litros de azul há em 20 litros da mistura?",
+    "explicacao": "O azul é 2/5 do total: 2/5 · 20 = 8 litros.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 26,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "20%"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "25%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "30%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "50%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "125%"
+      }
+    ],
+    "assunto": 11,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.457Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A tabela mostra as vendas de uma loja em cada trimestre. Qual foi o aumento percentual do 1º para o 2º trimestre?",
+    "explicacao": "De 200 para 250 são 50 a mais, e 50 ÷ 200 = 25%.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 27,
+    "imagem": "asset:assets/questoes/tabela_vendas.jpg",
+    "imagem_descricao": "Tabela de vendas por trimestre: 1º trimestre 200, 2º trimestre 250, 3º trimestre 300, 4º trimestre 240.",
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "R\$ 72,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "R\$ 78,00"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "R\$ 79,20"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "R\$ 80,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "R\$ 88,00"
+      }
+    ],
+    "assunto": 11,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.458Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um produto de R\$ 80,00 teve aumento de 10% e, depois, desconto de 10%. Qual é o preço final?",
+    "explicacao": "80 · 1,1 = 88 e 88 · 0,9 = 79,20. Os 10% incidem sobre bases diferentes.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 28,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "R\$ 1 300,00"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "R\$ 1 700,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "R\$ 1 750,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "R\$ 1 850,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "R\$ 1 985,00"
+      }
+    ],
+    "assunto": 11,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.459Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Um salário de R\$ 2 000,00 tem desconto de 15%. Qual é o valor líquido?",
+    "explicacao": "15% de 2 000 são 300, e 2 000 − 300 = 1 700.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 29,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "f(x) = x + 2"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "f(x) = 2x + 2"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "f(x) = 2x + 4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "f(x) = 4x + 2"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "f(x) = 3x − 2"
+      }
+    ],
+    "assunto": 12,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.460Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O gráfico representa uma função afim f. Qual é a lei de f?",
+    "explicacao": "A reta passa por (0, 2) e (4, 10). A taxa é (10 − 2) ÷ 4 = 2 e o valor inicial é 2: f(x) = 2x + 2.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 30,
+    "imagem": "asset:assets/questoes/grafico_funcao_afim.jpg",
+    "imagem_descricao": "Gráfico de uma reta crescente que passa pelos pontos (0, 2) e (4, 10).",
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "R\$ 50,00"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "R\$ 90,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "R\$ 100,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "R\$ 140,00"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "R\$ 150,00"
+      }
+    ],
+    "assunto": 12,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.461Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Um plano de celular custa R\$ 40,00 fixos mais R\$ 0,50 por minuto. Quanto paga quem usa 100 minutos?",
+    "explicacao": "C(100) = 40 + 0,5 · 100 = 90.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 31,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "10"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "20"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "25"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "40"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "50"
+      }
+    ],
+    "assunto": 12,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.462Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um reservatório com 500 litros perde 20 litros por hora. Em quantas horas ele fica vazio?",
+    "explicacao": "500 − 20t = 0, então t = 25 horas.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 32,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "−9"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "−4"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "0"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "5"
+      }
+    ],
+    "assunto": 13,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.463Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "Qual é o valor mínimo da função f(x) = x² − 6x + 5?",
+    "explicacao": "O vértice está em x = 6 ÷ 2 = 3, e f(3) = 9 − 18 + 5 = −4.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 33,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "10 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "15 m"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "20 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "25 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "40 m"
+      }
+    ],
+    "assunto": 13,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.464Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "A altura de uma bola, em metros, é h(t) = −5t² + 20t, com t em segundos. Qual é a altura máxima?",
+    "explicacao": "O vértice está em t = 20 ÷ 10 = 2, e h(2) = −20 + 40 = 20 m.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 34,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "25"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "40"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "50"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "75"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "100"
+      }
+    ],
+    "assunto": 13,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.465Z",
+    "confianca_classificacao": null,
+    "dificuldade": 3,
+    "dificuldade_irt": null,
+    "enunciado": "A receita de uma loja é R(p) = p(100 − p), em que p é o preço. Qual preço dá a maior receita?",
+    "explicacao": "As raízes são 0 e 100, e o vértice fica no meio: p = 50.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 35,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "3 000"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "9 000"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "27 000"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "30 000"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "81 000"
+      }
+    ],
+    "assunto": 14,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.466Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Uma população é dada por P(t) = 1 000 · 3ᵗ, com t em anos. Qual é a população depois de 3 anos?",
+    "explicacao": "P(3) = 1 000 · 27 = 27 000.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 36,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "5 mg"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "10 mg"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "20 mg"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "26 mg"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "40 mg"
+      }
+    ],
+    "assunto": 14,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.467Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A quantidade de um medicamento no corpo cai pela metade a cada 6 horas. Depois de tomar 80 mg, quanto resta em 18 horas?",
+    "explicacao": "18 horas são 3 meias-vidas: 80 → 40 → 20 → 10 mg.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 37,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "4"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "6"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "8"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "32"
+      }
+    ],
+    "assunto": 14,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.468Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Qual é o valor de x na equação 2ˣ = 64?",
+    "explicacao": "64 = 2⁶, portanto x = 6.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 38,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "24 m²"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "32 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "40 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "48 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "60 m²"
+      }
+    ],
+    "assunto": 15,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.469Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A figura mostra o desenho de um canteiro em forma de trapézio, com medidas em metros. Qual é a área do canteiro?",
+    "explicacao": "Área do trapézio: (10 + 6) · 4 ÷ 2 = 32 m².",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 39,
+    "imagem": "asset:assets/questoes/figura_trapezio.jpg",
+    "imagem_descricao": "Trapézio com base maior de 10 metros, base menor de 6 metros e altura de 4 metros.",
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "30 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "60 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "100 m²"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "300 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "600 m²"
+      }
+    ],
+    "assunto": 15,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.470Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Uma praça circular tem 10 m de raio. Usando π ≈ 3, qual é a área da praça?",
+    "explicacao": "A = π · r² ≈ 3 · 100 = 300 m².",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 40,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "2 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "3 m"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "4 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "6 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "8 m"
+      }
+    ],
+    "assunto": 15,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.471Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma escada de 5 m está apoiada em uma parede, com o pé a 3 m da base. A que altura ela toca a parede?",
+    "explicacao": "Pitágoras: h² + 3² = 5², logo h² = 16 e h = 4 m.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 41,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "6√2"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "8√2"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "4√3"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "36"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "12"
+      }
+    ],
+    "assunto": 10,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.472Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Qual é a forma simplificada de √72?",
+    "explicacao": "√72 = √(36 · 2) = 6√2.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 42,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "12 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "24 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "36 m"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "48 m"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "72 m"
+      }
+    ],
+    "assunto": 10,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.473Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Um terreno quadrado tem 144 m² de área. Qual é o seu perímetro?",
+    "explicacao": "O lado é √144 = 12 m, e o perímetro é 4 · 12 = 48 m.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 43,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "5"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "7"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "12"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "25"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "√7"
+      }
+    ],
+    "assunto": 10,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.474Z",
+    "confianca_classificacao": null,
+    "dificuldade": 1,
+    "dificuldade_irt": null,
+    "enunciado": "Qual é o valor de √(16 + 9)?",
+    "explicacao": "Primeiro a soma: √25 = 5.",
+    "explicacao_gerada": false,
+    "fonte": "Autoral — Adapta",
+    "id": 44,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": true
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "classes sociais."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "fatos sociais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "ações racionais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "mais-valia."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "tipos ideais."
+      }
+    ],
+    "assunto": 501,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.485Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Para Émile Durkheim, regras e costumes existem antes do indivíduo e exercem pressão sobre ele. A esses modos de agir, pensar e sentir, o autor chamou de",
+    "explicacao": "Fatos sociais, para Durkheim, são exteriores ao indivíduo, coercitivos e gerais.",
+    "explicacao_gerada": true,
+    "fonte": "Autoral — Adapta",
+    "id": 5011,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 5,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "surgiu como esporte olímpico europeu."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "dispensa o uso de instrumentos musicais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "é praticada apenas em competições oficiais."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "expressa a história e a resistência afro-brasileiras."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "tem regras iguais às do judô."
+      }
+    ],
+    "assunto": 1403,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.501Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A capoeira, reconhecida como patrimônio cultural, reúne luta, música e dança.\n\nEssa manifestação é importante para a cultura corporal brasileira porque",
+    "explicacao": "A capoeira tem origem na resistência de pessoas escravizadas e preserva a história afro-brasileira.",
+    "explicacao_gerada": true,
+    "fonte": "Autoral — Adapta",
+    "id": 14031,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 14,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "eliminar a influência da mídia."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "provocar insatisfação com o próprio corpo."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "garantir uma alimentação equilibrada."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "aumentar a diversidade de padrões corporais em todas as postagens."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "reduzir a busca por procedimentos estéticos."
+      }
+    ],
+    "assunto": 1404,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:34:57.504Z",
+    "confianca_classificacao": null,
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Em redes sociais, são frequentes as fotos de corpos editadas com filtros e aplicativos.\n\nO contato constante com essas imagens pode",
+    "explicacao": "Imagens editadas impõem padrões irreais, e a comparação pode gerar insatisfação com o próprio corpo.",
+    "explicacao_gerada": true,
+    "fonte": "Autoral — Adapta",
+    "id": 14041,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 14,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Qualidade da educação formal em Miami."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Prestígio da cultura cubana nos Estados Unidos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Oportunidade de qualificação profissional em Miami."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Cenário da integração de cubanos nos Estados Unidos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Fortalecimento do elo familiar em comunidades estadunidenenses."
+      }
+    ],
+    "assunto": 1101,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.215Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "As my official bio reads, I was made in Cuba, assembled in Spain, and imported to the United States – meaning my mother, seven months pregnant, and the rest of my family arrived as exiles from Cuba to Madrid, where I was born. Less than two months later, we emigrated once more and settled in New York City, then eventually in Miami, where I was raised and educated. Although technically we lived in the United States, the Cuban community was culturally insular in Miami during the 1970s, bonded together by the trauma of exile. What’s more, it seemed that practically everyone was Cuban: my teachers, my classmates, the mechanic, the bus driver. I didn’t grow up feeling different or treated as a minority. The few kids who got picked on in my grade school were the ones with freckles and funny last names like Dawson and O’Neil.\nBLANCO, R. Disponível em: http://edition.cnn.com. Acesso em: 9 dez. 2017 (adaptado).\n\nAo relatar suas vivências, o autor destaca o(a)",
+    "explicacao": "O autor conta que cresceu numa comunidade cubana fechada em Miami, onde quase todos eram cubanos. Por isso não se sentia diferente nem minoria. O foco está em como se deu a integração dos cubanos nos Estados Unidos.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 1",
+    "id": 2022001,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 11,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Problematizar o papel de gênero em casamentos modernos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Apontar a relevância da educação formal na escolha de parceiro."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Comparar a expectativa de parceiros amorosos em épocas distintas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Discutir o uso de aplicativos para proporcionar encontros românticos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Valorizar a importância da aparência física na seleção de pretendentes."
+      }
+    ],
+    "assunto": 1101,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.216Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Two hundred years ago, Jane Austen lived in a world where single men boasted vast estates; single ladies were expected to speak several languages, sing and play the piano. In both cases, it was, of course, advantageous if you looked good too. So, how much has – or hasn’t – changed? Dating apps opaquely outline the demands of today’s relationship market; users ruminate long and hard over their choice of pictures and what they write in their biographies to hook in potential lovers, and that’s just your own profile. What do you look for in a future partner’s profile – potential signifiers of a popular personality, a good job, a nice car? These apps are a poignant reminder of the ofter classist attitudes we still adopt, as well as the financial and aesthetic expectations we demand from potential partners.\n\nO texto aborda relações interpessoais com o objetivo de",
+    "explicacao": "O texto parte do mundo de Jane Austen e chega aos aplicativos de namoro de hoje. A pergunta \"o quanto mudou?\" mostra que o objetivo é comparar o que se espera de um parceiro em épocas diferentes.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 2",
+    "id": 2022002,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 11,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Oferecer recursos de fotografia."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Divulgar problemas dos usuários."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Estimular aceitação dos seguidores."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Provocar ansiedade nos adolescentes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Aproximar pessoas ao redor do mundo."
+      }
+    ],
+    "assunto": 1102,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.218Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A Teen’s View of Social Media\nInstagram is by far my favorite. It is made up of all photos and videos, which is perfect for visual people like me. There is the home page that showcases the posts from people you follow, an explore tab which offers posts from accounts all over the world, and your own page, with a notification tab to show who likes and comments on your posts.\nIt has some downsides though.  It is known to make many people feel insecure or down about themselves because the platform showcases the highlights of everyone’s lives, while rarely showing the negatives. This can make one feel like their life is not going as well as others, contributing to the growing rates of anxiety or depression in many teens today. There is an underlying desire for acceptance through the number of likes or followers one has.\nDisponível em: https://cyberbullying.org/. Acesso em: 29 out. 2021.\n\nO termo “downsides” introduz a ideia de que o Instagram é responsável por",
+    "explicacao": "\"Downsides\" significa pontos negativos. Logo depois da palavra, o texto cita a insegurança causada pelas postagens e o aumento da ansiedade e da depressão entre adolescentes.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 4",
+    "id": 2022004,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 11,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Contentamento com a interação virtual."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Zelo com o envio de mensagens."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Preocupação com a composição de textos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Mágoa com o comportamento de alguém."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Insatisfação com uma forma de comunicação."
+      }
+    ],
+    "assunto": 1101,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.219Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "I tend the mobile now\nlike an injured bird\nWe text, text, text\nour significant words.\nI re-read your first,\nyour second, your third,\nLook for your small xx,\nfeeling absurd.\nThe codes we send\narrive with a broken chord.\nI try to picture your hands,\ntheir image is blurred.\nNothing my thumbs press\nwill ever be heard.\nDUFFY, C. Disponível em: www.independent.co.uk. Acesso em: 27 out. 2021.\n\nNesse poema, o eu lírico evidencia um sentimento de",
+    "explicacao": "O eu lírico trata o celular como um pássaro ferido e vê as mensagens chegarem como um acorde quebrado. Nada do que digita será ouvido, o que revela insatisfação com esse modo de se comunicar.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 5",
+    "id": 2022005,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 11,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Contribuir para a formação cidadã dos jogadores."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Refutar modelos estereotipados de beleza e elegância."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Estimular a competitividade entre potenciais compradores."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Exemplificar estratégias de arrecadação financeira pela internet."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Desenvolver conhecimentos lúdicos específicos dos tempos atuais."
+      }
+    ],
+    "assunto": 901,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.222Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "É ruivo? Tem olhos azuis? É homem ou mulher? Usa chapéu? Quem jogou Cara a Cara na infância sabe de cor o roteiro de perguntas para adivinhar quem é o personagem misterioso do seu oponente.\nAgora, o jogo está prestes a ganhar uma nova versão. A designer polonesa Zuzia Kozerska-Girard está desenvolvendo uma variação do Guess Who? (nome do Cara a Cara em inglês), em que as personalidades do tabuleiro são, na verdade, mulheres notáveis da história e\nda atualidade, como a artista Frida Kahlo, a ativista Malala Yousafzai, a astronauta Valentina Tereshkova e a aviadora Amelia Earhart. O Who’s She? (“Quem é ela?”, em português) traz, no total, 28 mulheres que representam diversas profissões, nacionalidades e idades.\nA ideia é que, em vez de perguntar sobre a aparência das personagens, as questões sejam direcionadas aos feitos delas: ganhou algum Nobel, fez alguma descoberta? Para cada personagem há um cartão com fatos divertidos e interessantes sobre sua vida. Uma campanha entrou no ar com o objetivo de arrecadar dinheiro para desenvolver o Who’s She?. A meta inicial era reunir 17 mil dólares. Oito dias antes de a campanha acabar, o projeto já angariou quase 350 mil dólares.\nA chegada do jogo à casa do comprador varia de acordo com a quantia doada — quanto mais você doou, mais rápido vai poder jogar.\nDisponível em: www.super.abril.com.br. Acesso em: 4 dez. 2018 (adaptado).\n\nAo divulgar a adaptação do jogo para questões relativas a ações e habilidades de mulheres notáveis, o texto busca",
+    "explicacao": "O jogo troca personagens comuns por mulheres notáveis da história. Ao divulgar essa adaptação, o texto mostra um produto que informa sobre elas e contribui para a formação cidadã de quem joga.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 8",
+    "id": 2022008,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 9,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Falta de compreensão causada pelo choque entre gerações."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Contexto de comunicação em que a conversa se dá."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Grau de polidez distinto entre os interlocutores."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Diferença de escolaridade entre os falantes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Nível social dos participantes da situação."
+      }
+    ],
+    "assunto": 903,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.226Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Papos\n— Me disseram…\n— Disseram-me.\n— Hein?\n— O correto é “disseram-me”. Não “me disseram”.\n— Eu falo como quero. E te digo mais… Ou é “digo-te”?\n— O quê?\n— Digo-te que você…\n— O “te” e o “você” não combinam.\n— Lhe digo?\n— Também não. O que você ia me dizer?\n— Que você está sendo grosseiro, pedante e chato. […]\n— Dispenso as suas correções. Vê se esquece-me. Falo como bem entender. Mais uma correção e eu…\n— O quê?\n— O mato.\n— Que mato?\n— Mato-o. Mato-lhe. Mato você. Matar-lhe-ei-te. Ouviu bem? Pois esqueça-o e para-te. Pronome no lugar certo é elitismo!\n— Se você prefere falar errado…\n— Falo como todo mundo fala. O importante é me entenderem. Ou entenderem-me?\nVERISSIMO, L. F. Comédias para se ler na escola.\nRio de Janeiro: Objetiva, 2001 (adaptado).\n\nNesse texto, o uso da norma-padrão defendido por um dos personagens torna-se inadequado em razão do(a)",
+    "explicacao": "A insistência na norma-padrão fica deslocada porque a conversa é informal. O problema não é a regra em si, mas o contexto de comunicação em que ela é cobrada.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 12",
+    "id": 2022012,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 9,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Narrar, por meio de imagem e poesia, cenas da vida das irmãs Petra e Elena."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Descrever, por meio das memórias de Petra, a separação de duas irmãs."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Sintetizar, por meio das principais cenas do filme, a história de Elena."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Lançar, por meio da história de vida do autor, um filme autobiográfico."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Avaliar, por meio de análise crítica, o filme em referência."
+      }
+    ],
+    "assunto": 902,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.230Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Ela era linda. Gostava de dançar, fazia teatro em São Paulo e sonhava ser atriz em Hollywood. Tinha 13 anos quando ganhou uma câmera de vídeo – e uma irmã. As duas se tornaram suas companheiras de experimentações. Adolescente, Elena vivia a criar filminhos e se empenhava em dirigir a pequena Petra nas cenas que inventava. Era exigente com a irmã. E acreditava no potencial da menina para satisfazer seus arroubos de diretora precoce. Por cinco anos, integrou algumas das melhores companhias paulistanas de teatro e participou de preleções para filmes e trabalhos na TV. Nunca foi chamada. No início de 1990, Elena tinha 20 anos quando se mudou para Nova York para cursar artes cênicas e batalhar uma chance no mercado americano. Deslocada, ansiosa, frustrada após alguns testes de elenco malsucedidos, decepcionada com a ausência de reconheci mento e vitimada por uma depressão que se agravava com a falta de perspectivas, Elena pôs fim à vida no segundo semestre. Petra tinha 7 anos. Vinte anos depois, é ela, a irmã caçula, que volta a Nova York para percorrer os últimos passos da irmã, vasculhar seus arquivos e transformar suas memórias em imagem e poesia.\nElena é um filme sobre a irmã que parte e sobre a irmã que fica. É um filme sobre a busca, a perda, a saudade, mas também sobre o encontro, o legado, a memória. Um filme sobre a Elena de Petra e sobre a Petra de Elena, sobre o que ficou de uma na outra e, essencialmente, um filme sobre a delicadeza.\nVANUCHI, C. Época, 19 out. 2012 (adaptado)\n\nO texto é exemplar de um gênero discursivo que cumpre a função social de",
+    "explicacao": "O texto apresenta o filme \"Elena\", comenta seus temas e julga sua delicadeza. Essas marcas são típicas da resenha crítica, cuja função é avaliar uma obra.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 16",
+    "id": 2022016,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 9,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Tematiza o fazer poético, como em \"Os poetas classificam as palavras pela alma\"."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Utiliza o recurso expressivo da metáfora, como em \"As palavras têm corpo e alma\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Valoriza a gramática da língua, como em \"substantivo, adjetivo, verbo, advérbio, conjunção\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Estabelece comparações, como em \"As palavras têm corpo e alma, mas são diferentes das pessoas\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Apresenta informações pertinentes acerca do conceito de \"palavra\", como em \"As gramáticas classificam as palavras\"."
+      }
+    ],
+    "assunto": 1004,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.231Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "PALAVRA\nAs gramáticas classificam as palavras em substantivo, adjetivo, verbo, advérbio, conjunção, pronome, numeral, artigo e preposição. Os poetas classificam as palavras pela alma porque gostam de brincar com elas, e para brincar com elas é preciso ter intimidade primeiro. É a alma da palavra que define, explica, ofende ou elogia, se coloca entre o significante e o significado para dizer o que quer, dar sentimento às coisas, fazer sentido. A palavra nuvem chove. A palavra triste chora. A palavra sono dorme. A palavra tempo passa. A palavra fogo queima. A palavra faca corta. A palavra carro corre. A palavra “palavra” diz. O que quer.\nE nunca desdiz depois. As palavras tem corpo e alma, mas são diferentes das pessoas em vários pontos. As palavras dizem o que querem, está dito, e pronto.\nFALCÃO, A. Pequeno dicionário de palavras ao vento. São Paulo: Salamandra, 2013 (adaptado).\n\nEsse texto, que simula um verbete para a palavra “palavra”, constitui-se como um poema porque",
+    "explicacao": "Embora imite um verbete, o texto trata as palavras como seres que têm corpo e alma, que choram e dormem. É esse uso da metáfora que lhe dá caráter de poema.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 17",
+    "id": 2022017,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 10,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Problema social localizado numa região do país."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Desafio para as torcidas organizadas dos clubes."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Reflexo da precariedade da organização social no país."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Inadequação de espaço nos estádios para receber o público."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Consequência da insatisfação dos clubes com a organização dos jogos."
+      }
+    ],
+    "assunto": 1402,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.233Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Pisoteamento, arrastão, empurra-empurra, agressões, vandalismo e até furto a um torcedor que estava caído no asfalto após ter sido atropelado nas imediações do estádio do Maracanã. As cenas de selvageria tiveram como estopim a invasão de milhares de torcedores sem ingresso, que furaram o bloqueio policial e transformaram o estádio em terra de ninguém. Um reflexo não só do quadro de insegurança que assola o Rio de Janeiro, mas também de como a violência social se embrenha pelo esporte mais popular do país. Em 2017, foram registrados 104 episódios de violência no futebol brasileiro, que resultaram em 11 mortes de torcedores. Desde 1995, quando 101 torcedores ficaram feridos e um morreu durante uma batalha campal no estádio do Pacaembu, autoridades brasileiras têm focado as ações de enfrentamento à violência no futebol em grupos uniformizados, alguns proibidos de frequentar estádios. Porém, a postura meramente repressiva contra torcidas organizadas é ineficaz em uma sociedade que registra mais de 61000 homicídios por ano. “É impossível dissociar a escalada de violência no futebol do panorama de desordem pública, social, econômica e política vivida pelo país”, de acordo com um doutor em sociologia do esporte.\nDisponível em: https://brasil.elpais.com. Acesso em: 22 jun. 2019 (adaptado).\n\nNesse texto, a violência no futebol está caracterizada como um(a)",
+    "explicacao": "O texto liga a violência nos estádios à insegurança e à desordem social do país. Assim, ela aparece como reflexo da precariedade da organização social, e não como problema apenas do esporte.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 19",
+    "id": 2022019,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 14,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Promovam a melhoria da aptidão da população, dedicando-se mais tempo aos esportes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Combatam o sedentarismo presente em parcela significativa da população no território nacional."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Facilitem a adoção da prática de exercícios, com ações relacionadas à educação e à distribuição de renda."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Auxiliem na construção de mais instalações esportivas e espaços adequados para a prática de atividades físicas e esportes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Estimulem o incentivo fiscal para a iniciativa privada destinar verbas aos programas nacionais de promoção da saúde pelo esporte."
+      }
+    ],
+    "assunto": 1401,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.234Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Seis em cada dez pessoas com 15 anos ou mais não praticam esporte ou atividade física. São mais de 100 milhões de sedentários. Esses são dados do estudo Práticas de esporte e atividade física, da Pnad 2015, realizado pelo IBGE. A falta de tempo e de interesse são os principais motivos apontados para o sedentarismo. Paralelamente, 73,3% das pessoas de 15 anos ou mais afirmaram que o poder público deveria investir em esporte ou atividades físicas. Observou-se uma relação direta entre escolaridade e renda na realização de esportes ou atividades físicas. Enquanto 17,3% das pessoas que não tinham instrução realizavam diversas práticas corporais, esse percentual chegava a 56,7% das pessoas com superior completo. Entre as pessoas que têm práticas de esporte e atividade física regulares, o percentual de praticantes ia de 31,1%, na classe sem rendimento, a 65,2%, na classe de cinco salários mínimos ou mais. A falta de tempo foi mais declarada pela população adulta, com destaque entre as pessoas de 25 a 39 anos. Entre os adolescentes de 15 a 17 anos, o principal motivo foi não gostarem ou não quererem. Já o principal motivo para praticar esporte, declarado por 11,2 milhões pessoas, foi relaxar ou se divertir, seguido de melhorar a qualidade de vida ou o bem-estar. A falta de instalação esportiva acessível ou nas proximidades foi um motivo pouco citado, demonstrando que a não prática estaria menos associada à infraestrutura disponível.\nDisponível em: www.esporte.gov.br. Acesso em: 9 ago. 2017 (adaptado).\n\nCom base na pesquisa e em uma visão ampliada de saúde, para a prática regular de exercícios ter influência significativa na saúde dos brasileiros, é necessário o desenvolvimento de estratégias que",
+    "explicacao": "A pesquisa relaciona prática de exercícios à escolaridade e à renda, e mostra que a falta de instalações pesa pouco. Por isso, são necessárias estratégias ligadas à educação e à distribuição de renda.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 20",
+    "id": 2022020,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 14,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Revelar a imposição de crenças religiosas a pessoas escravizadas."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Apontar a hipocrisia do discurso conservador na defesa da escravidão."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Sugerir práticas de violência física e moral em nome do progresso material."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Relacionar o declínio da produção agrícola e comercial a questões raciais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Ironizar o comportamento dos proprietários de terra na exploração do trabalho."
+      }
+    ],
+    "assunto": 1001,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.235Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A escrava\n– Admira-me —, disse uma senhora de sentimentos sinceramente abolicionistas —; faz-me até pasmar como se possa sentir, e expressar sentimentos escravocratas, no presente século, no século dezenove! A moral religiosa e a moral cívica aí se erguem, e falam bem alto esmagando a hidra que envenena a família no mais sagrado santuário seu, e desmoraliza, e avilta a nação inteira! Levantai os olhos ao Gólgota, ou percorrei-os em torno da sociedade, e dizei-me:\n— Para que se deu em sacrifício, o Homem Deus, que ali exalou seu derradeiro alento? Ah! Então não era verdade que seu sangue era o resgate do homem! É então uma mentira abominável ter esse sangue comprado a liberdade!? E depois, olhai a sociedade… Não vedes o abutre que a corrói constantemente!… Não sentis a desmoralização que a enerva, o cancro que a destrói?\nPor qualquer modo que encaremos a escravidão, ela é, e sempre será um grande mal. Dela a decadência do comércio; porque o comércio e a lavoura caminham de mãos dadas, e o escravo não pode fazer florescer a lavoura; porque o seu trabalho é forçado.\nREIS, M. F. Úrsula outras obras. Brasília: Câmara dos Deputados, 2018\n\nInscrito na estética romântica da literatura brasileira, o conto descortina aspectos da realidade nacional no século XIX ao",
+    "explicacao": "No conto romântico de Maria Firmina dos Reis, a personagem abolicionista confronta a moral religiosa e cívica com a defesa da escravidão. Isso aponta a hipocrisia do discurso conservador do século XIX.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 21",
+    "id": 2022021,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 10,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "“Zanza pra acolá”."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "“Fim de feira, periferia afora”."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "“A cidade não mora mais em mim”."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "\"Onde só vento se semeava outrora”."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "“Ó Manuel, Miguilim”."
+      }
+    ],
+    "assunto": 904,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.240Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Assentamento\nAssentamento\nZanza daqui\nZanza pra acolá\nFim de feira, periferia afora\nA cidade não mora mais em mim\nFrancisco, Serafim\nVamos embora\nVer o capim\nVer o baobá\nVamos ver a campina quando flora\nA piracema, rios contravim\nBinho, Bel, Bia, Quim\nVamos embora\nQuando eu morrer\nCansado de guerra\nMorro de bem\nCom a minha terra:\nCana, caqui\nInhame, abóbora\nOnde só vento se semeava outrora\nAmplidão, nação, sertão sem fim\nÓ Manuel, Miguilim\nVamos embora\nBUARQUE, C. As cidades. Rio de Janeiro: RCA, 1998 (fragmento).\n\nNesse texto, predomina a função poética da linguagem. Entretanto, a função emotiva pode ser identificada no verso:",
+    "explicacao": "A função emotiva expressa o estado interior do eu lírico, com marcas de primeira pessoa. Em \"A cidade não mora mais em mim\", ele revela o que sente em relação à cidade.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 26",
+    "id": 2022026,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 9,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Desenho cru da realidade dramática dos retirantes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Indefinição dos espaços para efeito de generalização."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Análise psicológica da reação dos personagens à seca."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Engajamento político do narrador ante as desigualdades."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Contemplação lírica da paisagem transformada em alegoria."
+      }
+    ],
+    "assunto": 1002,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.245Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Era o êxodo da seca de 1898. Uma ressurreição de cemitérios antigos — esqueletos redivivos, com o aspecto terroso e o fedor das covas podres.\nOs fantasmas estropiados como que iam dançando, de tão trôpegos e trêmulos, num passo arrastado de quem leva as pernas, em vez de ser levado por elas.\nAndavam devagar, olhando para trás, como quem quer voltar. Não tinham pressa em chegar, porque não sabiam aonde iam. Expulsos de seu paraíso por espadas de fogo, iam, ao acaso, em descaminhos, no arrastão dos maus fados.\nFugiam do sol e o sol guiava-os nesse forçado nomadismo.\nAdelgaçados na magreira cômica, cresciam, como se o vento os levantasse. E os braços afinados desciam-lhes aos joelhos, de mãos abanando.\nVinham escoteiros. Menos os hidrópicos — de ascite consecutiva à alimentação tóxica — com os fardos das barrigas alarmantes.\nNão tinham sexo, nem idade, nem condição nenhuma. Eram os retirantes. Nada mais.\nALMEIDA, J. A. A bagaceira. Rio de Janeiro: J. Olympio, 1978.\n\nOs recursos composicionais que inserem a obra no chamado “Romance de 30” da literatura brasileira manifestam-se aqui no(a)",
+    "explicacao": "O Romance de 30 retrata com crueza as dificuldades sociais do Nordeste. A descrição dos retirantes como esqueletos e fantasmas é esse desenho cru de uma realidade dramática.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 31",
+    "id": 2022031,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 10,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Citação a referências literárias tradicionais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Alusão à inocência das crianças da época."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Estratégia de questionar a bondade humana."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Descrição detalhada das pessoas do interior."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Representação anedótica de atos de violência."
+      }
+    ],
+    "assunto": 1003,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.257Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Vanda vinha do interior de Minas Gerais e de dentro de um livro de Charles Dickens. Sem dinheiro para criá-la, sua mãe a dera, com seus sete anos, a uma conhecida. Ao recebê-la, a mulher perguntou o que a garotinha gostava de comer. Anotou tudo num papel. Mal a mãe virou as costas, no entanto, a fulana amassou a lista e, como uma vilã de folhetim, decretou: “A partir de hoje, você não vai mais nem sentir o cheiro dessas comidas!”.\nVanda trabalhou lá até os quinze anos, quando recebeu a carta de uma prima com uma nota de cem cruzeiros, saiu de casa com a roupa do corpo e fugiu num ônibus para São Paulo.\nTodas as vezes que eu e minha irmã a importunávamos com nossas demandas de criança mimada, ela nos contava histórias da infância de gata-borralheira, fazia-nos apertar seu nariz quebrado por uma das filhas da “patroa” com um rolo de amassar pão e nos expulsava da cozinha: “Sai pra lá, peste, e me deixa acabar essa janta”.\nPRATA, A. Nu de botas. São Paulo: Cia. das Letras, 2013 (adaptado).\n\nPela ótica do narrador, a trajetória da empregada de sua casa assume um efeito expressivo decorrente",
+    "explicacao": "O narrador mistura humor e dureza ao comparar a vida de Vanda a uma história de Dickens. O nariz quebrado vira assunto de conversa, numa representação anedótica de atos de violência.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 43",
+    "id": 2022043,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 10,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Utilização de aparelhos musicais eletrônicos em lugar dos instrumentos tradicionais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Ocupação de espaços da natureza local para a produção de eventos musicais memoráveis."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Substituição de antigas práticas musicais, como o frevo, por melodias e harmonias inovadoras."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Recuperação de composições tradicionais folclóricas e sua apresentação em grandes festivais."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Integração de referenciais culturais de diferentes origens, criando uma nova combinação estética."
+      }
+    ],
+    "assunto": 1302,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.259Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O Recife fervilhava no começo da década de 1990, e os artistas trabalhavam para resgatar o prestígio da cultura pernambucana. Era preciso se inspirar, literalmente, nas raízes sobre as quais a cidade se construiu. Foi aí que, em 1992, com a publicação de um manifesto escrito pelo músico e jornalista Fred Zero Quatro, da banda Mundo Livre S/A, nasceu o manguebeat. O nome vem de “mangue”, vegetação típica da região, e “beat”, para representar as batidas e as influências musicais que o movimento abraçaria a partir dali. Era a hora e a vez de os caranguejos – aos quais os músicos recifenses gostavam de se comparar – mostrarem as caras: o maracatu e suas alfaias se misturaram com as batidas do hip-hop, as guitarras do rock, elementos eletrônicos e o sotaque recifense de Chico Science. A busca pelo novo rendeu uma perspectiva diferente do Brasil ao olhar para o Recife. A cidade deixou de ser o lugar apenas do frevo e do carnaval, transformando-se na ebulição musical que continua a acontecer mesmo após os 25 anos do lançamento do primeiro disco da Nação Zumbi, Da lama ao caos.\nFORCIONI, G. et al. O mangue está de volta. Revista Esquinas, n. 87, set 2019 (adaptado).\n\nChico Science foi fundamental para a renovação da música pernambucana, fato que se deu pela",
+    "explicacao": "O manguebeat juntou referências locais, como as raízes pernambucanas, a batidas e influências de outras origens. Chico Science renovou a música ao integrar esses referenciais em uma nova estética.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 45",
+    "id": 2022045,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 13,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Entendimento da cultura."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Aumento da criatividade."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Percepção da individualidade."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Melhoria da técnica."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Construção da sociabilidade."
+      }
+    ],
+    "assunto": 404,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.261Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Sempre que a relevância do discurso entra em jogo, a questão torna-se política por definição, pois é o discurso que faz do homem um ser político. E tudo que os homens fazem, sabem ou experimentam só tem sentido na medida em que pode ser discutido. Haverá, talvez, verdades que ficam além da linguagem e que podem ser de grande relevância para o homem no singular, isto é, para o homem que, seja o que for, não é um ser político. Mas homens no plural, isto é, os homens que vivem e se movem e agem neste mundo, só podem experimentar o significado das coisas por poderem falar e ser inteligíveis entre si e consigo mesmos.\nARENDT, H. A condição humana. Rio de Janeiro: Forense Universitária, 2004.\n\nNo trecho, a filósofa Hannah Arendt mostra a importância da linguagem no processo de",
+    "explicacao": "Para Arendt, é o discurso que faz do ser humano um ser político, e os homens só dão sentido às coisas por poderem falar entre si. A linguagem é, portanto, base da construção da sociabilidade.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 47",
+    "id": 2022047,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 4,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Fabricação em série."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Ampliação de estoques."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Fragilização dos cartéis."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Padronização de mercadorias."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Desterritorialização da produção."
+      }
+    ],
+    "assunto": 304,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.265Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma nova economia surgiu em escala global no último quartel do século XX. Chamo-a de informacional, para identificar suas características global e em rede funda – mentais e diferenciadas e enfatizar sua interligação. É informacional porque depende basicamente de sua capa – cidade de gerar, processar e aplicar de forma eficiente a informação baseada em conhecimentos. É global porque seus componentes estão organizados em escala global, diretamente ou mediante uma rede de conexões entre agentes econômicos. É rede porque é feita em uma rede\nglobal de interação entre redes empresariais.\nCASTELLS, M. A sociedade em rede – a era da informação:\neconomia, sociedade e cultura. São Paulo: Paz e Terra, 1999\n(adaptado).\n\nQual mudança estrutural é resultado da forma de organização econômica descrita no texto?",
+    "explicacao": "Castells descreve uma economia organizada em redes de escala global. Com a produção espalhada por vários países e ligada pela informação, a mudança resultante é a desterritorialização da produção.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 51",
+    "id": 2022051,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 3,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Fornecer a mão de obra qualificada."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Incorporar a inovação tecnológica."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Preservar a diversidade biológica."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Promover a produção alimentar."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Garantir a moradia básica."
+      }
+    ],
+    "assunto": 306,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.266Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Olhar O Brasil e não ver o sertão\nÉ como negar o queijo com a faca na mão\nEsse gigante em movimento\nMovido a tijolo e cimento\nPrecisa de arroz com feijão\nQue tenha comida na mesa\nQue agradeça sempre a grandeza\nDe cada pedaço de pão\nAgradeça a Clemente\nQue leva a semente\nEm seu embornal\nZezé e o penoso balé\nDe pisar no cacau\nMaria que amanhece o dia\nLá no milharal\nVANDER LEE. Do Brasil, In: Pensei que fosse o céu: ao vivo. Rio de Janeiro: Indie Records, 2006 (fragmento).\n\nA letra da canção valoriza uma dimensão do espaço rural brasileiro em sua relação com a cidade ao ressaltar sua função de",
+    "explicacao": "A canção diz que o \"gigante\" urbano precisa de arroz com feijão e cita o trabalho no cacau e no milharal. Ela destaca a função do campo de produzir alimentos para a cidade.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 52",
+    "id": 2022052,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 3,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Surgimento de novas práticas culturais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Contestação de antigos hábitos masculinos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Valorização de recentes publicações juvenis."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Circulação de variados manuais pedagógicos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Aparecimento de diversas editoras comerciais."
+      }
+    ],
+    "assunto": 202,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.267Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O número cada vez maior de mulheres letradas e interessadas pela literatura e pelas novelas, muitas divulgadas em capítulos, seções, classificadas comumente como folhetim, alçou a um gênero de ficção corrente já em 1840, fazendo parte do florescimento da literatura nacional brasileira, instigando a formação e a ampliação de um público leitor feminino, ávido por novidades, pelo apelo dos folhetins e “narrativas modernas” que encenavam “os dramas e os conflitos de uma mulher em processo de transformação patriarcal e provinciana que, progressivamente, começava a se abrir para modernizar seus costumes”. No Segundo Reinado, as mulheres foram se tornando público determinante na construção da literatura e da imprensa nacional. E não apenas público, porquanto crescerá o número de escritoras que colaboram para isso e emergirá uma imprensa feminina, editada, escrita e dirigida por e para mulheres.\nABRANTES, A. Do álbum de família à vitrine impressa: trajetos de retratos (PB, 1920), Revista Temas em Educação, n. 24, 2015 (adaptado).\n\nO registro das atividades descritas associa a inserção da figura feminina nos espaços de leitura e escrita do Segundo Reinado ao(à)",
+    "explicacao": "O texto liga o crescimento das leitoras e das escritoras aos folhetins e à imprensa feminina do século XIX. A presença feminina na leitura e na escrita se associa ao surgimento de novas práticas culturais.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 53",
+    "id": 2022053,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Realizar florestamentos de pinus, desrespeitando a prática do pousio."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Utilizar sistemas de irrigação, desprezando uma drenagem adequada."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Instalar açudes nos grotões, retardando a velocidade da vazão fluvial."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Desmatar áreas de preservação permanente, causando assoreamento."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Aplicar fertilizantes de origem orgânica, modificando a química da terra."
+      }
+    ],
+    "assunto": 305,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.269Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Solos salinos ou alomórficos apresentam como característica comum uma concentração muito alta de sais solúveis e/ou de sódio trocável. Eles ocorrem nos locais mais baixos do relevo, em regiões áridas e semiáridas e próximas do mar. Em regiões semiáridas, por exemplo, o polígono das secas do Nordeste brasileiro, os locais menos elevados recebem água que se escoa dos declives adjacentes, durante as chuvas que caem em alguns meses do ano. Essa água traz soluções de sais minerais e evapora-se rapidamente antes de infiltrar-se totalmente, havendo então, cada vez que esse processo é repetido, um pequeno acúmulo de sais no horizonte superficial que, com o passar dos anos, provoca a salinização do solo. Nas últimas décadas, a expansão das atividades agrícolas na região tem ampliado esse processo.\nLEPSCH, |. F. Solos: formação e conservação. São Paulo: Melhoramentos, 1993 (adaptado).\n\nAs atividades agrícolas, desenvolvidas na região mencionada, intensificam o problema ambiental exposto ao",
+    "explicacao": "O texto explica que a água evapora e deixa sais no solo. A agricultura agrava isso quando usa irrigação sem drenagem adequada, pois mais água evapora e mais sais se acumulam.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 55",
+    "id": 2022055,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 3,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Proteção da economia nacional."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Valorização da cultura tradicional."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Diminuição da formação acadêmica."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Estagnação da manifestação artística."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Ampliação do desemprego estrutural."
+      }
+    ],
+    "assunto": 503,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.275Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A dublagem é o novo campo a ser explorado pela inteligência artificial, e há empresas dedicadas a fazer com que as vozes originais de atores sejam transpostas para outros idiomas. A novidade reforça a tendência da automação de postos de trabalho nas mais diversas áreas. Tem potencial para facilitar a vida de estúdios e produtoras e, ao mesmo tempo, tornar mais escassas as oportunidades para dubladores e atores que trabalham com isso.\nGAGLIONI, C. Disponível em: www.nexojornal.com.br. Acesso em: 25 ou. 2021.\n\nA consequência da mudança tecnológica apresentada no texto é a",
+    "explicacao": "A dublagem por inteligência artificial reduz as oportunidades para dubladores e atores. Essa substituição do trabalho humano por automação é um caso de desemprego estrutural.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 61",
+    "id": 2022061,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 5,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Da nobreza, proveniente da obrigação de proteção ao campenisnato livre."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Da realeza, decorrente do conceito de governo subjacente à monarquia cristã."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Dos mosteiros, resultante do caráter fraternal afirmado nas regras monásticas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Dos bispados, consequente da participação dos clérigos nos assuntos comunitários."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Das corporações, procedente do padrão assistencialista previsto nas normas estatutárias."
+      }
+    ],
+    "assunto": 201,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.277Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Ainda que a fome ocorrida na Itália em 536 tenha origem nos eventos climáticos, suas implicações são tanto políticas quanto econômicas. Nos primeiros séculos da Idade Média, o auxílio aos famintos se inscreve no domínio da gestão pública, mesmo quando a ação de seus agentes é apresentada sob o ângulo da piedade e da caridade individuais, como é o caso da Gália merovíngia. Assim, o fato de que as respostas à fome são mostradas, na Gália, como o fruto de iniciativas pessoais fundadas no imperativo da caridade deriva da natureza das fontes do século VI.\nSILVA, M.C. Os agentes públicos e a fome nos primeiros séculos da Idade Média. Varia Historia, n. 60, set-dez. 2016 (Adaptado).\n\nNa conjuntura histórica destacada no texto, o dever de agir em face da situação de crise apresentada pertencia à jurisdição",
+    "explicacao": "O texto situa o auxílio aos famintos na gestão pública, ainda que apresentado como caridade. Nas monarquias cristãs da Alta Idade Média, esse dever cabia à realeza, pelo próprio conceito de governo.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 63",
+    "id": 2022063,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Solos vulcânicos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Dorsais oceânicas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Relevos escarpados."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Superfícies lateríticas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Dobramentos modernos."
+      }
+    ],
+    "assunto": 302,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.278Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "As forças tectônicas dentro da litosfera, controladas pelo calor interno das profundezas, geram terremotos, erupções e soerguimento de montanhas. As forças meteorológicas dentro da atmosfera e da hidrosfera, contoladas pelo calor do Sol, produzem tempestades,\ninundações, geleiras e outros agentes de erosão.\nPRESS, F. et al. Para entender a Terra. Porto Alegre: Bookman, 2002 (adaptado).\n\nA interação dinâmica entre as forças naturais citadas favorece a ocupação do espaço geográfico, na medida em que provoca a formação de",
+    "explicacao": "O calor interno produz erupções, e os agentes meteorológicos desgastam o material expelido. Dessa interação surgem os solos vulcânicos, férteis e favoráveis à ocupação humana.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 64",
+    "id": 2022064,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 3,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Fragilizar o poder público."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Fomentar a economia solidária."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Controlar a propriedade estatal."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Garantir o preceito constitucional."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Incentivar a especulação imobiliária."
+      }
+    ],
+    "assunto": 504,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.281Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Após sete anos da ocupação de um terreno abandonado em Santo André, no ABC paulista, os condomínios Novo Pinheirinho e Santos Dias foram inaugurados, com a presença de representantes dos governos federal, estadual e municipal. A ocupação começou em 2012 e, desde então, o movimento vinha reivindicando o direito de usufruir do espaço para a construção de casas. A Cartas Magna, em seu art. 6°, garante a todos os brasileiros o direito à moradia.\nPUTTI, A. Disponível em: www.cartacapital.com.br.\nAcesso em: 13 nov. 2021 (adaptado).\n\nO texto apresenta uma estratégia usada pelo movimento social para",
+    "explicacao": "A ocupação do terreno foi uma forma de pressionar pelo direito à moradia, previsto no artigo 6º da Constituição. A estratégia do movimento buscou garantir esse preceito constitucional.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 67",
+    "id": 2022067,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 5,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Fluxo de retorno."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Migração interna."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Mudança sazonal."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Movimento pendular."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Deslocamento forçado."
+      }
+    ],
+    "assunto": 303,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.286Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Brasileiros levam mais tempo de casa para o trabalho\nPesquisa do IBGE aponta que a situação é maio grave no Sudeste: 13% das pessoas levam mais de um hora para chegar ao trabalho. Nas regiões metropolitanas de São Paulo e do Rio, o IBGE registrou os maiores percentuais de trabalhadores que levam mais de uma hora no trajeto até o emprego. Quem vê o Marcelo chegar ao trabalho nem imagina a maratona que ele enfrenta todos os dias antes das 5 h. “Acordo 4 h 30, saio de casa 5 h, pego trem 5 h 20, chego na Central umas 6 h 50, pego ônibus e chego no trabalho mais ou menos 7 h 10”, conta. Segundo especialista, são os mais pobres os que moram mais longe do emprego.\nDisponivel em: www.portaldotransito.com.br. Acesso em: 23 nov 2021 (adaptado)\n\nA pesquisa desenvolvida retrata a seguinte dinâmica populacional:",
+    "explicacao": "O texto mostra pessoas que saem de casa e voltam no mesmo dia para trabalhar em outro ponto da metrópole. Esse deslocamento diário é o movimento pendular.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 72",
+    "id": 2022072,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 3,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Objeto tombado e museográfico."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Herança religiosa e sacralizada."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Cenário bucólico e paisagístico"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Riqueza individual e efêmera"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Patrimônio cultural e afetivo."
+      }
+    ],
+    "assunto": 502,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.289Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O povo Kambeba é o povo da águas. Os mais velhos costumam contar que o povo nasceu de uma gota-d’água que caiu do céu em uma grande chuva. Nessa gota estavam duas gotículas: o homem e a mulher. “Por essa narrativa e cosmologia indígena de que nós somos o povo das águas é que o rio nos tem fundamental importância”, diz Márcia Wayna Kambeba, mestre em Geografia e escritora. Todos os dias, ela ia com o pai observar o rio. Ia em silêncio e, antes que tomasse para si a palavra, era interrompida. “Ouço o rio”, o pai dizia. Depois de cerca de duas horas a ouvir as águas do Solimões, ela mergulhava. “Confie no rio e aprenda com ele”. “Fui entender mais tarde, com meus estudos e vivências, que meu pai estava me apresentando à sabedoria milenar do rio”.\nRios amazônicos influenciam no agro e em reservatórios do Sudeste. Disponível em:  www.uol.com.br. Acesso em: 14 out. 2021.\n\nPelo descrito no texto, o povo Kambeba tem o rio como um(a)",
+    "explicacao": "Para os Kambeba, o rio faz parte da origem do povo e transmite sabedoria entre gerações. Ele é tratado como patrimônio cultural e afetivo.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 75",
+    "id": 2022075,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 5,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Os epicuristas, envolvidos com o ideal de vida feliz."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Os estoicos, dedicados à superação dos infortúnios."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Os sofistas, comprometidos com o ensino da retórica."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Os peripatéticos, empenhados na dinâmica do ensino."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Os poetas rapsodos, responsáveis pela narrativa do mito."
+      }
+    ],
+    "assunto": 401,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.294Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Advento da Polis, nascimento da filosofia: entre as duas ordens de fenômenos, os vínculos são demasiado estreitos para que o pensamento racional não apareça, em suas origens, solidário das estruturas sociais e mentais próprias da cidade grega. Assim recolocada na história, a filosofia despoja-se desse caráter de revelação absoluta que às vezes lhe foi atribuído, saudando, na jovem ciência dos jônios, a razão intemporal que veio encarnar-se no Tempo. A escola de Mileto não viu nascer a Razão; ela construiu uma Razão, uma primeira forma de racionalidade. Essa razão grega não é a razão experimental da ciência contemporânea.\nVERNANT, J. P. Origens do pensamento grego. Rio de Janeiro: Difel, 2002.\n\nOs vínculos entre os fenômenos indicados no trecho foram fortalecidos pelo surgimento de uma categoria de pensadores, a saber:",
+    "explicacao": "Vernant liga a filosofia à vida da pólis grega. Os sofistas, professores de retórica para o debate público, fortaleceram esse vínculo entre pensamento e cidade.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 80",
+    "id": 2022080,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 4,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Diversificação da opinião pública."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Mercantilização da cultura popular."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Controle das organizações sindicais."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Cerceamento da liberdade de expressão."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Privatização dos meios de comunicação"
+      }
+    ],
+    "assunto": 203,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.295Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Decreto-Lei n. 1 949, de 27/17/1937\nArt. 1.o Fica criado o Departamento de Imprensa e Propaganda (DIP), diretamente  subordinado ao presidente da República.\nArt. 2.o O DIP tem por fim:\nh) coordenar e incentivar as relações da imprensa com os poderes públicos no sentido de maior aproximação da mesma com os fatos que se ligam aos interesses nacionais;\nn) autorizar mensalmente a devolução dos depósitos efetuados pelas empresas jornalísticas para importação de papel para imprensa , uma vez demonstrada, a seu juízo, a eficiência e a utilidade pública dos jornais ou periódicos por elas administrados ou dirigidos.\nBRASIL apud CARONE, E. A Terceira República. (1937-1945). São Paulo: Difel, 1982. (Adaptado).\n\nCom base nos trechos do decreto, as finalidades do órgão criado permitiram ao governo promover o(a)",
+    "explicacao": "O DIP foi criado no Estado Novo, e o decreto mostra que ele controlava a imprensa e até o acesso ao papel. Isso permitiu ao governo cercear a liberdade de expressão.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 81",
+    "id": 2022081,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Valorização de disputas dialógicas"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Rejeição das convenções sociais"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Inspiração de natureza religiosa"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Exaltação do sofrimento"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Moderação das paixões"
+      }
+    ],
+    "assunto": 403,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.302Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Entretanto, nosso amigo Basso tem o ânimo alegre. Isso resulta da filosofia: estar alegre diante da morte, forte e contente qualquer que seja o estado do corpo, sem desfalecer, ainda que desfaleça.\nSêneca, L. Cartas morais. Lisboa: Calouste Gulbenkian, 1990.\n\nO excerto refere-se a uma carta de Sêneca na qual se apresenta como um bem fundamental da filosofia promover a",
+    "explicacao": "Sêneca, estoico, elogia quem se mantém alegre e forte diante da morte. O bem da filosofia, nesse caso, é promover a moderação das paixões.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 88",
+    "id": 2022088,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 4,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Incineração do lixo orgânico."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Construção de rede de esgoto."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Uso de vermífugo pela população."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Controle das populações dos vetores."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Consumo de carnes vermelhas bem cozidas."
+      }
+    ],
+    "assunto": 805,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.306Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "De acordo com a Organização Mundial da Saúde, a filariose e a leishmaniose são consideradas doenças\ntropicais infecciosas e constituem uma preocupação para a saúde pública por ser alto o índice de mortalidade a elas associado.\n\nUma medida profilática comum a essas duas doenças é o(a)",
+    "explicacao": "A filariose e a leishmaniose são transmitidas por insetos: mosquito e mosquito-palha. A medida preventiva comum é controlar as populações desses vetores.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 92",
+    "id": 2022092,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "1 000 000 m²"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "500 000 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "250 000 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "100 000 m²"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "20 000 m²"
+      }
+    ],
+    "assunto": 604,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.307Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Em 2017, foi inaugurado, no estado da Bahia, o Parque Solar Lapa, composto por duas usinas (Bom Jesus\nda Lapa e Lapa) e capaz de gerar cerca de 300 GWh de energia por ano. Considere que cada usina apresente potência igual a 75 MW, com o parque totalizando uma potência instalada de 150 MW. Considere ainda que a irradiância solar média é de 1 500 W/m² e que a eficiência dos painéis é de 20%.\nParque Solar Lapa entra em operação. Disponível em: www.canalbioenergia.com.br. Acesso em: 9 jun. 2022 (adaptado).\n\nNessas condições, a área total dos painéis solares que compõem o Parque Solar Lapa é mais próxima de:",
+    "explicacao": "Com eficiência de 20%, cada m² fornece 0,2 × 1 500 = 300 W. Para 150 000 000 W, a área é 150 000 000 / 300 = 500 000 m².",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 93",
+    "id": 2022093,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 6,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Peneiração."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Centrifugação."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Extração por solvente."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Destilação fracionada."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Separação magnética."
+      }
+    ],
+    "assunto": 706,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.311Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O urânio é empregado como fonte de energia em reatores nucleares. Para tanto, o seu mineral deve\nser refinado, convertido a hexafluoreto de urânio e posteriormente enriquecido, para aumentar de 0,7% a 3% a abundância de um isótopo específico — o urânio-235. Uma das formas de enriquecimento utiliza a pequena diferença de massa entre os hexafluoretos de urânio-235 e de urânio-238 para separá-los por efusão, precedida pela vaporização. Esses vapores devem efundir repetidamente\nmilhares de vezes através de barreiras porosas formadas por telas com grande número de pequenos orifícios. No entanto, devido à complexidade e à grande quantidade de energia envolvida, cientistas e engenheiros continuam a pesquisar procedimentos alternativos de enriquecimento.\nATKINS, P.; JONES, L. Princípios de química: questionando a vida moderna e o meio ambiente. Porto Alegre: Bookman, 2006 (adaptado).\n\nConsiderando a diferença de massa mencionada entre os dois isótopos, que tipo de procedimento alternativo ao da efusão pode ser empregado para tal finalidade?",
+    "explicacao": "Os isótopos diferem pouco em massa, e não em propriedades químicas. A centrifugação separa substâncias por massa, por isso é a alternativa à efusão.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 97",
+    "id": 2022097,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 7,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Correção do código genético para a tradução da proteína."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Alteração do RNA ribossômico ligado à síntese da proteína."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Produção de mutações benéficas para a correção do problema."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Liberação imediata da proteína normal na região ocular humana."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Expressão do gene responsável pela produção da enzima normal."
+      }
+    ],
+    "assunto": 802,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.312Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A Agência Nacional de Vigilância Sanitária (Anvisa) aprovou um produto de terapia gênica no país, indicado para o tratamento da distrofia hereditária da retina. O procedimento é recomendado para crianças acima de 12 meses e adultos com perda de visão causada pela mutação do gene humano RPE65. O produto, elaborado por engenharia genética, é composto por um vírus, no qual foi inserida uma cópia do gene normal humano RPE65 para corrigir o funcionamento das células da retina.\nANVISA. Disponível em: www.gov.br/anvisa. Acesso em: 4 dez. 2021 (adaptado)\n\nO sucesso dessa terapia advém do fato de que o produto favorecerá a",
+    "explicacao": "O vírus leva ao paciente uma cópia normal do gene RPE65. As células da retina passam a expressar esse gene e a produzir a enzima normal.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 98",
+    "id": 2022098,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Ocupam áreas de vegetação nativa e substituem parcialmente a flora original."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Estimulam a competição por seus frutos entre animais típicos da região e eliminam as espécies perdedoras."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Alteram os nichos e aumentam o número de possibilidades de relações entre os seres vivos daquele ambiente."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Apresentam alta taxa de reprodução e se mantêm com um número de indivíduos superior à capacidade suporte do ambiente."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Diminuem a relação de competição entre os polinizadores e facilitam a ação de dispersores de sementes de espécies nativas."
+      }
+    ],
+    "assunto": 804,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.313Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "A extinção de espécies é uma ameaça real que afeta diversas regiões do país. A introdução de espécies exóticas pode ser considerada um fator maximizador desse processo. A jaqueira (Artocarpus heterophyllus), por exemplo, é uma árvore originária da Índia e de regiões do Sudeste Asiático que foi introduzida ainda na era colonial e se aclimatou muito bem em praticamente todo o território nacional.\n\nCasos como o dessa árvore podem provocar a redução da biodiversidade, pois elas",
+    "explicacao": "A jaqueira é uma espécie exótica que se adapta bem. Ao ocupar áreas de vegetação nativa, ela substitui parte da flora original e reduz a biodiversidade.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 99",
+    "id": 2022099,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "A força é maior na colisão com a barreira de pneus, e a energia dissipada é maior na colisão com a barreira de blocos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "A força é maior na colisão com a barreira de blocos, e a energia dissipada é maior na colisão com a barreira de pneus."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "A força é maior na colisão com a barreira de blocos, e a energia dissipada é a mesma nas duas situações."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "A força é maior na colisão com a barreira de pneus, e a energia dissipada é maior na colisão com a barreira de pneus."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "A força é maior na colisão com a barreira de blocos, e a energia dissipada é maior na colisão com a barreira de blocos."
+      }
+    ],
+    "assunto": 603,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.317Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Em um autódromo, os carros podem derrapar em uma curva e bater na parede de proteção. Para diminuir o impacto de uma batida, pode-se colocar na parede uma barreira de pneus, isso faz com que a colisão seja mais demorada e o carro retorne com velocidade reduzida. Outra opção é colocar uma barreira de blocos de um material que se deforma, tornando-a tão demorada quanto a colisão com os pneus, mas que não permite a volta do carro após a colisão.\n\nComparando as duas situações, como ficam a força média exercida sobre o carro e a energia mecânica dissipada?",
+    "explicacao": "Com os blocos, o carro para e toda a energia cinética se dissipa. Com os pneus, ele volta: a variação de quantidade de movimento é maior, e a força média também, no mesmo tempo de colisão.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 105",
+    "id": 2022105,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 6,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "As fêmeas influenciam o comportamento dos machos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "O cuidado parental é necessário para o desenvolvimento"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "O grau de evolução determina o comportamento reprodutivo."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "O sucesso reprodutivo pode ser garantido por estratégias diferentes."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "O ambiente induz modificação na produção do número de gametas femininos."
+      }
+    ],
+    "assunto": 803,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.322Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Desde a proposição da teoria de seleção natural\npor Darwin, os seres vivos nunca mais foram olhados\nda mesma forma. No que diz respeito à reprodução de\nanfíbios anuros, os cientistas já descreveram diferentes\npadrões reprodutivos, como os exemplificados a seguir:\nEspécie 1 – As fêmeas produzem cerca de\n5 000 gametas, que são fecundados na água, em\nlagoas temporárias de estação chuvosa. Todo o\ndesenvolvimento embrionário, do ovo à metamorfose,\nocorre, nesse ambiente, independente dos pais.\nEspécie 2 – As fêmeas produzem aproximadamente\n200 gametas, que são depositados em poças próximas a\ncorpos-d’água. Os embriões são vigiados pelos machos\ndurante boa parte do seu desenvolvimento.\nEspécie 3 – As fêmeas produzem por volta de\n20 gametas, que são fecundados sobre a superfície das\nfolhas de plantas cujos galhos estão dispostos acima da\nsuperfície de corpos-d’água e aí se desenvolvem até\na eclosão.\nEspécie 4 – As fêmeas produzem poucos gametas\nque, quando fecundados, são “abocanhados” pelos\nmachos. Os embriões se desenvolvem no interior do\nsaco vocal do macho até a metamorfose, quando saem\natravés da boca do pai.\n\nOs padrões descritos evidenciam que",
+    "explicacao": "Cada espécie combina de um jeito diferente número de gametas e cuidado com a prole. Todos esses padrões funcionam, o que mostra que o sucesso reprodutivo pode ser garantido por estratégias diferentes.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 110",
+    "id": 2022110,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "120 N"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "300 N"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "360 N"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "450 N"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "900 N"
+      }
+    ],
+    "assunto": 602,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.323Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um pai faz um balanço utilizando dois segmentos paralelos e iguais da mesma corda para fixar uma tábua a uma barra horizontal. Por segurança, opta por um tipo de corda cuja tensão de ruptura seja 25% superior à tensão máxima calculada nas seguintes condições:\n• O ângulo máximo atingido pelo balanço em relação\nà vertical é igual a 90°;\n• Os filhos utilizarão o balanço até que tenham uma\nmassa de 24 kg.\nAlém disso, ele aproxima o movimento do balanço para o movimento circular uniforme, considera que a aceleração da gravidade é igual a 10  m/s² se despreza forças dissipativas.\n\nQual é a tensão de ruptura da corda escolhida?",
+    "explicacao": "No ponto mais baixo, a energia dá v² = 2gL, e a tração total é mg + mv²/L = 3mg = 720 N. Em cada corda são 360 N, e com a folga de 25% chega-se a 450 N.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 112",
+    "id": 2022112,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 6,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Acúmulo do solvente com fragmentação da organela."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Rompimento da membrana celular com liberação do citosol."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Aumento do vacúolo com diluição do pigmento no seu interior."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Quebra da parede celular com extravasamento do pigmento."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Murchamento da célula com expulsão do pigmento do vacúolo."
+      }
+    ],
+    "assunto": 801,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.325Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "As células da epiderme da folha da Tradescantia pallida purpurea, uma herbácea popularmente conhecida como trapoeraba-roxa, contém um vacúolo onde se encontra um pigmento que dá a coloração arroxeada a esse tecido. Em um experimento, um corte da epiderme de uma folha da trapoeraba-roxa foi imerso em ambiente hipotônico e, logo em seguida, foi colocado em uma lâmina e observado em microscópio óptico.\n\nDurante a observação desse corte, foi possível identificar o(a)",
+    "explicacao": "Em meio hipotônico, a água entra na célula por osmose. A parede celular impede o rompimento, e o vacúolo aumenta, com o pigmento mais diluído.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 114",
+    "id": 2022114,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Catalisador."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Oxidante."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Redutor."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Ácido."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Base."
+      }
+    ],
+    "assunto": 705,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.335Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Durante o ano de 2020, impulsionado pela necessidade de respostas rápidas e eficientes para desinfectar ambientes de possíveis contaminações com o SARS-CoV-2, causador da covid-19, diversas alternativas foram buscadas para\nos procedimentos de descontaminação de materiais e ambientes. Entre elas, o uso de ozônio em meio aquoso como agente sanitizante para pulverização em humanos e equipamentos de proteção em câmaras ou túneis, higienização de automóveis e de ambientes fechados e descontaminação de trajes. No entanto, pouca atenção foi dada à toxicidade do ozônio, à formação de subprodutos, ao\nnível de concentração segura e às precauções necessárias.\nLIMA, M. J. A.; FELIX, E. P.; CARDOSO, A. A. Aplicações e implicações do ozônio na indústria, ambiente e saúde. Química Nova, n. 9, 2021 (adaptado).\n\nO grande risco envolvido no emprego indiscriminado dessa substância deve-se à sua ação química como",
+    "explicacao": "O ozônio é um forte agente oxidante, e por isso desinfeta. Essa mesma ação pode danificar tecidos humanos, e daí vem o risco do uso indiscriminado.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 124",
+    "id": 2022124,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 7,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "8."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "9."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "11."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "18."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "24."
+      }
+    ],
+    "assunto": 103,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.351Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma montadora de automóveis divulgou que oferta a seus clientes mais de 1 000 configurações diferentes de carro, variando o modelo, a motorização, os opcionais e a cor do veículo. Atualmente, ela oferece 7 modelos de carros com 2 tipos de motores: 1.0 e 1.6. Já em relação aos opcionais, existem 3 escolhas possíveis: central multimídia, rodas de liga leve e bancos de couro, podendo o cliente optar por incluir um, dois, três ou nenhum dos opcionais disponíveis.\n\nPara ser fiel à divulgação feita, a quantidade mínima de cores que a montadora deverá disponibilizar a seus clientes é",
+    "explicacao": "Os opcionais dão 2³ = 8 escolhas, então são 7 · 2 · 8 = 112 configurações por cor. Para passar de 1 000, 1 000/112 ≈ 8,9, ou seja, 9 cores.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 142",
+    "id": 2022142,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "14,4."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "20,7."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "22,0."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "30,0."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "37,5"
+      }
+    ],
+    "assunto": 102,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.366Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Em uma universidade, atuam professores que estão enquadrados funcionalmente pela sua maior titulação: mestre ou doutor. Nela há, atualmente, 60 mestres e 40 doutores. Os salários mensais dos professores mestres e dos doutores são, respectivamente, R\$ 8 000,00 e\nR\$ 12 000,00.\nA diretoria da instituição pretende proporcionar um aumento salarial diferenciado para o ano seguinte, de tal forma que o salário médio mensal dos professores dessa instituição não ultrapasse R\$ 12 240,00. A universidade já estabeleceu que o aumento salarial será de 25% para os mestres e precisa ainda definir o percentual de reajuste para os doutores.\n\nMantido o número atual de professores com suas atuais titulações, o aumento salarial, em porcentagem, a ser concedido aos doutores deverá ser de, no máximo,",
+    "explicacao": "Mestres passam a ganhar 10 000 reais. Para média de 12 240, a folha é de 1 224 000; tirando 600 000 dos mestres, sobram 624 000 para 40 doutores, ou 15 600 cada, um aumento de 30%.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 163",
+    "id": 2022163,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "I."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "II."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "III."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "IV."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "V."
+      }
+    ],
+    "assunto": 104,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.371Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Uma loja comercializa cinco modelos de caixas-d’água (I, II, III, IV e V), todos em formato de cilindro reto de base circular. Os modelos II, III, IV e V têm as especificações de suas dimensões dadas em relação às dimensões do modelo I, cuja profundidade é P e área da base é Ab, como segue:\n• modelo II: o dobro da profundidade e a metade da\nárea da base do modelo I;\n• modelo III: o dobro da profundidade e a metade do\nraio da base do modelo I;\n• modelo IV: a metade da profundidade e o dobro da\nárea da base do modelo I;\n• modelo V: a metade da profundidade e o dobro do\nraio da base do modelo I.\nUma pessoa pretende comprar nessa loja o modelo\nde caixa-d’água que ofereça a maior capacidade\nvolumétrica\n\nO modelo escolhido deve ser o",
+    "explicacao": "O volume do cilindro é área da base vezes altura. Dobrar o raio quadruplica a área e, com a metade da profundidade, o volume dobra. Os outros modelos não superam o modelo I, e o V é o maior.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 169",
+    "id": 2022169,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 1,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Conhecimento das pessoas sobre as tecnologias."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Uso do celular alheio por pessoas desautorizadas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Funcionamento de recursos tecnológicos obsoletos."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Ingerência do celular sobre as escolhas dos usuários"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Falta de informação sobre a configuração de alertas no celular"
+      }
+    ],
+    "assunto": 1201,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.384Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Pequeño hermano\nEs, no cabe duda, el instrumento más presente y más poderoso de todos los que entraron en nuestras vidas. Ni la televisión ni el ordenador, no hablemos ya del obsoleto fax o de las agendas o los libros electrónicos, ha tenido tal influencia, tal predicamento sobre nosotros. El móvil somos nosotros mismos. Todo desactivado e inerte, inocuo, ya les digo. Y de repente, tras un viaje y tres o cuatro imprudentes fotos, salta un aviso en la pantalla. Con sonido, además, pese a que tengo también todas las alertas desactivadas. Y mi monstruo doméstico me dice: Tienes un recuerdo nuevo. Lo repetiré: tienes un recuerdo nuevo. ¿Y tú qué sabes? ¿Y a ti, máquina demoníaca, qué te importa? ¿Cómo te atreves a decirme qué son o no son mis recuerdos? ¿Qué es esta intromisión, este descaro? El pequeño hermano lo sabe casi todo. Sólo hay una esperanza: que la obsolescencia programada mate antes al pequeño hermano y que nosotros sigamos vivos, con los recuerdos que nos dé la gana.\nFERNANDEZ, D, Disponível em: www.lavanguardia.com.\nAcesso em:  5 dez. 2018 (adaptado).\n\nNo texto, autor faz uma crítica ao(à)",
+    "explicacao": "O autor chama o celular de \"monstro doméstico\" e pergunta quem é ele para dizer quais são seus recuerdos. A crítica é à ingerência do celular sobre as escolhas dos usuários.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 2",
+    "id": 2022502,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 12,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Das peculiaridades dos subúrbios hispano-americanos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Da força da conexão espiritual entre os amigos."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Do papel da amizade em diferentes contextos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Do hábito de reunir amigos em torno da mesa"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Dos graus de intimidade entre os amigos"
+      }
+    ],
+    "assunto": 1202,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.385Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "En los suburbios de La Habana, llaman al amigo _mi tierra o mi sangre._En Caracas, el amigo es mi pana o mi llave: pana, por panadería, la fuente del buen pan para las hambres del alma; y llave por…—Llave, por llave—me dice Mario Benedetti. Y me cuenta que cuando vivía en Buenos Aires, en los tiempos del terror, él llevaba cinco llaves ajenas en su llavero: cinco llaves, de cinco casas, de cinco amigos: las llaves que lo salvaron.\nGALEANO, E. El libro de los abrazos. Madri: Siglo Veintiuno, 2015.\n\nNesse texto, o autor demonstra como as diferentes expressões existentes em espanhol para se referir a “amigo” variam em função",
+    "explicacao": "\"Pana\" remete ao pão e \"llave\", às chaves que salvaram Benedetti. Cada palavra para \"amigo\" nasce do papel que a amizade tem em cada contexto.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 3",
+    "id": 2022503,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 12,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Descanso diante da problemática de crianças em situação de rua."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Violência característica do cotidiano das grandes metrópoles."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Estímulo à mendicância nos centros urbanos"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Tendência de informalização do trabalho"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Falta de serviços de saúde adequados"
+      }
+    ],
+    "assunto": 1201,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.386Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Los niños de nuestro olvido\nEscribo sobre un destino\nQue apenas puedo tocar\nEn tanto un niño se inventa\nCon pegamento un hogar\nMientras busco las palabras\nPara hacer esta canción\nUn niño esquiva las balas\nQue buscan su corazón\nAcurrucado en mí calle\nDuerme un niño y la piedad\nArma lejos un pesebre\nY juega a la navidad\nArma lejos un pesebre\nY juega a la navidad\nY juega a la navidad\nY juega, y juega, y juega…\nLa niñez de nuestro olvido\nPide limosna en un bar\nY lava tu parabrisas\nPor un peso, por un pan\nSi las flores del futuro\nCrecen con tanto dolor\nSeguramente mañana\nSerá un mañana sin sol\n\nNo texto, a expressão “un mañana sin sol” é usada para concluir uma critica ao(à)",
+    "explicacao": "A canção mostra crianças que dormem na rua, pedem esmola e fogem de balas. \"Un mañana sin sol\" conclui a crítica ao descaso diante dessas crianças em situação de rua.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2022, questão 4",
+    "id": 2022504,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 12,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Repetição do pronome indefinido \"todos\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Utilização do travessão na marcação do oposto."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Retomada do antecedente pelo pronome \"isso\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Contraposição de ideias marcada pela conjunção mas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Substantivação de expressões pela anteposição do artigo."
+      }
+    ],
+    "assunto": 905,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.413Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "E assim as coisas continuaram acontecendo entre os dois, em quase sustos, um grande por acaso com cacoetes de gestos definitivos. Com o Nunca Mais se oferecendo o tempo todo, bastaria dizer foi um prazer ter te conhecido, bastaria não trocar telefones nem e-mails e enterrar a casualidade com a cal da sabedoria – nada poderia ser definitivo, os encontros duravam duas horas ou duas décadas ou duas vezes isso, mas em algum momento necessariamente seria o fim. De todos os grandes amores, De todos os pequenos. De todas as juras, das promessas, de todos os na-alegria-e-na-tristeza. De todos os não amores, os desamores, os casamentos para sempre, os rancores para sempre, de todas as paralelas que só se viabilizam na abstração da geometria, de todas as pequenas paixões e de todas as grandes paixões, de tudo que para na antessala da paixão, de todos os vínculos não experimentados, de todos.\nLISBOA, A. Rahushisha. Rio de Janeiro Objetiva 2014.\nO recurso que promove a progressão textual, contribuindo para a construção da ideia de que as relações amorosas têm um enredo comum, é a",
+    "explicacao": "A repetição de \"todos\" liga os trechos e faz o texto avançar enumerando amores, juras e paixões. Isso constrói a ideia de que as relações têm um enredo comum.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 27",
+    "id": 2023027,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 9,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Ressignificar episódios dramáticos em novas práticas culturais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Adaptar coreografias como imitação dos movimentos do mar."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Lembrar dos mortos no passado escravista como forma de lamento."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Perpetuar uma narrativa de apagamento dos fatos históricos traumáticos."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Ritualizar a passagem de atos fúnebres nas produções coletivas com espírito festivo."
+      }
+    ],
+    "assunto": 1303,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.421Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Marabaixo é uma expressão artistico-cultural formada nas tradições e na identificação cultural entre as comunidades negras do Amapá. O nome remonta às mortes de escravizados em navios negreiros que eram jogados na água. Em sua homenagem, hinos de lamento eram cantados mar abaixo, mar acima. Posteriormente, o Marabaixo se integrou à vivência das comunidades negras em um ciclo de danças, cantorias com tambores e festas religiosas, recebendo, em 2018, o título de Patrimônio Cultural do Brasil.\nDisponível em: http://portal.iphan.gov.br. Acesso em: 15 nov. 2021 (adaptado).\n\nA manifestação do Marabaixo se constituiu em expressão de arte e cultura, exercendo função de",
+    "explicacao": "O Marabaixo nasceu dos lamentos pelos escravizados mortos no mar e se tornou dança, canto e festa. Sua função é ressignificar episódios dramáticos em novas práticas culturais.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 36",
+    "id": 2023036,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 13,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Dar suporte à técnica de colagem em Artes Visuais, contornando dificuldades práticas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Aproximar-se da estética visual própria da editoração de obras artísticas, como capas de livros."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Oferecer uma vitrine internacional para sua produção artística, a fim de dar mais visibilidade a suas obras."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Enfatizar o caráter original e inovador de suas criações artísticas, diferenciando-se das artes tradicionais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Trazer um sentido tecnológico às suas colagens, uma vez que as imagens artísticas são recorrentes nas redes sociais."
+      }
+    ],
+    "assunto": 1304,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.422Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O uso das redes sociais como forma de ampliar universos foi uma descoberta recente para o artista Wolney Fernandes, que começou a criar quando o ambiente em Goiás era mais árido em relação às artes visuais. “Hoje, ser diferente é uma potência e quem sabe o que quer com a própria arte encontra espaço”, diz. As colagens artísticas do goiano aparecem em capas de obras literárias pelo Brasil e exterior.\nDisponível em: https://opopular.com.br. Acesso em: 15 nov. 2021 (adaptado).\n\nO artista goiano Wolney Fernandes busca expor seu trabalho por meio de plataformas virtuais com o objetivo de",
+    "explicacao": "O artista passou a usar as redes para ampliar universos, e suas colagens já chegam ao exterior. O objetivo é ter uma vitrine internacional que dê mais visibilidade às obras.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 37",
+    "id": 2023037,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 13,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Promover o bem-estar social."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Negociar o apoio muçulmano."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Mediar os conflitos territoriais."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Estimular a cooperação regional."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Combater os governos autocráticos."
+      }
+    ],
+    "assunto": 204,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.435Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Escrito durante a Primeira Guerra Mundial, o seguinte trecho faz parte da carta enviada pelo secretário do exterior britânico, Sir Arthur James Balfour, ao banqueiro Lord Rotschild, presidente da Liga Sionista, em 2 de novembro de 1917, a carta ficou conhecida como Declaração Balfour:\n“O governo de Sua Majestade vê com aprovação o estabelecimento na Palestina de um lar nacional para o povo judeu, e fará todos os esforços para facilitar tal objetivo. Nada será feito que possa prejudicar os direitos civis e religiosos das comunidades não judaicas na Palestina.”\nGATTAZ, A. A Guerra da Palestina. São Paulo: Usina do Livro, 2002 (adaptado).\nA análise do resultado do processo em questão revela que o governo inglês foi incapaz de garantir seu objetivo de",
+    "explicacao": "A Declaração Balfour prometia um lar judeu sem prejudicar as comunidades não judaicas da Palestina. O conflito que se seguiu mostra que os ingleses não conseguiram mediar as disputas territoriais.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 51",
+    "id": 2023051,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 2,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Apresentar uma visão dualista."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Confirmar uma tese naturalista."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Demonstrar uma premissa relativa."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Sustentar um argumento idealista."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Defender uma posição intencionalista."
+      }
+    ],
+    "assunto": 402,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.438Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Eu poderia concluir que a raiva é um pensamento, que estar com raiva é pensar que alguém é detestável, e que esse pensamento, como todos os outros — assim como Descartes o mostrou —, não poderia residir em nenhum fragmento de matéria. A raiva seria, portanto, espírito. Porém, quando me volto para minha própria experiência da raiva, devo confessar que ela não estava fora do meu corpo, mas inexplicavelmente nele.\nMERLEAU-PONTY, M. Quinta conversa: o homem visto de fora. São Paulo: Martins Fontes, 1948 (adaptado).\nNo que se refere ao problema do corpo, a filosofia cartesiana apresenta-se como contraponto ao entendimento expresso no texto por",
+    "explicacao": "Merleau-Ponty diz que a raiva está inexplicavelmente no corpo. Descartes separa pensamento e matéria; essa visão dualista é o contraponto ao texto.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 54",
+    "id": 2023054,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 4,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Representação arquitetônica."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Intercâmbio transcontinental."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Dependência econômica."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Intervenção estatal."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Padrão estético."
+      }
+    ],
+    "assunto": 1301,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.446Z",
+    "confianca_classificacao": "media",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Seda, madeiras aromáticas e têxteis, obras de arte, lã, cristais e muitas, muitas peças de porcelana chegaram ao Brasil ao longo dos séculos XVII e XVIII. A opulência proporcionada pelo ouro fez com que esses itens fossem ainda mais presentes em cidades mineiras como Ouro Preto, Mariana e Sabará. Esses objetos inspiraram a criação das chinesices, termo que designa um tipo de arte que evoca motivos chineses, presentes em várias igrejas barrocas de Minas Gerais. No Brasil, é bem provável que a inspiração para as pinturas nas igrejas barrocas com pássaros, elefantes, tigres, mandarins e pagodes tenha sido tirada de gravuras, tecidos, móveis e, principalmente, das porcelanas chinesas que circulavam livremente em uma sociedade enriquecida pelo comércio do ouro e pedras preciosas.\nMARIUZZO, P. Estudos interdisciplinares ampliam conhecimento sobre chinesice no barroco mineiro. Disponível em: http://cienciaecultura.bvs.br. Acesso em: 23 nov. 2021 (adaptado).\n\nO desenvolvimento do processo artístico descrito no texto foi possível pelo(a)",
+    "explicacao": "Porcelanas e sedas da Ásia chegaram às cidades mineiras enriquecidas pelo ouro e inspiraram as chinesices. O processo foi possível pelo intercâmbio transcontinental.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 63",
+    "id": 2023063,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 13,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "14%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "16%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "24%"
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "32%"
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "75%"
+      }
+    ],
+    "assunto": 701,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.478Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Existe no comércio um produto antimofo constituído por uma embalagem com tampa perfurada contendo cloreto de cálcio anidro, CaCI,. Uma vez aberto o lacre, essa substância absorve a umidade ambiente, transformando-se em cloreto de cálcio di-hidratado, CaCI, 2H,0. Considere a massa molar da água igual a 18 g mol-1, e a massa molar do cloreto de cálcio anidro igual a 111 g mol-1.\nNa hidratação da substância presente no antimofo, o ganho percentual, em massa, é mais próximo de",
+    "explicacao": "Cada 111 g de CaCl2 ganham 2 · 18 = 36 g de água. O ganho é 36/111 ≈ 32%.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 96",
+    "id": 2023096,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 7,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Acúmulo de gás etileno."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Redução da umidade do ar."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Aumento na concentração de CO2."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Diminuição da intensidade luminosa."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Isolamento do contato com O2 atmosférico."
+      }
+    ],
+    "assunto": 806,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.479Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Um garoto comprou vários abacates na feira, mas descobriu que eles não estavam maduros o suficiente para serem consumidos. Sua mãe recomendou que ele colocasse os abacates em um recipiente fechado, pois isso aceleraria seu amadurecimento. Com certa dúvida, o garoto realizou esta experiência: colocou alguns abacates no recipiente e deixou os demais em uma fruteira aberta. Surpreendendo-se, ele percebeu que os frutos que estavam no recipiente fechado amadureceram mais rapidamente.\nA aceleração desse processo é causada por",
+    "explicacao": "Frutos em amadurecimento liberam o gás etileno, um hormônio vegetal. No recipiente fechado, o gás se acumula e acelera o amadurecimento.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 97",
+    "id": 2023097,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 8,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Hexanal."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Hexan-1-ol."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Hexan-3-ol."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Hex-1-en-1-ol."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Ácido hexanoico."
+      }
+    ],
+    "assunto": 703,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.484Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "As cetonas fazem parte de famílias olfativas encontradas em muitos alimentos. A molécula de hexan-3-ona é um exemplo desses compostos voláteis responsáveis pelo aroma, podendo ser obtida por processos energéticos realizados em meio ácido, na presença de oxidantes como o permanganato de potássio. Para se produzir esse composto volátil em laboratório, deve-se oxidar a molécula de",
+    "explicacao": "A oxidação de álcool secundário forma cetona. Para obter a hexan-3-ona, com a carbonila no carbono 3, deve-se oxidar o hexan-3-ol.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 102",
+    "id": 2023102,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 7,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Vidro do frasco for translúcido."
+      },
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Concentração de gluconato de cálcio for alta."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Frasco de vidro apresentar uma maior espessura."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Vidro for previamente esterilizado em altas temperaturas."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Reação do alumínio com gluconato de cálcio for endotérmica."
+      }
+    ],
+    "assunto": 702,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.486Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "O vidro contendo alumínio em sua composição é um excelente material para acondicionar medicamentos e suplementos, porque pode ser esterilizado por aquecimento. No entanto, quando o medicamento ou suplemento contém substâncias que se ligam fortemente ao íon desse metal, a dissolução do alumínio é promovida em função do deslocamento do equilíbrio químico estabelecido entre a espécie imobilizada no vidro e a espécie em solução. Por essa razão, recomenda-se que suplementos de nutrição de recém-nascidos contendo gluconato de cálcio sejam acondicionados em embalagens plásticas, e não nesse tipo de vidro.\nAtualização da recomendação da Sociedade Portuguesa de Neonatologia.\nDisponível em: www.spneonatologia.pt. Acesso em: 22 out. 2021 (adaptado).\n\nCaso esse suplemento seja acondicionado em embalagem desse tipo de vidro, o risco de contaminação por alumínio será maior se o(a)",
+    "explicacao": "O gluconato se liga ao alumínio e o retira do equilíbrio. Quanto maior sua concentração, mais o equilíbrio se desloca para a dissolução, e maior o risco de contaminação.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 104",
+    "id": 2023104,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 7,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Violeta."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Azul."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Verde."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Vermelho."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Infravermelho."
+      }
+    ],
+    "assunto": 605,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.493Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Informações digitais — dados — são gravadas em discos ópticos, como CD e DVD, na forma de cavidades microscópicas. A gravação e a leitura óptica dessas informações são realizadas por um laser (fonte de luz monocromática). Quanto menores as dimensões dessas cavidades, mais dados são armazenados na mesma área do disco. O fator limitante para a leitura de dados é o espalhamento da luz pelo efeito de difração, fenômeno que ocorre quando a luz atravessa um obstáculo com dimensões da ordem de seu comprimento de onda. Essa limitação motivou o desenvolvimento de lasers com emissão em menores comprimentos de onda, possibilitando armazenar e ler dados em cavidades cada vez menores.\nEm qual região espectral se situa o comprimento de onda do laser que otimiza o armazenamento e a leitura de dados em discos de uma mesma área?",
+    "explicacao": "Como a difração atrapalha quando a cavidade tem dimensões do comprimento de onda, é preciso o menor comprimento de onda possível. Entre as opções, é o violeta.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 112",
+    "id": 2023112,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 6,
+    "revisado": false
+  },
+  {
+    "alternativas": [
+      {
+        "correta": true,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "A",
+        "texto": "Advérbios como \"rotundamente\" e \"categóricamente\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "B",
+        "texto": "Verbos reflexivos como \"me niego\" e \"me acepto\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "C",
+        "texto": "Adjetivos como \"grande\" e \"hermosa\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "D",
+        "texto": "Substantivos como \"sangre\" e \"piel\"."
+      },
+      {
+        "correta": false,
+        "imagem": null,
+        "imagem_descricao": null,
+        "letra": "E",
+        "texto": "Adjetivos possessivos como \"mi\" e \"mis\"."
+      }
+    ],
+    "assunto": 1202,
+    "ativo": true,
+    "atualizado_em": "2026-11-02T20:37:15.551Z",
+    "confianca_classificacao": "alta",
+    "dificuldade": 2,
+    "dificuldade_irt": null,
+    "enunciado": "Me niego rotundamente\nA negar mi voz,\nMi sangre y mi piel.\nY me niego rotundamente\nA dejar de ser yo,\nA dejar de sentirme bien\nCuando miro mi rostro en el es\nCon mi boca\nRotundamente grande\nY mi nariz\nRotundamente hermosa,\nY mis dientes\nRotundamente blancos,\nY mi piel valientemente negra.\nY me niego categóricamente\nA dejar de hablar\nMi lengua, mi acento y mi historia\nY me niego absolutamente\nA ser parte de los que callan,\nDe los que temen,\nDe los que lloran\nPorque me acepto\nRotundamente libre,\nRotundamente negra,\nRotundamente hermosa.\nCAMPELL BARR, S. Disponível em:\nhttps.negracubanateniaqueser.com\nAcesso em 25 out. 2021.\nPara enfatizar caracteristicas e atitudes que reforçam a identidade da mulher negra, o poema da escritora costarriquenha apresenta:",
+    "explicacao": "O poema repete \"rotundamente\" e usa \"categóricamente\" para reforçar cada afirmação. São os advérbios que enfatizam a identidade da mulher negra.",
+    "explicacao_gerada": true,
+    "fonte": "ENEM 2023, questão 2",
+    "id": 2023502,
+    "imagem": null,
+    "imagem_descricao": null,
+    "materia": 12,
+    "revisado": false
+  }
+];

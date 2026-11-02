@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:adapta/app.dart';
 import 'package:adapta/dados/banco/banco_local.dart';
@@ -10,12 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-/// Lê os assets do disco. É síncrono por dentro para terminar sob o relógio
-/// falso, e dispensa o binding do Flutter nos testes comuns.
-Future<String> lerAssetDoDisco(String caminho) async =>
-    File(caminho).readAsStringSync();
-
-Future<PacoteConteudo> pacoteDeTeste() => lerPacoteDosAssets(lerAssetDoDisco);
+Future<PacoteConteudo> pacoteDeTeste() async => lerPacoteInicial();
 
 /// Banco real em memória. Sem isolate, as consultas terminam dentro do relógio
 /// falso dos testes de widget.
@@ -24,7 +18,6 @@ BancoLocal bancoDeTeste() {
   return BancoLocal(
     fabrica: databaseFactoryFfiNoIsolate,
     caminho: inMemoryDatabasePath,
-    lerAsset: lerAssetDoDisco,
   );
 }
 

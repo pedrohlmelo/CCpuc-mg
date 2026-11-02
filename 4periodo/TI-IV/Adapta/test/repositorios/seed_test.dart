@@ -22,11 +22,11 @@ void main() {
       conteudo.questoes,
       hasLength((await pacoteDeTeste()).questoes.length),
     );
-    for (final a in conteudo.assuntosDaMateria(1)) {
+    for (final m in conteudo.materias) {
       expect(
-        conteudo.questoes.where((q) => q.idAssunto == a.id).length,
-        greaterThanOrEqualTo(3),
-        reason: a.nome,
+        conteudo.questoesDaMateria(m.id).length,
+        greaterThanOrEqualTo(4),
+        reason: m.nome,
       );
     }
     await banco.fechar();
@@ -34,6 +34,19 @@ void main() {
 
   test('o pacote embutido passa na validação', () async {
     (await pacoteDeTeste()).validar();
+  });
+
+  test('nenhuma imagem do pacote depende de internet', () async {
+    final questoes = (await pacoteDeTeste()).questoes;
+    expect(questoes.length, inInclusiveRange(90, 120));
+    for (final q in questoes) {
+      for (final imagem in [
+        q.imagemUrl,
+        ...q.alternativas.map((a) => a.imagemUrl),
+      ]) {
+        expect(imagem, anyOf(isNull, startsWith('asset:')), reason: '${q.id}');
+      }
+    }
   });
 
   test('toda imagem existe nos assets e tem descrição', () async {
@@ -88,7 +101,6 @@ void main() {
     final banco = BancoLocal(
       fabrica: databaseFactoryFfiNoIsolate,
       caminho: caminho,
-      lerAsset: lerAssetDoDisco,
     );
     final usuario = await UsuarioRepositorio(banco).sessaoInicial();
     final conteudo = await ConteudoRepositorio(banco).carregar();

@@ -48,3 +48,11 @@ app.*.map.json
 
 # Dados sintéticos, regeneráveis com ia/gerar_dataset.py
 /ia/dados/
+
+# Chave da conta de serviço do Firebase: nunca versionar, guardar fora do repositório
+*firebase-adminsdk*.json
+*service-account*.json
+*serviceAccount*.json
+
+# Planilha de trabalho da revisão do grupo
+revisao.csv

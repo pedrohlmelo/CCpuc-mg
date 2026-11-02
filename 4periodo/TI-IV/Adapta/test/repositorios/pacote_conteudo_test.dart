@@ -323,7 +323,7 @@ void main() {
     expect(conteudo.materiaPorId(1)?.area, 'matematica');
     expect(conteudo.materiaPorId(2)?.area, 'humanas');
     final questao = conteudo.questaoPorId(1)!;
-    expect(questao.fonte, 'Treino básico — Adapta');
+    expect(questao.fonte, 'Autoral — Adapta');
     expect(questao.revisado, isTrue);
     expect(questao.explicacaoGerada, isFalse);
     await banco.fechar();
@@ -333,7 +333,10 @@ void main() {
     final banco = bancoDeTeste();
     final conteudo = await ConteudoRepositorio(banco).carregar();
     expect(conteudo.questaoPorId(1)!.explicacaoNaoRevisada, isFalse);
-    expect(conteudo.questaoPorId(2023136)!.explicacaoNaoRevisada, isTrue);
+    final enem = conteudo.questoes.firstWhere(
+      (q) => q.fonte!.startsWith('ENEM'),
+    );
+    expect(enem.explicacaoNaoRevisada, isTrue);
     await banco.fechar();
   });
 
@@ -405,7 +408,6 @@ void main() {
     final banco = BancoLocal(
       fabrica: databaseFactoryFfiNoIsolate,
       caminho: caminho,
-      lerAsset: lerAssetDoDisco,
     );
     final db = await banco.db;
     final pacote = await pacoteDeTeste();
@@ -437,11 +439,8 @@ void main() {
     final pasta = Directory.systemTemp.createTempSync('adapta');
     addTearDown(() => pasta.delete(recursive: true));
     final caminho = '${pasta.path}/adapta.db';
-    BancoLocal abrir() => BancoLocal(
-      fabrica: databaseFactoryFfiNoIsolate,
-      caminho: caminho,
-      lerAsset: lerAssetDoDisco,
-    );
+    BancoLocal abrir() =>
+        BancoLocal(fabrica: databaseFactoryFfiNoIsolate, caminho: caminho);
 
     final atual = abrir();
     final db = await atual.db;
@@ -467,7 +466,6 @@ void main() {
     BancoLocal abrir() => BancoLocal(
       fabrica: databaseFactoryFfiNoIsolate,
       caminho: '${pasta.path}/adapta.db',
-      lerAsset: lerAssetDoDisco,
     );
 
     final primeiro = abrir();
