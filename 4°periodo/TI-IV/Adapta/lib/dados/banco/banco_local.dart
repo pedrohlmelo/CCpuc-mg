@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
@@ -122,22 +123,45 @@ class BancoLocal {
 
   Future<Database> _abrir() async {
     final destino = caminho ?? join(await getDatabasesPath(), nomeArquivo);
-    final banco = await (fabrica ?? databaseFactory).openDatabase(
-      destino,
-      options: OpenDatabaseOptions(
-        version: versao,
-        singleInstance: caminho == null,
-        onConfigure: (db) => db.execute('PRAGMA foreign_keys = ON'),
-        onCreate: (db, _) async {
-          for (final comando in _tabelas) {
-            await db.execute(comando);
-          }
-        },
-      ),
-    );
+    var banco = await _conectar(destino);
+    if (!await _schemaAtual(banco)) {
+      await banco.close();
+      await _guardarBancoAntigo(destino);
+      banco = await _conectar(destino);
+    }
     await _garantirSeed(banco);
     return banco;
   }
+
+  /// Builds antigos do app usavam este mesmo arquivo, também na versão 1, com
+  /// outras colunas. O `onCreate` não roda nesse caso.
+  Future<bool> _schemaAtual(Database banco) async {
+    final colunas = await banco.rawQuery('PRAGMA table_info(Usuario)');
+    return colunas.any((c) => c['name'] == 'uid_firebase');
+  }
+
+  /// O arquivo antigo fica ao lado, renomeado, em vez de ser apagado.
+  Future<void> _guardarBancoAntigo(String destino) async {
+    final antigo = File(destino);
+    if (await antigo.exists()) await antigo.rename('$destino.antigo');
+    final diario = File('$destino-journal');
+    if (await diario.exists()) await diario.delete();
+  }
+
+  Future<Database> _conectar(String destino) =>
+      (fabrica ?? databaseFactory).openDatabase(
+        destino,
+        options: OpenDatabaseOptions(
+          version: versao,
+          singleInstance: caminho == null,
+          onConfigure: (db) => db.execute('PRAGMA foreign_keys = ON'),
+          onCreate: (db, _) async {
+            for (final comando in _tabelas) {
+              await db.execute(comando);
+            }
+          },
+        ),
+      );
 
   /// A preferência evita repetir o seed; a contagem cobre o caso de o banco
   /// ter sido apagado enquanto a preferência sobreviveu.

@@ -1,7 +1,12 @@
+import 'dart:io';
+
+import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/banco/seed.dart';
 import 'package:adapta/dados/repositorios/conteudo_repositorio.dart';
+import 'package:adapta/dados/repositorios/usuario_repositorio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import '../apoio/app_teste.dart';
 
@@ -56,6 +61,41 @@ void main() {
       throwsA(anything),
     );
     await banco.fechar();
+  });
+
+  test('banco de build antigo é guardado e recriado', () async {
+    sqfliteFfiInit();
+    final pasta = Directory.systemTemp.createTempSync('adapta');
+    addTearDown(() => pasta.delete(recursive: true));
+    final caminho = '${pasta.path}/adapta.db';
+    final antigo = await databaseFactoryFfiNoIsolate.openDatabase(
+      caminho,
+      options: OpenDatabaseOptions(
+        version: 1,
+        onCreate: (db, _) => db.execute(
+          'CREATE TABLE Usuario (id INTEGER PRIMARY KEY, nome TEXT, '
+          'email TEXT NOT NULL, senha TEXT NOT NULL)',
+        ),
+      ),
+    );
+    await antigo.insert('Usuario', {
+      'nome': 'Administrador',
+      'email': 'a@b.c',
+      'senha': 'x',
+    });
+    await antigo.close();
+
+    final banco = BancoLocal(
+      fabrica: databaseFactoryFfiNoIsolate,
+      caminho: caminho,
+    );
+    final usuario = await UsuarioRepositorio(banco).sessaoInicial();
+    final conteudo = await ConteudoRepositorio(banco).carregar();
+    await banco.fechar();
+
+    expect(usuario.visitante, isTrue);
+    expect(conteudo.questoes, hasLength(questoesSeed.length));
+    expect(File('$caminho.antigo').existsSync(), isTrue);
   });
 
   test('o seed não roda duas vezes no mesmo banco', () async {

@@ -1,61 +1,65 @@
 # Adapta
 
-App mobile (Flutter) de estudo por questões que **decide pelo aluno o que estudar agora**.
-Trabalho Interdisciplinar IV.
+App Flutter de estudos para o ENEM (Trabalho Interdisciplinar IV, PUC Minas). A
+fila de questões se adapta a cada aluno: um modelo prevê o que está sendo
+esquecido, outro estima a proficiência, e um grafo de pré-requisitos encontra a
+causa das dificuldades. Funciona 100% offline.
 
-Esta entrega é um **protótipo de telas e navegação**: nenhuma funcionalidade está
-implementada no app. Não há banco de dados, autenticação nem algoritmo de estudo — isso é
-trabalho do backend **Java + Spring** (repositório separado, a criar). As telas usam dados
-de exemplo fixos, em memória.
+## Tecnologias
 
-> Fonte de verdade do projeto: [`docs/memoria.md`](docs/memoria.md).
-> Onde fica cada tela: [`docs/TELAS.md`](docs/TELAS.md).
-> Mapa do código: [`docs/ESTRUTURA.md`](docs/ESTRUTURA.md).
-> Modelagem e decisões técnicas: [`docs/MODELAGEM.md`](docs/MODELAGEM.md).
+- **Flutter**, com `go_router` (navegação) e `flutter_riverpod` (estado)
+- **SQLite** (`sqflite`): fonte de verdade no aparelho
+- **Shared Preferences**: só configurações
+- **Firebase**: Authentication (e-mail/senha e anônimo) e Cloud Firestore (cópia do progresso)
+- **Python** com scikit-learn: treino dos modelos, cuja inferência roda em Dart no aparelho
 
-## Rodar
+Não há backend próprio. Detalhes em
+[`Documentacao/03-sprint3-armazenamento-ia-grafos.md`](Documentacao/03-sprint3-armazenamento-ia-grafos.md).
 
-```bash
+## Rodar o app
+
+```
 flutter pub get
-flutter run          # emulador / dispositivo
-flutter test         # navegação, dados de exemplo e tema
-flutter analyze
+flutter run
 ```
 
-O app abre direto na tela inicial do aluno, sem tela de login e sem mostrar nome algum.
-Para estudar ou ver o histórico é preciso entrar, e o app volta sozinho para a questão
-depois do login. Entrar e criar conta ficam na própria tela inicial e na aba **Perfil**.
+Sem a configuração do Firebase o app abre normalmente, só com o SQLite: dá para
+estudar como visitante, mas não para criar conta nem sincronizar.
 
-O painel administrativo é de uso interno do grupo: ele só aparece no perfil de quem entra
-como administrador, e suas rotas não abrem para aluno. Na demonstração, entre com
-`admin@adapta.app` e qualquer senha de seis caracteres para vê-lo.
+## Configurar o Firebase
 
-## Telas
+1. No [console do Firebase](https://console.firebase.google.com), crie um projeto no plano Spark.
+2. Ative **Authentication** com **E-mail/senha** e **Anônimo**, e crie o **Cloud Firestore**.
+3. Na raiz deste projeto:
+   ```
+   npm install -g firebase-tools
+   firebase login
+   dart pub global activate flutterfire_cli
+   flutterfire configure
+   firebase use --add
+   firebase deploy --only firestore:rules
+   ```
+4. Crie no console uma conta com e-mail e senha e o documento `usuarios/{uid}` com
+   `tipo: "admin"`, `nome` e `email`.
 
-**Aluno:** inicial, escolher matéria, sessão de estudo, histórico de estudo, resolução de
-uma questão antiga e perfil.
-**Conta:** entrar e criar conta.
-**Painel administrativo:** menu, matérias, assuntos, grafo de dependências e questões.
+## Testes
 
-Navegação: três abas na base (Início, Histórico, Perfil); as demais telas abrem por cima e
-sempre têm botão de voltar.
-
-## Identidade
-
-Mascote **Camu** (camaleão) e ícone do app configurados para Android e iOS. Tema claro e
-escuro, fonte Plus Jakarta Sans embarcada (funciona offline).
-
-Capturas de tela para slides:
-
-```bash
-CAPTURAS=1 flutter test test/capturas --tags capturas   # gera capturas/*.png
+```
+flutter test
+dart analyze .
 ```
 
-## Próximo passo
+Os testes não usam internet nem o Firebase real. Em pastas com caracteres como
+`°` no caminho, o `flutter analyze` 3.44 quebra antes de analisar; use `dart analyze .`.
 
-Criar o backend e trocar `lib/dados/dados_exemplo.dart` por chamadas de API. As telas não
-precisam mudar para isso: nenhuma delas conhece a origem dos dados.
+## Treinar os modelos
 
----
+```
+python3 -m pip install -r ia/requirements.txt
+dart run ferramentas/exportar_seed.dart
+python3 ia/gerar_dataset.py
+python3 ia/treinar.py
+```
 
-© 2026 Adapta. Todos os direitos reservados.
+Atualiza `assets/modelos/`, `ia/relatorio.md` e os gráficos. As figuras das
+questões saem de `python3 ferramentas/gerar_figuras_seed.py`.

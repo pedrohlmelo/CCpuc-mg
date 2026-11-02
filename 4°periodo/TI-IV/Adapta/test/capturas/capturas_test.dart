@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:adapta/app.dart';
+import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/navegacao/rotas.dart';
@@ -13,6 +14,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../apoio/app_teste.dart';
 
 /// Gera capturas de tela em PNG (390×844 @2x) para revisão visual e slides.
 ///
@@ -23,6 +26,7 @@ void main() {
   final ativo = Platform.environment['CAPTURAS'] == '1';
   final dir = Directory(Platform.environment['CAPTURAS_DIR'] ?? 'capturas');
   final chaveRaiz = GlobalKey();
+  final banco = bancoDeTeste();
 
   const aluno = Usuario(nome: 'Ana Souza', email: 'ana@adapta.app');
   const admin = Usuario(
@@ -48,6 +52,7 @@ void main() {
     key: chaveRaiz,
     child: ProviderScope(
       overrides: [
+        bancoProvider.overrideWithValue(banco),
         if (comConta)
           sessaoProvider.overrideWith(
             () => _SessaoFixa(comoAdmin ? admin : aluno),

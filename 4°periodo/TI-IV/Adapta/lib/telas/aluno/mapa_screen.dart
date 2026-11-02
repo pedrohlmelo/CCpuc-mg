@@ -150,9 +150,12 @@ class MapaScreen extends ConsumerWidget {
       body: Column(
         children: [
           Expanded(child: corpo()),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(20, 8, 20, 16),
-            child: LegendaMemoria(comNaoEstudado: true),
+          const SafeArea(
+            top: false,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(20, 8, 20, 16),
+              child: LegendaMemoria(comNaoEstudado: true),
+            ),
           ),
         ],
       ),
