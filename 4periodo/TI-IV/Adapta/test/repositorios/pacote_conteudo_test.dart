@@ -208,9 +208,17 @@ void main() {
     expect(conteudo.materiaPorId(1)?.area, 'matematica');
     expect(conteudo.materiaPorId(2)?.area, 'humanas');
     final questao = conteudo.questaoPorId(1)!;
-    expect(questao.fonte, 'Autoral — Adapta');
+    expect(questao.fonte, 'Treino básico — Adapta');
     expect(questao.revisado, isTrue);
     expect(questao.explicacaoGerada, isFalse);
+    await banco.fechar();
+  });
+
+  test('só a questão gerada e não revisada recebe o aviso', () async {
+    final banco = bancoDeTeste();
+    final conteudo = await ConteudoRepositorio(banco).carregar();
+    expect(conteudo.questaoPorId(1)!.explicacaoNaoRevisada, isFalse);
+    expect(conteudo.questaoPorId(2023136)!.explicacaoNaoRevisada, isTrue);
     await banco.fechar();
   });
 

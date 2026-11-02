@@ -7,6 +7,10 @@ import '../modelos.dart';
 
 enum PerfilDemo { ana, bruno }
 
+/// Só as questões de treino: as importadas mudam quando o conteúdo cresce, e o
+/// histórico precisa sair igual.
+const _ultimaDeTreino = 44;
+
 /// Estudo de um assunto: em quantos dias atrás e com que taxa de acerto.
 class _Roteiro {
   final int idAssunto;
@@ -52,7 +56,9 @@ List<Resposta> historicoDemo(
   for (final roteiro
       in perfil == PerfilDemo.ana ? _roteiroAna : _roteiroBruno) {
     final questoes = todas
-        .where((q) => q.idAssunto == roteiro.idAssunto)
+        .where(
+          (q) => q.idAssunto == roteiro.idAssunto && q.id <= _ultimaDeTreino,
+        )
         .toList();
     for (final dias in roteiro.diasAtras) {
       for (var i = 0; i < questoes.length; i++) {

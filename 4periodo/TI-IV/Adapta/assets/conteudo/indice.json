@@ -1,5 +1,5 @@
 {
-  "versao": 2,
+  "versao": 3,
   "materias": [
     {
       "id": 1,
@@ -12,7 +12,185 @@
       "nome": "História",
       "area": "humanas",
       "arquivo": "historia.json"
+    },
+    {
+      "id": 3,
+      "nome": "Geografia",
+      "area": "humanas",
+      "arquivo": "geografia.json"
+    },
+    {
+      "id": 4,
+      "nome": "Filosofia",
+      "area": "humanas",
+      "arquivo": "filosofia.json"
+    },
+    {
+      "id": 5,
+      "nome": "Sociologia",
+      "area": "humanas",
+      "arquivo": "sociologia.json"
+    },
+    {
+      "id": 6,
+      "nome": "Física",
+      "area": "natureza",
+      "arquivo": "fisica.json"
+    },
+    {
+      "id": 7,
+      "nome": "Química",
+      "area": "natureza",
+      "arquivo": "quimica.json"
+    },
+    {
+      "id": 8,
+      "nome": "Biologia",
+      "area": "natureza",
+      "arquivo": "biologia.json"
+    },
+    {
+      "id": 9,
+      "nome": "Língua Portuguesa",
+      "area": "linguagens",
+      "arquivo": "portugues.json"
+    },
+    {
+      "id": 10,
+      "nome": "Literatura",
+      "area": "linguagens",
+      "arquivo": "literatura.json"
+    },
+    {
+      "id": 11,
+      "nome": "Inglês",
+      "area": "linguagens",
+      "arquivo": "ingles.json"
+    },
+    {
+      "id": 12,
+      "nome": "Espanhol",
+      "area": "linguagens",
+      "arquivo": "espanhol.json"
+    },
+    {
+      "id": 13,
+      "nome": "Artes",
+      "area": "linguagens",
+      "arquivo": "artes.json"
+    },
+    {
+      "id": 14,
+      "nome": "Educação Física",
+      "area": "linguagens",
+      "arquivo": "educacao_fisica.json"
     }
   ],
-  "dependencias_entre_materias": []
+  "dependencias_entre_materias": [
+    {
+      "pre": 16,
+      "dep": 701,
+      "peso": 0.7
+    },
+    {
+      "pre": 16,
+      "dep": 702,
+      "peso": 0.6
+    },
+    {
+      "pre": 12,
+      "dep": 601,
+      "peso": 0.7
+    },
+    {
+      "pre": 13,
+      "dep": 601,
+      "peso": 0.5
+    },
+    {
+      "pre": 12,
+      "dep": 604,
+      "peso": 0.5
+    },
+    {
+      "pre": 11,
+      "dep": 303,
+      "peso": 0.5
+    },
+    {
+      "pre": 102,
+      "dep": 303,
+      "peso": 0.5
+    },
+    {
+      "pre": 16,
+      "dep": 301,
+      "peso": 0.6
+    },
+    {
+      "pre": 14,
+      "dep": 804,
+      "peso": 0.4
+    },
+    {
+      "pre": 101,
+      "dep": 802,
+      "peso": 0.6
+    },
+    {
+      "pre": 706,
+      "dep": 801,
+      "peso": 0.4
+    },
+    {
+      "pre": 704,
+      "dep": 603,
+      "peso": 0.4
+    },
+    {
+      "pre": 604,
+      "dep": 705,
+      "peso": 0.4
+    },
+    {
+      "pre": 804,
+      "dep": 305,
+      "peso": 0.6
+    },
+    {
+      "pre": 7,
+      "dep": 501,
+      "peso": 0.4
+    },
+    {
+      "pre": 6,
+      "dep": 404,
+      "peso": 0.5
+    },
+    {
+      "pre": 204,
+      "dep": 304,
+      "peso": 0.5
+    },
+    {
+      "pre": 901,
+      "dep": 1001,
+      "peso": 0.7
+    },
+    {
+      "pre": 901,
+      "dep": 1004,
+      "peso": 0.6
+    },
+    {
+      "pre": 901,
+      "dep": 1101,
+      "peso": 0.6
+    },
+    {
+      "pre": 901,
+      "dep": 1201,
+      "peso": 0.6
+    }
+  ]
 }

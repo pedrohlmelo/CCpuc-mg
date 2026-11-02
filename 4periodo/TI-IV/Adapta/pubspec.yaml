@@ -35,6 +35,8 @@ flutter:
   assets:
     - assets/mascote/
     - assets/questoes/
+    - assets/questoes/enem/2022/
+    - assets/questoes/enem/2023/
     - assets/modelos/
     - assets/conteudo/
   fonts:

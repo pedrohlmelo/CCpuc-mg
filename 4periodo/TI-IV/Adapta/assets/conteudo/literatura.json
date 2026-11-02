@@ -1,0 +1,1269 @@
+{
+  "materia": 10,
+  "assuntos": [
+    {
+      "id": 1001,
+      "nome": "Escolas literárias",
+      "descricao": "Do Barroco ao Realismo."
+    },
+    {
+      "id": 1002,
+      "nome": "Modernismo",
+      "descricao": "Vanguardas e literatura brasileira moderna."
+    },
+    {
+      "id": 1003,
+      "nome": "Literatura contemporânea",
+      "descricao": "Prosa e poesia atuais."
+    },
+    {
+      "id": 1004,
+      "nome": "Análise de poemas",
+      "descricao": "Recursos poéticos e construção de sentido."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 1001,
+      "dep": 1002,
+      "peso": 0.8
+    },
+    {
+      "pre": 1002,
+      "dep": 1003,
+      "peso": 0.7
+    },
+    {
+      "pre": 1004,
+      "dep": 1002,
+      "peso": 0.4
+    }
+  ],
+  "questoes": [
+    {
+      "id": 10041,
+      "assunto": 1004,
+      "dificuldade": 2,
+      "enunciado": "Minha terra tem palmeiras,\nOnde canta o Sabiá;\nAs aves, que aqui gorjeiam,\nNão gorjeiam como lá.\n\nGONÇALVES DIAS. Canção do exílio.\n\nNesses versos, o eu lírico expressa",
+      "explicacao": "O poeta exalta sua terra e a compara ao lugar onde está, em tom de saudade típico do nacionalismo romântico.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "saudade e exaltação da terra natal.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "crítica à fauna brasileira.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "desprezo pelo ambiente natural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "ironia diante do patriotismo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "indiferença ao lugar de origem.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022017,
+      "assunto": 1004,
+      "dificuldade": 2,
+      "enunciado": "PALAVRA\nAs gramáticas classificam as palavras em substantivo, adjetivo, verbo, advérbio, conjunção, pronome, numeral, artigo e preposição. Os poetas classificam as palavras pela alma porque gostam de brincar com elas, e para brincar com elas é preciso ter intimidade primeiro. É a alma da palavra que define, explica, ofende ou elogia, se coloca entre o significante e o significado para dizer o que quer, dar sentimento às coisas, fazer sentido. A palavra nuvem chove. A palavra triste chora. A palavra sono dorme. A palavra tempo passa. A palavra fogo queima. A palavra faca corta. A palavra carro corre. A palavra “palavra” diz. O que quer.\nE nunca desdiz depois. As palavras tem corpo e alma, mas são diferentes das pessoas em vários pontos. As palavras dizem o que querem, está dito, e pronto.\nFALCÃO, A. Pequeno dicionário de palavras ao vento. São Paulo: Salamandra, 2013 (adaptado).\nEsse texto, que simula um verbete para a palavra “palavra”, constitui-se como um poema porque",
+      "explicacao": "Embora imite um verbete, o texto trata as palavras como seres que têm corpo e alma, que choram e dormem. É esse uso da metáfora que lhe dá caráter de poema.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 17",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Tematiza o fazer poético, como em \"Os poetas classificam as palavras pela alma\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Utiliza o recurso expressivo da metáfora, como em \"As palavras têm corpo e alma\".",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Valoriza a gramática da língua, como em \"substantivo, adjetivo, verbo, advérbio, conjunção\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Estabelece comparações, como em \"As palavras têm corpo e alma, mas são diferentes das pessoas\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Apresenta informações pertinentes acerca do conceito de \"palavra\", como em \"As gramáticas classificam as palavras\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022018,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Morte lenta ao luso infame que inventou a calçada portuguesa. Maldito D. Manuel l e sua corja de tenentes Eusébios. Quadrados de pedregulho irregular socados à mão. À mäo! É claro que ia soltar, ninguém reparou que ia soltar? Branco, preto, branco, preto, as ondas do mar de Copacabana. De que me servem as ondas do mar de Copacabana? Me deem chão liso, sem protuberâncias calcárias. Mosaico estúpido. Mania de mosaico. Joga concreto em cima e aplaina. Buraco, cratera, pedra solta, bueiro-bomba. Depois dos setenta, a vida se transforma numa interminável corrida de obstáculos. A queda é a maior ameaça para o idoso. “Idoso”, palavra odienta. Pior, só “terceira idade”. A queda separa a velhice da senilidade extrema. O tombo destrói a cadeia que liga a cabeça aos pés. Adeus, corpo. Em casa, vou de corrimão em corrimão, tateio móveis e paredes, e tomo banho sentado. Da poltrona para a janela, da janela para a cama, da cama para a poltrona, da poltrona para a janela. Olha aí, outra vez, a pedrinha traiçoeira atrás de me pegar. Um dia eu caio, hoje não.\nTORRES. F. Fim. São Paulo: Cia das Letras, 2013.\nO recurso que caracteriza a organização estrutural desse texto é o(a)",
+      "explicacao": "O texto alterna frases nominais curtas (\"Mosaico estúpido\", \"Buraco, cratera\") e frases com verbos. Essa justaposição de sequências verbais e nominais imita o fluxo de pensamento do narrador e organiza a estrutura do trecho.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 18",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Justaposição de sequências verbais e nominais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Mudança de eventos resultante do jogo temporal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Uso de adjetivos qualificativos na descrição do cenário.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Encadeamento semântico pelo uso de substantivos sinônimos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Inter-relação entre orações por elementos linguisticos lógicos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022021,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "A escrava\n– Admira-me —, disse uma senhora de sentimentos sinceramente abolicionistas —; faz-me até pasmar como se possa sentir, e expressar sentimentos escravocratas, no presente século, no século dezenove! A moral religiosa e a moral cívica aí se erguem, e falam bem alto esmagando a hidra que envenena a família no mais sagrado santuário seu, e desmoraliza, e avilta a nação inteira! Levantai os olhos ao Gólgota, ou percorrei-os em torno da sociedade, e dizei-me:\n— Para que se deu em sacrifício, o Homem Deus, que ali exalou seu derradeiro alento? Ah! Então não era verdade que seu sangue era o resgate do homem! É então uma mentira abominável ter esse sangue comprado a liberdade!? E depois, olhai a sociedade… Não vedes o abutre que a corrói constantemente!… Não sentis a desmoralização que a enerva, o cancro que a destrói?\nPor qualquer modo que encaremos a escravidão, ela é, e sempre será um grande mal. Dela a decadência do comércio; porque o comércio e a lavoura caminham de mãos dadas, e o escravo não pode fazer florescer a lavoura; porque o seu trabalho é forçado.\nREIS, M. F. Úrsula outras obras. Brasília: Câmara dos Deputados, 2018\nInscrito na estética romântica da literatura brasileira, o conto descortina aspectos da realidade nacional no século XIX ao",
+      "explicacao": "No conto romântico de Maria Firmina dos Reis, a personagem abolicionista confronta a moral religiosa e cívica com a defesa da escravidão. Isso aponta a hipocrisia do discurso conservador do século XIX.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 21",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Revelar a imposição de crenças religiosas a pessoas escravizadas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Apontar a hipocrisia do discurso conservador na defesa da escravidão.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Sugerir práticas de violência física e moral em nome do progresso material.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Relacionar o declínio da produção agrícola e comercial a questões raciais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ironizar o comportamento dos proprietários de terra na exploração do trabalho.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022023,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Mas seu olhar verde, inconfundível, impressionante, iluminava com sua luz misteriosa as sombrias arcadas superciliares, que pareciam queimadas por ela, dizia logo a sua origem cruzada e decantada através das misérias e dos orgulhos de homens de aventura, contadores de histórias fantásticas, e de mulheres caladas e sofredoras que acompanhavam os maridos e amantes através das matas intermináveis, expostas às febres, às feras, às cobras do sertão indecifrável, ameaçador e sem fim, que elas percorriam com a ambição única de um “pouso” onde pudessem viver, por alguns dias, a vida ilusória de família e de lar, sempre no encalço dos homens, enfebrados pela procura do ouro e do diamante.\nPENNA, C. Fronteira. Rio de Janeiro: Tecnoprint, s/d.\nAo descrever os olhos de Maria Santa, o narrador estabelece correlações que refletem a",
+      "explicacao": "Ao descrever o olhar verde de Maria Santa, o narrador evoca homens aventureiros e mulheres sofredoras que a antecederam. O olhar carrega, assim, a marca de antigos sofrimentos no fluxo de consciência.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 23",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Caracterização da personagem como mestiça.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Construção do enredo de conquistas da família.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Relação conflituosa das mulheres e seus maridos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Nostalgia do desejo de viver como os antepassados.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Marca de antigos sofrimentos no fluxo de consciência.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022029,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "Esaú e Jacó\nBárbara entrou, enquanto o pai pegou da viola e passou ao patamar de pedra, à porta da esquerda. Era uma criaturinha leve e breve, saia bordada, chinelinha no pé. Não se lhe podia negar um corpo airoso. Os cabelos, apanhados no alto da cabeça por um pedaço de fita enxovalhada, faziam-lhe um solidéu natural, cuja borla era suprida por um raminho de arruda. Já vai nisto um pouco de sacerdotisa. O mistério estava nos olhos. Estes eram opacos, não sempre nem tanto que não fossem também lúcidos e agudos, e neste último estado eram igualmente compridos; tão compridos e tão agudos que entravam pela gente abaixo, revolviam o coração e tornavam cá fora, prontos para nova entrada e outro revolvimento. Não te minto dizendo que as duas sentiram tal ou qual fascinação. Bárbara interrogou-as; Natividade disse ao que vinha e entregou-lhe os retratos dos filhos e os cabelos cortados, por lhe haverem dito que bastava.\n– Basta, confirmou Bárbara. Os meninos são seus filhos?\n– São.\nASSIS, M. Obra completa. Rio de Janeiro: Nova Aguilar, 1994.\nNo relato da visita de duas mulheres ricas a uma vidente no Morro do Castelo, a ironia — um dos traços mais representativos da narrativa machadiana — consiste no",
+      "explicacao": "Machado descreve Bárbara como uma criaturinha leve, mas com olhos ora opacos, ora agudos. A ironia está nessa mistura de singeleza e astúcia nos gestos da personagem.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 29",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Modo de vestir dos moradores do morro carioca.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Senso prático em relação às oportunidades de renda.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Mistério que cerca as clientes de práticas de vidência.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Misto de singeleza e astúcia dos gestos da personagem.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Interesse do narrador pelas figuras femininas ambíguas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022030,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "A senhora manifestava-se por atos, por gestos, e sobretudo por um certo silêncio, que amargava, que esfolava. Porém desmoralizar escancaradamente o marido, não era com ela.[…]\nAs negras receberam ordem para meter no serviço a gente do tal compadre Silveira: as cunhadas, ao fuso; os cunhados, ao campo, tratar do gado com os vaqueiros; a mulher e as irmãs, que se ocupassem da ninhada. Margarida não tivera filhos, e como os desejasse com a força de suas vontades, tratava sempre bem aos pequenitos e às mães que os estavam criando. Não era isso uma sentimentalidade cristã, uma ternura, era o egoísta e cru instinto da maternidade, obrando por mera simpatia carnal. Quanto ao pai do lote (referia-se ao Antônio), esse que fosse ajudar ao vaqueiro das bestas.\nOrdens dadas, o Quinquim referendava. Cada um moralizava o outro, para moralizar-se.\nPAIVA, M. O. Dona Guidinha do Poço. Rio de Janeiro: Tecnoprint, s/d\nNo trecho do romance naturalista, a forma como o narrador julga comportamentos e emoções das personagens femininas revela influência do pensamento",
+      "explicacao": "O Naturalismo via o ser humano como fenômeno biológico. O narrador explica o cuidado de Margarida com as crianças por um \"egoísmo\" carnal, e não por ternura, seguindo esse pensamento científico.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 30",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Capitalista, marcado pela distribuição funcional do trabalho.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Liberal, buscando a igualdade entre pessoas escravizadas e livres.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Científico, considerando o ser humano como um fenômeno biológico.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Religioso, fundamentado na fé e na aceitação dos dogmas do cristianismo",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Afetivo, manifesto na determinação de acolher familiares e no respeito mútuo",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022031,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Era o êxodo da seca de 1898. Uma ressurreição de cemitérios antigos — esqueletos redivivos, com o aspecto terroso e o fedor das covas podres.\nOs fantasmas estropiados como que iam dançando, de tão trôpegos e trêmulos, num passo arrastado de quem leva as pernas, em vez de ser levado por elas.\nAndavam devagar, olhando para trás, como quem quer voltar. Não tinham pressa em chegar, porque não sabiam aonde iam. Expulsos de seu paraíso por espadas de fogo, iam, ao acaso, em descaminhos, no arrastão dos maus fados.\nFugiam do sol e o sol guiava-os nesse forçado nomadismo.\nAdelgaçados na magreira cômica, cresciam, como se o vento os levantasse. E os braços afinados desciam-lhes aos joelhos, de mãos abanando.\nVinham escoteiros. Menos os hidrópicos — de ascite consecutiva à alimentação tóxica — com os fardos das barrigas alarmantes.\nNão tinham sexo, nem idade, nem condição nenhuma. Eram os retirantes. Nada mais.\nALMEIDA, J. A. A bagaceira. Rio de Janeiro: J. Olympio, 1978.\nOs recursos composicionais que inserem a obra no chamado “Romance de 30” da literatura brasileira manifestam-se aqui no(a)",
+      "explicacao": "O Romance de 30 retrata com crueza as dificuldades sociais do Nordeste. A descrição dos retirantes como esqueletos e fantasmas é esse desenho cru de uma realidade dramática.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 31",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Desenho cru da realidade dramática dos retirantes.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Indefinição dos espaços para efeito de generalização.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Análise psicológica da reação dos personagens à seca.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Engajamento político do narrador ante as desigualdades.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Contemplação lírica da paisagem transformada em alegoria.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022033,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "Notas\nSoluços, lágrimas, casa armada, veludo preto nos portais, um homem que veio vestir o cadáver, outro que tomou a medida do caixão, caixão, essa, tocheiros, convites, convidados que entravam, lentamente, a passo surdo, e apertavam a mão à família, alguns tristes, todos sérios e calados, padre e sacristão, rezas, aspersões d’água benta, o fechar do caixão a prego e martelo, seis pessoas que o tomam da essa, e o levantam, e o descem a custo pela escada, não obstante os gritos, soluços e novas lágrimas da família, e vão até o coche fúnebre, e o colocam em cima e traspassam e apertam as corrêas, o rodar do coche, o rodar dos carros, um a um… Isto que parece um simples inventário, eram notas que eu havia tomado para um capítulo triste e vulgar que não escrevo.\nASSIS, M. Memórias Póstumas de Brás Cubas. Disponível em: www.domíniopúblico.gov.br. Acesso em: 25 jul, 2022.\nO recurso linguístico que permite o Machado de Assis considerar o capítulo de Memórias Póstumas de Brás Cubas como inventário é a:",
+      "explicacao": "Machado lista em sequência objetos e fatos do funeral, separados por vírgulas, como numa relação de bens. Essa enumeração é o que justifica chamar o capítulo de inventário.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 33",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Enumeração de objetos e fatos",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Predominância de linguagem objetiva",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Ocorrência de período longo no trecho",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Combinação de verbos no presente e no pretérito",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Presença de léxico do campo semântico de funerais",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022035,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Ser cronista\nSei que não sou, mas tenho meditado ligeiramente no assunto.\nCrônica é um relato? É uma conversa? É um resumo de um estado de espírito? Não sei, pois antes de começar a escrever para o Jornal do Brasil, eu só tinha escrito romances e contos.\nE também sem perceber, à medida que escrevia para aqui, ia me tornando pessoal demais, correndo o risco deem breve publicar minha vida passada e presente, o que não pretendo. Outra coisa notei: basta eu saber que estou escrevendo para jornal, isto é, para algo aberto facilmente por todo o mundo, e não para um livro, que só é aberto por quem realmente quer, para que, sem mesmo sentir, o modo de escrever se transforme. Não é que me desagrade mudar, pelo contrário. Mas queria que fossem mudanças mais profundas e interiores que não viessem a se refletir no escrever. Mas mudar só porque isso é uma coluna ou uma crônica? Ser mais leve só porque o leitor assim o quer? Divertir? Fazer passar uns minutos de leitura? E outra coisa: nos meus livros quero profundamente a comunicação profunda comigo e com o leitor. Aqui no Jornal apenas falo com o leitor e agrada-me que ele fique agradado. Vou dizer a verdade: não estou contente.\nLISPECTOR, C. In: A descoberta do mundo. Rio de Janeiro: Rocco, 1999.\nNo texto, ao refletir sobre a atividade de cronista, a autora questiona características do gênero crônica, como",
+      "explicacao": "Clarice nota que, para o jornal, a escrita fica mais leve e voltada a agradar ao leitor. Ao comparar isso com a profundidade dos livros, ela questiona a brevidade no tratamento dos temas, própria da crônica.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 35",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Relação distanciada entre os interlocutores.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Articulação de vários núcleos narrativos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Brevidade no tratamento da temática",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Descrição minuciosa dos personagens",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Público leitor exclusivo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022040,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Firmo, o vaqueiro\nNo dia seguinte, à hora em que saía o gado, estava eu debruçado à varanda quando vi o cafuzo que preparava o animal viajeiro:\n– Raimundinho, como vai ele?…\nDe longe apontou a palhoça.\n– Sim.\nO braço caiu-lhe, olhou-me algum tempo comovido; depois, saltando para o animal, levou o polegar à boca fazendo estalar a unha nos dentes: “Às quatro da manhã…\nAtirei um verso e disse, para bulir com ele: Pega, velho! Não respondeu. Tio Firmo, mesmo velho e doente, não era homem para deixar um verso no chão… Fui ver, coitado!… estava morto. E deu de esporas para que eu não lhe visse as lágrimas.\nNETTO, C. In: MARCHEZAN, L. G. (Org.).\nO conto regionalista. São Paulo: Martins Fontes, 2009.\nA passagem registra um momento em que a expressividade lírica é reforçada pela",
+      "explicacao": "Quando o vaqueiro conta a morte de Tio Firmo, seus gestos e lágrimas escondidas mostram emoção. O lirismo do trecho é reforçado por essa afetividade ao noticiar a morte do cantador.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 40",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Plasticidade da imagem do rebanho reunido.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Sugestão da firmeza do sertanejo ao arrear o cavalo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Situação de pobreza encontrada nos sertões brasileiros.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Afetividade demonstrada ao noticiar a morte do cantador.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Preocupação do vaqueiro em demostrar sua virilidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022041,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "O bebê de tarlatana rosa\n– […] Na terça desliguei-me do grupo e caí no mar alto da depravação, só, com uma roupa leve por cima da pele e todos os maus instintos fustigados. De resto a cidade inteira estava assim. É o momento em que por trás das máscaras as meninas confessam paixões aos rapazes, é o instante em que as ligações mais secretas transparecem, em que a virgindade é dúbia e todos nós a achamos inútil, a honra uma caceteação, o bom senso uma fadiga. Nesse momento tudo é possível, os maiores absurdos, os maiores crimes; nesse momento há um riso que galvaniza os sentidos e o beijo se desata naturalmente.\nEu estava trepidante, com uma ânsia de acanalhar-me, quase mórbida. Nada de raparigas do galarim perfumadas e por demais conhecidas, nada do contato familiar, mas o deboche anônimo, o deboche ritual de chegar, pegar, acabar, continuar. Era ignóbil. Felizmente muita gente sofre do mesmo mal no carnaval.\nRIO, J. Dentro da noite. São Paulo: Antíqua, 2002.\nNo texto, o personagem vincula ao carnaval atitudes e reações coletivas diante das quais expressa",
+      "explicacao": "O narrador descreve o Carnaval como \"deboche anônimo\", chama-o de \"ignóbil\" e, ainda assim, participa dele. Isso expressa atração e asco diante das atitudes libertinas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 41",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Consagração da alegria do povo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Atração e asco perante atitudes libertinas.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Espanto com a quantidade de foliões nas ruas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Intenção de confraternizar com desconhecidos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Reconhecimento da festa como manifestação cultural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022042,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "10 de maio\nFui na delegacia e falei com o tenente. Que homem amavel! Se eu soubesse que ele era tão amavel, eu teria ido na delegacia na primeira intimação. […] O tenente interessou-se pela educação dos meus filhos. Disse-me que a favela é um ambiente propenso, que as pessoas tem mais possibilidade de delinquir do que tornar-se util a patria e ao país. Pensei: se ele sabe disto, porque não faz\num relatorio e envia para os politicos? O Senhor Janio Quadros, o Kubstchek, e o Dr. Adhemar de Barros? Agora falar para mim, que sou uma pobre lixeira. Não posso resolver nem as minhas dificuldades.\n… O Brasil precisa ser dirigido por uma pessoa que já passou fome. A fome tambem é professora.\nQuem passa fome aprende a pensar no próximo, e nas crianças.\nJESUS, C. M. Quarto de despejo: diário de uma favelada.\nSão Paulo: Ática, 2014.\nA partir da intimação recebida pelo filho de 9 anos, a autora faz uma reflexão em que transparece a",
+      "explicacao": "Carolina elogia o tenente e logo pergunta por que ele não leva o problema aos políticos, em vez de falar a uma \"pobre lixeira\". É uma resposta irônica ao discurso da autoridade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 42",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Lição de vida comunicada pelo tenente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Predisposição materna para se emocionar.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Atividade política marcante da comunidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Resposta irônica ante o discurso da autoridade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Necessidade de revelar seus anseios mais íntimos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022043,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Vanda vinha do interior de Minas Gerais e de dentro de um livro de Charles Dickens. Sem dinheiro para criá-la, sua mãe a dera, com seus sete anos, a uma conhecida. Ao recebê-la, a mulher perguntou o que a garotinha gostava de comer. Anotou tudo num papel. Mal a mãe virou as costas, no entanto, a fulana amassou a lista e, como uma vilã de folhetim, decretou: “A partir de hoje, você não vai mais nem sentir o cheiro dessas comidas!”.\nVanda trabalhou lá até os quinze anos, quando recebeu a carta de uma prima com uma nota de cem cruzeiros, saiu de casa com a roupa do corpo e fugiu num ônibus para São Paulo.\nTodas as vezes que eu e minha irmã a importunávamos com nossas demandas de criança mimada, ela nos contava histórias da infância de gata-borralheira, fazia-nos apertar seu nariz quebrado por uma das filhas da “patroa” com um rolo de amassar pão e nos expulsava da cozinha: “Sai pra lá, peste, e me deixa acabar essa janta”.\nPRATA, A. Nu de botas. São Paulo: Cia. das Letras, 2013 (adaptado).\nPela ótica do narrador, a trajetória da empregada de sua casa assume um efeito expressivo decorrente",
+      "explicacao": "O narrador mistura humor e dureza ao comparar a vida de Vanda a uma história de Dickens. O nariz quebrado vira assunto de conversa, numa representação anedótica de atos de violência.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 43",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Citação a referências literárias tradicionais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Alusão à inocência das crianças da época.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Estratégia de questionar a bondade humana.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Descrição detalhada das pessoas do interior.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Representação anedótica de atos de violência.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022046,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "Espera, resignado, o dia 13 daquele mês porque, em tal data, usança avoenga lhe faculta sondar o futuro, interrogando a providência. É a experiência tradicional de Santa Luzia. No dia 12 ao anoitecer expõe ao relento, em linha, seis pedrinhas de sal, que representam, em ordem sucessiva da esquerda para a direita, os seis meses vindouros, de janeiro a junho. Ao alvorecer de 13 observa-as: se estão intactas, pressagiam a seca; se a primeira apenas se deliu,  transmudada em aljôfar límpido, é certa a chuva em janeiro; se a segunda, em fevereiro; se a maioria ou todas, é inevitável O inverno benfazejo. Esta experiência é belíssima.\nCUNHA, E. Os sertões. São Paulo: Editora Três, 1984.\nNo experimento descrito, a relação com a paisagem e com a religiosidade permite que o sertanejo seja",
+      "explicacao": "Ao observar as pedrinhas de sal para prever a chuva, o sertanejo une religiosidade e leitura da natureza. Euclides mostra alguém íntimo da Caatinga, que interpreta as condições do ambiente.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 46",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Afeito à devoção ao aceitar destinos sacralizados.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Acostumado à pobreza ao admitir acasos naturais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Habituado ao solo ao conhecer terrenos cultiváveis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Íntimo à Caatinga ao interpretar condições ambientais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Próximo à vegetação ao identificar espécies arbustivas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023007,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Mais iluminada que outras\nTenho dois seios, estas duas coxas, duas mãos que me são muito úteis, olhos escuros, estas duas sobrancelhas que preencho com maquiagem comprada por dezenove e noventa e orelhas que não aceitam bijuterias. Este corpo é um corpo faminto, dentado, cruel, capaz e violento. Movo os braços e multidões correm desesperadas. Caminho no escuro com o rosto para baixo, pois cada parte isolada de mim tem sua própria vida e não quero domá-las. Animal da caatinga. Forte demais. Engolidora de espadas e espinhos. Dizem e eu ouvi, mas depois também li, que o estado do Ceará aboliu a escravidão quatro anos antes do restante do país. Todos aqueles corpos que eram trazidos com\nseus dedos contados, seus calcanhares prontos e seus umbigos em fogo, todos eles foram interrompidos no porto. Um homem – dizem e eu ouvi e depois também li — liderou o levante. E todos esses corpos foram buscar outros incômodos. Foram ser incomodados.\nARRAES. J. Redemoinho em dia quente. São Paulo: Alfaguara, 2019.\nNesse texto, os recursos expressivos usados pela narradora",
+      "explicacao": "A narradora descreve o próprio corpo como \"faminto\" e \"violento\" e o liga às pessoas escravizadas. Os recursos revelam marcas da violência de raça e de gênero na construção de sua identidade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 7",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Revelam as marcas da violência de raça e de gênero na construção da identidade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Questionam o pioneirismo do estado do Ceará no enfrentamento à escravidão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Reproduzem padrões estéticos em busca da valorização da autoestima feminina.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Sugerem uma atmosfera onírica alinhada ao desejo de resgate da espiritualidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Mimetizam, na paisagem, os corpos transformados pela violência da escravidão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023012,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Ainda daquela vez pude constatar a bizarrice dos costumes que constituíam as leis mais ou menos constantes do seu mundo: ao me aproximar, verifiquei que o Sr. Timóteo, gordo e suado, trajava um vestido de franjas e lantejoulas que pertencera a sua mãe. O corpete descia-lhe excessivamente justo na cintura, e aqui e ali rebentava através da costura um pouco da carne aprisionada, esgarçando a fazenda e tornando o prazer de vestir-se daquele modo uma autêntica espécie de suplício. Movia-se ele com lentidão, meneando todas as suas franjas e abanando-se vigorosamente com um desses leques de madeira de sândalo, o que o envolvia numa enjoativa onda de perfume. Não sei direito o que colocara sobre a cabeça, assemelhava-se mais a um turbante ou a um chapéu sem abas de onde saiam vigorosas mechas de cabelos alourados. Como era costume seu também, trazia o rosto pintado — e para isto, bem como para suas vestimentas, apoderara-se de todo o guarda-roupa deixado por sua mãe, também em sua época famosa pela extravagância com que se vestia — o que sem dúvida fazia sobressair-lhe o nariz enorme, tão característico da família Meneses.\nCARDOSO, L. Crónica da casa assassinada. São Paulo: Circulo do Livro, s.d.\nPela voz de uma empregada da casa, a descrição de um dos membros da família exemplifica a renovação da ficção urbana nos anos 1950, aqui observada na",
+      "explicacao": "A narradora detalha, com impressões visuais, o vestido, as franjas e o leque do Sr. Timóteo. Essa descrição impressionista do fetiche do personagem marca a renovação da ficção dos anos 1950.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 12",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Opção por termos e expressões de sentido ambíguo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Crítica social inspirada pelo convívio com os patrões.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Descrição impressionista do fetiche do personagem.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Presença de um foco narrativo de caráter impreciso.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ambiência de mistério das relações entre familiares.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023013,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Girassol da madrugada\nTeu dedo curioso me segue lento no rosto\nOs sulcos, as sombras machucadas por onde a\n[vida passou.\nQue silêncio, prenda minha… Que desvio triunfal\n[da verdade,\nQue círculos vagarosos na lagoa em que uma asa\n[gratuita roçou..\nTive quatro amores eternos…\nO primeiro era moça donzela,\nO segundo… eclipse, boi que fala, cataclisma,\nO terceiro era a rica senhora,\nO quarto és tu… E eu afinal me repousei dos\n[meus cuidados\nANDRADE, M. Poesias completas. Rio de Janeiro: Nova Fronteira, 2013 (fragmento).\nPerante o outro, o eu lírico revela, na força das memórias evocadas, a",
+      "explicacao": "O eu lírico aceita o toque em seu rosto marcado e diz \"repousei dos meus cuidados\". Isso revela a serenidade alcançada pela entrega pacífica ao desejo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 13",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Vergonha das marcas provocadas pela passagem do tempo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Indecisão em face das possibilidades afetivas do presente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Serenidade sedimentada pela entrega pacifica ao desejo.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Frustração causada pela vontade de retorno ao passado.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Disponibilidade para a exploração do prazer efêmero.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023014,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Dão Lalalão\nDo povoado do Ão, ou dos sítios perto, alguém precisava urgente de querer vir por escutar a novela do rádio. Ouvia-a, aprendia-a, guardava na ideia, e, retornado ao Ão, no dia seguinte, a repetia a outros.\nAssim estavam jantando, vinham os do povoado receber a nova parte da novela do rádio. Ouvir já tinham ouvido tudo, de uma vez, fugia da regra: falhara ali no Ão, na véspera, o caminhão de um comprador de galinhas e ovos, seo Abrãozinho Buristém, que carregava um rádio pequeno, de pilhas, armara um fio no arame da cerca… Mas queriam escutar outra vez, por confirmação. — “A estória é estável de boa, mal que acompridada: taca e não rende…” — explicava o Zuz ao Dalberto.\nSoropita começou a recontar o capitulo da novela. Sem trabalho, se recordava das palavras, até com clareza — disso se admirava. Contava com prazer de demorar, encher a sala com o poder de outros altos personagens. Tomar a atenção de todos, pudesse contar aquilo noite adiante. Era preciso trazer luz, nem uns enxergavam mais os outros; quando alguém ria, ria de muito longe. O capitulo da novela estava terminando.\nROSA, J. G. Noites do sertão (Corpo de baile). São Paulo: Global, 2021.\nNesse trecho do conto, o gosto dos moradores do povoado por ouvir a novela de rádio recontada por Soropita deve-se ao(à)",
+      "explicacao": "Os moradores já tinham ouvido a novela no rádio e ainda assim queriam escutar Soropita. O gosto vem do seu jeito singular de falar aos ouvintes.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 14",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Qualidade do som do rádio.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Estabilidade do enredo contado.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Ineditismo do capítulo da novela.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Jeito singular de falar aos ouvintes.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Dificuldade de compreensão da história.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023022,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Alguém muito recentemente cortara o mato, que na época das chuvas crescia e rodeava a casa da mãe de Ponciá Vicêncio e de Luandi. Havia também vestígios de que a terra fora revolvida, como se ali fosse plantar uma pequena roça. Luandi sorriu. A mãe devia estar bastante forte, pois ainda labutava a terra. Cantou alto uma cantiga que aprendera com o pai, quando eles trabalhavam na terra dos brancos. Era uma canção que os negros mais velhos ensinavam aos mais novos. Eles diziam ser uma cantiga de voltar, que os homens, lá na África, entoavam sempre, quando estavam regressando da pesca, da caça ou de algum lugar. O pai de Luandi, no dia em que queria agradar à mulher, costumava entoar aquela cantiga ao se aproximar de casa. Luandi não entendia as palavras do canto; sabia, porém, que era uma língua que alguns negros falavam ainda, principalmente os velhos. Era uma cantiga alegre. Luandi, além de cantar, acompanhava o ritmo batendo com as palmas das mãos em um atabaque imaginário. Estava de regresso à terra. Voltava em casa. Chegava cantando, dançando a doce e vitoriosa cantiga de regressar.\nEVARISTO, C. Ponciá Vicêncio. Rio de Janeiro: Pallas, 2018.\nA leitura do texto permite reconhecer a “cantiga de voltar” como patrimônio linguístico que",
+      "explicacao": "A canção vem dos negros mais velhos, que a aprenderam com quem vivia na África. Passada entre gerações, ela preserva a ancestralidade africana pela tradição oral.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 22",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Representa a memória de uma língua africana extinta.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Exalta a rotina executada por jovens afrodescendentes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Preserva a ancestralidade africana por meio da tradição oral.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Resgata a musicalidade africana por meio de palavras inteligíveis",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Remonta à tristeza dos negros mais velhos com saudade da África.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023025,
+      "assunto": 1003,
+      "dificuldade": 2,
+      "enunciado": "Passado muito tempo, resolvi tentar falar, porque estava sozinha me embrenhando na mesma vereda que Donana costumava entrar. Ainda recordo da palavra que escolhi: arado. Me deleitava vendo meu pai conduzindo o arado velho da fazenda carregado pelo boi, rasgando a terra para depois lançar grãos de arroz em torrões marrons e vermelhos revolvidos. Gostava do som redondo fácil e ruidoso que tinha ao ser enunciado. “Vou trabalhar no arado.” “Vou arar a terra.” “Seria bom ter um arado novo, esse arado tá troncho e velho.” O som que deixou minha boca era uma aberração, uma desordem, como se no lugar do pedaço perdido da língua tivesse um ovo quente. Era um arado torto, deformado, que penetrava a terra de tal forma a deixá-la infértil, destruída, dilacerada.\nVIEIRA JR.. I. Torto arado. São Paulo: Todavia, 2019.\nCom a perda de parte da língua na infância, a narradora tenta voltar a falar. Essa tentativa revela uma experiência que",
+      "explicacao": "A narradora escolhe \"arado\" e compara o som que saiu de sua boca a um arado torto que dilacera a terra. Assim, ela metaforiza a linguagem como ferramenta de lavoura.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 25",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Reflete o olhar do pai sobre as etapas do plantio.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Metaforiza a linguagem como ferramenta de lavoura.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Explicita, na busca pela palavra, o medo da solidão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Confirma a frustração da narradora com relação à terra.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Sugere, na ausência da linguagem, a estagnação do tempo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023026,
+      "assunto": 1001,
+      "dificuldade": 2,
+      "enunciado": "A escravidão\nEsses meninos que aí andam jogando peteca não viram nunca um escravo… Quando crescerem, saberão que já houve no Brasil uma raça triste, votada à escravidão e ao desespero; e verão nos museus a coleção hedionda dos troncos, dos vira-mundos e dos bacalhaus; e terão notícias dos trágicos horrores de uma época maldita: filhos arrancados ao seio das mães, virgens violadas em pranto, homens assados lentamente em fornos de cal, mulheres nuas recebendo na sua mísera nudez desvalida o duplo ultraje das chicotadas e dos olhares do feitor bestial. […] Mas a sua indignação nunca poderá ser tão grande como a daqueles que nasceram e cresceram em pleno horror, no meio desse horrível drama de sangue e lodo, sentindo dentro do ouvido e da alma, numa arrastada e contínua melopeia, o longo gemer da raça mártir — orquestração satânica de todos os soluços, de todas as impressões, de todos os lamentos que a tortura e a injustiça podem arrancar a gargantas humanas.\nBILAC, O. Disponível em: www.escritas.org. Acesso em: 29 out. 2021\nPublicado em 1902, o texto de Olavo Bilac enfatiza as mazelas da escravidão no Brasil ao",
+      "explicacao": "Bilac diz que as crianças só conhecerão a escravidão por museus e notícias. Com isso, ele antecipa o futuro apagamento das marcas da escravidão.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 26",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Descrever de modo impessoal as consequências da exploração racial sobre as gerações futuras.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Contrapor a infância privilegiada das crianças da época à infância violentada das crianças escravizadas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Antecipar o futuro apagamento das marcas da escravidão no contexto social.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Criticar a atenuação da violência contra os povos escravizados nas memórias retratadas pelos museus.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Imaginar a reação de indiferença de seus contemporâneos com os escravizados libertos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023029,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Era um gato preto, como convinha a um cultor das boas letras, que já lera Poe traduzido por Baudelaire. Preto e gordo. E lerdo. Tão gordo e lerdo que a certa altura observei que ia perdendo inteiramente as qualidades características da raça, que são em suma o ódio de morte aos ratos. Já nem os afugentava! Os ratos de Ouro Preto são também dignos e solenes — não ria — tradicionalistas… descendentes de outros ratos que naqueles mesmos casarões presenciaram acontecimentos importantes da nossa história… No sobrado do desembargador Tomás Antônio Gonzaga, imagine o senhor uma reunião dos sonhadores inconfidentes, com os antepassados daqueles ratos a passearem pelo sótão ou mesmo pelo assoalho por entre as pernas dos homens absortos na esperança da independência nacional! E depois, os ancestres daqueles roedores que eu via agora deslizar sutilmente no meu quarto podiam ter subido pelo poste da ignomínia colonial, onde estava exposta a cabeça do Tiradentes! E quando as órbitas se descarnaram ignominiosamente, podiam até ter penetrado no recesso daquele crânio onde verdadeiramente ardera a literatura, com a simplicidade do heroísmo, a febre nacionalista…\nALPHONSUS, J. Contos e novelas. Rio de Janeiro: Imago; Brasília: INL, 1976.\nDescrevendo seu gato, o narrador remete ao contexto e a protagonistas da Inconfidência para criar um efeito desconcertante centrado no",
+      "explicacao": "O narrador liga os ratos de Ouro Preto aos heróis da Inconfidência e os imagina roendo o crânio de Gonzaga. O efeito nasce do contraste entre a austeridade pomposa e a imagem repugnante.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 29",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Desenho imaginativo do casario colonial de Ouro Preto.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Efeito de apagamento de limites entre ficção e realidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Vínculo estabelecido entre animais urbanos e literatura.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Questionamento sutil quanto à sanidade dos inconfidentes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Contraste entre austeridade pomposa e imagem repugnante.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023030,
+      "assunto": 1002,
+      "dificuldade": 2,
+      "enunciado": "Enquanto estivemos entretidos com os urubus outras coisas andaram acontecendo na cidade. A Companhia baixou novas proibições, umas inteiramente bobocas, só pelo prazer de proibir (ninguém podia cuspir pra cima, nem carregar água em jacá, nem tapar o sol com peneira, como se todo mundo estivesse abusando dessas esquisitices); mas outras bem irritantes, como a de pular muro pra cortar caminho, tática que quase todo mundo que não sofria de reumatismo vinha adotando ultimamente, principalmente os meninos. E não confiando na proibição só, nem na força dos castigos, que eram rigorosos, a Companhia ainda mandou fincar cacos de garrafa nos muros. Achei isso um exagero, e comentei o assunto com mamãe. Meu pai ouviu lá do quarto e veio explicar. Disse que em épocas normais bastava uma coisa ou outra; mas agora a Companhia não podia admitir nenhuma brecha em suas ordens; se alguém desobedecesse à proibição podia se cortar nos cacos; se alguém conseguisse pular um muro quebrando era apanhado pela proibição, nhoc – e fez o gesto de quem torce o pescoço de um frango.\nVEIGA, J. J. Sombras de reis barbudos. Rio de Janeiro: Civilização Brasileira, 1978.\nSob a perspectiva do menino que narra, os fatos ficcionais oferecem um esboço do momento político vigente na década de 1970, aqui representado pelo",
+      "explicacao": "As proibições da Companhia e os castigos invadem até o ato de pular um muro. Essa alegoria da ditadura representa o culto ao medo infiltrado no cotidiano.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 30",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Culto ao medo, infiltrado em situações do cotidiano.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Sentimento de dúvida quanto à veracidade das informações.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Ambiente de sonho, delineado por imagens perturbadoras.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Incentivo ao desenvolvimento econômico com a iniciativa privada.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Espaço urbano marcado por uma política de isolamento das crianças.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023031,
+      "assunto": 1004,
+      "dificuldade": 2,
+      "enunciado": "Migalhas\nEntre a toalha branca e um bule de café\nseria inapropriado dizer\neu não te amo mais.\nEra necessário algo mais solene,\num jardim japonês para as perdas pensadas,\num noturno de tempestade para arrebentar de dor,\numa praia de pedras para chorar em silêncio,\numa cama alta para o incenso da despedida,\numa janela dando para o abismo.\nNo entanto você abaixa os olhos\ne recolhe lentamente as migalhas de pão\nsobre a mesa posta para dois.\nMARQUES, A. M. A vida submarina. São Paulo: Cia. das Letras, 2021.\nNesse poema, a representação do sentimento amoroso recupera a tradição lírica, mas se ajusta à visão contemporânea ao",
+      "explicacao": "O poema imagina cenários solenes para o fim do amor, mas tudo acaba em recolher migalhas de pão. A visão contemporânea dilui em banalidade a comoção de um amor frustrado.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 31",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Invocar o interlocutor para uma tomada de posição.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Questionar a validade do envolvimento romântico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Diluir em banalidade a comoção de um amor frustrado.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Transformar em paz as emoções conflituosas do casal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Condicionar a existência da paixão a espaços idealizados.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

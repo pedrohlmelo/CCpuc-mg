@@ -9,6 +9,7 @@ import 'package:adapta/telas/aluno/mapa_screen.dart';
 import 'package:adapta/widgets/cartoes.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -458,7 +459,9 @@ void main() {
         () => container.read(grafoProvider.future),
       );
       final area = LayoutMapa.de(grafo!).vertices[8]!;
-      await tester.tapAt(tester.getTopLeft(canvas) + area.center);
+      tester.widget<GestureDetector>(canvas).onTapUp!(
+        TapUpDetails(kind: PointerDeviceKind.touch, localPosition: area.center),
+      );
       await assentar(tester);
 
       expect(find.byKey(const Key('detalhe_vertice')), findsOneWidget);

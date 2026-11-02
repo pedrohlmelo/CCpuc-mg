@@ -10,13 +10,58 @@
       "id": 7,
       "nome": "Revolução Industrial",
       "descricao": "Mudanças na produção a partir do século XVIII."
+    },
+    {
+      "id": 201,
+      "nome": "Antiguidade e Idade Média",
+      "descricao": "Sociedades antigas e o mundo medieval."
+    },
+    {
+      "id": 202,
+      "nome": "Brasil Colônia e Império",
+      "descricao": "Colonização, escravidão e formação do Estado."
+    },
+    {
+      "id": 203,
+      "nome": "Brasil República",
+      "descricao": "Da República Velha à ditadura e à redemocratização."
+    },
+    {
+      "id": 204,
+      "nome": "Mundo no século XX",
+      "descricao": "Guerras mundiais, totalitarismos e Guerra Fria."
     }
   ],
   "dependencias": [
     {
+      "pre": 201,
+      "dep": 6,
+      "peso": 0.3
+    },
+    {
       "pre": 6,
       "dep": 7,
       "peso": 0.8
+    },
+    {
+      "pre": 6,
+      "dep": 202,
+      "peso": 0.4
+    },
+    {
+      "pre": 7,
+      "dep": 204,
+      "peso": 0.6
+    },
+    {
+      "pre": 202,
+      "dep": 203,
+      "peso": 0.8
+    },
+    {
+      "pre": 204,
+      "dep": 203,
+      "peso": 0.4
     }
   ],
   "questoes": [
@@ -28,7 +73,7 @@
       "explicacao": "Montesquieu, em \"O Espírito das Leis\" (1748).",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -70,7 +115,7 @@
       "explicacao": "Na Inglaterra, na segunda metade do século XVIII.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -98,6 +143,1182 @@
         {
           "letra": "D",
           "texto": "Estados Unidos",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "assunto": 6,
+      "dificuldade": 2,
+      "enunciado": "No século XVIII, pensadores como Montesquieu defenderam a separação entre os poderes Executivo, Legislativo e Judiciário.\n\nEssa proposta buscava principalmente",
+      "explicacao": "A proposta de Montesquieu pretendia evitar que uma só pessoa ou instituição concentrasse todo o poder, o que limita o absolutismo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "fortalecer a autoridade dos reis absolutistas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "garantir o poder político da Igreja.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "impedir a concentração de poder em uma só instância.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "abolir a existência de leis escritas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "transferir o governo para as corporações de ofício.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2041,
+      "assunto": 204,
+      "dificuldade": 2,
+      "enunciado": "Após a Segunda Guerra Mundial, o mundo viveu décadas de disputa entre Estados Unidos e União Soviética, sem confronto militar direto entre as duas potências.\n\nEsse período ficou marcado pela",
+      "explicacao": "Na Guerra Fria, as superpotências disputaram influência por alianças militares, corrida armamentista e conflitos em outros países.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "formação de blocos de influência e corrida armamentista.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "união de ambas as potências contra o fascismo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "restauração das monarquias na Europa.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "expansão do imperialismo português na Ásia.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "dissolução imediata da Organização das Nações Unidas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2042,
+      "assunto": 204,
+      "dificuldade": 2,
+      "enunciado": "A crise de 1929, iniciada com a quebra da Bolsa de Nova York, atingiu diversos países.\n\nUma consequência política dessa crise na Europa foi o(a)",
+      "explicacao": "O desemprego e a falta de confiança na democracia liberal favoreceram movimentos autoritários, como o nazismo na Alemanha.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "fim imediato das tensões entre as potências.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "adoção do livre-comércio absoluto por todos os países.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "fortalecimento das colônias africanas independentes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "extinção dos partidos nacionalistas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "avanço de regimes autoritários, como o nazismo.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022050,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "Na construção da ferrovia Madeira-Marmoré, o que dizer dos doentes, eternos moribundos a vagar entre delírios fabris, doses de quinino e corredores da morte? O Hospital da Candelária era santuário e túmulo, monumento ao progresso científico e preâmbulo da escuridão. Foi ali, com suas instalações moderníssimas, que médicos e sanitaristas dirigiram seu combate aos males tropicais. As maiores vitimas, contudo, permaneceriam na sombra a margem do palco, cobaias sem consolo, credores sem nome de uma sociedade que  não lhes concedera tempo algum para ser decifrada.\nFOOT HARDWAN, F. Trem fantasma: modernidade na selva\nSão Paulo: Cia das letras,1968 adaptado\nNo texto, há uma crítica ao modo de ocupação do espaço amazônico pautada na",
+      "explicacao": "O texto mostra que a ferrovia, símbolo do progresso, deixou os trabalhadores doentes \"à margem do palco\". A crítica está na contradição entre o desenvolvimento nacional e o respeito aos trabalhadores.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 50",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Discrepância entre engenharia ambiental e equilíbrio da fauna",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Incoerência entre maquinaria estrangeira e controle da floresta",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Incompatibilidade entre investimento estatal e proteção aos nativos",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Competição entre farmacologia internacional e produtos de fitoterapia",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Contradição entre desenvolvimento nacional e respeito aos trabalhadores",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022053,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "O número cada vez maior de mulheres letradas e interessadas pela literatura e pelas novelas, muitas divulgadas em capítulos, seções, classificadas comumente como folhetim, alçou a um gênero de ficção corrente já em 1840, fazendo parte do florescimento da literatura nacional brasileira, instigando a formação e a ampliação de um público leitor feminino, ávido por novidades, pelo apelo dos folhetins e “narrativas modernas” que encenavam “os dramas e os conflitos de uma mulher em processo de transformação patriarcal e provinciana que, progressivamente, começava a se abrir para modernizar seus costumes”. No Segundo Reinado, as mulheres foram se tornando público determinante na construção da literatura e da imprensa nacional. E não apenas público, porquanto crescerá o número de escritoras que colaboram para isso e emergirá uma imprensa feminina, editada, escrita e dirigida por e para mulheres.\nABRANTES, A. Do álbum de família à vitrine impressa: trajetos de retratos (PB, 1920), Revista Temas em Educação, n. 24, 2015 (adaptado).\nO registro das atividades descritas associa a inserção da figura feminina nos espaços de leitura e escrita do Segundo Reinado ao(à)",
+      "explicacao": "O texto liga o crescimento das leitoras e das escritoras aos folhetins e à imprensa feminina do século XIX. A presença feminina na leitura e na escrita se associa ao surgimento de novas práticas culturais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 53",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Surgimento de novas práticas culturais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Contestação de antigos hábitos masculinos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Valorização de recentes publicações juvenis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Circulação de variados manuais pedagógicos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Aparecimento de diversas editoras comerciais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022054,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "Os caixeiros do comércio a retalho do Rio de Janeiro estiveram entre as primeiras categorias de trabalhadores a se organizar em associações e a exigir a intervenção dos poderes públicos na mediação de suas lutas por direitos. Na década de 1880, os caixeiros participaram da arena política e ganharam as ruas com vários outros, como os republicanos e os abolicionistas.\nPOPINIGIS, F. “Todas as liberdades são irmãs: os caixeiros e as lutas dos trabalhadores por  direitos entre o Império e a República. Estudos Históricos, n. 59, set-dez. 2018 (adaptado)\nA atuação dos trabalhadores mencionados no texto representou, na capital do Império, um momento de",
+      "explicacao": "Na década de 1880, os caixeiros se organizaram e foram às ruas ao lado de republicanos e abolicionistas. Essa atuação foi um momento de contestação dos princípios monárquicos na capital do Império.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 54",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Manutenção das regras patronais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Desprendimento das ideias liberais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Fortalecimento dos contratos laborais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Consolidação das estruturas sindicais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Contestação dos princípios monárquicos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022063,
+      "assunto": 201,
+      "dificuldade": 2,
+      "enunciado": "Ainda que a fome ocorrida na Itália em 536 tenha origem nos eventos climáticos, suas implicações são tanto políticas quanto econômicas. Nos primeiros séculos da Idade Média, o auxílio aos famintos se inscreve no domínio da gestão pública, mesmo quando a ação de seus agentes é apresentada sob o ângulo da piedade e da caridade individuais, como é o caso da Gália merovíngia. Assim, o fato de que as respostas à fome são mostradas, na Gália, como o fruto de iniciativas pessoais fundadas no imperativo da caridade deriva da natureza das fontes do século VI.\nSILVA, M.C. Os agentes públicos e a fome nos primeiros séculos da Idade Média. Varia Historia, n. 60, set-dez. 2016 (Adaptado).\nNa conjuntura histórica destacada no texto, o dever de agir em face da situação de crise apresentada pertencia à jurisdição",
+      "explicacao": "O texto situa o auxílio aos famintos na gestão pública, ainda que apresentado como caridade. Nas monarquias cristãs da Alta Idade Média, esse dever cabia à realeza, pelo próprio conceito de governo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 63",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Da nobreza, proveniente da obrigação de proteção ao campenisnato livre.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Da realeza, decorrente do conceito de governo subjacente à monarquia cristã.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Dos mosteiros, resultante do caráter fraternal afirmado nas regras monásticas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Dos bispados, consequente da participação dos clérigos nos assuntos comunitários.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Das corporações, procedente do padrão assistencialista previsto nas normas estatutárias.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022066,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nA primeira grande lei educacional do Brasil, de 1827, determinava que, nas “escolas de primeiras letras” do Império, meninos e meninas estudassem separados e tivessem currículos diferentes. No Senado, o Visconde de Cayru foi um dos defensores de que o currículo de matemática das garotas fosse o mais enxuto possível. Nas palavras dele, o “belo sexo” não tinha capacidade intelectual para ir muito longe: – Sobre as contas, são bastantes [para as meninas] as quatro espécies, que não estão fora do seu alcance e lhes podem ser de constante uso na vida.\nTEXTO II\nNo Senado, o único a defender publicamente que as meninas tivessem, em matemática, um currículo idêntico ao dos meninos foi o Marquês de Santo Amaro (RJ). Ele argumentou: – Não me parece confome, às luzes do tempo em que vivemos, deixarmos de facilitar às brasileiras a aquisição desses conhecimentos [mais aprofundados de matemática]. A oposição que se manifesta não pode nascer senão do arraigado e péssimo costume em que estavam os antigos, os quais nem queriam que suas filhas aprendessem a ler.\nWESTIN, R. Senado Notícias. Disponível em: www12.senado.leg.br. Acesso em: 20 out. 2021 (adaptado).\nOs discursos expressam pontos de vista divergentes respectivemerte pela oposição entre",
+      "explicacao": "Um discurso limita a matemática das meninas por supor incapacidade feminina, e o outro defende o mesmo acesso ao saber. A oposição é entre a dominação de corpos e a igualdade humana.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 66",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Liberdade de gênero e controle social.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Equidade de escolha e imposição cultural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Dominação de corpos e igualdade humana.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Geração de oportunidade e restrição profissional.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Exclusão de competências e participação política.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022073,
+      "assunto": 7,
+      "dificuldade": 2,
+      "enunciado": "A história do Primeiro de Maio de 1890 — na França e na Europa, o primeiro de todos os Primeiros de Maio – é, sob vários aspectos, exemplar. Resultante de um ato político deliberado, essa manifestação ilustra o lado voluntário da construção de uma classe — a classe operária — à qual os socialistas tentam dar uma unidade política e cultural através daquela pedagogia da festa cujo princípio, eficácia e limites há muito tempo tinham sido experimentados pela Revolução Francesa.\nPERROT, M. Os excluídos da história: operários, mulheres e prisioneiros. Rio de Janeiro: Paz e Terra, 1988.\nCom base no texto, a fixação dessa data comemorativa tinha por objetivo",
+      "explicacao": "Os socialistas usaram o Primeiro de Maio para dar unidade política e cultural à classe operária. O objetivo da data era afirmar uma identidade coletiva dos trabalhadores.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 73",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Valorizar um sentimento burguês.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Afirmar uma identidade coletiva.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Edificar uma memória nacional.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Criar uma comunidade cívica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Definir uma tradição popular.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022077,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "Para os Impérios Coloniais, o problema das doenças que atingiam os escravos era algo com que cotidianamente deparavam os senhores. Em vista disso, uma série de obras dedicadas à administração de escravos foi publicada com vista a implementar uma moderna gestão da mão de obra escravista em convergência com O Iluminismo. Nesse contexto, o saber médico adquiria um papel extremamente relevante. Este era encarado como um instrumento fundamental ao desenvolvimento colonial, dada a percepção do impacto que as doenças tropicais causavam na população branca e nos povos escravizados.\nABREU, J. L. N. A Colônia enferma e a saúde dos povos: a medicina das “luzes” e as informações sobre as enfermidades da América portuguesa. História, Ciências, Saúde – Manguinhos, n. 3, jul.-set. 2007 (adaptado).\nDe acordo com o texto, a importância da medicina se justifica no âmbito dos objetivos",
+      "explicacao": "O texto liga o saber médico à gestão da mão de obra escravizada e ao desenvolvimento colonial. A medicina importava, portanto, para os objetivos econômicos das elites.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 77",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Econômicos das elites.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Naturalistas dos viajantes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Abolicionistas dos letrados.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Tradicionalistas dos nativos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Emancipadores das metrópoles.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022081,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "Decreto-Lei n. 1 949, de 27/17/1937\nArt. 1.o Fica criado o Departamento de Imprensa e Propaganda (DIP), diretamente  subordinado ao presidente da República.\nArt. 2.o O DIP tem por fim:\nh) coordenar e incentivar as relações da imprensa com os poderes públicos no sentido de maior aproximação da mesma com os fatos que se ligam aos interesses nacionais;\nn) autorizar mensalmente a devolução dos depósitos efetuados pelas empresas jornalísticas para importação de papel para imprensa , uma vez demonstrada, a seu juízo, a eficiência e a utilidade pública dos jornais ou periódicos por elas administrados ou dirigidos.\nBRASIL apud CARONE, E. A Terceira República. (1937-1945). São Paulo: Difel, 1982. (Adaptado).\nCom base nos trechos do decreto, as finalidades do órgão criado permitiram ao governo promover o(a)",
+      "explicacao": "O DIP foi criado no Estado Novo, e o decreto mostra que ele controlava a imprensa e até o acesso ao papel. Isso permitiu ao governo cercear a liberdade de expressão.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 81",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Diversificação da opinião pública.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Mercantilização da cultura popular.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Controle das organizações sindicais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Cerceamento da liberdade de expressão.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Privatização dos meios de comunicação",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022085,
+      "assunto": 201,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nManda o Santo Ofício da Inquisição que ninguém, seja qual for seu estado, idade ou condição, pare com carroça, caleça ou montaria nem atrapalhe com mesas ou cadeiras o centro das ruas, que vão da Inquisição a São Domingos, nem atravesse a procissão em ponto algum da ida ou da volta, amanhã, 19 do corrente, em que se celebrará auto de fé. E também que nem nesse dia nem nos dos açoites ouse alguém atirar  nos réus maçãs, pedras, laranjas nem outra coisa qualquer.\nPALMA, R. Anais da Inquisição de Lima. São Paulo: Edusp; Giordano, 1992 (adaptado).\nTEXTO II\nComo acontece em todos os ritos, o sentido do auto da fé é conferido pela sequência dos atos que o compõem. Os lugares, as posturas, os gestos, as palavras são fixados previamente em toda a sua complexidade. Por isso, o auto da fé apresenta momentos fortes – durante a preparação, a encenação, o ato e a recepção – que convém seguir em seus pormenores.\nBETHENCOURT, F. História das Inquisições: Portugal, Espanha e Itália – séculos XV-XIX. São Paulo: Cia. das Letras, 2000\nO rito mencionado nos textos demonstra a capacidade da Igreja em",
+      "explicacao": "Os textos mostram o auto de fé como um rito público com gestos fixados e proibições à população. Com ele, a Igreja produzia padrões de conduta.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 85",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Abrandar cerimônias de punição.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Favorecer anseios de violência.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Criticar políticas de disciplina.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Produzir padrões de conduta.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ordenar cultos de heresia.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022089,
+      "assunto": 201,
+      "dificuldade": 2,
+      "enunciado": "Quando os espanhóis chegaram à América, estava em seu apogeu o império teocrático dos Incas, que estendia seu poder sobre o que hoje chamamos Peru, Bolívia e Equador, abarcava parte da Colômbia e do Chile e alcançava até o norte argentino e a selva brasileira; a confederação dos Astecas tinha conquistado um alto nível de eficiência no vale do México, e no Yucután, na América Central, a esplêndida civilização dos Maias persistia nos povos herdeiros, organizados para o trabalho e para a guerra. Os Maias tinham sido grandes astrônomos, mediram o tempo e o espaço com assombrosa precisão, e tinham descoberto o valor do número zero antes de qualquer povo da história. No museu de Lima, podem ser vistos centenas de crânios que receberam placas de ouro e prata por parte dos cirurgiões Incas.\nGALEANO, E. As veias abertas da América Latina. Porto Alegre: L&PM, 2012.\nAs sociedades mencionadas deixaram como legado uma diversidade de",
+      "explicacao": "Galeano cita o poder dos incas, a astronomia maia e a cirurgia inca. Essas sociedades deixaram heranças culturais constituídas de saberes próprios.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 89",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Bens religiosos inspirados na matriz cristã.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Materiais bélicos pilhados em batalhas coloniais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Heranças culturais constituídas de saberes próprios.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Costumes laborais moldados em estilos estrangeiros.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Práticas medicinais alicerçadas no conhecimento científico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023047,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "Felizes tempos eram esses! As moças iam à missa de madrugada. De dia ninguém as via e se alguma, em dia de festa, queria passear com a avó ou a tia, havia de ir de cadeirinhas. Bem razão têm os nossos velhos de chorar por esses tempos, em que as filhas não sabiam escrever, e por isso não mandavam nem recebiam bilhetinhos.\nNovo correio de Modas, 1853, apud DONEGÁ, A. L.\nPublicar ficção em meado do século XIX,: um estudo de revistas femininas editadas pelos irmãos Laemmert. Campinas, unicamp, 2013 (adaptado)\nNa perspectiva do autor,  as tradições e os costumes sociofamiliares sofreram alterações no século XIX, decorrentes de quais fatores?",
+      "explicacao": "O autor lamenta que as moças agora escrevem bilhetes e saem mais. Na sua visão, os costumes mudaram por causa das práticas de letramento e da transformação cultural.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 47",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Hábitos de leitura e mobilidade regional.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Circulação de impressos e trânsito religioso.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Valorização da lingua e imigração estrangeira.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Práticas de letramento e transformação cultural.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Flexibilização do ensino e reformismo pedagógico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023051,
+      "assunto": 204,
+      "dificuldade": 2,
+      "enunciado": "Escrito durante a Primeira Guerra Mundial, o seguinte trecho faz parte da carta enviada pelo secretário do exterior britânico, Sir Arthur James Balfour, ao banqueiro Lord Rotschild, presidente da Liga Sionista, em 2 de novembro de 1917, a carta ficou conhecida como Declaração Balfour:\n“O governo de Sua Majestade vê com aprovação o estabelecimento na Palestina de um lar nacional para o povo judeu, e fará todos os esforços para facilitar tal objetivo. Nada será feito que possa prejudicar os direitos civis e religiosos das comunidades não judaicas na Palestina.”\nGATTAZ, A. A Guerra da Palestina. São Paulo: Usina do Livro, 2002 (adaptado).\nA análise do resultado do processo em questão revela que o governo inglês foi incapaz de garantir seu objetivo de",
+      "explicacao": "A Declaração Balfour prometia um lar judeu sem prejudicar as comunidades não judaicas da Palestina. O conflito que se seguiu mostra que os ingleses não conseguiram mediar as disputas territoriais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 51",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Promover o bem-estar social.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Negociar o apoio muçulmano.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Mediar os conflitos territoriais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Estimular a cooperação regional.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Combater os governos autocráticos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023059,
+      "assunto": 201,
+      "dificuldade": 2,
+      "enunciado": "Do século XVI em diante, pelo menos nas classes mais altas, o garfo passou a ser usado como utensílio para comer, chegando através da Itália primeiramente à França e, em seguida, à Inglaterra e à Alemanha, depois de ter servido, durante algum tempo, apenas para retirar alimentos sólidos da travessa. Henrique III introduziu-o na França, trazendo-o provavelmente de Veneza. Seus cortesãos não foram pouco ridicularizados por essa maneira “afetada” de comer e, no princípio, não eram muito hábeis no uso do utensílio: pelo menos se dizia que metade da comida cala do garfo no caminho do prato à boca. Em data tão recente como o século XVII, o garfo era ainda basicamente artigo de luxo, geralmente feito de prata ou ouro.\nELIAS. N. O processo civilizador: uma história dos costumes. Rio de Janeiro: Zahar, 1994.\nO processo social relatado indica a formação de uma etiqueta que tem como principio a",
+      "explicacao": "O garfo era artigo de luxo, usado nas classes mais altas. A etiqueta formada a partir dele tinha como princípio a distinção entre classes sociais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 59",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Distinção das classes sociais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Valorização de habitos de higiene.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Exaltação da cultura mediterrânea.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Consagração de tradições medievais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Disseminação de produtos manufaturados.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023070,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "No cemitério, a sociedade religiosa encarregada do funeral, aterrorizada, apressou a cerimônia de tal forma que a mãe de Herzog perdeu o momento em que o caixão do filho começou a ser coberto pela terra. Quatro jornalistas que estavam presos no DOI chegaram para assistir ao sepultamento. Um se afastara, chorando. Dizia: Eles matam, eles matam! Não pergunte nada. Não podemos dizer nada. Eles matam mesmo. Falava-se baixo. Ouviram-se dois curtos discursos. O primeiro, da atriz Ruth Escobar: Até quando vamos suportar tanta violência? Até quando vamos continuar enterrando nossos mortos em silêncio? No segundo, Audálio Dantas recitou o Navio negreiro, de Castro Alves: Senhor Deus dos desgraçados / Dizei-me Vós, Senhor Deus / Se é mentira, se é verdade, / Tanto horror perante os céus.\nGASPARI, E. A ditadura encurralada. São Paulo: Cia. das Letras, 2004.\nO acontecimento descrito no texto, ocorrido em meados dos anos 1970, atesta a seguinte característica do regime político-institucional vigente:",
+      "explicacao": "Herzog morreu sob custódia do DOI, e o enterro ocorreu em meio ao medo. O caso atesta a institucionalização de mecanismos repressivos da ditadura para eliminar a resistência.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 70",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Incorporação da estética popular para justificar o ideal de integração nacional.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Afirmação da estratégia psicossocial para favorecer o objetivo de propaganda cívica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Institucionalização de mecanismos repressivos para eliminar os focos de resistência.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Adoção de cerimoniais públicos para controlar as manifestações de grupos opositores.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Estatização de meios de comunicação para selecionar a divulgação de atos governamentais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023073,
+      "assunto": 202,
+      "dificuldade": 2,
+      "enunciado": "Os séculos XV e XVI, quando se vão desmoronando as estruturas socioeconômicas da Idade Média perante os novos imperativos da Época moderna, constituem um momento-chave na história florestal de toda a Europa Ocidental. Abre-se, genericamente, um longo período de “crise florestal”, que se manifesta com acuidade nos países onde mais se desenvolvem as atividades industriais e comerciais. As necessidades em produtos lenhosos aumentam drasticamente com o crescimento do consumo nos mercados urbanos e nas regiões onde progridem a metalurgia e a construção naval, além da sua utilização na vida quotidiana de toda a população.\nDEVY-VARETA, N. Para uma geografia histórica da floresta portuguesa. Revista da Faculdade de Letras – Geografia, n. 1, 1986 (adaptado).\nQual acontecimento do período contribuiu diretamente para o agravamento da situação descrita?",
+      "explicacao": "A crise florestal veio do aumento do consumo de madeira. A construção naval exigida pela expansão marítima contribuiu diretamente para esse agravamento.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 73",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "O processo de expansão marítima.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "A eclosão do renascimento cultural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "A concretização da centralização política.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "O movimento de reformas religiosas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "A manutenção do sistema feudal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023074,
+      "assunto": 201,
+      "dificuldade": 2,
+      "enunciado": "Tahuantinsuyu — nome do Império Inca em quéchua — era dividido em quatro partes ou suyus: Chinchaysuyu (noroeste do Peru e Equador), Antisuyu (parte amazônica do império), Collasuyu (atual Bolívia) e Condesuyu (costa do Oceano Pacífico) e tinha Cuzco, no atual Peru, como sua capital imperial. Oficialmente, todas as etnias dominadas pelos incas deveriam adotar a língua quéchua, adorar o Sapa Inca e o Sol e pagar taxas em forma de horas de trabalhos periódicos. No entanto, pode-se dizer que o Império Inca era como um mosaico cultural em que vários e diferentes grupos étnicos adoravam o Sapa Inca e o Sol mas, simultaneamente, continuavam a adorar seus deuses locais e também a falar em suas línguas nativas.\nMARTINS, C. Os incas e os tahuantinsuyu: apresentação. Disponível em: http://antigo.anphlac.org. Acesso em: 6 out. 2021 (adaptado).\nAo comparar, no texto, a vertente da dominação territorial com os aspectos culturais, os incas tinham uma postura",
+      "explicacao": "Os incas impunham o culto ao Sol, mas aceitavam deuses e línguas locais. Eram, portanto, flexíveis no que diz respeito aos costumes religiosos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 74",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Aceitável no que alude aos direitos humanos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Admissível no que remete às crenças coloniais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Tolerável no que se refere aos regimes tributários.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Flexível no que diz respeito aos costumes religiosos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Compreensível no que concerne às normas laborais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023077,
+      "assunto": 7,
+      "dificuldade": 2,
+      "enunciado": "Havia já muito tempo que a Europa desfrutava os benefícios da vacina e arrancava à morte milhares de inocentes, condenados a serem vítimas do terrível flagelo das bexigas, e o governo de Portugal nunca se lembrara de transmitir ao Brasil a mais útil das descobertas humanas, quando aliás nenhum país mais do que ele carecia deste salutar invento ou se atendesse às vantagens da população ou ao perdimento de imensas somas na mortandade contínua de escravos, que este flagelo devorava. O certo é que mais ocupado de seu ouro que de seus habitantes, Portugal, como em outros muitos casos, esperou que o Brasil por seu próprio impulso remediasse a este mal.\nPEREIRA, J. C. 12 jan. 1828 apud LOPES, M. B.; POLITO, R. Para uma história da vacina no Brasil: um manuscrito inédito de Norberto e Macedo. História, Ciências, Saúde – Manguinhos, n. 2, abr. -jun. 2007 (adaptado).\nEscrito em 1828, o texto expressa a seguinte ideia de origem iluminista:",
+      "explicacao": "O autor critica Portugal por não ter levado a vacina ao Brasil e cuidar apenas do ouro. Ele expressa a ideia iluminista de que os governantes são responsáveis pela saúde dos povos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 77",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "As leis observáveis regem o mundo material.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "O monarca racional promove a sociedade justa.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "O direito natural justifica a liberdade dos homens.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "A produção da terra garante a riqueza das nações.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "A responsabilidade dos governantes assegura a saúde dos povos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023080,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "O Golpe Militar de 1964 foi implacável no combate ao que restava das Ligas Camponesas, generalizadas na década anterior. No entanto, em relação aos sindicatos, sua atitude foi ambígua. Por meio de acordos com os Estados Unidos, foram concebidos centros sindicais e cursos de liderança com base em princípios conservadores e ministrados por membros da Igreja Católica.\nDEL PRIORE, M.; VENÂNCIO, R. Uma história da vida rural no Brasil. Rio de Janeiro: Ediouro, 2006 (adaptado).\nOs sindicatos rurais foram tratados da forma descrita no texto porque o governo pretendia utiliza-los para",
+      "explicacao": "O regime reprimiu as Ligas, mas manteve sindicatos sob orientação conservadora. O objetivo era usar esses sindicatos para controlar as tensões políticas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 80",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Controlar as tensões políticas.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Limitar a legislação trabalhista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Divulgar o programa populista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Regularizar a propriedade da terra.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Estimular a oferta de mão de obra.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023084,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "A partir da década de 1930, começam a ser discutidos no Brasil os princípios de racionalização do trabalho. As preocupações com a cozinha e o trabalho doméstico foram introduzidas com a medicina sanitária e a oferta de gás e eletricidade para uso doméstico no início do século XX. A organização da cozinha visava atingir uma simplificação das tarefas, com a economia de movimentos, e o barateamento dos equipamentos, a partir da produção em grande escala. A padronização e racionalização da habitação e seus componentes visava uma radical transformação da casa, em especial da cozinha, e apoiava-se tanto no desenvolvimento de novos equipamentos quanto nos estudos de racionalização do trabalho doméstico. A principal preocupação era o desenvolvimento de um novo tipo de habitação, que deveria induzir um novo comportamento social.\nSILVA, J. L. M. Transformações no espaço doméstico: o fogão a gás e a cozinha paulistana, 1870-1930. Anais do Museu Paulista, n. 2. jul-dez 2007 (adaptado).\nNo contexto descrito, as mudanças mencionadas proporcionavam às mulheres o(a)",
+      "explicacao": "A cozinha racionalizada buscava simplificar tarefas e economizar movimentos. Com menos tempo no trabalho doméstico, as mulheres ampliavam os momentos de socialização.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 84",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Controle do orçamento familiar.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Libertação das tradições religiosas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Exercício da representatividade política.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Ampliação dos momentos de socialização.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Afastamento das atividades especializadas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023086,
+      "assunto": 6,
+      "dificuldade": 2,
+      "enunciado": "Durante a Revolução Francesa, um certo padre Niollant escondeu-se no pequeno castelo de L’Escarbas. Pagou amplamente a hospitalidade do velho fidalgo ocupando-se da educação de sua filha, Anaïs. A presença da mãe em nada modificou essa educação masculina dada a uma jovem criatura já muito inclinada à independência em virtude da vida no campo. O padre transmitiu à aluna sua intrepidez de opiniões e sua facilidade de julgamento, sem pensar que essas qualidades, tão necessárias num homem, se tornam defeitos numa mulher destinada aos humildes afazeres de mãe de família. Embora o padre recomendasse continuamente à aluna ser tanto mais graciosa e modesta quanto seu saber era mais extenso, a senhorita de Nègrepelisse ficou com excelente opinião de si mesma.\nBALZAC. H. Ilusões perdidas. São Paulo: Penguin Classics:\nCia. das Letras, 2011 (adaptado).\nO comportamento desenvolvido pela personagem evidencia uma postura de",
+      "explicacao": "Anaïs recebe uma educação \"masculina\", com opinião própria e independência, algo que a época reprovava em mulheres. Sua postura evidencia a ruptura de valores institucionalizados.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 86",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Abandono de laços afetivos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Negação da ideia de subjetividade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Aceitação da hierarquia de gênero.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Consolidação da estratificação social.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ruptura de valores institucionalizados.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023087,
+      "assunto": 203,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nOriunda da Romênia, Genny Gleizer aportou no Brasil em 1932. Assim como milhares de judeus do Leste Europeu, sua vinda para o Brasil ocorreu em um momento de ascensão do antissemitismo na Europa que tornava precárias suas vidas. O Brasil se colocava como uma possibilidade na busca por condições de sobrevivência e desenvolvimento.\nANTÃO, A. C. C. B. Gênero, imigração e política: o caso da judia comunista Genny Gleizer no Governo Vargas (1932-1935). Rio de Janeiro: Casa de Oswaldo Cruz, 2017 (adaptado).\nТЕХТО II\nA presença judaica no Brasil foi criando aos poucos certas desconfianças que se refletiram em órgãos da imprensa e em círculos intelectuais e políticos. Em parte, essa imagem negativa adviria da onda nacionalista surgida no final dos anos 1910, que concebia imigrantes como concorrentes dos trabalhadores brasileiros, ou como seres improdutivos, exploradores da mão de obra e da riqueza autóctone. Além disso, as elites políticas da época acreditavam que os estrangeiros eram portadores das doutrinas anarquista e comunista, estranhas à “indole do povo brasileiro”. Esses “indesejáveis” seriam um mal externo que corromperia a nação.\nMAIO, M. C.: CALAÇA, C. E. Um balanço da bibliografia sobre o antissemitismo\nno Brasil. In: GRINBERG, K. (Org.). Os judeus no Brasil. Rio de Janeiro: Civilização Brasileira, 2005 (adaptado).\nConforme descrito nos textos, o tratamento dispensado aos grupos mencionados se fundamentava em",
+      "explicacao": "Os textos mostram que imigrantes judeus eram vistos como comunistas, estranhos à \"índole do povo brasileiro\". O tratamento se fundamentava em aspectos socioeconômicos e ideológicos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 87",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Preceitos teológicos e religiosos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Aspectos socioeconômicos e ideológicos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Regulamentações territoriais e alfandegárias.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Orientações constitucionais e estatutárias.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Decretos legislativos e internacionais.",
           "correta": false,
           "imagem": null,
           "imagem_descricao": null

@@ -1,0 +1,1485 @@
+{
+  "materia": 7,
+  "assuntos": [
+    {
+      "id": 701,
+      "nome": "Estequiometria",
+      "descricao": "Cálculo das quantidades em reações."
+    },
+    {
+      "id": 702,
+      "nome": "Soluções e equilíbrio",
+      "descricao": "Concentração, pH e equilíbrio químico."
+    },
+    {
+      "id": 703,
+      "nome": "Química orgânica",
+      "descricao": "Funções, cadeias e reações do carbono."
+    },
+    {
+      "id": 704,
+      "nome": "Termoquímica",
+      "descricao": "Calor nas reações e combustíveis."
+    },
+    {
+      "id": 705,
+      "nome": "Eletroquímica",
+      "descricao": "Pilhas, eletrólise e oxirredução."
+    },
+    {
+      "id": 706,
+      "nome": "Atomística e ligações",
+      "descricao": "Estrutura do átomo, tabela periódica e ligações."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 706,
+      "dep": 701,
+      "peso": 0.8
+    },
+    {
+      "pre": 701,
+      "dep": 702,
+      "peso": 0.8
+    },
+    {
+      "pre": 706,
+      "dep": 703,
+      "peso": 0.6
+    },
+    {
+      "pre": 701,
+      "dep": 704,
+      "peso": 0.7
+    },
+    {
+      "pre": 702,
+      "dep": 705,
+      "peso": 0.6
+    }
+  ],
+  "questoes": [
+    {
+      "id": 7011,
+      "assunto": 701,
+      "dificuldade": 2,
+      "enunciado": "A combustão completa do metano é dada por CH4 + 2 O2 → CO2 + 2 H2O.\n\nConsiderando as massas molares CH4 = 16 g/mol e CO2 = 44 g/mol, a massa de CO2 formada na queima de 32 g de metano é",
+      "explicacao": "A proporção é 1 mol para 1 mol. Assim, 32 g equivalem a 2 mol de metano, que formam 2 · 44 = 88 g de CO2.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "22 g",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "44 g",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "88 g",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "132 g",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "176 g",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 7012,
+      "assunto": 701,
+      "dificuldade": 2,
+      "enunciado": "Em uma reação, 2 mol de hidrogênio reagem com 1 mol de oxigênio para formar 2 mol de água.\n\nSe forem usados 6 mol de hidrogênio, com oxigênio suficiente, a quantidade de água formada será",
+      "explicacao": "A proporção entre hidrogênio e água é de 2 para 2, ou 1 para 1. Portanto, 6 mol de hidrogênio formam 6 mol de água.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1 mol",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2 mol",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3 mol",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4 mol",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "6 mol",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 7041,
+      "assunto": 704,
+      "dificuldade": 2,
+      "enunciado": "Quando uma pessoa aplica álcool na pele, sente uma sensação de frio.\n\nIsso ocorre porque a evaporação do álcool é um processo",
+      "explicacao": "A evaporação é endotérmica: o álcool absorve calor da pele para passar ao estado gasoso, o que causa a sensação de frio.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "endotérmico, que absorve calor da pele.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "exotérmico, que libera calor para a pele.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "exotérmico, que absorve calor do ar.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "isotérmico, sem troca de calor.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "químico, que forma novas substâncias na pele.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 7042,
+      "assunto": 704,
+      "dificuldade": 2,
+      "enunciado": "A queima de um combustível libera energia.\n\nEm um gráfico de energia dessa reação, os produtos têm, em relação aos reagentes,",
+      "explicacao": "Em reações exotérmicas, a energia sai do sistema. Assim, os produtos têm entalpia menor que os reagentes, com ΔH negativo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "maior entalpia, com ΔH positivo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "menor entalpia, com ΔH negativo.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "a mesma entalpia, com ΔH nulo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "maior entalpia, com ΔH negativo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "menor entalpia, com ΔH positivo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 7043,
+      "assunto": 704,
+      "dificuldade": 2,
+      "enunciado": "Na comparação entre combustíveis, é importante considerar o calor de combustão. Ao escolher o combustível mais eficiente para um mesmo motor, deve-se preferir aquele que",
+      "explicacao": "Quanto mais energia cada grama libera, menor a massa necessária para produzir o mesmo trabalho.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "tem a menor densidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "produz a menor chama visível.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "demora mais para entrar em combustão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "libera mais energia por unidade de massa queimada.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "tem a maior quantidade de água em sua composição.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022091,
+      "assunto": 705,
+      "dificuldade": 2,
+      "enunciado": "A figura ilustra esquematicamente um processo de\nremediação de solos contaminados com tricloroeteno\n(TCE), um agente desengraxante. Em razão de\nvazamentos de tanques de estocagem ou de manejo\ninapropriado de resíduos industriais, ele se encontra\npresente em águas subterrâneas, nas quais forma\numa fase líquida densa não aquosa (DNAPL) que se\ndeposita no fundo do aquífero. Essa tecnologia de\ndescontaminação emprega o íon persulfato (S2\nO8\n2−), que\né convertido no radical •SO4\n− por minerais que contêm\nFe(III). O esquema representa de forma simplificada o\nmecanismo de ação química sobre o TCE e a formação\ndos produtos de degradação.\nBERTAGI, L. T.; BASÍLIO, A. O.; PERALTA-ZAMORA, P. Aplicações ambientais de persulfato:\nremediação de águas subterrâneas e solos contaminados. Química Nova, n. 9, 2021 (adaptado)\nEsse procedimento de remediação de águas subterrâneas\nbaseia-se em reações de",
+      "explicacao": "O persulfato gera um radical altamente oxidante, ativado por ferro, que degrada o TCE. Como há transferência de elétrons, o processo se baseia em reações de oxirredução.",
+      "imagem": "asset:assets/questoes/enem/2022/2022091.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 91.",
+      "fonte": "ENEM 2022, questão 91",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Oxirredução",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Substituição",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Precipitação",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Desidratação",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Neutralização",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022094,
+      "assunto": 706,
+      "dificuldade": 2,
+      "enunciado": "Os riscos apresentados pelos produtos dependem de suas propriedades e da reatividade quando em contato com outras substâncias. Para prevenir os riscos devido à natureza química dos produtos, devemos conhecer a lista de substâncias incompatíveis e de uso cotidiano em fábricas, hospitais e laboratórios, a fim de observar cuidados na estocagem, manipulação e descarte. O quadro elenca algumas dessas incompatibilidades, que podem levar à ocorrência de acidentes.\nConsidere que houve o descarte indevido de dois conjuntos de substâncias:\n(1) ácido clorídrico concentrado com cianeto de potássio;\n(2) ácido nítrico concentrado com sacarose.\nDisponível em: www.fiocruz.br. Acesso em: 6 dez. 2017 (adaptado).\nO descarte dos conjuntos (1) e (2) resultará, respectivamente, em",
+      "explicacao": "Ácido forte com cianeto libera gás cianídrico (HCN), que é tóxico. Ácido nítrico concentrado com sacarose provoca oxidação forte do açúcar, pois o ácido é um oxidante potente.",
+      "imagem": "asset:assets/questoes/enem/2022/2022094.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 94.",
+      "fonte": "ENEM 2022, questão 94",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Liberação de gás tóxico e reação oxidativa forte.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Reação oxidativa forte e liberação de gás tóxico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Formação de sais tóxicos e reação oxidativa forte.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Liberação de gás tóxico e liberação de gás oxidante.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Formação de sais tóxicos e liberação de gás oxidante.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022097,
+      "assunto": 706,
+      "dificuldade": 2,
+      "enunciado": "O urânio é empregado como fonte de energia em reatores nucleares. Para tanto, o seu mineral deve\nser refinado, convertido a hexafluoreto de urânio e posteriormente enriquecido, para aumentar de 0,7% a 3% a abundância de um isótopo específico — o urânio-235. Uma das formas de enriquecimento utiliza a pequena diferença de massa entre os hexafluoretos de urânio-235 e de urânio-238 para separá-los por efusão, precedida pela vaporização. Esses vapores devem efundir repetidamente\nmilhares de vezes através de barreiras porosas formadas por telas com grande número de pequenos orifícios. No entanto, devido à complexidade e à grande quantidade de energia envolvida, cientistas e engenheiros continuam a pesquisar procedimentos alternativos de enriquecimento.\nATKINS, P.; JONES, L. Princípios de química: questionando a vida moderna e o meio ambiente. Porto Alegre: Bookman, 2006 (adaptado).\nConsiderando a diferença de massa mencionada entre os dois isótopos, que tipo de procedimento alternativo ao da efusão pode ser empregado para tal finalidade?",
+      "explicacao": "Os isótopos diferem pouco em massa, e não em propriedades químicas. A centrifugação separa substâncias por massa, por isso é a alternativa à efusão.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 97",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Peneiração.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Centrifugação.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Extração por solvente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Destilação fracionada.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Separação magnética.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022106,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "A penicilamina é um medicamento de uso oral utilizado no tratamento de várias doenças. Esse composto é excretado na urina, cujo pH se situa entre 5 e 7. A penicilamina, cuja fórmula estrutural plana está apresentada, possui três grupos funcionais que podem ser ionizados:\nQual estrutura derivada da penicilamina é predominantemente encontrada na urina?",
+      "explicacao": "Em pH entre 5 e 7, o grupo carboxila perde H+ e fica como COO−, e o grupo amino ganha H+ e fica como NH3+. O grupo tiol, mais fraco, segue protonado, como mostra a alternativa C.",
+      "imagem": "asset:assets/questoes/enem/2022/2022106.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 106.",
+      "fonte": "ENEM 2022, questão 106",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022106_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022106_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022106_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022106_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022106_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022107,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "A biomassa celulósica pode ser utilizada para a produção de etanol de segunda geração. Entretanto, é necessário que os polissacarídeos sejam convertidos em mono e dissacarídeos, processo que pode ser conduzido em meio ácido, conforme mostra o esquema:\nOGEDA, T. L.; PETRI, D. F. S. […] Química Nova, n. 7, 2010 (adaptado).\nNessa conversão de polissacarídeos, a função do íon H+ é",
+      "explicacao": "O íon H+ participa da reação, mas é regenerado no fim. Ele atua como catalisador, reduzindo a energia de ativação e aumentando a velocidade da reação.",
+      "imagem": "asset:assets/questoes/enem/2022/2022107.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 107.",
+      "fonte": "ENEM 2022, questão 107",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Dissolver os reagentes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Deslocar o equilíbrio químico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Aumentar a velocidade da reação.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Mudar a constante de equilíbrio da reação.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Formar ligações de hidrogênio com o polissacarídeo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022108,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "O ácido tartárico é o principal ácido do vinho e está diretamente relacionado com sua qualidade. Na avaliação de um vinho branco em produção, uma analista neutralizou uma alíquota de 25,0 mL do vinho com NaOH a 0,10 mol L−1, consumindo um volume igual a 8,0 mL dessa base. A reação para esse processo de titulação é representada pela equação química:\nA concentração de ácido tartárico no vinho analisado é mais próxima de:",
+      "explicacao": "Foram usados 0,0080 L × 0,10 mol/L = 0,80 mmol de NaOH. O ácido tartárico tem dois hidrogênios ionizáveis, então são 0,40 mmol de ácido em 25 mL, ou 0,016 mol/L.",
+      "imagem": "asset:assets/questoes/enem/2022/2022108.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 108.",
+      "fonte": "ENEM 2022, questão 108",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022108_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022108_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022108_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022108_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022108_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022109,
+      "assunto": 706,
+      "dificuldade": 2,
+      "enunciado": "Oelementoiodo(I)temfunçãobiológicaeéacumulado\nna tireoide. Nos acidentes nucleares de Chernobyl e\nFukushima, ocorreu a liberação para a atmosfera do\nradioisótopo 131I, responsável por enfermidades nas\npessoas que foram expostas a ele. O decaimento de uma\nmassa de 12 microgramas do isótopo 131I foi monitorado\npor 14 dias, conforme o quadro.\nApós o período de 40 dias, a massa residual desse\nisótopo é mais próxima de",
+      "explicacao": "O quadro mostra meia-vida de cerca de 8 dias. Em 40 dias passam 5 meias-vidas: 12 µg / 2⁵ = 12/32 ≈ 0,4 µg.",
+      "imagem": "asset:assets/questoes/enem/2022/2022109.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 109.",
+      "fonte": "ENEM 2022, questão 109",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2,4 µg.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1,5 µg.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "0,8 µg.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "0,4 µg.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "0,2 µg.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022113,
+      "assunto": 705,
+      "dificuldade": 2,
+      "enunciado": "A nanotecnologia é responsável pelo aprimoramento de diversos materiais, incluindo os que são impactados com a presença de poluentes e da umidade na atmosfera, causadores de corrosão. O processo de corrosão é espontâneo e provoca a deterioração de metais como o ferro, que, em presença de oxigênio e água, sofre oxidação, conforme ilustra a equação química:\nUma forma de garantir a durabilidade da estrutura metálica e a sua resistência à umidade consiste na deposição de filmes finos nanocerâmicos à base de zircônia (ZrO2) e alumina (Al2O3) sobre a superfície do objeto que se deseja proteger.\nCLEMENTE, G. A. B. F. et al. O uso de materiais híbridos ou nanocompósitos como revestimentos anticorrosivos do aço. Química Nova, n. 9, 2021 (adaptado)\nEssa nanotecnologia aplicada na proteção contra a corrosão se baseia no(a)",
+      "explicacao": "Os filmes de zircônia e alumina são camadas que cobrem o metal. Elas funcionam como barreira e impedem o contato com o oxigênio e a água, sem envolver outro metal.",
+      "imagem": "asset:assets/questoes/enem/2022/2022113.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 113.",
+      "fonte": "ENEM 2022, questão 113",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Proteção catódica, que utiliza um metal fortemente redutor.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Uso de metais de sacrifício, que se oxidam no lugar do ferro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Passivação do ferro, que fica revestido pelo seu próprio óxido.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Efeito de barreira, que impede o contato com o agente oxidante.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Galvanização, que usa outros metais de menor potencial de redução.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022117,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "Um grupo de alunos realizou um experimento para observar algumas propriedades dos ácidos, adicionando um pedaço de mármore (CaCO3 ) a uma solução aquosa de ácido clorídrico (HCl), observando a liberação de um gás e o aumento da temperatura.\nO gás obtido no experimento é o:",
+      "explicacao": "O carbonato de cálcio reage com ácido clorídrico e forma cloreto de cálcio, água e gás carbônico. O gás liberado é o CO2.",
+      "imagem": "asset:assets/questoes/enem/2022/2022117.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 117.",
+      "fonte": "ENEM 2022, questão 117",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "H2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "O2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "CO2",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "CO",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Cl2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022124,
+      "assunto": 705,
+      "dificuldade": 2,
+      "enunciado": "Durante o ano de 2020, impulsionado pela necessidade de respostas rápidas e eficientes para desinfectar ambientes de possíveis contaminações com o SARS-CoV-2, causador da covid-19, diversas alternativas foram buscadas para\nos procedimentos de descontaminação de materiais e ambientes. Entre elas, o uso de ozônio em meio aquoso como agente sanitizante para pulverização em humanos e equipamentos de proteção em câmaras ou túneis, higienização de automóveis e de ambientes fechados e descontaminação de trajes. No entanto, pouca atenção foi dada à toxicidade do ozônio, à formação de subprodutos, ao\nnível de concentração segura e às precauções necessárias.\nLIMA, M. J. A.; FELIX, E. P.; CARDOSO, A. A. Aplicações e implicações do ozônio na indústria, ambiente e saúde. Química Nova, n. 9, 2021 (adaptado).\nO grande risco envolvido no emprego indiscriminado dessa substância deve-se à sua ação química como",
+      "explicacao": "O ozônio é um forte agente oxidante, e por isso desinfeta. Essa mesma ação pode danificar tecidos humanos, e daí vem o risco do uso indiscriminado.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 124",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Catalisador.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Oxidante.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Redutor.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Ácido.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Base.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022126,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "A água bruta coletada de mananciais apresenta alto índice de sólidos suspensos, o que a deixa com um aspecto turvo. Para se obter uma água límpida e potável, ela deve passar por um processo de purificação numa estação de tratamento de água. Nesse processo, as principais etapas são, nesta ordem: coagulação, decantação, filtração, desinfecção e fluoretação.\nQual é a etapa de retirada de grande parte desses sólidos?",
+      "explicacao": "A coagulação agrupa as partículas em flocos, e estes são mais pesados. Na decantação, eles vão ao fundo, e é assim que sai a maior parte dos sólidos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 126",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Coagulação.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Decantação.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Filtração.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Desinfecção.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Fluoretação.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022129,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "O esquema representa o ciclo do nitrogênio:\nA chuva ácida interfere no ciclo do nitrogênio, principalmente, por proporcionar uma diminuição do pH do solo e da atmosfera, alterando a concentração dos compostos presentes nesse ciclo.\nDisponível em: http://scienceprojectideasforkids.com. Acesso em: 6 ago. 2012 (adaptado).\nEm um solo de menor pH, será favorecida a formação de:",
+      "explicacao": "Em pH menor há mais íons H+ no solo. A amônia, de caráter básico, recebe H+, o que favorece a formação de NH4+.",
+      "imagem": "asset:assets/questoes/enem/2022/2022129.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 129.",
+      "fonte": "ENEM 2022, questão 129",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "N2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "NH3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "NH4 +",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "NO2 −",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "NO3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022131,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "De modo geral, a palavra “aromático” invoca associações agradáveis, como cheiro de café fresco ou de um pão doce de canela.Associações similares ocorriam no passadoda história da químicaorgânica, quando os compostosditos “aromáticos” apresentavam um odor agradável e foram isolados de óleos naturais. À medida que as estruturas desses compostos eram elucidadas, foi se descobrindo que vários deles continham uma unidade estrutural específica. Os compostos aromáticos que continham essa unidade estrutural tornaram-se parte de uma grande família, muito mais com base em suas estruturas eletrônicas do que nos seus cheiros, como as substâncias a seguir, encontradas em óleos vegetais.\nSOLOMONS, T. W. G.; FRYHLE, C. B. Química orgânica. Rio de Janeiro: LTC, 2009 (adaptado).\nA característica estrutural dessa família de compostos é a presença de",
+      "explicacao": "O texto diz que os aromáticos compartilham uma unidade estrutural. Essa unidade é o anel benzênico.",
+      "imagem": "asset:assets/questoes/enem/2022/2022131.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 131.",
+      "fonte": "ENEM 2022, questão 131",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Ramificações.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Insaturações.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Anel benzênico.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Átomos de oxigênio.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Carbonos assimétricos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023093,
+      "assunto": 706,
+      "dificuldade": 2,
+      "enunciado": "A utilização de tecnologia nuclear é um tema bastante controverso, por causa do risco de acidentes graves, como aqueles ocorridos em Chernobyl (1986), em Goiânia (1987) e em Fukushima (2011). Apesar de muitas desvantagens, como a geração de resíduos tóxicos, a descontaminação ambiental dispendiosa em caso de acidentes e a utilização em armas nucleares, a geração de energia nuclear apresenta vantagens em comparação a outras fontes de energia.\nA geração dessa energia tem como característica:",
+      "explicacao": "Nas usinas nucleares, o calor vem da fissão do urânio, e não da queima de carvão, gás ou petróleo. A vantagem é produzir calor sem consumir combustíveis fósseis.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 93",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Formar resíduos facilmente recicláveis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Promover o aumento do desmatamento.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Contribuir para a produção de chuva ácida.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Emitir gases tóxicos que são lançados no ambiente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Produzir calor sem o consumo de combustíveis fósseis.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023094,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "Em uma indústria, o controle da dureza da água é importante quando ela é utilizada em caldeiras, uma vez que sais pouco solúveis, formados a partir de sulfatos e carbonatos, podem acumular-se no interior das tubulações, causando obstruções. Para avaliar a água utilizada nessa indústria, foram realizados testes de qualidade que consideraram os seauintes parâmetros:\nQual teste deve ser considerado para controlar a formação desse tipo de obstrução de tubulações?",
+      "explicacao": "As obstruções vêm de sais pouco solúveis de cálcio e magnésio, responsáveis pela dureza da água. Deve-se usar o teste que mede esses íons, o de número 1.",
+      "imagem": "asset:assets/questoes/enem/2023/2023094.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 94.",
+      "fonte": "ENEM 2023, questão 94",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023096,
+      "assunto": 701,
+      "dificuldade": 2,
+      "enunciado": "Existe no comércio um produto antimofo constituído por uma embalagem com tampa perfurada contendo cloreto de cálcio anidro, CaCI,. Uma vez aberto o lacre, essa substância absorve a umidade ambiente, transformando-se em cloreto de cálcio di-hidratado, CaCI, 2H,0. Considere a massa molar da água igual a 18 g mol-1, e a massa molar do cloreto de cálcio anidro igual a 111 g mol-1.\nNa hidratação da substância presente no antimofo, o ganho percentual, em massa, é mais próximo de",
+      "explicacao": "Cada 111 g de CaCl2 ganham 2 · 18 = 36 g de água. O ganho é 36/111 ≈ 32%.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 96",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "14%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "16%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "24%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "32%",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "75%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023102,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "As cetonas fazem parte de famílias olfativas encontradas em muitos alimentos. A molécula de hexan-3-ona é um exemplo desses compostos voláteis responsáveis pelo aroma, podendo ser obtida por processos energéticos realizados em meio ácido, na presença de oxidantes como o permanganato de potássio. Para se produzir esse composto volátil em laboratório, deve-se oxidar a molécula de",
+      "explicacao": "A oxidação de álcool secundário forma cetona. Para obter a hexan-3-ona, com a carbonila no carbono 3, deve-se oxidar o hexan-3-ol.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 102",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Hexanal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Hexan-1-ol.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Hexan-3-ol.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Hex-1-en-1-ol.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ácido hexanoico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023104,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "O vidro contendo alumínio em sua composição é um excelente material para acondicionar medicamentos e suplementos, porque pode ser esterilizado por aquecimento. No entanto, quando o medicamento ou suplemento contém substâncias que se ligam fortemente ao íon desse metal, a dissolução do alumínio é promovida em função do deslocamento do equilíbrio químico estabelecido entre a espécie imobilizada no vidro e a espécie em solução. Por essa razão, recomenda-se que suplementos de nutrição de recém-nascidos contendo gluconato de cálcio sejam acondicionados em embalagens plásticas, e não nesse tipo de vidro.\nAtualização da recomendação da Sociedade Portuguesa de Neonatologia.\nDisponível em: www.spneonatologia.pt. Acesso em: 22 out. 2021 (adaptado).\nCaso esse suplemento seja acondicionado em embalagem desse tipo de vidro, o risco de contaminação por alumínio será maior se o(a)",
+      "explicacao": "O gluconato se liga ao alumínio e o retira do equilíbrio. Quanto maior sua concentração, mais o equilíbrio se desloca para a dissolução, e maior o risco de contaminação.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 104",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Vidro do frasco for translúcido.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Concentração de gluconato de cálcio for alta.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Frasco de vidro apresentar uma maior espessura.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Vidro for previamente esterilizado em altas temperaturas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Reação do alumínio com gluconato de cálcio for endotérmica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023117,
+      "assunto": 706,
+      "dificuldade": 2,
+      "enunciado": "Os raios cósmicos são fontes de radiação ionizante potencialmente perigosas para o organismo humano. Para quantificar a dose de radiação recebida, utiliza-se o sievert (Sv), definido como a unidade de energia recebida por unidade de massa. A exposição à radiação proveniente de raios cósmicos aumenta com a altitude, o que pode representar um problema para as tripulações de aeronaves. Recentemente, foram realizadas medições acuradas das doses de radiação ionizante para voos entre Rio de Janeiro e Roma.\nOs resultados têm indicado que a dose média de radiação recebida na fase de cruzeiro (que geralmente representa 80% do tempo total de voo) desse trecho intercontinental é 2 μSv/h. As normas internacionais da aviação civil limitam em 1 000 horas por ano o tempo de trabalho para as tripulações que atuem em voos intercontinentais. Considere que a dose de radiação ionizante para uma radiografia torácica é estimada em 0,2 mSv.\nRUAS, A. C. O tripulante de aeronaves e a radiação ionizante. São Paulo: Edição do Autor, 2019 (adaptado).\nA quantas radiografias torácicas corresponde a dose de radiação ionizante à qual um tripulante que atue no trecho Rio de Janeiro−Roma é exposto ao longo de um ano?",
+      "explicacao": "A dose anual sai de multiplicar a dose por hora pelas horas de voo. Dividindo o total por 0,2 mSv, que é a dose de uma radiografia, chega-se a cerca de 8 radiografias.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 117",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "8",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "10",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "80",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "100",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "1000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023118,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "A gasolina é uma mistura de hidrocarbonetos de cadeias saturadas contendo de 8 a 12 átomos de carbono. Além disso, a gasolina de alto desempenho deve conter elevados teores de hidrocarbonetos de cadeias ramificadas, de forma a resistir à compressão e entrar em ignição apenas quando a vela aciona uma centelha elétrica no motor. No quadro, estão apresentados compostos que podem ser utilizados como combustíveis.\nEntre esses compostos, aquele que conferirá maior desempenho como combustível é o",
+      "explicacao": "O texto pede cadeias saturadas e ramificadas com 8 a 12 carbonos. O composto que reúne essas características é o III.",
+      "imagem": "asset:assets/questoes/enem/2023/2023118.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 118.",
+      "fonte": "ENEM 2023, questão 118",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023119,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "De acordo com a Constituição Federal, é competencia dos municípios o gerenciamento dos serviços de limpeza e coleta dos resíduos urbanos (lixo). No entanto, há relatos de que parte desse lixo acaba sendo incinerado, liberando substâncias tóxicas para o ambiente e causando acidentes por explosões, principalmente quando ocorre a incineração de frascos de aerossóis (por exemplo: desodorantes, inseticidas e repelentes). A temperatura elevada provoca a vaporização de todo o conteúdo dentro desse tipo de frasco, aumentando a pressão em seu interior até culminar na explosão da embalagem.\nZVEIBIL, V. Z. et al. Cartilha de limpeza urbana. Disponível em: www.lbam.org.br. Acesso em: 6 jul. 2015 (adaptado).\nSuponha um frasco metálico de um aerossol de capacidade igual a 100 mL, contendo 0,1 mol de produtos gasosos à temperatura de 650 °C, no momento da explosão.\nA pressão, em atm, dentro do frasco, no momento da explosão, é mais próxima de",
+      "explicacao": "Pela equação dos gases, p = nRT/V. Com T = 923 K, V = 0,1 L, n = 0,1 mol e R = 0,082, p ≈ 76 atm.",
+      "imagem": "asset:assets/questoes/enem/2023/2023119.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 119.",
+      "fonte": "ENEM 2023, questão 119",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "756.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "533.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "76.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "53.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "13.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023126,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "Para que uma molécula dê origem a um medicamento de administração oral, além de apresentar atividade farmacológica, deve ser capaz de atingir o local de ação. Para tanto, essa molécula não deve se degradar no estômago (onde o meio é fortemente ácido e há várias enzimas que reagem mediante catálise ácida), deve ser capaz de atravessar as membranas celulares e ser solúvel no plasma sanguíneo (sistema aquoso). Para os fármacos cujas estruturas são formadas por cadeias carbônicas longas contendo pelo menos um grupamento amino, um recurso tecnológico empregado é sua conversão no cloridrato correspondente. Essa conversão é representada, de forma genérica, pela equação química:\nO aumento da eficiência de circulação do fármaco no sangue, promovido por essa conversão, deve-se ao incremento de seu(sua)",
+      "explicacao": "O cloridrato é formado por íons, que interagem bem com a água. O aumento do caráter iônico faz o fármaco circular melhor no plasma sanguíneo, que é aquoso.",
+      "imagem": "asset:assets/questoes/enem/2023/2023126.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 126.",
+      "fonte": "ENEM 2023, questão 126",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Basicidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Lipofilicidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Caráter iônico.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Cadeia carbônica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Estado de oxidação.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023131,
+      "assunto": 702,
+      "dificuldade": 2,
+      "enunciado": "O consumo exagerado de refrigerantes é preocupante, pois contribui para o aumento de casos de obesidade e diabetes. Considere dois refrigerantes enlatados, um comum e um diet, e que ambos possuam a mesma quantidade de aditivos, exceto pela presença de açúcar. O refrigerante comum contém basicamente água carbonatada e grande quantidade de açúcar; já o refrigerante diet tem água carbonatada e adoçantes, cujas massas são muito pequenas.\nCAVAGIS, A. D. M.; PEREIRA, E. A.; OLIVEIRA, L. C. Um método simples para avaliar o teor de sacarose e CO2 em refrigerantes. Química Nova na Escola, n. 3, ago. 2014 (adaptado).\nEntre as duas versões apresentadas, o refrigerante comum possui",
+      "explicacao": "O refrigerante comum tem bastante açúcar dissolvido, e o diet tem massa muito pequena de adoçante. No mesmo volume, o comum tem mais massa, ou seja, maior densidade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 131",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Maior densidade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Menor viscosidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Maior volume de gás dissolvido.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Menor massa de solutos dissolvidos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Maior temperatura de congelamento.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023133,
+      "assunto": 703,
+      "dificuldade": 2,
+      "enunciado": "O descarte de detergentes comuns nos esgotos domésticos ocasiona a formação de uma camada de espuma que impede a entrada de oxigênio na água. Os microrganismos que vivem nessas águas não são capazes de quebrar moléculas ramificadas, ocorrendo assim um desequilíbrio ambiental nos rios. A fórmula a seguir representa a estrutura química de um tensoativo presente na composição de um detergente não biodegradável.\nTensoativo não biodegradável\nQual modificação química na estrutura desse tensoativo o tornaria um detergente biodegradável?",
+      "explicacao": "O texto diz que os microrganismos não quebram moléculas ramificadas. Para tornar o detergente biodegradável, deve-se modificar a cadeia carbônica para cadeia normal.",
+      "imagem": "asset:assets/questoes/enem/2023/2023133.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 133.",
+      "fonte": "ENEM 2023, questão 133",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Retirar a parte polar da molécula.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Eliminar as insaturações do anel aromático.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Trocar o grupo aniônico por um grupo neutro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Alterar o grupo aniônico por um grupo catiônico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Modificar a cadeia carbônica para cadeia normal.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

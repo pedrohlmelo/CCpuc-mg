@@ -1,0 +1,735 @@
+{
+  "materia": 4,
+  "assuntos": [
+    {
+      "id": 401,
+      "nome": "Filosofia antiga",
+      "descricao": "Pré-socráticos, Sócrates, Platão e Aristóteles."
+    },
+    {
+      "id": 402,
+      "nome": "Filosofia moderna",
+      "descricao": "Racionalismo, empirismo e Kant."
+    },
+    {
+      "id": 403,
+      "nome": "Ética",
+      "descricao": "Valores, dever e responsabilidade."
+    },
+    {
+      "id": 404,
+      "nome": "Filosofia política",
+      "descricao": "Contratualismo, poder e Estado."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 401,
+      "dep": 402,
+      "peso": 0.7
+    },
+    {
+      "pre": 401,
+      "dep": 403,
+      "peso": 0.6
+    },
+    {
+      "pre": 403,
+      "dep": 404,
+      "peso": 0.5
+    },
+    {
+      "pre": 402,
+      "dep": 404,
+      "peso": 0.5
+    }
+  ],
+  "questoes": [
+    {
+      "id": 4041,
+      "assunto": 404,
+      "dificuldade": 2,
+      "enunciado": "Para Thomas Hobbes, sem um poder comum, os seres humanos viveriam em constante guerra de todos contra todos.\n\nSegundo esse autor, as pessoas aceitam o contrato social para",
+      "explicacao": "Hobbes defende que os indivíduos cedem sua liberdade a um soberano forte em troca de paz e segurança.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "garantir a segurança por meio de um soberano forte.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "retornar ao estado de natureza.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "eliminar qualquer forma de governo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "dividir igualmente todas as propriedades.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "submeter o Estado às decisões da Igreja.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 4042,
+      "assunto": 404,
+      "dificuldade": 2,
+      "enunciado": "Em \"O Príncipe\", Maquiavel analisa como o governante conquista e mantém o poder.\n\nUma ideia central da obra é que a política deve ser compreendida",
+      "explicacao": "Maquiavel separa a política da moral religiosa e analisa a ação do governante como ela ocorre na prática.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "como aplicação direta dos valores cristãos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "como herança imutável da natureza humana.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "a partir da realidade efetiva, separada da moral religiosa.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "como tarefa exclusiva dos filósofos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "pela vontade unânime do povo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022047,
+      "assunto": 404,
+      "dificuldade": 2,
+      "enunciado": "Sempre que a relevância do discurso entra em jogo, a questão torna-se política por definição, pois é o discurso que faz do homem um ser político. E tudo que os homens fazem, sabem ou experimentam só tem sentido na medida em que pode ser discutido. Haverá, talvez, verdades que ficam além da linguagem e que podem ser de grande relevância para o homem no singular, isto é, para o homem que, seja o que for, não é um ser político. Mas homens no plural, isto é, os homens que vivem e se movem e agem neste mundo, só podem experimentar o significado das coisas por poderem falar e ser inteligíveis entre si e consigo mesmos.\nARENDT, H. A condição humana. Rio de Janeiro: Forense Universitária, 2004.\nNo trecho, a filósofa Hannah Arendt mostra a importância da linguagem no processo de",
+      "explicacao": "Para Arendt, é o discurso que faz do ser humano um ser político, e os homens só dão sentido às coisas por poderem falar entre si. A linguagem é, portanto, base da construção da sociabilidade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 47",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Entendimento da cultura.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Aumento da criatividade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Percepção da individualidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Melhoria da técnica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Construção da sociabilidade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022057,
+      "assunto": 402,
+      "dificuldade": 2,
+      "enunciado": "O leproso é visto dentro de uma prática de rejeição, ao exílio-cerca; deixa-se que se perca lá dentro como numa massa que não têm muita importância diferenciar; os pestilentos são considerados num policiamento tático meticuloso onde as diferenciações individuais são os efeitos limitantes de um poder que se multiplica, se articula e se subdivide. O grande fechamento por um lado; o bom treinamento por outro. A lepra e a sua divisão; a peste e seus recortes. Uma é marcada; a outra, analisada e repartida. O exílio do leproso e a prisão da peste não trazem consigo o mesmo sonho político.\nFOUCAULT, M. Vigiar e punir: nascimento da prisão. Petrópolis: Vozes, 1987.\nOs modelos autoritários descritos no texto apontam para um sistema de controle que se baseia no(a):",
+      "explicacao": "Foucault contrapõe o exílio do leproso ao controle minucioso da peste, em que cada indivíduo é vigiado e repartido. Esse \"bom treinamento\" corresponde à formação de uma sociedade disciplinar.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 57",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Formação de sociedade disciplinar.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Flexibilização do regramento social.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Banimento da autoridade repressora.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Condenação da degradação humana.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Hierarquização da burocracia estatal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022080,
+      "assunto": 401,
+      "dificuldade": 2,
+      "enunciado": "Advento da Polis, nascimento da filosofia: entre as duas ordens de fenômenos, os vínculos são demasiado estreitos para que o pensamento racional não apareça, em suas origens, solidário das estruturas sociais e mentais próprias da cidade grega. Assim recolocada na história, a filosofia despoja-se desse caráter de revelação absoluta que às vezes lhe foi atribuído, saudando, na jovem ciência dos jônios, a razão intemporal que veio encarnar-se no Tempo. A escola de Mileto não viu nascer a Razão; ela construiu uma Razão, uma primeira forma de racionalidade. Essa razão grega não é a razão experimental da ciência contemporânea.\nVERNANT, J. P. Origens do pensamento grego. Rio de Janeiro: Difel, 2002.\nOs vínculos entre os fenômenos indicados no trecho foram fortalecidos pelo surgimento de uma categoria de pensadores, a saber:",
+      "explicacao": "Vernant liga a filosofia à vida da pólis grega. Os sofistas, professores de retórica para o debate público, fortaleceram esse vínculo entre pensamento e cidade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 80",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Os epicuristas, envolvidos com o ideal de vida feliz.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Os estoicos, dedicados à superação dos infortúnios.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Os sofistas, comprometidos com o ensino da retórica.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Os peripatéticos, empenhados na dinâmica do ensino.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Os poetas rapsodos, responsáveis pela narrativa do mito.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022084,
+      "assunto": 402,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nUma filosofia da percepção que queira reaprender a ver o mundo restituirá à pintura e às artes em geral seu lugar verdadeiro.\nMERLEAU-PONTY, M. Conversas: 1948. São Paulo: Martins Fontes, 2004.\nTEXTO II\nOs grandes autores de cinema nos pareceram confrontáveis não apenas com pintores, arquitetos, músicos, mas também com pensadores. Eles pensam com imagens, em vez de conceitos.\nDELEUZE, G. Cinema 1: a imagem-movimento. São Paulo: Brasiliense, 1983 (adaptado).\nDe que modo os textos sustentam a existência de um saber ancorado na sensibilidade?",
+      "explicacao": "Merleau-Ponty fala em \"reaprender a ver\" pelas artes, e Deleuze diz que cineastas pensam com imagens. Ambos consideram o olhar uma experiência de conhecimento.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 84",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Admitindo o belo como fenômeno transcendental.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Reafirmando a vivência estética como juízo de gosto.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Considerando o olhar como experiência de conhecimento.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Apontando as formas de expressão como auxiliares da razão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Estabelecendo a inteligência como implicação das representações.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022086,
+      "assunto": 401,
+      "dificuldade": 2,
+      "enunciado": "Empédocles estabelece quatro elementos corporais – fogo, ar, água e terra –, que são eternos e que mudam aumentando e diminuindo mediante mistura e  separação; mas os princípios propriamente ditos, pelos quais são movidos, são o Amor e o Ódio. Pois é preciso que os elementos permaneçam alternadamente em movimento, sendo ora misturados pelo Amor, ora separados pelo Ódio.\nSIMPLÍCIO. Física, 25, 21. In: Os pré-socráticos. São Paulo: Nova Cultural, 1996.\nO texto propõe uma reflexão sobre o entendimento de Empédocles acerca da arché, uma preocupação típica do pensamento pré-socrático, porque",
+      "explicacao": "Os pré-socráticos buscavam a arché, o princípio de tudo. Ao explicar o mundo pelos quatro elementos, movidos pelo Amor e pelo Ódio, Empédocles evoca essa discussão sobre a origem do cosmo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 86",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Exalta a investigação filosófica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Transcende ao mundo sensível.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Evoca a discussão cosmogônica.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Fundamenta as paixões humanas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Corresponde à explicação mitológica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022088,
+      "assunto": 403,
+      "dificuldade": 2,
+      "enunciado": "Entretanto, nosso amigo Basso tem o ânimo alegre. Isso resulta da filosofia: estar alegre diante da morte, forte e contente qualquer que seja o estado do corpo, sem desfalecer, ainda que desfaleça.\nSêneca, L. Cartas morais. Lisboa: Calouste Gulbenkian, 1990.\nO excerto refere-se a uma carta de Sêneca na qual se apresenta como um bem fundamental da filosofia promover a",
+      "explicacao": "Sêneca, estoico, elogia quem se mantém alegre e forte diante da morte. O bem da filosofia, nesse caso, é promover a moderação das paixões.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 88",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Valorização de disputas dialógicas",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Rejeição das convenções sociais",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Inspiração de natureza religiosa",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Exaltação do sofrimento",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Moderação das paixões",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023052,
+      "assunto": 403,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nComo presença consciente no mundo não posso escapar à responsabilidade ética no meu mover-me no mundo. Se sou puro produto da determinação genética ou cultural ou de classe, sou irresponsável pelo que faço no meu mover-me no mundo e, se careço de responsabilidade, não posso falar em ética.\nFREIRE, P. Pedagogia da autonomia: saberes necessários à prática educativa. São Paulo: Paz e Terra, 1996\nТЕХТО II\nPaulo Freire construiu uma pedagogia da esperança. Na sua concepção, a história não é algo pronto e acabado. As estruturas de opressão e as desigualdades, apesar de serem naturalizadas, são sócio e historicamente construídas. Daí a importância de os educandos tomarem consciência da sua realidade para, assim, transformá-la.\nDEMARCHI, J. L. Paulo Freire. Disponivel em: https://diplomatique.org.br. Acesso em: 6 out. 2021 (adaptado).\nCom base no conceito de ética pedagógica presente nos textos, os educandos tornam-se responsáveis pela",
+      "explicacao": "Para Freire, não há ética sem responsabilidade, e a realidade é histórica e transformável. Assim, os educandos tornam-se responsáveis pela participação sociopolítica.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 52",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Participação sociopolítica.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Definição estético-cultural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Competição econômica local.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Manutenção do sistema escolar.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Capacitação de mobilidade individual.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023054,
+      "assunto": 402,
+      "dificuldade": 2,
+      "enunciado": "Eu poderia concluir que a raiva é um pensamento, que estar com raiva é pensar que alguém é detestável, e que esse pensamento, como todos os outros — assim como Descartes o mostrou —, não poderia residir em nenhum fragmento de matéria. A raiva seria, portanto, espírito. Porém, quando me volto para minha própria experiência da raiva, devo confessar que ela não estava fora do meu corpo, mas inexplicavelmente nele.\nMERLEAU-PONTY, M. Quinta conversa: o homem visto de fora. São Paulo: Martins Fontes, 1948 (adaptado).\nNo que se refere ao problema do corpo, a filosofia cartesiana apresenta-se como contraponto ao entendimento expresso no texto por",
+      "explicacao": "Merleau-Ponty diz que a raiva está inexplicavelmente no corpo. Descartes separa pensamento e matéria; essa visão dualista é o contraponto ao texto.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 54",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Apresentar uma visão dualista.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Confirmar uma tese naturalista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Demonstrar uma premissa relativa.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Sustentar um argumento idealista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Defender uma posição intencionalista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023057,
+      "assunto": 403,
+      "dificuldade": 2,
+      "enunciado": "Quem se mete pelo caminho do pedido de perdão deve estar pronto a escutar uma palavra de recusa. Entrar na atmosfera do perdão é aceitar medir-se com a possibilidade sempre aberta do imperdoável. Perdão pedido não é perdão a que se tem direito [devido]. É com o preço destas reservas que a grandeza do perdão se manifesta.\nRICOEUR, P. O perdão pode curar. Disponível em: www.lusosofia.net. Acesso em: 14 out 2019.\nA reflexão sobre o perdão apresentada no texto encontra fundamento na(s)",
+      "explicacao": "Para Ricoeur, quem pede perdão deve aceitar uma possível recusa, pois perdão não é direito. A reflexão se funda em relações interpessoais medidas pela autonomia dos indivíduos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 57",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Rejeição particular amparada pelo desejo de poder.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Decisão subjetiva determinada pela vontade divina.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Liberdade mitigada pela predestinação do espírito.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Escolhas humanas definidas pelo conhecimento empírico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Relações interpessoais medidas pela autonomia dos indivíduos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023079,
+      "assunto": 402,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nGerineldo dorme porque já está conformado com o seu mundo. Porque já sabe tudo o que lhe pode acontecer após haver submetido todos os objetos que o rodeiam a um minucioso inventário de possibilidades. Seu apartamento, mais que um apartamento, é uma teoria de sorte e de azar. Melhor que ninguém, Gerineldo conhece o coeficiente da dilatação de suas janelas e mantém marcado no termômetro, com uma linha vermelha, o ponto em que se quebrarão os vidros, despedaçados em estilhaços de morte. Sabe que os arquitetos e os engenheiros já previram tudo, menos o que nunca já aconteceu.\nMARQUEZ, G. G. O pessimista. In: Textos do Caribe. Rio de Janeiro: Record, 1981.\nТЕХТО II\nA situação é o sujeito inteiro (ele não é nada a não ser a sua situação) e é também a coisa inteira (nunca há mais nada senão as coisas). É o sujeito a elucidar as coisas pela sua própria superação, se assim quisermos; ou são as coisas a reenviar ao sujeito a imagem dele. É a total facticidade, a contingência absoluta do mundo, do meu nascimento, do meu lugar, do meu passado, dos meus redores — e é a minha liberdade sem limites que faz com que haja para mim uma facticidade.\nSARTRE, J.-P. O ser e o nada: ensaio de ontologia fenomenológica. Petrópolis: Vozes, 1997 (adaptado).\nA postura determinista adotada pelo personagem Gerineldo contrasta com a ideia existencialista contida no pensamento filosófico de Sartre porque",
+      "explicacao": "Gerineldo acha que tudo já está previsto, e Sartre afirma que o ser humano se define pela liberdade. O determinismo nega a possibilidade de transcendência.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 79",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Evidencia a manifestação do inconsciente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Nega a possibilidade de transcendência.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Contraria o conhecimento difuso.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Sustenta a fugacidade da vida.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Refuta a evolução biológica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023081,
+      "assunto": 402,
+      "dificuldade": 2,
+      "enunciado": "A economia das ilegalidades se reestruturou com o desenvolvimento da sociedade capitalista. A ilegalidade dos bens foi separada da ilegalidade dos direitos. Divisão que corresponde a uma oposição de classes, pois, de um lado, a ilegalidade mais acessível às classes populares será a dos bens — transferência violenta das propriedades; de outro, à burguesia, então, se reservará a ilegalidade dos direitos: a possibilidade de desviar seus próprios regulamentos e suas próprias leis; e essa grande redistribuição das ilegalidades se traduzirá até por uma especialização dos circuitos judiciários; para as ilegalidades de bens — para o roubo — os tribunais ordinários e os castigos; para as ilegalidades de direitos — fraudes, evasões fiscais, operações comerciais irregulares — jurisdições especiais com transações, acomodações, multas atenuadas etc.\n FOUCAULT, M. Vigiar e punir: nascimento da prisão. Petropolis: Vozes, 1987\nO texto apresenta uma relação de cálculo politico-econômico que caracteriza o poder punitivo por meio da",
+      "explicacao": "Foucault diz que a sociedade capitalista separou a ilegalidade dos bens e a dos direitos, com circuitos judiciários próprios. O poder punitivo age, assim, pela gestão das ilicitudes pelo sistema judicial.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 81",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Gestão das ilicitudes pelo sistema judicial.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Aplicação das sanções pelo modelo equânime.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Supressão dos crimes pela penalização severa.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Regulamentação dos privilégios pela justiça social.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Repartição de vantagens pela hierarquização cultural.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023090,
+      "assunto": 401,
+      "dificuldade": 2,
+      "enunciado": "Não tinha outra filosofia. Nem eu. Não digo que a Universidade me não tivesse ensinado alguma; mas eu decorei-lhe só as fórmulas, o vocabulário, o esqueleto. Tratei-a como tratei o latim; embolsei três versos de Virgílio, dois de Horácio, uma dúzia de locuções morais e políticas, para as despesas da conversação. Tratei-os como tratei a história e a jurisprudência. Colhi de todas as cousas a fraseologia, a casca, a ornamentação.\nASSIS, M. Memórias póstumas do Brás Cubas. Belo Horizonte: Autêntica. 1999.\nA descrição crítica do personagem de Machado de Assis assemelha-se às características dos sofistas, contestados pelos filósofos gregos da Antiguidade, porque se mostra alinhada à",
+      "explicacao": "Brás Cubas decorou fórmulas e frases apenas para impressionar na conversa. Isso se aproxima dos sofistas, por valorizar a utilização persuasiva do discurso.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 90",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Elaboração conceitual de entendimentos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Utilização persuasiva do discurso.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Narração alegórica dos rapsodos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Investigação empírica da physis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Expressão pictográfica da pólis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

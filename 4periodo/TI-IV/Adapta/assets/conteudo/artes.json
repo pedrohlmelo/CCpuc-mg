@@ -1,0 +1,676 @@
+{
+  "materia": 13,
+  "assuntos": [
+    {
+      "id": 1301,
+      "nome": "Artes visuais",
+      "descricao": "Pintura, escultura e vanguardas."
+    },
+    {
+      "id": 1302,
+      "nome": "Música e artes cênicas",
+      "descricao": "Teatro, dança e música."
+    },
+    {
+      "id": 1303,
+      "nome": "Arte e cultura popular",
+      "descricao": "Patrimônio e manifestações brasileiras."
+    },
+    {
+      "id": 1304,
+      "nome": "Arte contemporânea",
+      "descricao": "Intervenções, performance e tecnologia."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 1301,
+      "dep": 1304,
+      "peso": 0.6
+    },
+    {
+      "pre": 1303,
+      "dep": 1302,
+      "peso": 0.4
+    }
+  ],
+  "questoes": [
+    {
+      "id": 2022038,
+      "assunto": 1301,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nEL GRECO. Laocoonte. Óleo sobre tela, 1,37cm x 1,72cm.\nNational Gallery of Art, Washington, Estados Unidos, circa 1610-\n1614\\. Disponível em: https://images.nga.gov. Acesso em: 28 jun\n2019 (adaptado).\nTEXTO II\nEssa impressionante obra apresenta o sacerdote Laocoonte sendo punido pelos deuses por tentar alertar os troianos da ameaça do Cavalo de Troia, que escondia um grupo de soldados gregos. Enviadas pelos deuses, serpentes marinhas são vistas matando Laocoonte e seus dois filhos como forma de punição.\nKAY, A. In: FARTHING, S. (Org.). Tudo sobre arte.\nRio de Janeiro: Sextante, 2011 (adaptado).\nProduzida no início do século XVII, a obra maneirista distingue-se pela",
+      "explicacao": "O Maneirismo se afasta do equilíbrio renascentista. Em \"Laocoonte\", El Greco alonga e deforma os corpos, e essa distorção da figura humana é o que distingue a obra.",
+      "imagem": "asset:assets/questoes/enem/2022/2022038.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 38.",
+      "fonte": "ENEM 2022, questão 38",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Representação da nudez masculina.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Distorção ao representar a figura humana.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Evocação de um fato da cultura clássica grega.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Presença do tema da morte como punição da família.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Utilização da perspectiva para integrar os diferentes planos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022039,
+      "assunto": 1304,
+      "dificuldade": 2,
+      "enunciado": "JUDD, D. Sem título. 1969.\nDisponível em: https://dasartes.com.br. Acesso em: 16 jun. 2022.\nEmbora não fosse um grupo ou um movimento organizado, o Minimalismo foi um dos muitos rótulos (incluindo estruturas primárias, objetos unitários, arte ABC e Cool Art) aplicados pelos críticos para descrever estruturas aparentemente simples que alguns artistas estavam criando. Quando a arte minimalista começou a surgir, muitos críticos e um público opinativo julgaram-na fria, anônima e imperdoável. Os materiais industriais pré-fabricados frequentemente usados não pareciam “arte”.\nDEMPSEY, A. Estilos, escolhas e movimentos. São Paulo: Cosac & Naify, 2003 (adaptado).\nDe acordo com os textos I e II, compreende-se que a obra minimalista é uma",
+      "explicacao": "O texto fala em estruturas simples, feitas de materiais industriais. A obra de Judd exemplifica o Minimalismo ao combinar formas sintéticas no espaço que ocupa.",
+      "imagem": "asset:assets/questoes/enem/2022/2022039.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 39.",
+      "fonte": "ENEM 2022, questão 39",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Representação da simplicidade pelo artista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Exploração da técnica da escultura cubista.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Valorização do cotidiano por meio da geometria.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Utilização da complexidade dos elementos formais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Combinação de formas sintéticas no espaço utilizado.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022044,
+      "assunto": 1304,
+      "dificuldade": 2,
+      "enunciado": "TEXTO I\nSILVEIRA, R. In absentia, 1983. Instalação, 17ª Bienal de São Paulo. Disponível em: www.bienal.org.br. Acesso em: set. 2016 (adaptado).\nTEXTO II\nO termo ready-made foi criado por Marcel Duchamp (1887-1968) para designar um tipo de objeto, por ele inventado, que consiste em um ou mais artigos de uso cotidiano, produzidos em massa, selecionados sem critérios estéticos e expostos como obras de arte em espaços especializados (museus e galerias). Seu primeiro ready-made, de 1912, é uma roda de bicicleta montada sobre um banquinho  (Roda de bicicleta). Ao transformar qualquer objeto em obra de arte, o artista realiza uma crítica radical ao sistema da arte.\nDisponível em: www.bienal.org.br. Acesso em: 1 set. 2016 (adaptado)\nA instalação In absentia propõe um diálogo com o ready-made Roda de bicicleta, demonstrando que",
+      "explicacao": "Como o ready-made de Duchamp, a instalação questiona o que pode ser arte. As duas criações desmistificam os valores estéticos estabelecidos.",
+      "imagem": "asset:assets/questoes/enem/2022/2022044.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 44.",
+      "fonte": "ENEM 2022, questão 44",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "As formas de criticar obras do passado se repetem.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "A recorrência de temas marca a arte do final do século XX.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "As criações desmistificam os valores estéticos estabelecidos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "O distanciamento temporal permite a transformação dos referenciais estéticos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "O objeto ausente sugere a degradação da forma superando o modelo artístico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022045,
+      "assunto": 1302,
+      "dificuldade": 2,
+      "enunciado": "O Recife fervilhava no começo da década de 1990, e os artistas trabalhavam para resgatar o prestígio da cultura pernambucana. Era preciso se inspirar, literalmente, nas raízes sobre as quais a cidade se construiu. Foi aí que, em 1992, com a publicação de um manifesto escrito pelo músico e jornalista Fred Zero Quatro, da banda Mundo Livre S/A, nasceu o manguebeat. O nome vem de “mangue”, vegetação típica da região, e “beat”, para representar as batidas e as influências musicais que o movimento abraçaria a partir dali. Era a hora e a vez de os caranguejos – aos quais os músicos recifenses gostavam de se comparar – mostrarem as caras: o maracatu e suas alfaias se misturaram com as batidas do hip-hop, as guitarras do rock, elementos eletrônicos e o sotaque recifense de Chico Science. A busca pelo novo rendeu uma perspectiva diferente do Brasil ao olhar para o Recife. A cidade deixou de ser o lugar apenas do frevo e do carnaval, transformando-se na ebulição musical que continua a acontecer mesmo após os 25 anos do lançamento do primeiro disco da Nação Zumbi, Da lama ao caos.\nFORCIONI, G. et al. O mangue está de volta. Revista Esquinas, n. 87, set 2019 (adaptado).\nChico Science foi fundamental para a renovação da música pernambucana, fato que se deu pela",
+      "explicacao": "O manguebeat juntou referências locais, como as raízes pernambucanas, a batidas e influências de outras origens. Chico Science renovou a música ao integrar esses referenciais em uma nova estética.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 45",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Utilização de aparelhos musicais eletrônicos em lugar dos instrumentos tradicionais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Ocupação de espaços da natureza local para a produção de eventos musicais memoráveis.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Substituição de antigas práticas musicais, como o frevo, por melodias e harmonias inovadoras.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Recuperação de composições tradicionais folclóricas e sua apresentação em grandes festivais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Integração de referenciais culturais de diferentes origens, criando uma nova combinação estética.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022079,
+      "assunto": 1303,
+      "dificuldade": 2,
+      "enunciado": "Hoje sou um ser inanimado, mas já tive vida pulsante em seivas vegetais, ful um ser vivo; é bem verdade que do reino vegetal, mas isso não me tirou a percepção de vida vivida como tamborete. Guardo apreço pelos meus criadores, as mãos que me fizeram, me venderam, 6 pelas mulheres que me usaram para suas vendas e de tantas outras maneiras. Essas pessoas, sim, tiveram suas subjetividades, singularidades e pluralidades, que estão incorporadas a mim. É preciso considerar que a nossa história, de móveis de museus, está para além da mera vinculação aos estilos e à patrimonialização que recebemos como bem material vinculado ao patrimônio imaterial. A nossa história está ligada aos dons individuais das pessoas e suas práticas sociais. Alguns indivíduos consagravam-se por terem determinados requisitos, tais como o conhecimento de modelos clássicos ou destreza nos desenhos.\nFREITAS, J. M.; OLIVEIRA, L. R. Memórias de um tamborete de baiana: as muitas vozes em um objeto de museu. Revista Brasileira de Pesquisa (Auto)Blográfica, n. 14, maio-ago. 2020 (Adaptado).\nAo descrever-se como patrimônio museológico, o objeto abordado no texto associa a sua história às",
+      "explicacao": "O tamborete narra que guarda a subjetividade de quem o fez e usou. Sua história de patrimônio está ligada às habilidades artísticas e culturais desses sujeitos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 79",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Habilidades artísticas e culturais dos sujeitos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Vocações religiosas e pedagógicas dos mestres.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Naturezas antropológica e etnográfica dos expositores.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Preservações arquitetônica e visual dos conservatórios.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Competências econômica e financeira dos comerciantes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022090,
+      "assunto": 1303,
+      "dificuldade": 2,
+      "enunciado": "Em Vitória (ES), no bairro Goiabeiras, encontramos as paneleiras, mulheres que são conhecidas pelos saberes/fazeres das tradicionais panelas de barro, ícones da culinária capixaba. A tradição passada de mãe para filha é de origem indígena e sofreu influência de outras etnias, como a afro e a luso. Dessa mistura, acredita-se que a fabricação das panelas de barro já tenha 400 anos. A fabricação das panelas de barro se dá em várias etapas, desde a obtenção de matéria-prima à confecção das panelas. As matérias-primas tradicionalmente utilizadas são provenientes do meio natural, como: argila, retirada do barreiro no Vale do Mulembá; madeira, atualmente proveniente das sobras da construção civil; e tinta, extraída da casca do manguezal, o popular mangue-vermelho.\nTRISTÃO, M. A educação ambiental e o pós-colonialismo. Revista de Educação, n. 53, ago. 2014.\nUma característica de práticas tradicionais como a exemplificada no texto é vinculação entre os recursos do mundo natural e a",
+      "explicacao": "As paneleiras usam argila, madeira e tinta do ambiente em uma tradição passada de mãe para filha. O vínculo com a natureza sustenta a manutenção do seu modo de vida.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 90",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Manutenção dos modos de vida.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Conservação dos plantios da roça.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Atualização do modelo de gestão.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Participação na sociedade de consumo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Especialização nas etapas de produção.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023032,
+      "assunto": 1302,
+      "dificuldade": 2,
+      "enunciado": "O sol começa a descer por trás da vegetação da Ilha da Restinga, na outra margem do rio Paraíba, colorindo o céu de amarelo, laranja e lilás. Então se ouvem as primeiras notas do Bolero, do compositor francês Maurice Ravel, executadas pelo saxofonista Jurandy. É assim o pôr do sol da praia do Jacaré, em Cabedelo (Grande João Pessoa). Depois do Bolero, Jurandy toca Asa branca, de Luiz Gonzaga, e Meu sublime torrão, de Genival Macedo, espécie de hino não oficial da Paraíba.\nPINHEIRO, A. Sol se põe embaiado pelo Bolero de Ravel. Disponível em: http://tools.folha.com.br. Acesso em: 16 set. 20212 (adaptado).\nA interpretação musical de Jurandy do Sax, codinome de José Jurandy Félix, apresenta caracterizado pela",
+      "explicacao": "Jurandy toca o Bolero de Ravel, Asa branca e uma canção paraibana na mesma apresentação. Isso mostra a inter-relação de referências estéticas aparentemente distantes.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 32",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Inter-relação de referenciais estéticos aparentemente distanciados.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Valorização de músicas que revelam mensagens de serenidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Consagração do repertório erudito como cultura dominante.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Iniciativa de estímulo à vocação turística da cidade.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Divisão hierárquica entre gêneros e estilos musicais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023033,
+      "assunto": 1301,
+      "dificuldade": 2,
+      "enunciado": "Texto I\nSEGALL, L. Eternos caminhantes. Óleo sobre tela, 138 x 184 cm. Museu Lasar Segall. IbramMinc. São Paulo, 1919.\nTexto II\nEm 1933, a obra Eternos caminhantes ingressou em uma das primeiras edições das exposições de Arte Degenerada, promovida por membros do partido nazista alemão. Nos anos seguintes, ela voltaria a ser exibida na mostra denominada Exposição da Vergonha, promovida por pequenos grupos abastados. Em 1937, essa obra foi confiscada pelo Ministério da Propaganda daquele país, na grande ação nacional-socialista contra a “Arte Degenerada”.\nSCHWARTZ, J. Perseguição à Arte Moderna em tempos de amarra São Paulo: Museu Lasar Segall, 2018 (adaptado)\nQuase cinquenta obras de Lasar Segall foram confiscadas pelo regime totalitário alemão na primeira metade do século XX, entre elas a obra Eternos caminhantes, considerada degenerada por",
+      "explicacao": "Os nazistas chamavam de \"degenerada\" a arte moderna que não servia ao seu projeto. A obra de Segall foi confiscada por representar uma estética inconveniente ao ideário político vigente.",
+      "imagem": "asset:assets/questoes/enem/2023/2023033.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 33.",
+      "fonte": "ENEM 2023, questão 33",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Representar uma estética tida como inconveniente para o ideário político vigente.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Manifestar um posicionamento político-cultural concebido por grupos de oposição.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Expressar a cultura artística por meio da representação parcial do corpo humano.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Apresentar uma composição que antecipa o imaginário artístico germânico.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Estimular discussões sobre o papel da arte na construção coletiva de cultura.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023036,
+      "assunto": 1303,
+      "dificuldade": 2,
+      "enunciado": "Marabaixo é uma expressão artistico-cultural formada nas tradições e na identificação cultural entre as comunidades negras do Amapá. O nome remonta às mortes de escravizados em navios negreiros que eram jogados na água. Em sua homenagem, hinos de lamento eram cantados mar abaixo, mar acima. Posteriormente, o Marabaixo se integrou à vivência das comunidades negras em um ciclo de danças, cantorias com tambores e festas religiosas, recebendo, em 2018, o título de Patrimônio Cultural do Brasil.\nDisponível em: http://portal.iphan.gov.br. Acesso em: 15 nov. 2021 (adaptado).\nA manifestação do Marabaixo se constituiu em expressão de arte e cultura, exercendo função de",
+      "explicacao": "O Marabaixo nasceu dos lamentos pelos escravizados mortos no mar e se tornou dança, canto e festa. Sua função é ressignificar episódios dramáticos em novas práticas culturais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 36",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Ressignificar episódios dramáticos em novas práticas culturais.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Adaptar coreografias como imitação dos movimentos do mar.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Lembrar dos mortos no passado escravista como forma de lamento.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Perpetuar uma narrativa de apagamento dos fatos históricos traumáticos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Ritualizar a passagem de atos fúnebres nas produções coletivas com espírito festivo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023037,
+      "assunto": 1304,
+      "dificuldade": 2,
+      "enunciado": "O uso das redes sociais como forma de ampliar universos foi uma descoberta recente para o artista Wolney Fernandes, que começou a criar quando o ambiente em Goiás era mais árido em relação às artes visuais. “Hoje, ser diferente é uma potência e quem sabe o que quer com a própria arte encontra espaço”, diz. As colagens artísticas do goiano aparecem em capas de obras literárias pelo Brasil e exterior.\nDisponível em: https://opopular.com.br. Acesso em: 15 nov. 2021 (adaptado).\nO artista goiano Wolney Fernandes busca expor seu trabalho por meio de plataformas virtuais com o objetivo de",
+      "explicacao": "O artista passou a usar as redes para ampliar universos, e suas colagens já chegam ao exterior. O objetivo é ter uma vitrine internacional que dê mais visibilidade às obras.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 37",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Dar suporte à técnica de colagem em Artes Visuais, contornando dificuldades práticas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Aproximar-se da estética visual própria da editoração de obras artísticas, como capas de livros.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Oferecer uma vitrine internacional para sua produção artística, a fim de dar mais visibilidade a suas obras.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Enfatizar o caráter original e inovador de suas criações artísticas, diferenciando-se das artes tradicionais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Trazer um sentido tecnológico às suas colagens, uma vez que as imagens artísticas são recorrentes nas redes sociais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023038,
+      "assunto": 1302,
+      "dificuldade": 2,
+      "enunciado": "O mais antigo grupo de rap indígena do país, Brô MCs, surgiu em 2009, na aldeia Jaguapiru, em Dourados, Mato Grosso do Sul. Os integrantes conheceram o rap pelo rádio, ouvindo um programa que apresentava cantores e grupos brasileiros desse gênero musical. O Brô MCs conseguiu influenciar outros a fazerem rap e a lutarem pelas causas indígenas. Um dos nomes do movimento, Kunumi MC, é um jovem de 16 anos, da aldeia Krukutu, em São Paulo.\nO adolescente enxerga o rap como uma cultura da defesa e começou a fazer rimas quando percebeu que a poesia, pela qual sempre se interessou, podia virar música.\nNas letras que cria, inspiradas tanto pelo rap quanto pelos ritmos indígenas, tenta incluir sempre assuntos aos quais acha importante dar voz, principalmente, a questão da demarcação de terras.\nDisponível em: www.correiobraziliense.com.br. Acesso em: 13 nov. 2021 (adaptado).\nO movimento rap dos povos originários do Brasil revela o(a)",
+      "explicacao": "O grupo conheceu o rap pelo rádio e une essa linguagem aos ritmos e causas indígenas. O movimento revela a fusão de uma manifestação urbana contemporânea com a cultura indígena.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 38",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Fusão de manifestações artísticas urbanas contemporâneas com a cultura indígena.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Contraposição das temáticas socioambientais indigenas as questões urbanas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Rejeição da indústria radiofônica às músicas indígenas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Distanciamento da realidade social indígena.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "E estímulo ao estudo da poesia indígena.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023058,
+      "assunto": 1303,
+      "dificuldade": 2,
+      "enunciado": "A Cavalgada de Sant’Ana é uma expressão da devoção dos vaqueiros à padroeira de Caicó (RN). Nas décadas de 1950 a 1970, esse evento, então denominado Cavalaria, era celebrado pelas pessoas que residiam na zona rural do município de Caicó. Essas pessoas usavam os animais (jegues, mulas e cavalos) como único meio de transporte, sobretudo para se dirigirem à cidade nos dias de feiras, trazendo seus produtos para comercializarem. Estando em Caicó no período da Festa de Sant’Ana, esses agricultores se organizavam em cavalgada até o pátio da Catedral de Sant’Ana para louvar a santa e receber bênção para seus animais. Por volta da década de 1970, com a chegada do automóvel à zona rural do município, essa expressão cultural foi extinta. O meio de transporte utilizando os animais passou a ser substituído por carros, sobretudo caminhonetes e caminhões, que transportavam os camponeses para a cidade em dias de feiras e festas. Desde 2002, um grupo de caicoenses retomou essa expressão cultural e, em conjunto com a associação dos vaqueiros, realiza no primeiro domingo da Festa a Cavalgada de Sant’Ana. O evento, além de contar com a participação dos cavaleiros que residem nas zonas rurais, atrai também pessoas que residem em Caicó, cidades vizinhas e amantes das vaquejadas.\nFESTA DE SANT’ANA. Disponivel em: http://portal.iphan.gov.br Acesso em: 12 out. 2021 (adaptado).\nAs mudanças culturais mencionadas no texto caracterizam-se pela presenca de",
+      "explicacao": "A Cavalgada surgiu entre agricultores devotos e hoje reúne moradores da cidade e amantes de vaquejadas. A festa combina elementos tradicionais e modernos em torno de uma crença religiosa.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 58",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Elementos tradicionais e modernos em torno de uma crença religiosa.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Argumentos teológicos e históricos em consequência de uma ordem papal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Fundamentos estéticos e etnográficos em função de uma cerimônia clerical.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Práticas corporais e esportivas em decorrência de uma imposição eclesiástica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Discursos filosóficos e antropológicos em resultado de uma determinação paroquial.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023063,
+      "assunto": 1301,
+      "dificuldade": 2,
+      "enunciado": "Seda, madeiras aromáticas e têxteis, obras de arte, lã, cristais e muitas, muitas peças de porcelana chegaram ao Brasil ao longo dos séculos XVII e XVIII. A opulência proporcionada pelo ouro fez com que esses itens fossem ainda mais presentes em cidades mineiras como Ouro Preto, Mariana e Sabará. Esses objetos inspiraram a criação das chinesices, termo que designa um tipo de arte que evoca motivos chineses, presentes em várias igrejas barrocas de Minas Gerais. No Brasil, é bem provável que a inspiração para as pinturas nas igrejas barrocas com pássaros, elefantes, tigres, mandarins e pagodes tenha sido tirada de gravuras, tecidos, móveis e, principalmente, das porcelanas chinesas que circulavam livremente em uma sociedade enriquecida pelo comércio do ouro e pedras preciosas.\nMARIUZZO, P. Estudos interdisciplinares ampliam conhecimento sobre chinesice no barroco mineiro. Disponível em: http://cienciaecultura.bvs.br. Acesso em: 23 nov. 2021 (adaptado).\nO desenvolvimento do processo artístico descrito no texto foi possível pelo(a)",
+      "explicacao": "Porcelanas e sedas da Ásia chegaram às cidades mineiras enriquecidas pelo ouro e inspiraram as chinesices. O processo foi possível pelo intercâmbio transcontinental.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 63",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Representação arquitetônica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Intercâmbio transcontinental.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Dependência econômica.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Intervenção estatal.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Padrão estético.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

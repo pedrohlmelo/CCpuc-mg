@@ -16,8 +16,8 @@ void main() {
     final banco = bancoDeTeste();
     final conteudo = await ConteudoRepositorio(banco).carregar();
 
-    expect(conteudo.materias, hasLength(2));
-    expect(conteudo.assuntosDaMateria(1).length, inInclusiveRange(12, 15));
+    expect(conteudo.materias, hasLength(14));
+    expect(conteudo.assuntosDaMateria(1), hasLength(20));
     expect(
       conteudo.questoes,
       hasLength((await pacoteDeTeste()).questoes.length),
@@ -25,7 +25,7 @@ void main() {
     for (final a in conteudo.assuntosDaMateria(1)) {
       expect(
         conteudo.questoes.where((q) => q.idAssunto == a.id).length,
-        3,
+        greaterThanOrEqualTo(3),
         reason: a.nome,
       );
     }
@@ -36,11 +36,13 @@ void main() {
     (await pacoteDeTeste()).validar();
   });
 
-  test('há 3 questões com imagem, e todas com descrição', () async {
+  test('toda imagem existe nos assets e tem descrição', () async {
     final questoes = (await pacoteDeTeste()).questoes;
     final comImagem = questoes.where((q) => q.imagemUrl != null).toList();
-    expect(comImagem, hasLength(3));
+    expect(comImagem, isNotEmpty);
     for (final q in comImagem) {
+      final caminho = q.imagemUrl!.replaceFirst('asset:', '');
+      expect(File(caminho).existsSync(), isTrue, reason: caminho);
       expect(q.imagemUrl, startsWith('asset:assets/questoes/'));
       expect(q.imagemDescricao, isNotEmpty);
     }

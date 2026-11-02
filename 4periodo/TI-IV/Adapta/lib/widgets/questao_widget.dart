@@ -124,6 +124,7 @@ class _QuestaoWidgetState extends State<QuestaoWidget> {
                   acertou: _escolhida!.correta,
                   gabarito: q.gabarito.letra,
                   explicacao: q.explicacao,
+                  naoRevisada: q.explicacaoNaoRevisada,
                   rotuloAvancar: widget.rotuloAvancar,
                   aoAvancar: widget.aoAvancar,
                 ),
@@ -299,10 +300,28 @@ class _Dificuldade extends StatelessWidget {
   }
 }
 
+/// Linha discreta sob uma explicação ainda não conferida pelo grupo.
+class AvisoExplicacaoGerada extends StatelessWidget {
+  const AvisoExplicacaoGerada({super.key});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 8),
+    child: Text(
+      'Explicação gerada, ainda não revisada pelo grupo',
+      key: const Key('aviso_explicacao_gerada'),
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+        color: Theme.of(context).colorScheme.onSurfaceVariant,
+      ),
+    ),
+  );
+}
+
 class _Feedback extends StatelessWidget {
   final bool acertou;
   final String gabarito;
   final String explicacao;
+  final bool naoRevisada;
   final String rotuloAvancar;
   final VoidCallback? aoAvancar;
 
@@ -310,6 +329,7 @@ class _Feedback extends StatelessWidget {
     required this.acertou,
     required this.gabarito,
     required this.explicacao,
+    this.naoRevisada = false,
     required this.rotuloAvancar,
     required this.aoAvancar,
   });
@@ -379,7 +399,15 @@ class _Feedback extends StatelessWidget {
                       color: scheme.primary,
                     ),
                     const SizedBox(width: 10),
-                    Expanded(child: Text(explicacao, style: texto.bodyMedium)),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(explicacao, style: texto.bodyMedium),
+                          if (naoRevisada) const AvisoExplicacaoGerada(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

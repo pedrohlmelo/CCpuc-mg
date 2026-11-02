@@ -70,9 +70,84 @@
       "id": 16,
       "nome": "Razão e proporção",
       "descricao": "Comparação entre grandezas e regra de três."
+    },
+    {
+      "id": 101,
+      "nome": "Probabilidade",
+      "descricao": "Chance de um evento e eventos combinados."
+    },
+    {
+      "id": 102,
+      "nome": "Estatística",
+      "descricao": "Médias, mediana, moda e leitura de gráficos e tabelas."
+    },
+    {
+      "id": 103,
+      "nome": "Análise combinatória",
+      "descricao": "Princípio da contagem, arranjos e combinações."
+    },
+    {
+      "id": 104,
+      "nome": "Geometria espacial",
+      "descricao": "Volumes e áreas de sólidos."
+    },
+    {
+      "id": 105,
+      "nome": "Trigonometria",
+      "descricao": "Razões no triângulo e funções periódicas."
+    },
+    {
+      "id": 106,
+      "nome": "Progressões",
+      "descricao": "Sequências aritméticas e geométricas."
     }
   ],
   "dependencias": [
+    {
+      "pre": 11,
+      "dep": 102,
+      "peso": 0.6
+    },
+    {
+      "pre": 8,
+      "dep": 103,
+      "peso": 0.7
+    },
+    {
+      "pre": 103,
+      "dep": 101,
+      "peso": 0.9
+    },
+    {
+      "pre": 9,
+      "dep": 101,
+      "peso": 0.6
+    },
+    {
+      "pre": 15,
+      "dep": 104,
+      "peso": 0.9
+    },
+    {
+      "pre": 15,
+      "dep": 105,
+      "peso": 0.7
+    },
+    {
+      "pre": 4,
+      "dep": 105,
+      "peso": 0.5
+    },
+    {
+      "pre": 12,
+      "dep": 106,
+      "peso": 0.6
+    },
+    {
+      "pre": 14,
+      "dep": 106,
+      "peso": 0.5
+    },
     {
       "pre": 2,
       "dep": 3,
@@ -178,7 +253,7 @@
       "explicacao": "Bases iguais: somam-se os expoentes. 2³ · 2² = 2⁵ = 32.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -220,7 +295,7 @@
       "explicacao": "Isolando x: 3x = 9, logo x = 3.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -262,7 +337,7 @@
       "explicacao": "Soma 5 e produto 6: as raízes são 2 e 3.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -304,7 +379,7 @@
       "explicacao": "Substituindo: f(4) = 2 · 4 + 1 = 9.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -346,7 +421,7 @@
       "explicacao": "32 = 2⁵, portanto log₂ 32 = 5.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -388,7 +463,7 @@
       "explicacao": "Potência de potência: multiplicam-se os expoentes. 3⁶ = 729.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -430,7 +505,7 @@
       "explicacao": "Agrupando: 2x = 8, logo x = 4.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -472,7 +547,7 @@
       "explicacao": "Na forma y = ax + b, o coeficiente angular é a, ou seja, −3.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -514,7 +589,7 @@
       "explicacao": "São 5 duplicações: 3 000 · 2⁵ = 3 000 · 32 = 96 000.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -563,7 +638,7 @@
       "explicacao": "5 + 2,5x = 30, logo 2,5x = 25 e x = 10.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -612,7 +687,7 @@
       "explicacao": "x(x + 3) = 40 leva a x² + 3x − 40 = 0, com raízes 5 e −8. A medida positiva é 5.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -661,7 +736,7 @@
       "explicacao": "x² − 10x + 16 = 0 tem soma 10 e produto 16: as raízes são 2 e 8.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -710,7 +785,7 @@
       "explicacao": "C(50) = 12 · 50 + 300 = 600 + 300 = 900.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -759,7 +834,7 @@
       "explicacao": "log 10⁻⁴ = −4, portanto pH = −(−4) = 4.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -808,7 +883,7 @@
       "explicacao": "2ᵗ = 8, então t = log₂ 8 = 3 anos.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -857,7 +932,7 @@
       "explicacao": "36 ÷ 24 = 1,50.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -906,7 +981,7 @@
       "explicacao": "350 ÷ 42 ≈ 8,3. Oito ônibus não bastam, então são necessários 9.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -955,7 +1030,7 @@
       "explicacao": "1 800 − 650 − 430 = 720, e 720 ÷ 4 = 180.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1004,7 +1079,7 @@
       "explicacao": "3/4 · 5/2 = 15/8 = 1 7/8 xícaras.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1053,7 +1128,7 @@
       "explicacao": "São 2/5 · 30 = 12 meninos, logo 30 − 12 = 18 meninas.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1102,7 +1177,7 @@
       "explicacao": "1/2 + 1/3 = 5/6. Resta 1/6 de 60, que são 10 litros.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1151,7 +1226,7 @@
       "explicacao": "8 · 50 000 = 400 000 cm, que são 4 km.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1200,7 +1275,7 @@
       "explicacao": "Grandezas inversas: 5 · 6 = 3 · t, então t = 10 horas.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1249,7 +1324,7 @@
       "explicacao": "O azul é 2/5 do total: 2/5 · 20 = 8 litros.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1298,7 +1373,7 @@
       "explicacao": "De 200 para 250 são 50 a mais, e 50 ÷ 200 = 25%.",
       "imagem": "asset:assets/questoes/tabela_vendas.jpg",
       "imagem_descricao": "Tabela de vendas por trimestre: 1º trimestre 200, 2º trimestre 250, 3º trimestre 300, 4º trimestre 240.",
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1347,7 +1422,7 @@
       "explicacao": "80 · 1,1 = 88 e 88 · 0,9 = 79,20. Os 10% incidem sobre bases diferentes.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1396,7 +1471,7 @@
       "explicacao": "15% de 2 000 são 300, e 2 000 − 300 = 1 700.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1445,7 +1520,7 @@
       "explicacao": "A reta passa por (0, 2) e (4, 10). A taxa é (10 − 2) ÷ 4 = 2 e o valor inicial é 2: f(x) = 2x + 2.",
       "imagem": "asset:assets/questoes/grafico_funcao_afim.jpg",
       "imagem_descricao": "Gráfico de uma reta crescente que passa pelos pontos (0, 2) e (4, 10).",
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1494,7 +1569,7 @@
       "explicacao": "C(100) = 40 + 0,5 · 100 = 90.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1543,7 +1618,7 @@
       "explicacao": "500 − 20t = 0, então t = 25 horas.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1592,7 +1667,7 @@
       "explicacao": "O vértice está em x = 6 ÷ 2 = 3, e f(3) = 9 − 18 + 5 = −4.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1641,7 +1716,7 @@
       "explicacao": "O vértice está em t = 20 ÷ 10 = 2, e h(2) = −20 + 40 = 20 m.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1690,7 +1765,7 @@
       "explicacao": "As raízes são 0 e 100, e o vértice fica no meio: p = 50.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1739,7 +1814,7 @@
       "explicacao": "P(3) = 1 000 · 27 = 27 000.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1788,7 +1863,7 @@
       "explicacao": "18 horas são 3 meias-vidas: 80 → 40 → 20 → 10 mg.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1837,7 +1912,7 @@
       "explicacao": "64 = 2⁶, portanto x = 6.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1886,7 +1961,7 @@
       "explicacao": "Área do trapézio: (10 + 6) · 4 ÷ 2 = 32 m².",
       "imagem": "asset:assets/questoes/figura_trapezio.jpg",
       "imagem_descricao": "Trapézio com base maior de 10 metros, base menor de 6 metros e altura de 4 metros.",
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1935,7 +2010,7 @@
       "explicacao": "A = π · r² ≈ 3 · 100 = 300 m².",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -1984,7 +2059,7 @@
       "explicacao": "Pitágoras: h² + 3² = 5², logo h² = 16 e h = 4 m.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -2033,7 +2108,7 @@
       "explicacao": "√72 = √(36 · 2) = 6√2.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -2082,7 +2157,7 @@
       "explicacao": "O lado é √144 = 12 m, e o perímetro é 4 · 12 = 48 m.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -2131,7 +2206,7 @@
       "explicacao": "Primeiro a soma: √25 = 5.",
       "imagem": null,
       "imagem_descricao": null,
-      "fonte": "Autoral — Adapta",
+      "fonte": "Treino básico — Adapta",
       "explicacao_gerada": false,
       "revisado": true,
       "alternativas": [
@@ -2166,6 +2241,3583 @@
         {
           "letra": "E",
           "texto": "√7",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 1031,
+      "assunto": 103,
+      "dificuldade": 2,
+      "enunciado": "Uma lanchonete oferece 4 tipos de pão, 3 tipos de recheio e 2 tipos de molho. Um cliente monta seu lanche escolhendo exatamente um item de cada tipo.\n\nQuantos lanches diferentes podem ser montados?",
+      "explicacao": "Pelo princípio multiplicativo, são 4 · 3 · 2 = 24 lanches diferentes.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "9",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "12",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "18",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "24",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "36",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 1051,
+      "assunto": 105,
+      "dificuldade": 2,
+      "enunciado": "Uma rampa reta forma um ângulo de 30° com o chão e tem 8 m de comprimento.\n\nConsiderando sen 30° = 0,5, a altura vencida pela rampa, em metro, é",
+      "explicacao": "A altura é o cateto oposto ao ângulo: h = 8 · sen 30° = 8 · 0,5 = 4 m.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "4",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "8",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "16",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 1061,
+      "assunto": 106,
+      "dificuldade": 2,
+      "enunciado": "Uma pessoa guardou R$ 50,00 no primeiro mês e, a cada mês seguinte, guardou R$ 20,00 a mais do que no mês anterior.\n\nO valor guardado no décimo mês, em real, foi de",
+      "explicacao": "É uma progressão aritmética: a10 = 50 + 9 · 20 = 230 reais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "220",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "230",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "250",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "270",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022136,
+      "assunto": 4,
+      "dificuldade": 2,
+      "enunciado": "Uma máquina em operação tem sua temperatura T monitorada por meio de um registro gráfico, ao longo do tempo t. Essa máquina possui um pistão cuja velocidade V varia com a temperatura T da máquina, de acordo com a expressão V=T²−4. Após a máquina funcionar durante o intervalo de tempo de 10 horas, o seu operador analisa o registro gráfico, apresentado na figura, para avaliar a necessidade de eventuais ajustes, sabendo que a máquina apresenta falhas de funcionamento quando a velocidade do pistão se anula.\nQuantas vezes a velocidade do pistão se anulou durante as 10 horas de funcionamento?",
+      "explicacao": "A velocidade se anula quando T² − 4 = 0, ou seja, T = 2 (a temperatura do gráfico é positiva). Basta contar quantas vezes a curva passa por T = 2 nas 10 horas: 5 vezes.",
+      "imagem": "asset:assets/questoes/enem/2022/2022136.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 136.",
+      "fonte": "ENEM 2022, questão 136",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "5",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022137,
+      "assunto": 101,
+      "dificuldade": 2,
+      "enunciado": "A World Series é a decisão do campeonato norte-americano de beisebol. Os dois times que chegam\na essa fase jogam, entre si, até sete partidas. O primeiro desses times que completar quatro vitórias é declarado campeão.\nConsidere que, em todas as partidas, a probabilidade de qualquer um dos dois times vencer é sempre\nQual é a probabilidade de o time campeão ser aquele que venceu a primeira partida da World Series?",
+      "explicacao": "Quem venceu a primeira precisa de 3 vitórias em até 6 jogos, antes de o rival somar 4. Isso equivale a ter ao menos 3 vitórias em 6 jogos: (20 + 15 + 6 + 1)/64 = 42/64 = 21/32.",
+      "imagem": "asset:assets/questoes/enem/2022/2022137.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 137.",
+      "fonte": "ENEM 2022, questão 137",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022137_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022137_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022137_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022137_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022137_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022138,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "O gráfico apresenta os totais de receitas e despesas de uma empresa, expressos em milhão de reais, no\ndecorrer dos meses de um determinado ano. A empresa obtém lucro quando a diferença entre receita e despesa é positiva e tem prejuízo quando essa diferença é negativa.\nQual é a mediana, em milhão de reais, dos valores dos lucros apurados pela empresa nesse ano?",
+      "explicacao": "Calcule o lucro de cada mês (receita menos despesa) e ordene os 12 valores. A mediana é a média dos dois valores centrais, que dá 3,0.",
+      "imagem": "asset:assets/questoes/enem/2022/2022138.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 138.",
+      "fonte": "ENEM 2022, questão 138",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1,5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2,0",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "2,9",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "3,0",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "5,5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022139,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Um casal está reformando a cozinha de casa e decidiu comprar um refrigerador novo. Observando a planta da nova cozinha, desenhada na escala de 1: 50, notaram que o espaço destinado ao refrigerador tinha 3,8 cm de altura e 1,6 cm de largura. Eles sabem que os fabricantes de refrigeradores indicam que, para um bom funcionamento e fácil manejo na limpeza, esses eletrodomésticos devem ser colocados em espaços que permitam uma distância de, pelo menos, 10 cm de outros móveis ou paredes, tanto na parte superior quanto nas laterais. O casal comprou um refrigerador que caberia no local a ele destinado na nova cozinha, seguindo as instruções do fabricante.\nEsse refrigerador tem altura e largura máximas, em metro, respectivamente, iguais a",
+      "explicacao": "Com escala 1:50, o espaço tem 190 cm de altura e 80 cm de largura. Tirando 10 cm no topo e 10 cm em cada lateral, sobram 180 cm e 60 cm.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 139",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1,80 e 0,60.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1,80 e 0,70.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1,90 e 0,80.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "2,00 e 0,90.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "2,00 e 1,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022140,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Foram convidadas 32 equipes para um torneio de futebol, que foram divididas em 8 grupos com 4 equipes, sendo que, dentro de um grupo, cada equipe disputa uma única partida contra cada uma das demais equipes de seu grupo. A primeira e a segunda colocadas de cada grupo seguem para realizar as 8 partidas da próxima fase do torneio, chamada oitavas de final. Os vencedores das partidas das oitavas de final seguem para jogar as 4 partidas das quartas de final. Os vencedores das quartas de final disputam as 2 partidas das semifinais, e os vencedores avançam para a grande final, que define a campeã do torneio.\nPelas regras do torneio, cada equipe deve ter um período de descanso de, no mínimo, 3 dias entre dois jogos por ela disputados, ou seja, se um time disputar uma partida, por exemplo, num domingo, só poderá disputar a partida seguinte a partir da quinta-feira da mesma semana.\nO número mínimo de dias necessários para a realização desse torneio é",
+      "explicacao": "Cada equipe joga 3 vezes no grupo e depois 4 mata-matas, num total de 7 jogos. Com 3 dias de descanso, os jogos ficam 4 dias distantes: 1 + 6 × 4 = 25 dias.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 140",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "22.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "25.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "28.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "48.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "64.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022142,
+      "assunto": 103,
+      "dificuldade": 2,
+      "enunciado": "Uma montadora de automóveis divulgou que oferta a seus clientes mais de 1 000 configurações diferentes de carro, variando o modelo, a motorização, os opcionais e a cor do veículo. Atualmente, ela oferece 7 modelos de carros com 2 tipos de motores: 1.0 e 1.6. Já em relação aos opcionais, existem 3 escolhas possíveis: central multimídia, rodas de liga leve e bancos de couro, podendo o cliente optar por incluir um, dois, três ou nenhum dos opcionais disponíveis.\nPara ser fiel à divulgação feita, a quantidade mínima de cores que a montadora deverá disponibilizar a seus clientes é",
+      "explicacao": "Os opcionais dão 2³ = 8 escolhas, então são 7 · 2 · 8 = 112 configurações por cor. Para passar de 1 000, 1 000/112 ≈ 8,9, ou seja, 9 cores.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 142",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "8.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "9.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "11.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "18.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "24.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022146,
+      "assunto": 2,
+      "dificuldade": 2,
+      "enunciado": "Um parque tem dois circuitos de tamanhos diferentes para corridas. Um corredor treina nesse parque e, no primeiro dia, inicia seu treino percorrendo\n3 voltas em torno do circuito maior e 2 voltas em torno do menor, perfazendo um total de 1 800 m. Em seguida, dando continuidade a seu treino, corre mais 2 voltas em torno do circuito maior e 1 volta em torno do menor,\npercorrendo mais 1 100 m.\nNo segundo dia, ele pretende percorrer 5 000 m nos circuitos do parque, fazendo um número inteiro de voltas em torno deles e de modo que o número de voltas seja o maior possível.\nA soma do número de voltas em torno dos dois circuitos, no segundo dia, será",
+      "explicacao": "O sistema 3M + 2m = 1 800 e 2M + m = 1 100 dá M = 400 e m = 300. Para 5 000 m com o maior número de voltas, usa-se mais o menor: 2 · 400 + 14 · 300 = 5 000, que são 16 voltas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 146",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "10.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "13.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "14.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "15.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "16",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022147,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Uma equipe de marketing digital foi contratada para aumentar as vendas de um produto ofertado em um site de comércio eletrônico. Para isso, elaborou um anúncio que, quando o cliente clica sobre ele, é direcionado\npara a página de vendas do produto. Esse anúncio foi divulgado em duas redes sociais, A e B, e foram obtidos os seguintes resultados:\n• rede social A: o anúncio foi visualizado por 3 000 pessoas; 10% delas clicaram sobre o anúncio e foram redirecionadas para o site; 3% das que clicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 100,00;\n• rede social B: o anúncio foi visualizado por 1 000 pessoas; 30% delas clicaram sobre o anúncio e foram redirecionadas para o site; 2% das que\nclicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 200,00.\nPor experiência, o pessoal da equipe de marketing considera que a quantidade de novas pessoas que verão o anúncio é diretamente proporcional ao investimento realizado, e que a quantidade de pessoas que comprarão o produto também se manterá proporcional à quantidade de pessoas que clicarão sobre o anúncio.\nO responsável pelo produto decidiu, então, investir mais R$ 300,00 em cada uma das duas redes sociais para a divulgação desse anúncio e obteve, de fato, o aumento proporcional esperado na quantidade de clientes que compraram esse produto. Para classificar o aumento obtido na quantidade (Q) de compradores desse produto, em consequência dessa segunda divulgação, em relação aos resultados observados na primeira divulgação, o\nresponsável pelo produto adotou o seguinte critério:\n• Q ≤ 60%: não satisfatório;\n• 60% < Q ≤ 100%: regular;\n• 100% < Q ≤ 150%: bom;\n• 150% < Q ≤ 190%: muito bom;\n• 190% < Q ≤ 200%: excelente\nO aumento na quantidade de compradores, em consequência dessa segunda divulgação, em relação\nao que foi registrado com a primeira divulgação, foi classificado como",
+      "explicacao": "Calcule quantos compradores houve na primeira divulgação e na segunda, a partir dos percentuais de cliques e de compras. O aumento percentual Q fica entre 100% e 150%, faixa classificada como bom.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 147",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Não satisfatório.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Regular.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Bom.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Muito bom.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Excelente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022148,
+      "assunto": 1,
+      "dificuldade": 2,
+      "enunciado": "A luminosidade L de uma estrela está relacionada com o raio R e com a temperatura T dessa estrela segundo a Lei de Stefan-Boltzmann:  em que c é uma constante igual para todas as estrelas.\nDisponível em: http://ciencia.hsw.uol.com.br. Acesso em: 22 nov. 2013 (adaptado)\nConsidere duas estrelas E e F, sendo que a estrela E tem metade do raio da estrela F e o dobro da temperatura de F.\nIndique por LE  e LF suas respectivas luminosidades.\nA relação entre as luminosidades dessas duas estrelas é dada por",
+      "explicacao": "Como L = c · R² · T⁴, a estrela E tem (1/2)² · 2⁴ = 4 vezes a luminosidade de F. Logo, a relação é LE = 4 · LF.",
+      "imagem": "asset:assets/questoes/enem/2022/2022148.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 148.",
+      "fonte": "ENEM 2022, questão 148",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022148_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022148_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022148_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022148_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022148_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022149,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Uma das informações que pode auxiliar no dimensionamento do número de pediatras que devem atender em uma Unidade Básica de Saúde (UBS) é o número que representa a mediana da quantidade de crianças por família existente na região sob sua responsabilidade. O quadro mostra a distribuição das frequências do número de crianças por família na região de responsabilidade de uma UBS.\nO número que representa a mediana da quantidade de crianças por família nessa região é",
+      "explicacao": "Organize as famílias pelo número de crianças usando as frequências do quadro. A mediana é a média dos dois valores centrais, que dá 1,5.",
+      "imagem": "asset:assets/questoes/enem/2022/2022149.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 149.",
+      "fonte": "ENEM 2022, questão 149",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1,0.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1,5.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1,9.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "2,1.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "2,5.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022151,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Um médico faz o acompanhamento clínico de um grupo de pessoas que realizam atividades físicas diariamente. Ele observou que a perda média de massa dessas pessoas para cada hora de atividade física era de 1,5 kg. Sabendo que a massa de 1 L de água é de 1 kg, ele recomendou que ingerissem, ao longo das 3 horas seguintes ao final da atividade, uma quantidade total de água correspondente a 40% a mais do que a massa perdida na atividade física, para evitar desidratação.\nSeguindo a recomendação médica, uma dessas pessoas ingeriu, certo dia, um total de 1,7 L de água após\nterminar seus exercícios físicos.\nPara que a recomendação médica tenha efetivamente sido respeitada, a atividade física dessa pessoa, nesse dia, durou",
+      "explicacao": "Se a água é 1,4 vez a massa perdida, a pessoa perdeu 1,7 / 1,4 ≈ 1,21 kg. A 1,5 kg por hora, são 0,81 h, ou cerca de 49 minutos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 151",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "30 minutos ou menos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Mais de 35 e menos de 45 minutos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Mais de 45 e menos de 55 minutos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Mais de 60 e menos de 70 minutos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "70 minutos ou mais.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022152,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Em uma sala de cinema, para garantir que os espectadores vejam toda a imagem projetada na tela, a disposição das poltronas deve obedecer à norma técnica da Associação Brasileira de Normas Técnicas (ABNT), que faz as seguintes indicações:\n• Distância mínima (Dmín) entre a tela de projeção e o encosto da poltrona da primeira fileira deve ser de, pelo menos, 60% da largura (L) da tela.\n• Distância máxima (Dmáx) entre a tela de projeção e o encosto da poltrona da última fileira deve ser o dobro da largura (L) da tela, sendo aceitável uma distância de até 2,9 vezes a largura (L) da tela.\nPara o espaçamento entre as fileiras de poltronas, é considerada a distância de 1 metro entre os encostos de poltronas em duas fileiras consecutivas.\nDisponível em: www.ctav.gov.br. Acesso em: 14 nov. 2013.\nDisponível em: www.ctav.gov.br. Acesso em: 14 nov. 2013.\nPretende-se ampliar essa sala, mantendo-se na mesma posição a tela e todas as poltronas já instaladas,\nampliando-se ao máximo a sala para os fundos (área de instalação de novas poltronas), respeitando-se o limite aceitável da norma da ABNT. A intenção é aumentar, ao máximo, a quantidade de poltronas da sala, instalando-se novas unidades, iguais às já instaladas.\nQuantas fileiras de poltronas a sala comportará após essa ampliação?",
+      "explicacao": "O limite aceitável é 2,9 vezes a largura da tela. Com a distância máxima calculada e a distância entre fileiras obtida da figura, a nova sala comporta 28 fileiras.",
+      "imagem": "asset:assets/questoes/enem/2022/2022152.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 152.",
+      "fonte": "ENEM 2022, questão 152",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "26",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "27",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "28",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "29",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "35",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022153,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Uma empresa produz e vende um tipo de chocolate, maciço, em formato de cone circular reto com as medidas do diâmetro da base e da altura iguais a 8 cm e 10 cm, respectivamente, como apresenta a figura.\nDevido a um aumento de preço dos ingredientes utilizados na produção desse chocolate, a empresa\ndecide produzir esse mesmo tipo de chocolate com um volume 19% menor, no mesmo formato de cone circular reto com altura de 10 cm.\nPara isso, a empresa produzirá esses novos chocolates com medida do raio da base, em centímetro, igual a",
+      "explicacao": "Na mesma altura, o volume é proporcional ao quadrado do raio. Com 81% do volume, r² = 0,81 · 4², logo r = 0,9 · 4 = 3,6 cm.",
+      "imagem": "asset:assets/questoes/enem/2022/2022153.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 153.",
+      "fonte": "ENEM 2022, questão 153",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1,52.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "3,24.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3,60.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "6,48.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "7,20.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022154,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Em janeiro de 2013, foram declaradas 1 794 272 admissões e 1 765 372 desligamentos no Brasil, ou seja,\nforam criadas 28 900 vagas de emprego, segundo dados do Cadastro Geral de Empregados e Desempregados (Caged), divulgados pelo Ministério do Trabalho e Emprego (MTE). Segundo o Caged, o número de vagas criadas em janeiro de 2013 sofreu uma queda de 75%, quando comparado com o mesmo período de 2012.\nDisponível em: http://portal.mte.gov.br. Acesso em: 23 fev. 2013 (adaptado).\nDe acordo com as informações dadas, o número de vagas criadas em janeiro de 2012 foi",
+      "explicacao": "Queda de 75% significa que restaram 25% do valor de 2012. Assim, o valor original é 28 900 / 0,25 = 115 600 vagas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 154",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "16 514.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "86 700.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "115 600.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "441 343.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "448 568.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022155,
+      "assunto": 103,
+      "dificuldade": 2,
+      "enunciado": "Um prédio, com 9 andares e 8 apartamentos de 2 quartos por andar, está com todos os seus apartamentos à venda. Os apartamentos são identificados por números formados por dois algarismos, sendo que a dezena indica o andar onde se encontra o apartamento, e a unidade, um algarismo de 1 a 8, que diferencia os apartamentos de um mesmo andar. Quanto à incidência de sol nos quartos desses apartamentos, constatam-se as seguintes características, em função de seus números de identificação:\n• naqueles que finalizam em 1 ou 2, ambos os quartos recebem sol apenas na parte da manhã;\n• naqueles que finalizam em 3, 4, 5 ou 6, apenas um dos quartos recebe sol na parte da manhã;\n• naqueles que finalizam em 7 ou 8, ambos os quartos recebem sol apenas na parte da tarde.\nUma pessoa pretende comprar 2 desses apartamentos em um mesmo andar, mas quer que, em ambos, pelo menos um dos quartos receba sol na parte da manhã.\nDe quantas maneiras diferentes essa pessoa poderá escolher 2 desses apartamentos para compra nas condições desejadas?",
+      "explicacao": "Em cada andar, 6 apartamentos (finais 1 a 6) têm ao menos um quarto com sol pela manhã. Escolhendo 2 deles em um dos 9 andares, são 9 · C(6,2) = 135 maneiras.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 155",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022155_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022155_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022155_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022155_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022155_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022157,
+      "assunto": 12,
+      "dificuldade": 2,
+      "enunciado": "O funcionário de uma loja tem seu salário mensal formado por uma parcela fixa de 675 reais mais uma comissão que depende da quantidade de peças vendidas por ele no mês. O cálculo do valor dessa comissão é feito de acordo com estes critérios:\n• até a quinquagésima peça vendida, paga-se 5 reais por peça;\n• a partir da quinquagésima primeira peça vendida, o valor pago é de 7 reais por peça.\nRepresente por q a quantidade de peças vendidas no mês por esse funcionário, e por S(q) o seu salário mensal, em real, nesse mês.\nA expressão algébrica que descreve S(q) em função de q é",
+      "explicacao": "Até 50 peças, S(q) = 675 + 5q. Acima disso, soma-se 7 por peça extra: 675 + 250 + 7(q − 50) = 575 + 7q. A função é definida por partes.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 157",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022157_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022157_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022157_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022157_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022157_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022160,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Um robô, que tem um ímã em sua base, se desloca sobre a superfície externa de um cubo metálico, ao longo de segmentos de reta cujas extremidades são pontos médios de arestas e centros de faces. Ele inicia seu deslocamento no ponto P, centro da face superior do cubo, segue para o centro da próxima face, converte à esquerda e segue para o centro da face seguinte, converte à direita e continua sua movimentação, sempre alternando entre conversões à esquerda e à direita quando alcança o centro de uma face. O robô só termina sua movimentação quando retorna ao ponto P. A figura apresenta os deslocamentos iniciais desse robô.\nA projeção ortogonal do trajeto descrito por esse robô sobre o plano da base, após terminada sua movimentação, visualizada da posição em que se está enxergando esse cubo, é",
+      "explicacao": "Siga o trajeto do robô pelos centros das faces, alternando as conversões, até voltar a P. Projetando esse caminho no plano da base, obtém-se a figura da alternativa A.",
+      "imagem": "asset:assets/questoes/enem/2022/2022160.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 160.",
+      "fonte": "ENEM 2022, questão 160",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022160_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022160_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022160_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022160_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022160_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2022161,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "Uma empresa de engenharia projetou uma casa com a forma de um retângulo para um de seus clientes. Esse cliente solicitou a inclusão de uma varanda em forma de L. A figura apresenta a planta baixa desenhada pela empresa, já com a varanda incluída, cujas medidas, indicadas em centímetro, representam os valores das dimensões da varanda na escala de 1 : 50.\nA medida real da área da varanda, em metro quadrado, é",
+      "explicacao": "Com escala 1:50, cada medida da planta é multiplicada por 50. Em área, o fator é 50² = 2 500, e a varanda em L tem área real de 33,40 m².",
+      "imagem": "asset:assets/questoes/enem/2022/2022161.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 161.",
+      "fonte": "ENEM 2022, questão 161",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "33,40",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "66,80",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "89,24",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "133,60",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "534,40",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022162,
+      "assunto": 12,
+      "dificuldade": 2,
+      "enunciado": "Uma loja de roupas fixou uma meta de vendas de 77 000 reais para um determinado mês de 30 dias. O gráfico mostra o volume de vendas dessa loja, em real, nos dez primeiros dias do mês e entre o dia dez e o dia vinte desse mês, nos seus dois únicos setores (infantil e adulto). Suponha que a variação no volume de vendas, para o período registrado, tenha se dado de forma linear, como mostrado no gráfico, e que essa tendência se mantenha a mesma para os próximos dez dias.\nAo final do trigésimo dia, quanto faltará no volume de vendas, em real, para que a meta fixada para o mês seja alcançada?",
+      "explicacao": "O gráfico mostra crescimento linear das vendas em cada setor. Mantendo a mesma variação de 10 dias nos dias seguintes, some os totais estimados para o dia 30 e compare com a meta: faltam 11 000 reais.",
+      "imagem": "asset:assets/questoes/enem/2022/2022162.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 162.",
+      "fonte": "ENEM 2022, questão 162",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "5 000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "7 000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "11 000",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "18 000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "29 000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022163,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Em uma universidade, atuam professores que estão enquadrados funcionalmente pela sua maior titulação: mestre ou doutor. Nela há, atualmente, 60 mestres e 40 doutores. Os salários mensais dos professores mestres e dos doutores são, respectivamente, R$ 8 000,00 e\nR$ 12 000,00.\nA diretoria da instituição pretende proporcionar um aumento salarial diferenciado para o ano seguinte, de tal forma que o salário médio mensal dos professores dessa instituição não ultrapasse R$ 12 240,00. A universidade já estabeleceu que o aumento salarial será de 25% para os mestres e precisa ainda definir o percentual de reajuste para os doutores.\nMantido o número atual de professores com suas atuais titulações, o aumento salarial, em porcentagem, a ser concedido aos doutores deverá ser de, no máximo,",
+      "explicacao": "Mestres passam a ganhar 10 000 reais. Para média de 12 240, a folha é de 1 224 000; tirando 600 000 dos mestres, sobram 624 000 para 40 doutores, ou 15 600 cada, um aumento de 30%.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 163",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "14,4.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "20,7.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "22,0.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "30,0.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "37,5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022164,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Um borrifador de atuação automática libera, a cada acionamento, uma mesma quantidade de inseticida. O recipiente desse produto, quando cheio, contém 360 mL de inseticida, que duram 60 dias se o borrifador permanecer ligado ininterruptamente e for acionado a cada 48 minutos.\nA quantidade de inseticida que é liberada a cada acionamento do borrifador, em mililitro, é",
+      "explicacao": "Em 60 dias há 86 400 minutos, ou 86 400 / 48 = 1 800 acionamentos. Cada um libera 360 / 1 800 = 0,2 mL.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 164",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "0,125.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "0,200.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "4,800.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "6,000.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "12,000.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022165,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Definem-se o dia e o ano de um planeta de um sistema solar como sendo, respectivamente, o tempo que o planeta leva para dar 1 volta completa em torno de seu próprio eixo de rotação e o tempo para dar 1 volta completa em torno de seu Sol.\nSuponha que exista um planeta Z, em algum sistema solar, onde um dia corresponda a 73 dias terrestres e que 2 de seus anos correspondam a 1 ano terrestre. Considere que 1 ano terrestre tem 365 de seus dias.\nNo planeta Z, seu ano corresponderia a quantos de seus dias?",
+      "explicacao": "Como 2 anos de Z equivalem a 1 ano terrestre, um ano de Z tem 182,5 dias terrestres. Dividindo por 73, são 2,5 dias de Z.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 165",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2,5",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "10,0",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "730,0",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "13 322,5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "53 290,0",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022167,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Em uma loja, o preço promocional de uma geladeira é de R$ 1 000,00 para pagamento somente em dinheiro. Seu preço normal, fora da promoção, é 10% maior. Para pagamento feito com o cartão de crédito da loja, é dado um desconto de 2% sobre o preço normal.\nUma cliente decidiu comprar essa geladeira, optando pelo pagamento com o cartão de crédito da loja. Ela calculou que o valor a ser pago seria o preço promocional acrescido de 8%. Ao ser informada pela loja do valor a\npagar, segundo sua opção, percebeu uma diferença entre seu cálculo e o valor que lhe foi apresentado\nO valor apresentado pela loja, comparado ao valor calculado pela cliente, foi",
+      "explicacao": "O preço normal é 1 100 reais e, com 2% de desconto, sai por 1 078. A cliente calculou 1 080, então o valor da loja é 2 reais menor.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 167",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "R$ 2,00 menor.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "R$ 100,00 menor.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "R$ 200,00 menor.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "R$ 42,00 maior.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "R$ 80,00 maior.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022168,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Uma pessoa precisa se deslocar de automóvel do ponto P para o ponto Q, indicados na figura, na qual as linhas verticais e horizontais simbolizam ruas\nPor causa do sentido de tráfego nessas ruas, o caminho poligonal destacado é a possibilidade mais curta de efetuar esse deslocamento. Para descrevê-lo, deve-se especificar qual o sentido a ser tomado em cada cruzamento de ruas, em relação à direção de deslocamento do automóvel, que se movimentará continuamente. Para isso, empregam-se as letras E, F e D para indicar\n“vire à esquerda”, “siga em frente” e “vire à direita”, respectivamente.\nA sequência de letras que descreve o caminho poligonal destacado é",
+      "explicacao": "Acompanhe o caminho destacado, olhando a direção em que o carro segue em cada cruzamento. Virar à direita ou à esquerda depende do sentido de movimento, não do desenho na página. A sequência correta é DFEFDDEEFFD.",
+      "imagem": "asset:assets/questoes/enem/2022/2022168.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 168.",
+      "fonte": "ENEM 2022, questão 168",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "DDEFDDEEFFD.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "DFEFDDDEFFD.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "DFEFDDEEFFD.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "EFDFEEDDFFE.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "EFDFEEEDFFE.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022169,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Uma loja comercializa cinco modelos de caixas-d’água (I, II, III, IV e V), todos em formato de cilindro reto de base circular. Os modelos II, III, IV e V têm as especificações de suas dimensões dadas em relação às dimensões do modelo I, cuja profundidade é P e área da base é Ab, como segue:\n• modelo II: o dobro da profundidade e a metade da\nárea da base do modelo I;\n• modelo III: o dobro da profundidade e a metade do\nraio da base do modelo I;\n• modelo IV: a metade da profundidade e o dobro da\nárea da base do modelo I;\n• modelo V: a metade da profundidade e o dobro do\nraio da base do modelo I.\nUma pessoa pretende comprar nessa loja o modelo\nde caixa-d’água que ofereça a maior capacidade\nvolumétrica\nO modelo escolhido deve ser o",
+      "explicacao": "O volume do cilindro é área da base vezes altura. Dobrar o raio quadruplica a área e, com a metade da profundidade, o volume dobra. Os outros modelos não superam o modelo I, e o V é o maior.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 169",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022170,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "No período de 2005 a 2013, o valor de venda dos imóveis em uma cidade apresentou alta, o que resultou no aumento dos aluguéis. Os gráficos apresentam a evolução desses valores, para um mesmo imóvel, no\nmercado imobiliário dessa cidade.\nA rentabilidade do aluguel de um imóvel é calculada pela razão entre o valor mensal de aluguel e o valor de mercado desse imóvel.\nCom base nos dados fornecidos, em que ano a rentabilidade do aluguel foi maior?",
+      "explicacao": "Para cada ano, divida o aluguel mensal pelo valor de mercado nos gráficos. A maior razão ocorre em 2007.",
+      "imagem": "asset:assets/questoes/enem/2022/2022170.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 170.",
+      "fonte": "ENEM 2022, questão 170",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2005",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2007",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "2009",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "2011",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "2013",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022171,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Nos cinco jogos finais da última temporada, com uma média de 18 pontos por jogo, um jogador foi eleito o melhor do campeonato de basquete. Na atual temporada, cinco jogadores têm a chance de igualar ou melhorar essa média. No quadro estão registradas as pontuações desses cinco jogadores nos quatro primeiros jogos das finais deste ano.\nO quinto e último jogo será realizado para decidir a equipe campeã e qual o melhor jogador da temporada.\nO jogador que precisa fazer a menor quantidade de pontos no quinto jogo, para igualar a média de pontos do melhor jogador da temporada passada, é o",
+      "explicacao": "Para ter média 18 em 5 jogos, são necessários 90 pontos. O jogador que precisa de menos pontos no último jogo é o que tem a maior soma nos quatro primeiros, o jogador I.",
+      "imagem": "asset:assets/questoes/enem/2022/2022171.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 171.",
+      "fonte": "ENEM 2022, questão 171",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022172,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Um casal planeja construir em sua chácara uma piscina com o formato de um paralelepípedo reto retângulo com capacidade para 90 000 L de água. O casal contratou uma empresa de construções que apresentou cinco projetos com diferentes combinações nas dimensões internas de profundidade, largura e comprimento. A piscina a ser construída terá revestimento interno em suas paredes e fundo com uma mesma cerâmica, e o casal irá escolher o projeto que exija a menor área de revestimento.\nAs dimensões internas de profundidade, largura e comprimento, respectivamente, para cada um dos projetos, são:\n• projeto I: 1,8 m, 2,0 m e 25,0 m;\n• projeto II: 2,0 m, 5,0 m e 9,0 m;\n• projeto III: 1,0 m, 6,0 m e 15,0 m;\n• projeto IV: 1,5 m, 15,0 m e 4,0 m;\n• projeto V: 2,5 m, 3,0 m e 12,0 m.\nO projeto que o casal deverá escolher será o",
+      "explicacao": "Calcule fundo + paredes em cada projeto: I = 147, II = 101, III = 132, IV = 117, V = 111 m². O menor é o projeto II.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 172",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022173,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Uma instituição de ensino superior ofereceu vagas em um processo seletivo de acesso a seus cursos. Finalizadas as inscrições, foi divulgada a relação do número de candidatos por vaga em cada um dos cursos oferecidos. Esses dados são apresentados no quadro.\nQual foi o número total de candidatos inscritos nesse processo seletivo?",
+      "explicacao": "Em cada curso, o número de candidatos é o de vagas vezes a relação candidato/vaga. A soma de todos os cursos dá 1 235.",
+      "imagem": "asset:assets/questoes/enem/2022/2022173.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 173.",
+      "fonte": "ENEM 2022, questão 173",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "400",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "1235",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "7200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022174,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Peças metálicas de aeronaves abandonadas em aeroportos serão recicladas. Uma dessas peças é maciça e tem o formato cilíndrico, com a medida do raio da base igual a 4 cm e a da altura igual a 50 cm. Ela será derretida, e o volume de metal resultante será utilizado para a fabricação de esferas maciças com diâmetro de 1 cm, a serem usadas para confeccionar rolamentos. Para estimar a quantidade de esferas que poderão ser produzidas a partir de cada uma das peças cilíndricas, admite-se que não ocorre perda de material durante o processo de derretimento.\nQuantas dessas esferas poderão ser obtidas a partir de cada peça cilíndrica?",
+      "explicacao": "O cilindro tem V = π · 16 · 50 = 800π cm³. Cada esfera de raio 0,5 cm tem π/6 cm³, logo são 800π ÷ (π/6) = 4 800 esferas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 174",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "800",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "2400",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4800",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "6400",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022175,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Ao escutar a notícia de que um filme recém-lançado arrecadou, no primeiro mês de lançamento, R$ 1,35 bilhão em bilheteria, um estudante escreveu corretamente o número que representa essa quantia, com todos os seus\nalgarismos.\nO número escrito pelo estudante foi",
+      "explicacao": "Um bilhão é 1 000 000 000. Assim, 1,35 bilhão é 1 350 000 000,00.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 175",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "135 000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1 350 000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "13 500 000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "135 000 000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "1 350 000 000,00",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022176,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "Pretende-se que a distância percorrida entre as duas cidades, pelas Rodovias 001 e 002, passando pelo ponto de conexão, seja a menor possível.\nDadas as exigências do projeto, qual das localizações sugeridas deve ser a escolhida para o ponto de conexão?",
+      "explicacao": "A menor soma de distâncias depende da posição das cidades e do ponto de conexão na figura. Comparando os percursos sugeridos, o menor passa pela localização IV.",
+      "imagem": "asset:assets/questoes/enem/2022/2022176.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 176.",
+      "fonte": "ENEM 2022, questão 176",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022177,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Uma pessoa precisa contratar um operário para fazer um serviço em sua casa. Para isso, ela postou um anúncio em uma rede social.\nCinco pessoas responderam informando preços por hora trabalhada, gasto diário com transporte e tempo necessário para conclusão do serviço, conforme valores apresentados no quadro.\nSe a pessoa pretende gastar o mínimo possível com essa contratação, irá contratar o operário",
+      "explicacao": "Para cada operário, calcule o custo total: preço por hora vezes horas, mais transporte vezes dias. O menor total é o do operário I.",
+      "imagem": "asset:assets/questoes/enem/2022/2022177.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 177.",
+      "fonte": "ENEM 2022, questão 177",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022178,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Uma cozinheira produz docinhos especiais por encomenda. Usando uma receita-base de massa, ela prepara uma porção, com a qual produz 50 docinhos maciços de formato esférico, com 2 cm de diâmetro. Um cliente encomenda 150 desses docinhos, mas pede que cada um tenha formato esférico com 4 cm de diâmetro.\nA cozinheira pretende preparar o número exato de porções da receita-base de massa necessário para produzir os docinhos dessa encomenda\nQuantas porções da receita-base de massa ela deve preparar para atender esse cliente?",
+      "explicacao": "Dobrar o diâmetro multiplica o volume por 2³ = 8. São 3 vezes mais docinhos (150 / 50) e cada um vale 8 vezes mais, então são 3 · 8 = 24 porções.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 178",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "12",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "24",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022179,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "A esperança de vida ao nascer é o número médio de anos que um indivíduo tende a viver a partir de seu nascimento, considerando dados da população. No Brasil, esse número vem aumentando consideravelmente, como mostra o gráfico.\nDisponível em: http://cod.ibge.gov.br. Acesso em: 6 mar. 2014 (adaptado).\nPode-se observar que a esperança de vida ao nascer em 2012 foi exatamente a média das registradas nos anos de 2011 e 2013. Suponha que esse fato também ocorreu com a esperança de vida ao nascer em 2013, em relação às esperanças de vida de 2012 e de 2014.\nCaso a suposição feita tenha sido confirmada, a esperança de vida ao nascer no Brasil no ano de 2014 terá sido, em ano, igual a",
+      "explicacao": "Se 2013 é a média de 2012 e 2014, então E2014 = 2·E2013 − E2012. Com os valores do gráfico, o resultado é 74,51 anos.",
+      "imagem": "asset:assets/questoes/enem/2022/2022179.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 179.",
+      "fonte": "ENEM 2022, questão 179",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "74,23.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "74,51.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "75,07.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "75,23.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "78,49.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022180,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Na figura estão destacadas duas trajetórias sobre a superfície do globo terrestre, descritas ao se percorrer parte dos meridianos 1, 2 e da Linha do Equador, sendo que os meridianos 1 e 2 estão contidos em planos perpendiculares entre si. O plano α é paralelo ao que contém a Linha do Equador.\nA vista superior da projeção ortogonal sobre o plano α dessas duas trajetórias é",
+      "explicacao": "Olhando de cima, o Equador aparece como circunferência, e os meridianos como segmentos pelo centro, por estarem em planos verticais. Como os planos dos meridianos são perpendiculares, a projeção é a da alternativa E.",
+      "imagem": "asset:assets/questoes/enem/2022/2022180.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 180.",
+      "fonte": "ENEM 2022, questão 180",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022180_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022180_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022180_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2022/2022180_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2022/2022180_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023136,
+      "assunto": 104,
+      "dificuldade": 2,
+      "enunciado": "Um artista plástico esculpe uma escultura a partir de um bloco de madeira de lei, em etapas. Inicialmente, esculpe um cone reto com 36 cm de altura e diâmetro da base medindo 18 cm. Em seguida, remove desse cone um cone menor, cujo diâmetro da base mede 6 cm, obtendo, assim, um tronco de cone, conforme ilustrado na figura.\nEm seguida, perfura esse tronco de cone, removendo um cilindro reto, de diâmetro 6 cm, cujo eixo de simetria é o mesmo do cone original. Dessa forma, ao final, a escultura tem a forma de um tronco de cone com uma perfuração cilíndrica de base a base.\nO tipo de madeira utilizada para produzir essa escultura tem massa igual a 0,6 g por centímetro cúbico de volume. Utilize 3 como aproximação para π.\nQual é a massa, em grama, dessa escultura?",
+      "explicacao": "O tronco tem volume (81 · 36 − 9 · 12) = 2 808 cm³, com π = 3. O furo tem 3 · 9 · 24 = 648 cm³. Sobram 2 160 cm³, que a 0,6 g/cm³ dão 1 296 g.",
+      "imagem": "asset:assets/questoes/enem/2023/2023136.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 136.",
+      "fonte": "ENEM 2023, questão 136",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1.198,8",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1.296,0",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1.360,8",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4.665,6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "4.860,0",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023137,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração.\nOs funcionários de um mesmo setor recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\nA média dos salários dos 100 funcionários dessa empresa, em real, é",
+      "explicacao": "A média é a soma de todos os salários dividida pelos 100 funcionários. Multiplique a quantidade de cada setor pelo seu salário, some e divida por 100: R$ 3.250,00.",
+      "imagem": "asset:assets/questoes/enem/2023/2023137.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 137.",
+      "fonte": "ENEM 2023, questão 137",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2.000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2.500,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3.250,00.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4.500,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "9.000,00.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023138,
+      "assunto": 101,
+      "dificuldade": 2,
+      "enunciado": "Visando atrair mais clientes, o gerente de uma loja anunciou uma promoção em que cada cliente que realizar uma compra pode ganhar um voucher para ser usado em sua próxima compra. Para ganhar seu voucher, o cliente precisa retirar, ao acaso, uma bolinha de dentro de cada uma das duas urnas A e B disponibilizadas pelo gerente, nas quais há apenas bolinhas pretas e brancas. Atualmente, a probabilidade de se escolher, ao acaso, uma bolinha preta na urna A é igual a 20% e a probabilidade de se escolher uma bolinha preta na urna B é 25%. Ganha o voucher o cliente que retirar duas bolinhas pretas, uma de cada urna.\nCom o passar dos dias, o gerente percebeu que, para a promoção ser viável aos negócios, era preciso alterar a probabilidade de acerto do cliente sem alterar a regra da promoção. Para isso, resolveu alterar a quantidade de bolinhas brancas na urna B de forma que a probabilidade de um cliente ganhar o voucher passasse a ser menor ou igual a 1%. Sabe-se que a urna B tem 4 bolinhas pretas e que, em ambas as urnas, todas as bolinhas têm a mesma probabilidade de serem retiradas.\nQual é o número mínimo de bolinhas brancas que o gerente deve adicionar à urna B?",
+      "explicacao": "Com 20% na urna A, é preciso que a urna B tenha chance de preta de no máximo 5% (0,2 · 0,05 = 1%). Com 4 pretas, a urna B precisa de 80 bolinhas. Hoje ela tem 16, então são 64 brancas a mais.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 138",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "20",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "60",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "64",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "68",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "80",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023139,
+      "assunto": 12,
+      "dificuldade": 2,
+      "enunciado": "O gerente de uma fábrica pretende comparar a evolução das vendas de dois produtos similares (I e II). Para isso, passou a verificar o número de unidades vendidas de cada um desses produtos em cada mês. Os resultados dessa verificação, para os meses de abril a junho, são apresentados na tabela.\nO gerente estava decidido a cessar a produção do produto II no mês seguinte àquele em que as vendas do produto I superassem as do produto II.\nSuponha que a variação na quantidade de unidades vendidas dos produtos I e II se manteve, mês a mês, como no período representado na tabela.\nEm qual mês o produto II parou de ser produzido?",
+      "explicacao": "Pela tabela, cada produto varia a mesma quantidade por mês. Projetando as duas sequências, as vendas de I superam as de II em agosto, e a produção de II para no mês seguinte, setembro.",
+      "imagem": "asset:assets/questoes/enem/2023/2023139.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 139.",
+      "fonte": "ENEM 2023, questão 139",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Junho.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Julho.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Agosto.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Setembro.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Outubro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023140,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Uma empresa de transporte faz regularmente um levantamento do número de viagens realizadas durante o dia por todos os 160 motoristas cadastrados em seu aplicativo. Em um certo dia, foi gerado um relatório, por meio de um gráfico de barras, no qual se relacionaram a quantidade de motoristas com a quantidade de viagens realizadas até aquele instante do dia.\nComparando os valores da média, da mediana e da moda da distribuição das quantidades de viagens realizadas pelos motoristas cadastrados nessa empresa, obtém-se",
+      "explicacao": "No gráfico, a moda é o valor mais frequente e a distribuição tem cauda para valores altos. Isso puxa a média para cima, e a relação fica moda < mediana < média.",
+      "imagem": "asset:assets/questoes/enem/2023/2023140.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 140.",
+      "fonte": "ENEM 2023, questão 140",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Mediana = média < moda.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Mediana = moda < média.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Mediana < média < moda.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Moda < média < mediana.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Moda < mediana < média.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023143,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Em janeiro do ano passado, a direção de uma fábrica abriu uma creche para os filhos de seus funcionários, com 10 salas, cada uma com capacidade para atender 10 crianças a cada ano. As vagas são sorteadas entre os filhos dos funcionários inscritos, enquanto os não contemplados pelo sorteio formam uma lista de espera. No ano passado, a lista de espera teve 400 nomes e, neste ano, esse número cresceu 10%. A direção da fábrica realizou uma pesquisa e constatou que a lista de espera para o próximo ano terá a mesma quantidade de nomes da lista de espera deste ano. Decidiu, então, construir, ao longo desse ano, novas salas para a creche, também com capacidade de atendimento para 10 crianças cada, de modo que o número de nomes na lista de espera no próximo ano seja 25% menor que o deste ano.\nO número mínimo de salas que deverão ser construídas é",
+      "explicacao": "A lista deste ano tem 440 nomes, e a meta é 25% menor: 330. É preciso atender 110 crianças a mais, ou seja, 11 salas de 10 vagas.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 143",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "10",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "11",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "12",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "30",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "33",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023145,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "Num certo momento de um jogo digital, a tela apresenta a imagem representada na figura. O ponto Q1 representa a posição de um jogador que está com a bola, os pontos Q2, Q3, Q4 , Q5 e Q6\ntambém indicam posições de jogadores da mesma equipe, e os pontos A e B indicam os dois pés da trave mais próxima deles. No momento da partida retratado, o jogador Q1 tem a posse da bola, que será passada para um dos outros jogadores das posições Qn, n ∈ {2, 3, 4, 5, 6}, cujo ângulo AQnB tenha a mesma medida do ângulo AQ1 B.\nQual é o jogador que receberá a bola?",
+      "explicacao": "Ângulos inscritos que enxergam o mesmo arco têm a mesma medida. Basta achar o ponto Qn na mesma circunferência que passa por A, B e Q1.",
+      "imagem": "asset:assets/questoes/enem/2023/2023145.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 145.",
+      "fonte": "ENEM 2023, questão 145",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023145_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023145_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023145_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023145_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023145_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023146,
+      "assunto": 106,
+      "dificuldade": 2,
+      "enunciado": "Considere que os números colocados nos vértices do triângulo estejam em progressão aritmética de razão igual a 2.\nNas condições propostas, quais as possíveis soluções para as somas dos números que formam os lados do triângulo?",
+      "explicacao": "Como os vértices estão em progressão aritmética de razão 2, testam-se os valores possíveis para os números. As condições da figura admitem duas soluções, como indicado na alternativa E.",
+      "imagem": "asset:assets/questoes/enem/2023/2023146.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 146.",
+      "fonte": "ENEM 2023, questão 146",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Há somente uma solução possível, e as somas em cada lado do triângulo são iguais a 7.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Há somente uma solução possível, e as somas em cada lado do triângulo são iguais a 9.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 7 e outra em que as somas são iguais a 9.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 9 e outra em que as somas são iguais a 12.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 10 e outra em que as somas são iguais a 11.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023147,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Alguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante. O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada.\nCIRINO, C. Boa pergunta: consumir carboidratos antes dos exercícios melhora o desempenho do atleta? Revista Saúde! É Vital, n. 330, nov. 2010 (adaptado).\nUm casal realizará diariamente 30 minutos de caminhada, ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\nA quantidade mínima de pacotes de pão de fôrma necessários para prover o suprimento a esse casal é",
+      "explicacao": "O casal precisa de 2 · 30 · 30 = 1 800 g de carboidrato no mês, ou 1 800 / 15 = 120 fatias. Com 18 fatias por pacote, 120 / 18 ≈ 6,7, o que exige 7 pacotes.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 147",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "4",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "7",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "8",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023148,
+      "assunto": 105,
+      "dificuldade": 2,
+      "enunciado": "O mastro de uma bandeira foi instalado perpendicularmente ao solo em uma região plana. Devido aos fortes ventos, três cabos de aço, de mesmo comprimento, serão instalados para dar sustentação ao mastro. Cada cabo de aço ficará perfeitamente esticado, com uma extremidade num ponto P do mastro, a uma altura h do solo, e a outra extremidade, num ponto no chão, como mostra a figura.\nOs cabos de aço formam um ângulo a com o plano do chão. Por medida de segurança, há apenas três opções de instalação:\n• opção I: h = 11 m e a = 30°\n• opção II: h = 12 m e a = 45°\n• opção III: h = 18 m e a = 60°\nA opção a ser escolhida é aquela em que a medida dos cabos seja a menor possível.\nQual será a medida, em metro, de cada um dos cabos a serem instalados?",
+      "explicacao": "O cabo é a hipotenusa: h / sen a. As opções dão 22 m, 12√2 ≈ 17 m e 12√3 ≈ 20,8 m. A menor medida é 12√2 m.",
+      "imagem": "asset:assets/questoes/enem/2023/2023148.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 148.",
+      "fonte": "ENEM 2023, questão 148",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023148_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023148_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023148_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023148_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023148_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023149,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Um controlador de voo dispõe de um instrumento que descreve a altitude de uma aeronave em voo, em função da distância em solo. Essa distância em solo é a medida na horizontal entre o ponto de origem do voo até o ponto que representa a projeção ortogonal da posição da aeronave, em voo, no solo. Essas duas grandezas são dadas numa mesma unidade de medida.\nA tela do instrumento representa proporcionalmente as dimensões reais das distâncias associadas ao voo. A figura apresenta a tela do instrumento depois de concluída a viagem de um avião, sendo a medida do lado de cada quadradinho da malha igual a 1 cm.\nEssa tela apresenta os dados de um voo cuja maior altitude alcançada foi de 5 km.\nA escala em que essa tela representa as medidas reais é",
+      "explicacao": "A maior altitude real, 5 km, aparece com 1 cm na tela. Como 5 km = 500 000 cm, a escala é 1 : 500 000.",
+      "imagem": "asset:assets/questoes/enem/2023/2023149.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 149.",
+      "fonte": "ENEM 2023, questão 149",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1 : 5.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1 : 11.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1 : 55.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "1 : 5000.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "1 : 500 000.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023150,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Dirigir após ingerir bebidas alcoólicas é uma atitude extremamente perigosa, uma vez que, a partir da primeira dose, a pessoa já começa a ter perda de sensibilidade de movimentos e de reflexos. Apesar de a eliminação e absorção do álcool depender de cada pessoa e de como o organismo consegue metabolizar a substância, ao final da primeira hora após a ingestão, a concentração de álcool (C) no sangue corresponde a aproximadamente 90% da quantidade (q) de álcool ingerida, e a eliminação total dessa concentração pode demorar até 12 horas.\nDisponível em: http://g1.globo.com. Acesso em: 1 dez. 2018 (adaptado).\nNessas condições, ao final da primeira hora após a ingestão da quantidade q de álcool, a concentração C dessa substância no sangue é expressa algebricamente por",
+      "explicacao": "O texto diz que a concentração corresponde a 90% da quantidade ingerida. Em forma algébrica, C = 0,9q.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 150",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "C = 0,9q",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "C = 0,1q",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "C = 1 − 0,1q",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "C = 1 − 0,9q",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "C = q − 10",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023151,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\nDurante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\nEm quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?",
+      "explicacao": "Para cada um dos nove instantes, compare no gráfico o valor de A e de B. A curva de A está acima da de B em 4 instantes.",
+      "imagem": "asset:assets/questoes/enem/2023/2023151.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 151.",
+      "fonte": "ENEM 2023, questão 151",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "4",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "7",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "9",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023153,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "Um supermercado conta com cinco caixas disponíveis para pagamento. Foram instaladas telas que apresentam o tempo médio gasto por cada caixa para iniciar e finalizar o atendimento de cada cliente, e o número de pessoas presentes na fila de cada caixa em tempo real. Um cliente, na hora de passar sua compra, sabendo que cada um dos cinco caixas iniciará um novo atendimento naquele momento, pretende gastar o menor tempo possível de espera na fila. Ele observa que as telas apresentavam as informações a seguir.\n• Caixa I: atendimento 12 minutos, 5 pessoas na fila.\n• Caixa II: atendimento 6 minutos, 9 pessoas na fila.\n• Caixa III: atendimento 5 minutos, 6 pessoas na fila.\n• Caixa IV: atendimento 15 minutos, 2 pessoas na fila.\n• Caixa V: atendimento 9 minutos, 3 pessoas na fila.\nPara alcançar seu objetivo, o cliente deverá escolher o caixa",
+      "explicacao": "O tempo de espera é o de atendimento vezes as pessoas na fila: 60, 54, 30, 30 e 27 minutos. O menor é o do caixa V.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 153",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "I.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "II.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "III.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "IV.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "V.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023154,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "As figuras pintadas no quadro da sala de estar de uma residência representam as silhuetas de parte das torres de um castelo e, ao fundo, a de uma lua cheia. A lua foi pintada na forma de um círculo, e o telhado da torre mais alta, na forma de triângulo equilátero, foi pintado sobrepondo parte da lua. O centro da lua coincide com um dos vértices do telhado da torre mais alta.\nNesse quadro, a parte da lua escondida atrás da torre mais alta do castelo pode ser representada por um",
+      "explicacao": "Um dos vértices do triângulo equilátero está no centro da lua. A parte coberta é limitada por dois raios e um arco, o que é um setor circular.",
+      "imagem": "asset:assets/questoes/enem/2023/2023154.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 154.",
+      "fonte": "ENEM 2023, questão 154",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Cone.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Setor circular.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Segmento circular.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Triângulo isósceles.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Arco de circunferência.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023155,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "Na planta baixa de um clube, a piscina é representada por um quadrado cuja área real mede 400 m². Ao redor dessa piscina, será construída uma calçada, de largura constante igual a 5 m.\nQual é a medida da área, em metro quadrado, ocupada pela calçada?",
+      "explicacao": "A piscina tem 20 m de lado. Com calçada de 5 m em volta, o quadrado externo tem 30 m de lado: 900 − 400 = 500 m².",
+      "imagem": "asset:assets/questoes/enem/2023/2023155.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 155.",
+      "fonte": "ENEM 2023, questão 155",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1.000",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "900",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "600",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "500",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "400",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023156,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Uma pessoa caminha por 30 minutos e utiliza um aplicativo instalado em seu celular para monitorar a variação da intensidade do sinal de internet recebido pelo aparelho durante o deslocamento. Chegando ao seu destino, o aplicativo forneceu este gráfico:\nPor quantos minutos, durante essa caminhada, o celular dessa pessoa ficou sem receber sinal de internet?",
+      "explicacao": "Leia no gráfico os intervalos em que a intensidade do sinal é zero. Somando esses trechos, o celular ficou 6 minutos sem sinal.",
+      "imagem": "asset:assets/questoes/enem/2023/2023156.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 156.",
+      "fonte": "ENEM 2023, questão 156",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "6",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "8",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "10",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "14",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "24",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023157,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Um professor, para promover a aprendizagem dos estudantes em estatística, propôs uma atividade. O objetivo era verificar o percentual de estudantes com massa corporal abaixo da média e altura acima da média de um grupo de estudantes. Para isso, usando uma balança e uma fita métrica, avaliou uma amostra de dez estudantes, anotando as medidas observadas. O gráfico apresenta a massa corporal, em quilograma, e a altura, em metro, obtidas na atividade\nApós a coleta dos dados, os estudantes calcularam a média dos valores obtidos, referentes à massa corporal e à altura, obtendo, respectivamente, 80 kg e 1,65 m.\nQual é o percentual de estudantes dessa amostra com massa corporal abaixo da média e altura acima da média?",
+      "explicacao": "Conte no gráfico quantos estudantes têm massa abaixo de 80 kg e altura acima de 1,65 m. São 2 entre 10, ou seja, 20%.",
+      "imagem": "asset:assets/questoes/enem/2023/2023157.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 157.",
+      "fonte": "ENEM 2023, questão 157",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "10",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "20",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "30",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "50",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "70",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023158,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Um pescador tem um custo fixo diário de R$ 900,00 com combustível, iscas, manutenção de seu barco e outras pequenas despesas. Ele vende cada quilograma de peixe por R$ 5,00. Sua meta é obter um lucro mínimo de R$ 800,00 por dia. Sozinho, ele consegue, ao final de um dia de trabalho, pescar 180 kg de peixe, o que é suficiente apenas para cobrir o custo fixo diário. Portanto, precisa contratar ajudantes, pagando para cada um R$ 250,00 por dia de trabalho. Além desse valor, 4%dareceita obtida pela venda de peixe é repartida igualmente entre os ajudantes. Considerando o tamanho de seu barco, ele pode contratar até 5 ajudantes. Ele sabe que com um ajudante a pesca diária é de 300 kg e que, a partir do segundo ajudante contratado, aumenta-se em 100 kg a quantidade de peixe pescada por ajudante em um dia de trabalho.\nA quantidade mínima de ajudantes que esse pescador precisa contratar para conseguir o lucro diário pretendido é",
+      "explicacao": "Com 3 ajudantes, são 500 kg e R$ 2 500; o lucro é 2 500 − 900 − 750 − 100 = R$ 750. Com 4, são 600 kg e R$ 3 000; o lucro é 3 000 − 900 − 1 000 − 120 = R$ 980. O mínimo é 4.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 158",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "3",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "4",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "5",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023159,
+      "assunto": 14,
+      "dificuldade": 2,
+      "enunciado": "Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. A reprodução dessas larvas faz com que sua população multiplique-se por 10 a cada 3 dias e, para evitar eventuais desequilíbrios, é possível cessar essa reprodução aplicando-se um produto X. O agricultor decide iniciar esse método com 100 larvas e dispõe de 5 litros do produto X, cuja aplicação recomendada é de exatamente 1 litro para cada população de 200 000 larvas. A quantidade total do produto X de que ele dispõe deverá ser aplicada de uma única vez.\nQuantos dias após iniciado esse método o agricultor deverá aplicar o produto X?",
+      "explicacao": "Os 5 litros tratam 1 000 000 de larvas. De 100 para 1 000 000 são 4 multiplicações por 10, e cada uma leva 3 dias, então são 12 dias.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 159",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "2",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "4",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "6",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "12",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "18",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023161,
+      "assunto": 11,
+      "dificuldade": 2,
+      "enunciado": "Uma loja vende seus produtos de duas formas: à vista ou financiado em três parcelas mensais iguais. Para definir o valor dessas parcelas nas vendas financiadas, a loja aumenta em 20% o valor do produto à vista e divide esse novo valor por 3. A primeira parcela deve ser paga no ato da compra, e as duas últimas, em 30 e 60 dias após a compra.\nUm cliente da loja decidiu comprar, de forma financiada, um produto cujo valor à vista é R$ 1 500,00.\nUtilize 5,29 como aproximação para √28.\nA taxa mensal de juros compostos praticada nesse financiamento é de",
+      "explicacao": "O produto financiado custa R$ 1 800, em 3 parcelas de R$ 600. Restam R$ 900 após a entrada: 900 = 600/y + 600/y². A solução é y = (2 + √28)/6 ≈ 1,215, ou seja, 21,5% ao mês.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 161",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "6,7%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "10%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "20%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "21,5%",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "23,3%",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023162,
+      "assunto": 12,
+      "dificuldade": 2,
+      "enunciado": "Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço y do concreto bombeado é composto de duas partes: uma fixa, chamada de taxa de bombeamento, e uma variável, que depende do volume x de concreto utilizado. Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto bombeado é de R$ 250,00.\nA expressão que representa o preço y em função do volume x, em metro cúbico, é",
+      "explicacao": "O preço tem uma parte fixa de 500 e uma parte variável de 250 por metro cúbico. Logo, y = 250x + 500.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 162",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Y = 250x",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Y = 500x",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Y = 750x",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Y = 250x + 500",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Y = 500x + 250",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023164,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "O gráfico expõe alguns números da gripe A-H1N1. Entre as categorias que estão em processo de imunização, uma já está completamente imunizada, a dos trabalhadores da saúde.\nÉpoca, 26 abr. 2010 (adaptado).\nDe acordo com o gráfico, entre as demais categorias, a que está mais exposta ao vírus da gripe A-H1N1 é a categoria de",
+      "explicacao": "O gráfico compara o total de cada categoria e os já imunizados. A categoria mais exposta é a com maior número de não vacinados, a de adultos entre 20 e 29 anos.",
+      "imagem": "asset:assets/questoes/enem/2023/2023164.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 164.",
+      "fonte": "ENEM 2023, questão 164",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Indígenas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Gestantes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Doentes crônicos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Adultos entre 20 e 29 anos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Crianças de 6 meses a 2 anos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023165,
+      "assunto": 15,
+      "dificuldade": 2,
+      "enunciado": "A figura representa uma escada com três degraus, construída em concreto maciço, com suas medidas especificadas.\nNessa escada, pisos e espelhos têm formato retangular, e as paredes laterais têm formato de um polígono cujos lados adjacentes são perpendiculares. Pisos, espelhos e paredes laterais serão revestidos em cerâmica.\nA área a ser revestida em cerâmica, em metro quadrado, mede",
+      "explicacao": "Some as áreas retangulares de pisos e espelhos e as das duas paredes laterais, em forma de escada. O total é 1,95 m².",
+      "imagem": "asset:assets/questoes/enem/2023/2023165.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 165.",
+      "fonte": "ENEM 2023, questão 165",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "1,20.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1,35.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1,65.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "1,80.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "1,95.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023167,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "A cada bimestre, a diretora de uma escola compra uma quantidade de folhas de papel ofício proporcional ao número de alunos matriculados. No bimestre passado, ela comprou 6 000 folhas para serem utilizadas pelos 1 200 alunos matriculados. Neste bimestre, alguns alunos cancelaram suas matrículas e a escola tem, agora, 1 150 alunos. A diretora só pode gastar R$ 220,00 nessa compra, e sabe que o fornecedor da escola vende as folhas de papel ofício em embalagens de 100 unidades a R$ 4,00 a embalagem. Assim, será preciso convencer o fornecedor a dar um desconto à escola, de modo que seja possível comprar a quantidade total de papel ofício necessária para o bimestre.\nO desconto necessário no preço final da compra, em porcentagem, pertence ao intervalo",
+      "explicacao": "São 5 folhas por aluno, então 5 750 folhas, ou 58 embalagens a R$ 232. Para pagar R$ 220, o desconto é 12/232 ≈ 5,2%, no intervalo (5,0 ; 5,5).",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 167",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "(5,0 ; 5,5).",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "(8,0 ; 8,5).",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "(11,5 ; 12,5).",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "(19,5 ; 20,5).",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "(3,5 ; 4,0).",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023168,
+      "assunto": 101,
+      "dificuldade": 2,
+      "enunciado": "Em um colégio público, a admissão no primeiro ano se dá por sorteio. Neste ano há 55 candidatos, cujas inscrições são numeradas de 01 a 55. O sorteio de cada número de inscrição será realizado em etapas, utilizando-se duas urnas. Da primeira urna será sorteada uma bola, dentre bolas numeradas de 0 a 9, que representará o algarismo das unidades do número de inscrição a ser sorteado e, em seguida, da segunda urna, será sorteada uma bola para representar o algarismo das dezenas desse número. Depois do primeiro sorteio, e antes de se sortear o algarismo das dezenas, as bolas que estarão presentes na segunda urna serão apenas aquelas cujos números formam, com o algarismo já sorteado, um número de 01 a 55.\nAs probabilidades de os candidatos de inscrição número 50 e 02 serem sorteados são, respectivamente,",
+      "explicacao": "Para 50, a unidade 0 sai com chance 1/10 e a segunda urna tem 5 dezenas: 1/10 · 1/5. Para 02, a unidade 2 tem chance 1/10 e a segunda urna tem 6 dezenas: 1/10 · 1/6.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 168",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023168_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023168_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023168_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023168_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023168_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023171,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "O calendário maia apresenta duas contagens simultâneas de anos, o chamado ano Tzolkim, composto por 260 dias e que determinava o calendário religioso, e o ano Haab, composto por 365 dias e que determinava o calendário agrícola. Um historiador encontrou evidências de que gerações de uma mesma família governaram certa comunidade maia pelo período de 20 ciclos, sendo cada ciclo formado por 52 anos Haab.\nDisponível em: www.suapesquisa.com. Acesso em: 20 ago. 2014.\nDe acordo com as informações fornecidas, durante quantos anos Tzolkim aquela comunidade maia foi governada por tal família?",
+      "explicacao": "São 20 · 52 · 365 dias. Dividindo por 260 dias do ano Tzolkim, obtém-se 1 460 anos.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 171",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "741",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "1 040",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "1 460",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "2 100",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "5 200",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023173,
+      "assunto": 16,
+      "dificuldade": 2,
+      "enunciado": "Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\nDisponível em: www.treinamentoonline.com.br. Acesso em: 23 out. 2019 (adaptado).\nUm maratonista, visando melhorar sua performance, auxiliado por um médico, mensura o seu consumo de oxigênio por minuto a velocidade constante. Com base nesse consumo e na massa do atleta, o médico calcula o EC do atleta.\nA unidade de medida da grandeza descrita pelo parâmetro EC é",
+      "explicacao": "O EC é o consumo de oxigênio em mL/min dividido pela massa em kg. Logo, sua unidade é mL/(kg · min).",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 173",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023173_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023173_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023173_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023173_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023173_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023175,
+      "assunto": 2,
+      "dificuldade": 2,
+      "enunciado": "O metrô de um município oferece dois tipos de tíquetes com colorações diferentes, azul e vermelha, sendo vendidos em cartelas, cada qual com nove tíquetes da mesma cor e mesmo valor unitário. Duas cartelas de tíquetes azuis e uma cartela de tíquetes vermelhos são vendidas por R$ 32,40. Sabe-se que o preço de um tíquete azul menos o preço de um tíquete vermelho é igual ao preço de um tíquete vermelho mais cinco centavos.\nQual o preço, em real, de uma cartela de tíquetes vermelhos?",
+      "explicacao": "Do texto, a = 2v + 0,05. Como 18a + 9v = 32,40, temos 45v = 31,50, logo v = 0,70. Uma cartela vermelha custa 9 · 0,70 = R$ 6,30.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 175",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "4,68",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "6,30",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "9,30",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "10,50",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "10,65",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023176,
+      "assunto": 106,
+      "dificuldade": 2,
+      "enunciado": "Os números figurados pentagonais provavelmente foram introduzidos pelos pitagóricos por volta do século V a.C. As figuras ilustram como obter os seis primeiros deles, sendo os demais obtidos seguindo o mesmo padrão geométrico.\nO oitavo número pentagonal é",
+      "explicacao": "Os números pentagonais seguem n(3n − 1)/2. Para n = 8, 8 · 23 / 2 = 92.",
+      "imagem": "asset:assets/questoes/enem/2023/2023176.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 176.",
+      "fonte": "ENEM 2023, questão 176",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "59",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "83",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "86",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "89",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "92",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023177,
+      "assunto": 105,
+      "dificuldade": 2,
+      "enunciado": "A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\nCom o passar do tempo, à medida que a roda-gigante gira, com velocidade angular constante e no sentido horário, a altura da cadeira onde se encontra a pessoa P, em relação ao solo, vai se alterando.\nO gráfico que melhor representa a variação dessa altura, em função do tempo, contado a partir do instante em que a cadeira da pessoa P se encontra na posição mais alta da roda-gigante, é",
+      "explicacao": "A altura varia de forma periódica e começa no máximo, como uma função cosseno. O gráfico que mostra isso é o da alternativa A.",
+      "imagem": "asset:assets/questoes/enem/2023/2023177.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 177.",
+      "fonte": "ENEM 2023, questão 177",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023177_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023177_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023177_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023177_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023177_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023178,
+      "assunto": 12,
+      "dificuldade": 2,
+      "enunciado": "Estudantes trabalhando com robótica criaram uma “torneira inteligente” que automatiza sua abertura e seu fechamento durante a limpeza das mãos. A tecnologia funciona da seguinte forma: ao se colocarem as mãos sob a torneira, ela libera água durante 3 segundos para que a pessoa possa molhá-las. Em seguida, interrompe o fornecimento de água por 5 segundos, enquanto a pessoa ensaboa suas mãos, e finaliza o ciclo liberando água para o enxágue por mais 3 segundos. Considere o tempo (t), em segundo, contado a partir do instante em que se inicia o ciclo. A vazão de água nessa torneira é constante.\nUm esboço de gráfico que descreve o volume de água acumulado, em litro, liberado por essa torneira durante um ciclo de lavagem das mãos, em função do tempo (t), em segundo, é",
+      "explicacao": "O volume cresce em linha reta por 3 s, fica constante por 5 s e volta a crescer por 3 s, com a mesma inclinação. Essa é a forma do gráfico da alternativa B.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 178",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023178_A.jpg",
+          "imagem_descricao": "Alternativa A."
+        },
+        {
+          "letra": "B",
+          "texto": null,
+          "correta": true,
+          "imagem": "asset:assets/questoes/enem/2023/2023178_B.jpg",
+          "imagem_descricao": "Alternativa B."
+        },
+        {
+          "letra": "C",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023178_C.jpg",
+          "imagem_descricao": "Alternativa C."
+        },
+        {
+          "letra": "D",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023178_D.jpg",
+          "imagem_descricao": "Alternativa D."
+        },
+        {
+          "letra": "E",
+          "texto": null,
+          "correta": false,
+          "imagem": "asset:assets/questoes/enem/2023/2023178_E.jpg",
+          "imagem_descricao": "Alternativa E."
+        }
+      ]
+    },
+    {
+      "id": 2023179,
+      "assunto": 8,
+      "dificuldade": 2,
+      "enunciado": "As características culturais variam de povo para povo. Há notícias de um povo que possuía formas de contar diferentes das nossas, como indicado no quadrinho a seguir.\nSegundo o padrão de contagem indicado na figura, as representações dos numerais cinco e sete, nessa cultura, devem ser, respectivamente,",
+      "explicacao": "Pelo quadrinho, okosa vale 2 e urapum vale 1. Assim, cinco é 2 + 2 + 1 e sete é 2 + 2 + 2 + 1.",
+      "imagem": "asset:assets/questoes/enem/2023/2023179.jpg",
+      "imagem_descricao": "Figura de ENEM 2023, questão 179.",
+      "fonte": "ENEM 2023, questão 179",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Okosa urapum urapum urapum e okosa okosa urapum urapum urapum.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Okosa okosa urapum e okosa okosa okosa okosa urapum.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Okosa okosa urapum e okosa okosa okosa urapum.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Okosa urapum urapum e okosa urapum okosa urapum urapum.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Okosa okosa urapum e okosa okosa okosa okosa.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023180,
+      "assunto": 102,
+      "dificuldade": 2,
+      "enunciado": "Um tipo de semente necessita de bastante água nos dois primeiros meses após o plantio. Um produtor pretende estabelecer o melhor momento para o plantio desse tipo de semente, nos meses de outubro a março. Após consultar a previsão do índice mensal de precipitação de chuva (ImPC) da região onde ocorrerá o plantio, para o período chuvoso de 2020-2021, ele obteve os seguintes dados:\n• outubro/2020: ImPC = 250 mm;\n• novembro/2020: ImPC = 150 mm;\n• dezembro/2020: ImPC = 200 mm;\n• janeiro/2021: ImPC = 450 mm;\n• fevereiro/2021: ImPC = 100 mm;\n• março/2021: ImPC = 200 mm.\nCom base nessas previsões, ele precisa escolher dois meses consecutivos em que a média mensal de precipitação seja a maior possível.\nNo início de qual desses meses o produtor deverá plantar esse tipo de semente?",
+      "explicacao": "As médias de meses consecutivos são 200, 175, 325, 275 e 150 mm. A maior é a de dezembro e janeiro, então o plantio deve ser no início de dezembro.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 180",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Outubro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Novembro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Dezembro.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Janeiro.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Fevereiro.",
           "correta": false,
           "imagem": null,
           "imagem_descricao": null

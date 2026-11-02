@@ -1,0 +1,465 @@
+{
+  "materia": 12,
+  "assuntos": [
+    {
+      "id": 1201,
+      "nome": "Interpretação de texto em espanhol",
+      "descricao": "Ideia central e finalidade do texto."
+    },
+    {
+      "id": 1202,
+      "nome": "Vocabulário em contexto (espanhol)",
+      "descricao": "Sentido de palavras e expressões."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 1201,
+      "dep": 1202,
+      "peso": 0.6
+    }
+  ],
+  "questoes": [
+    {
+      "id": 2022501,
+      "assunto": 1201,
+      "dificuldade": 2,
+      "enunciado": "Disponível em: www.inali.gob.mx. Acesso em: 2 dez. 2018.\nEsse cartaz tem a função social de",
+      "explicacao": "O cartaz, de um órgão mexicano dedicado às línguas indígenas, valoriza as línguas originárias. Sua função é defender essa preservação para garantir a diversidade linguística do México.",
+      "imagem": "asset:assets/questoes/enem/2022/2022501.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 1.",
+      "fonte": "ENEM 2022, questão 1",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Difundi a arte iconográfica indígena mexicana.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Resgatar a literatura popular produzida em língua zapoteca.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Questionar o conhecimento do povo mexicano sobre as línguas ameríndias",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Destacar o papel dos órgãos governamentais na conservação das línguas no México.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Defender a preservação das línguas originárias garantindo a diversidade linguística mexicana.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022502,
+      "assunto": 1201,
+      "dificuldade": 2,
+      "enunciado": "Pequeño hermano\nEs, no cabe duda, el instrumento más presente y más poderoso de todos los que entraron en nuestras vidas. Ni la televisión ni el ordenador, no hablemos ya del obsoleto fax o de las agendas o los libros electrónicos, ha tenido tal influencia, tal predicamento sobre nosotros. El móvil somos nosotros mismos. Todo desactivado e inerte, inocuo, ya les digo. Y de repente, tras un viaje y tres o cuatro imprudentes fotos, salta un aviso en la pantalla. Con sonido, además, pese a que tengo también todas las alertas desactivadas. Y mi monstruo doméstico me dice: Tienes un recuerdo nuevo. Lo repetiré: tienes un recuerdo nuevo. ¿Y tú qué sabes? ¿Y a ti, máquina demoníaca, qué te importa? ¿Cómo te atreves a decirme qué son o no son mis recuerdos? ¿Qué es esta intromisión, este descaro? El pequeño hermano lo sabe casi todo. Sólo hay una esperanza: que la obsolescencia programada mate antes al pequeño hermano y que nosotros sigamos vivos, con los recuerdos que nos dé la gana.\nFERNANDEZ, D, Disponível em: www.lavanguardia.com.\nAcesso em:  5 dez. 2018 (adaptado).\nNo texto, autor faz uma crítica ao(à)",
+      "explicacao": "O autor chama o celular de \"monstro doméstico\" e pergunta quem é ele para dizer quais são seus recuerdos. A crítica é à ingerência do celular sobre as escolhas dos usuários.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 2",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Conhecimento das pessoas sobre as tecnologias.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Uso do celular alheio por pessoas desautorizadas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Funcionamento de recursos tecnológicos obsoletos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Ingerência do celular sobre as escolhas dos usuários",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Falta de informação sobre a configuração de alertas no celular",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022503,
+      "assunto": 1202,
+      "dificuldade": 2,
+      "enunciado": "En los suburbios de La Habana, llaman al amigo _mi tierra o mi sangre._En Caracas, el amigo es mi pana o mi llave: pana, por panadería, la fuente del buen pan para las hambres del alma; y llave por…—Llave, por llave—me dice Mario Benedetti. Y me cuenta que cuando vivía en Buenos Aires, en los tiempos del terror, él llevaba cinco llaves ajenas en su llavero: cinco llaves, de cinco casas, de cinco amigos: las llaves que lo salvaron.\nGALEANO, E. El libro de los abrazos. Madri: Siglo Veintiuno, 2015.\nNesse texto, o autor demonstra como as diferentes expressões existentes em espanhol para se referir a “amigo” variam em função",
+      "explicacao": "\"Pana\" remete ao pão e \"llave\", às chaves que salvaram Benedetti. Cada palavra para \"amigo\" nasce do papel que a amizade tem em cada contexto.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 3",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Das peculiaridades dos subúrbios hispano-americanos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Da força da conexão espiritual entre os amigos.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Do papel da amizade em diferentes contextos.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Do hábito de reunir amigos em torno da mesa",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Dos graus de intimidade entre os amigos",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022504,
+      "assunto": 1201,
+      "dificuldade": 2,
+      "enunciado": "Los niños de nuestro olvido\nEscribo sobre un destino\nQue apenas puedo tocar\nEn tanto un niño se inventa\nCon pegamento un hogar\nMientras busco las palabras\nPara hacer esta canción\nUn niño esquiva las balas\nQue buscan su corazón\nAcurrucado en mí calle\nDuerme un niño y la piedad\nArma lejos un pesebre\nY juega a la navidad\nArma lejos un pesebre\nY juega a la navidad\nY juega a la navidad\nY juega, y juega, y juega…\nLa niñez de nuestro olvido\nPide limosna en un bar\nY lava tu parabrisas\nPor un peso, por un pan\nSi las flores del futuro\nCrecen con tanto dolor\nSeguramente mañana\nSerá un mañana sin sol\nNo texto, a expressão “un mañana sin sol” é usada para concluir uma critica ao(à)",
+      "explicacao": "A canção mostra crianças que dormem na rua, pedem esmola e fogem de balas. \"Un mañana sin sol\" conclui a crítica ao descaso diante dessas crianças em situação de rua.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2022, questão 4",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Descanso diante da problemática de crianças em situação de rua.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Violência característica do cotidiano das grandes metrópoles.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Estímulo à mendicância nos centros urbanos",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Tendência de informalização do trabalho",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Falta de serviços de saúde adequados",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2022505,
+      "assunto": 1202,
+      "dificuldade": 2,
+      "enunciado": "MURIG. Disponível em: https://murigcolectivafeminista.wordpress.com.\nAcesso em: 26 out. 2021(adaptado)\nNo texto, as palavras “crianzas” e “tribu” são usadas para",
+      "explicacao": "\"Crianzas\" remete à criação dos filhos, e \"tribu\" lembra uma comunidade. Juntas, as palavras evidenciam a importância de uma rede de apoio para as mães.",
+      "imagem": "asset:assets/questoes/enem/2022/2022505.jpg",
+      "imagem_descricao": "Figura de ENEM 2022, questão 5.",
+      "fonte": "ENEM 2022, questão 5",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Evidenciar a importância de uma rede de apoio para as mães na criação dos seus filhos",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Denunciar a disparidade entre o trabalho das mães de diferentes classes",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Ressaltar o fechamento de escolas e creches durante o período pandêmico",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Ratificar a romantização da dedicação das mães na educação da crianças",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Enfatizar a proteção aos filhos em razão do isolamento social das famílias",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023502,
+      "assunto": 1202,
+      "dificuldade": 2,
+      "enunciado": "Me niego rotundamente\nA negar mi voz,\nMi sangre y mi piel.\nY me niego rotundamente\nA dejar de ser yo,\nA dejar de sentirme bien\nCuando miro mi rostro en el es\nCon mi boca\nRotundamente grande\nY mi nariz\nRotundamente hermosa,\nY mis dientes\nRotundamente blancos,\nY mi piel valientemente negra.\nY me niego categóricamente\nA dejar de hablar\nMi lengua, mi acento y mi historia\nY me niego absolutamente\nA ser parte de los que callan,\nDe los que temen,\nDe los que lloran\nPorque me acepto\nRotundamente libre,\nRotundamente negra,\nRotundamente hermosa.\nCAMPELL BARR, S. Disponível em:\nhttps.negracubanateniaqueser.com\nAcesso em 25 out. 2021.\nPara enfatizar caracteristicas e atitudes que reforçam a identidade da mulher negra, o poema da escritora costarriquenha apresenta:",
+      "explicacao": "O poema repete \"rotundamente\" e usa \"categóricamente\" para reforçar cada afirmação. São os advérbios que enfatizam a identidade da mulher negra.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 2",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Advérbios como \"rotundamente\" e \"categóricamente\".",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Verbos reflexivos como \"me niego\" e \"me acepto\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Adjetivos como \"grande\" e \"hermosa\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Substantivos como \"sangre\" e \"piel\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Adjetivos possessivos como \"mi\" e \"mis\".",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023503,
+      "assunto": 1201,
+      "dificuldade": 2,
+      "enunciado": "“Caramelos” en sus suelos\nLas tierras de España, tu vista enamoran;\nsus gentes; te amistan; ¿“cocinas”?, ¡“te molan”!\n¿El plato común?, ¡pues «tortilla/patatas»!;\nen bares, figones, o tascas, ¡las «tapas»!;\n“sabor nacional”, ¡el «gazpacho», sus «vinos»,\n«sangría», y «jamón» de sabrosos cochinos!\n(Cual “sellos”, te grabas sus «Típicos Platos»;\n¡sabrás por dó pasas, por sólo tu olfato!,\n¡si en cada lugar, un sabor peculiar,\n“al paso” cautiva tu buen paladar!).\n¡Son más que “recetas”!, será “alegoría”!,\n¡será “identidad”! (¡hay “reserva” en su «Guía»!);\nson platos allende un “timón conductor”,\n¡son mar, ríos, sierras!, ¡son valles, son flor!,\n¡y aportan “Conventos” a gastronomia,\nsus «dulces»! (sabor “celestial”, ¡de ambrosia!).\nQUIROZ Y LÓPEZ M. Disponível em: https://pt.calameo.com. Acesso em: 25 out. 2021.\nNesse poema, o eu poético enaltece a",
+      "explicacao": "O poema diz que os pratos são \"más que recetas\" e que são \"identidad\". Assim, enaltece a gastronomia como representação da identidade cultural de um povo.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 3",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Característica amistosa do povo espanhol.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Beleza das paisagens naturais da Espanha.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Variedade de pratos na gastronomia espanhola.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Relação entre os sentidos do paladar e do olfato na gastronomia.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Gastronomia como representação da identidade cultural de um povo.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023504,
+      "assunto": 1202,
+      "dificuldade": 2,
+      "enunciado": "Manipular es sembrar en la conciencia y en la mente de la gente ideas, actitudes, conceptos y aspiraciones -incluso falsas, inmorales y deshonestas- que sirvan a los objetivos -ocultos o abiertos- de sus manipuladores.\nManipular es una de las primeras cosas que aprendemos en la vida. A muy temprana edad, los bebes descubren el poder del llanto, el berrinche, los pataleos, la risa o alguna “gracia” como recursos para demandar atención, exigir comida, pedir ayuda o simplemente mantener ocupada a la gente. Nuestras actitudes de adultos reflejan lo mucho o poco que algunos maduraron, procesaron y rebasaron ese periodo.\nPara que exista un manipulador, debe haber una base de ciudadanos indefensos, dóciles, desinformados. El manipulador es celoso, a veces casi paranoico; no admite cuestionamientos ni quiere que nadie ocupe su espacio, sabe que su vigencia depende de presencia controladora. Todos los días, hay que marcar la línea de discurso, incidir en el debate. El ridículo vale la pena si con ello se logra una cortina de humo.\nDisponível em: www.forbes.com.mx. Acesso em: 7 out. 2021 (adaptado).\nNesse texto, a expressão “cortina de humo” revela que o manipulador",
+      "explicacao": "\"Cortina de humo\" é algo que esconde o que está por trás. A expressão revela que o manipulador busca mascarar a verdade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 4",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Amadurece tardiamente.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Busca mascarar a verdade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Rejeita questionamentos alheios.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Aproxima-se de pessoas indefesas.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Faz-se presente de forma controladora.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 2023505,
+      "assunto": 1201,
+      "dificuldade": 2,
+      "enunciado": "Que quede claro\nCómo es posible que se cierren\ntantas bocas, tantos ojos,\ntantas puertas, muchas mentes ante un\nacto xenofóbico sin precedentes.\nPresidentes, ministros, cancilleres,\nautoridades, responsables.\n¿Quién pagará el daño causado a familiares?\nPor un loco del estrada sin modales. […]\nSe alejó de aquel lugar donde su color era\nmucho más que su color, era su raza.\nPersiguiendo un sueño que desapareció,\nque se fusionó y terminó en una pesadilla. […]\nDéjame que te cuente esta historia\nque sucedió en el metro de Barcelona,\ncuando aquella mañana la injusticia\ny xenofobia se juntaron de la mano,\nprotagonizando una de las más feas escenas de racismo.\nEn aquel vagón viajaba un ángel de color diferente,\nen su camino se interpuso aquel inconsciente,\nque aún sabiendo lo que hacía,\nseguía hablando con su gente.\nLe dio al ángel dos patadas en su cara,\nse rió de ella sin cambiar la mirada.\nY aún anda suelto, aún anda suelto…\nORISHAS. In: Cosita buena. Delaware: Suerte Publishing LCC, 2008 (fragmento).\nA letra da canção Que quede claro, da banda cubana Orishas, revela o(a)",
+      "explicacao": "A canção narra uma agressão xenofóbica no metrô e pergunta quem pagará pelo dano. Revela a indignação diante do desrespeito à diversidade.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "ENEM 2023, questão 5",
+      "explicacao_gerada": true,
+      "revisado": false,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Indignação diante do desrespeito à diversidade.",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Violência característica das grandes metrópoles.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Preconceito da sociedade com relação ao misticismo.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Descuido da população com sonhos dos imigrantes.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "E",
+          "texto": "Falta de segurança existente no transporte público urbano.",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

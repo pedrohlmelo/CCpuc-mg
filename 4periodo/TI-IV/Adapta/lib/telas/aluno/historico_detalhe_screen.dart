@@ -156,7 +156,14 @@ class HistoricoDetalheScreen extends ConsumerWidget {
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Text(questao.explicacao, style: texto.bodyMedium),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(questao.explicacao, style: texto.bodyMedium),
+                      if (questao.explicacaoNaoRevisada)
+                        const AvisoExplicacaoGerada(),
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -114,6 +114,9 @@ class Questao {
     this.revisado = false,
   });
 
+  /// A tela avisa quando a explicação ainda não passou pelo grupo.
+  bool get explicacaoNaoRevisada => explicacaoGerada && !revisado;
+
   Alternativa get gabarito => alternativas.firstWhere((a) => a.correta);
 }
 
