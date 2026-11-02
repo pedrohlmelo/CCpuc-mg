@@ -25,7 +25,29 @@ service cloud.firestore {
       }
     }
 
-    // Nada além de usuarios/{uid} é acessível.
+    // Conteúdo: leitura para quem tem sessão, inclusive o visitante anônimo.
+    // Os scripts usam a conta de serviço e não passam por estas regras.
+    function admin() {
+      return request.auth != null
+        && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.tipo == 'admin';
+    }
+
+    match /meta/{id} {
+      allow read: if request.auth != null;
+      allow write: if admin();
+    }
+
+    match /materias/{id} {
+      allow read: if request.auth != null;
+      allow write: if admin();
+    }
+
+    match /questoes/{id} {
+      allow read: if request.auth != null;
+      allow write: if admin();
+    }
+
+    // Nada além disso é acessível.
     match /{documento=**} {
       allow read, write: if false;
     }

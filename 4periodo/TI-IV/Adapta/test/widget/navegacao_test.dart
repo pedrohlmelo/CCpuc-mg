@@ -201,6 +201,18 @@ void main() {
       expect(find.byKey(const Key('item_entrar')), findsOneWidget);
     });
 
+    testWidgets('o perfil mostra o banco de questões do aparelho', (
+      tester,
+    ) async {
+      await abrir(tester);
+
+      await tocar(tester, find.byKey(const Key('aba_perfil')));
+      expect(
+        find.textContaining(RegExp(r'Banco de questões: \d+ questões no')),
+        findsOneWidget,
+      );
+    });
+
     testWidgets('entrar pelo perfil passa a usar o nome de quem entrou', (
       tester,
     ) async {

@@ -1,15 +1,18 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../dados/banco/historicos_demo.dart';
+import '../dados/cache_imagens.dart';
 import '../dados/estado_app.dart';
 import '../dados/modelos.dart';
 import '../dados/repositorios/aprendizado_repositorio.dart';
 import '../dados/repositorios/conteudo_repositorio.dart';
 import '../dados/repositorios/grafo_repositorio.dart';
 import '../dados/repositorios/historico_repositorio.dart';
+import '../dados/sincronizacao/servico_sincronizacao.dart';
 import '../grafo/grafo_conhecimento.dart';
 import 'modelo_esquecimento.dart';
 import 'modelo_proficiencia.dart';
@@ -76,14 +79,20 @@ class ServicoAprendizado {
   final ModeloEsquecimento _esquecimento;
   final ModeloProficiencia _proficiencia;
 
+  /// Sem eles (nos testes de fila), toda questão conta como disponível.
+  final Conectividade? _conectividade;
+  final CacheImagens? _cacheImagens;
+
   ServicoAprendizado(
     this._conteudo,
     this._grafo,
     this._historico,
     this._aprendizado,
     this._esquecimento,
-    this._proficiencia,
-  );
+    this._proficiencia, [
+    this._conectividade,
+    this._cacheImagens,
+  ]);
 
   /// Retenção de cada assunto estudado daqui a [folga] dias, já com o
   /// esquecimento propagado pelo grafo.
@@ -262,13 +271,41 @@ class ServicoAprendizado {
   Future<List<Questao>> montarFila(Usuario usuario, {int? idMateria}) async {
     final panorama = await recalcular(usuario);
     final conteudo = await _conteudo.carregar();
-    return MontadorFila(
+    final online = await _conectividade?.online() ?? true;
+    final fila = MontadorFila(
       conteudo: conteudo,
       grafo: await _montarGrafo(conteudo),
       retencoes: panorama.retencoes,
       proficiencias: await _aprendizado.proficiencias(usuario.id),
       historico: await _historico.listar(usuario.id),
+      indisponiveis: online ? const {} : await _semImagem(conteudo),
     ).montar(idMateria: idMateria, idCausaRaiz: panorama.lacuna?.idRaiz);
+    if (online) unawaited(_preCarregarImagens(fila));
+    return fila;
+  }
+
+  /// Questões com alguma imagem fora do cache.
+  Future<Set<int>> _semImagem(Conteudo conteudo) async {
+    final cache = _cacheImagens;
+    if (cache == null) return const {};
+    final ids = <int>{};
+    for (final q in conteudo.questoes) {
+      for (final url in q.imagensRemotas) {
+        if (!await cache.temNoCache(url)) {
+          ids.add(q.id);
+          break;
+        }
+      }
+    }
+    return ids;
+  }
+
+  Future<void> _preCarregarImagens(List<Questao> fila) async {
+    final cache = _cacheImagens;
+    if (cache == null) return;
+    for (final url in fila.expand((q) => q.imagensRemotas)) {
+      await cache.preCarregar(url);
+    }
   }
 
   /// Usado nos testes: troca o progresso do usuário pelo histórico do
@@ -348,6 +385,8 @@ final servicoAprendizadoProvider = FutureProvider<ServicoAprendizado>((
     ref.watch(aprendizadoRepositorioProvider),
     esquecimento,
     proficiencia,
+    ref.watch(conectividadeProvider),
+    ref.watch(cacheImagensProvider),
   );
 });
 

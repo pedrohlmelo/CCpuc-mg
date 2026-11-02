@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/sincronizacao/servico_sincronizacao.dart';
 import '../../tema/app_tema.dart';
 import '../../tema/tema_controller.dart';
@@ -21,6 +22,8 @@ class PerfilScreen extends ConsumerWidget {
     final usuario = ref.watch(usuarioProvider);
     final entrou = ref.watch(entrouProvider);
     final status = ref.watch(statusSincronizacaoProvider).valueOrNull;
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final versaoBanco = ref.watch(versaoBancoProvider).valueOrNull;
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -82,6 +85,15 @@ class PerfilScreen extends ConsumerWidget {
                   style: texto.bodySmall,
                 ),
               ],
+            ),
+          ],
+          if (conteudo != null && versaoBanco != null) ...[
+            const SizedBox(height: 8),
+            Text(
+              'Banco de questões: ${conteudo.questoes.length} questões no '
+              'aparelho (versão $versaoBanco)',
+              key: const Key('banco_questoes'),
+              style: texto.bodySmall,
             ),
           ],
           const SizedBox(height: 24),

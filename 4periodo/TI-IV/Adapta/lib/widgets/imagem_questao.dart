@@ -1,17 +1,23 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 /// Imagem de um enunciado ou de uma alternativa. Tocar abre em tela cheia com
-/// zoom. Se a imagem falhar, mostra a descrição no lugar.
+/// zoom. Se a imagem falhar, ou se não estiver no cache e não houver internet,
+/// mostra a descrição num quadro.
 ///
-/// [url] começa com `asset:` nas figuras embutidas; link de rede e
-/// [caminhoLocal] (arquivo baixado) entram com o conteúdo vindo da nuvem.
+/// [url] começa com `asset:` nas figuras embutidas; link de rede vem das
+/// questões do Firestore e fica no cache depois de carregado.
 class ImagemQuestao extends StatelessWidget {
   final String? url;
   final String? caminhoLocal;
   final String? descricao;
   final double alturaMaxima;
+
+  /// Nos testes, um cache sem disco e sem rede.
+  final BaseCacheManager? cache;
 
   const ImagemQuestao({
     super.key,
@@ -19,14 +25,22 @@ class ImagemQuestao extends StatelessWidget {
     this.caminhoLocal,
     this.descricao,
     this.alturaMaxima = 220,
+    this.cache,
   });
 
   Widget _imagem(BuildContext context, BoxFit ajuste) {
+    Widget quadro() => Container(
+      key: const Key('imagem_indisponivel'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(descricao ?? 'Imagem indisponível'),
+    );
     Widget falha(BuildContext context, Object erro, StackTrace? pilha) =>
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: Text(descricao ?? 'Imagem indisponível'),
-        );
+        quadro();
 
     final local = caminhoLocal;
     final origem = url ?? '';
@@ -46,11 +60,15 @@ class ImagemQuestao extends StatelessWidget {
         errorBuilder: falha,
       );
     }
-    return Image.network(
-      origem,
+    return CachedNetworkImage(
+      imageUrl: origem,
+      cacheManager: cache,
       fit: ajuste,
-      semanticLabel: descricao,
-      errorBuilder: falha,
+      placeholder: (_, _) => const Padding(
+        padding: EdgeInsets.all(24),
+        child: Center(child: CircularProgressIndicator()),
+      ),
+      errorWidget: (_, _, _) => quadro(),
     );
   }
 

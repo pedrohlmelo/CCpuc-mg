@@ -207,6 +207,7 @@ class BancoLocal {
     final pacote = lerPacoteInicial();
     await aplicarConteudo(banco, pacote);
     await preferencias.marcarSeedConcluido(pacote.versao);
+    await preferencias.reiniciarDownloadConteudo();
   }
 
   Future<void> fechar() async {

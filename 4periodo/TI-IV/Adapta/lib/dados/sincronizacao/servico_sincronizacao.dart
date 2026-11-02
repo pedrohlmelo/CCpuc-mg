@@ -6,13 +6,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../banco/banco_local.dart';
+import '../banco/pacote_conteudo.dart';
 import '../estado_app.dart';
 import '../firebase.dart';
 import '../modelos.dart';
 import '../preferencias.dart';
+import '../repositorios/conteudo_repositorio.dart';
+import '../repositorios/grafo_repositorio.dart';
 
 /// Tamanho de cada lote: o Firestore aceita até 500 escritas por `WriteBatch`.
 const _tamanhoLote = 400;
+
+/// Questões por página no download do conteúdo.
+const tamanhoPaginaConteudo = 300;
 
 /// Sem rede, o `commit` fica esperando para sempre; a linha continua pendente
 /// e sobe na próxima tentativa.
@@ -37,6 +43,8 @@ Future<void> repetirAteConseguir(
     if (await tentar()) return;
   }
 }
+
+enum ResultadoConteudo { atualizado, igual, falhou }
 
 /// Rede do aparelho. Separada do serviço para os testes simularem o modo avião.
 abstract class Conectividade {
@@ -64,8 +72,9 @@ class ConectividadePlus implements Conectividade {
       Connectivity().onConnectivityChanged.map(_conectado);
 }
 
-/// Copia o progresso do SQLite para `usuarios/{uid}/...`. O SQLite continua
-/// sendo a fonte de verdade: nenhuma falha aqui atrapalha o estudo.
+/// Copia o progresso do SQLite para `usuarios/{uid}/...` e traz o conteúdo do
+/// Firestore para o SQLite, que continua sendo a fonte de verdade: nenhuma
+/// falha aqui atrapalha o estudo.
 class ServicoSincronizacao {
   final BancoLocal _banco;
   final FirebaseFirestore? _firestore;
@@ -81,6 +90,73 @@ class ServicoSincronizacao {
 
   bool _rodando = false;
   bool _repetir = false;
+  Future<ResultadoConteudo>? _baixando;
+
+  /// Traz matérias e questões quando a versão do Firestore mudou. Quem pedir
+  /// durante um download recebe o resultado dele.
+  Future<ResultadoConteudo> baixarConteudo() =>
+      _baixando ??= _baixarConteudo().whenComplete(() => _baixando = null);
+
+  Future<ResultadoConteudo> _baixarConteudo() async {
+    final firestore = _firestore;
+    if (firestore == null) return ResultadoConteudo.igual;
+    try {
+      if (!await _conectividade.online()) return ResultadoConteudo.falhou;
+      final meta =
+          (await firestore
+                  .collection('meta')
+                  .doc('conteudo')
+                  .get()
+                  .timeout(_esperaEnvio))
+              .data();
+      if (meta == null) return ResultadoConteudo.igual;
+      final versao = meta['versao'] as int;
+      if (versao == await _preferencias.lerVersaoBanco()) {
+        return ResultadoConteudo.igual;
+      }
+
+      final db = await _banco.db;
+      final materias = await firestore
+          .collection('materias')
+          .get()
+          .timeout(_esperaEnvio);
+      await aplicarConteudo(
+        db,
+        PacoteConteudo.deDocumentos(meta, [
+          for (final d in materias.docs) d.data(),
+        ], const []),
+      );
+
+      // Cada página fica gravada: se a rede cair, a próxima tentativa segue
+      // da última questão aplicada.
+      while (true) {
+        final cursor = await _preferencias.lerUltimaSincronizacaoConteudo();
+        var consulta = firestore
+            .collection('questoes')
+            .orderBy('atualizado_em');
+        if (cursor != null) consulta = consulta.startAfter([cursor]);
+        final pagina = await consulta
+            .limit(tamanhoPaginaConteudo)
+            .get()
+            .timeout(_esperaEnvio);
+        if (pagina.docs.isEmpty) break;
+
+        final questoes = [for (final d in pagina.docs) d.data()];
+        await aplicarConteudo(
+          db,
+          PacoteConteudo.deDocumentos({'versao': versao}, const [], questoes),
+        );
+        await _preferencias.gravarUltimaSincronizacaoConteudo(
+          questoes.last['atualizado_em'] as String,
+        );
+        if (pagina.docs.length < tamanhoPaginaConteudo) break;
+      }
+      await _preferencias.gravarVersaoBanco(versao);
+      return ResultadoConteudo.atualizado;
+    } catch (_) {
+      return ResultadoConteudo.falhou;
+    }
+  }
 
   /// Sobe os pendentes do usuário. Devolve `true` se terminou tudo. Pedido
   /// feito durante um envio roda em seguida, para pegar o que entrou depois.
@@ -357,22 +433,49 @@ final statusSincronizacaoProvider = FutureProvider<StatusSincronizacao>((
   );
 });
 
-/// Vincula o visitante, se preciso, e sobe os pendentes do usuário atual.
-Future<bool> sincronizarAgora(Ref ref) async {
+/// Versão do banco de questões no aparelho, para o Perfil.
+final versaoBancoProvider = FutureProvider<int>((ref) async {
+  ref.watch(conteudoProvider);
+  final preferencias = ref.watch(preferenciasProvider);
+  return await preferencias.lerVersaoBanco() ??
+      await preferencias.lerVersaoConteudo() ??
+      0;
+});
+
+/// Baixa o conteúdo e faz as telas relerem o banco, se ele mudou.
+Future<ResultadoConteudo> atualizarConteudo(Ref ref) async {
+  final resultado = await ref
+      .read(servicoSincronizacaoProvider)
+      .baixarConteudo();
+  if (resultado == ResultadoConteudo.atualizado) {
+    ref.invalidate(conteudoProvider);
+    ref.invalidate(dependenciasProvider);
+    ref.invalidate(grafoProvider);
+  }
+  return resultado;
+}
+
+/// Vincula o visitante, se preciso, traz o conteúdo novo e sobe os pendentes
+/// do usuário atual. O conteúdo vem antes porque precisa do login, e [baixar]
+/// fica falso a cada resposta, para não gastar uma leitura do Firestore.
+Future<bool> sincronizarAgora(Ref ref, {bool baixar = true}) async {
   await ref.read(sessaoProvider.notifier).vincularVisitante();
+  final conteudo = baixar
+      ? await atualizarConteudo(ref)
+      : ResultadoConteudo.igual;
   final usuario = ref.read(usuarioProvider);
   if (usuario == null) return false;
   final terminou = await ref
       .read(servicoSincronizacaoProvider)
       .sincronizar(usuario);
   ref.read(versaoSincronizacaoProvider.notifier).state++;
-  return terminou;
+  return terminou && conteudo != ResultadoConteudo.falhou;
 }
 
 /// Para as telas pedirem uma sincronização depois de cada resposta.
 final acaoSincronizarProvider = Provider<Future<void> Function()>(
   (ref) =>
-      () => sincronizarAgora(ref),
+      () => sincronizarAgora(ref, baixar: false),
 );
 
 /// Mantém a sincronização rodando: ao abrir o app, ao trocar de usuário e

@@ -11,6 +11,12 @@ class Preferencias {
   static const seedConcluido = 'seed_concluido';
   static const versaoConteudo = 'versao_conteudo';
   static const ultimaSincronizacao = 'ultima_sincronizacao';
+
+  /// Versão do Firestore já baixada por inteiro. É separada de
+  /// [versaoConteudo], a do pacote inicial: ele sai com a mesma versão do
+  /// Firestore, e o aparelho que só tem o pacote ainda precisa baixar o banco.
+  static const versaoBanco = 'versao_banco';
+  static const ultimaSincronizacaoConteudo = 'ultima_sincronizacao_conteudo';
   static const dataUltimaSessao = 'data_ultima_sessao';
 
   const Preferencias();
@@ -49,6 +55,24 @@ class Preferencias {
   Future<void> marcarSeedConcluido(int versao) => _gravar((p) async {
     await p.setBool(seedConcluido, true);
     await p.setInt(versaoConteudo, versao);
+  });
+
+  Future<int?> lerVersaoBanco() => _ler((p) => p.getInt(versaoBanco));
+
+  Future<void> gravarVersaoBanco(int versao) =>
+      _gravar((p) => p.setInt(versaoBanco, versao));
+
+  /// `atualizado_em` da última questão aplicada, de onde o download continua.
+  Future<String?> lerUltimaSincronizacaoConteudo() =>
+      _ler((p) => p.getString(ultimaSincronizacaoConteudo));
+
+  Future<void> gravarUltimaSincronizacaoConteudo(String atualizadoEm) =>
+      _gravar((p) => p.setString(ultimaSincronizacaoConteudo, atualizadoEm));
+
+  /// O pacote inicial acabou de sobrescrever o banco: baixa tudo de novo.
+  Future<void> reiniciarDownloadConteudo() => _gravar((p) async {
+    await p.remove(versaoBanco);
+    await p.remove(ultimaSincronizacaoConteudo);
   });
 
   Future<DateTime?> lerUltimaSincronizacao() async {

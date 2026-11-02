@@ -47,6 +47,8 @@ class SessaoController extends AsyncNotifier<Usuario> {
         .read(usuarioRepositorioProvider)
         .entrar(email, senha);
     if (resultado.novo) {
+      // O histórico da conta aponta para questões que o aparelho pode não ter.
+      await atualizarConteudo(ref);
       await ref
           .read(servicoSincronizacaoProvider)
           .baixarProgresso(resultado.usuario);

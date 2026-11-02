@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/banco/historicos_demo.dart';
+import 'package:adapta/dados/banco/pacote_conteudo.dart';
+import 'package:adapta/dados/cache_imagens.dart';
 import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/dados/repositorios/aprendizado_repositorio.dart';
 import 'package:adapta/dados/repositorios/conteudo_repositorio.dart';
@@ -18,6 +20,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../apoio/app_teste.dart';
+
+class CacheFalso implements CacheImagens {
+  final Set<String> guardadas;
+  final carregadas = <String>[];
+  CacheFalso(this.guardadas);
+
+  @override
+  Future<bool> temNoCache(String url) async => guardadas.contains(url);
+
+  @override
+  Future<void> preCarregar(String url) async => carregadas.add(url);
+}
 
 Map<String, dynamic> lerJson(String caminho) =>
     jsonDecode(File(caminho).readAsStringSync()) as Map<String, dynamic>;
@@ -48,6 +62,85 @@ void main() {
   });
 
   tearDown(() => banco.fechar());
+
+  group('imagens por URL na fila', () {
+    const emCache = 'https://enem.dev/em-cache.png';
+    const foraDoCache = 'https://enem.dev/fora-do-cache.png';
+
+    Questao comImagem(int id, String url) => Questao(
+      id: id,
+      idAssunto: 1,
+      enunciado: 'e',
+      explicacao: 'x',
+      dificuldade: 2,
+      imagemUrl: url,
+      alternativas: const [Alternativa(letra: 'A', texto: 't', correta: true)],
+    );
+
+    Future<void> gravarQuestoes() async => aplicarConteudo(
+      await banco.db,
+      PacoteConteudo(
+        versao: 9,
+        materias: const [],
+        assuntos: const [],
+        dependencias: const [],
+        questoes: [
+          comImagem(9000001, emCache),
+          comImagem(9000002, foraDoCache),
+        ],
+      ),
+    );
+
+    ServicoAprendizado comRede(bool online, CacheFalso cache) =>
+        ServicoAprendizado(
+          ConteudoRepositorio(banco),
+          GrafoRepositorio(banco),
+          HistoricoRepositorio(banco),
+          AprendizadoRepositorio(banco),
+          ModeloEsquecimento.deJson(
+            lerJson('assets/modelos/esquecimento.json'),
+          ),
+          proficiencia,
+          ConectividadeFalsa(conectado: online),
+          cache,
+        );
+
+    Future<void> responderTudo() async {
+      final conteudo = await ConteudoRepositorio(banco).carregar();
+      final historico = HistoricoRepositorio(banco);
+      for (final q in conteudo.questoesDaMateria(1)) {
+        if (q.imagensRemotas.isNotEmpty) continue;
+        await historico.registrar(
+          idUsuario: usuario.id,
+          idQuestao: q.id,
+          letra: 'A',
+          acertou: true,
+          tempoGasto: 1,
+        );
+      }
+    }
+
+    test('offline, evita a questão com imagem fora do cache', () async {
+      await gravarQuestoes();
+      await responderTudo();
+      final fila = await comRede(
+        false,
+        CacheFalso({emCache}),
+      ).montarFila(usuario, idMateria: 1);
+      expect(fila.map((q) => q.id), contains(9000001));
+      expect(fila.map((q) => q.id), isNot(contains(9000002)));
+    });
+
+    test('online, usa todas e pré-carrega as imagens da fila', () async {
+      await gravarQuestoes();
+      await responderTudo();
+      final cache = CacheFalso({});
+      final fila = await comRede(true, cache).montarFila(usuario, idMateria: 1);
+      expect(fila.map((q) => q.id), containsAll([9000001, 9000002]));
+      await pumpEventQueue();
+      expect(cache.carregadas, containsAll([emCache, foraDoCache]));
+    });
+  });
 
   group('modelos', () {
     final modelo = ModeloEsquecimento.deJson(

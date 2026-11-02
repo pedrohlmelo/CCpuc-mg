@@ -125,6 +125,12 @@ class Questao {
   /// A tela avisa quando a explicação ainda não passou pelo grupo.
   bool get explicacaoNaoRevisada => explicacaoGerada && !revisado;
 
+  /// Imagens que dependem de internet; as `asset:` vão dentro do app.
+  Iterable<String> get imagensRemotas => [
+    imagemUrl,
+    ...alternativas.map((a) => a.imagemUrl),
+  ].nonNulls.where((url) => url.startsWith('http'));
+
   Alternativa get gabarito => alternativas.firstWhere((a) => a.correta);
 }
 

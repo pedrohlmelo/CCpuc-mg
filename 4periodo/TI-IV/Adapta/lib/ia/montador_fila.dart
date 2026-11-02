@@ -17,12 +17,16 @@ class MontadorFila {
   /// Da mais recente para a mais antiga.
   final List<Resposta> historico;
 
+  /// Questões que não dá para mostrar agora: offline, sem a imagem no cache.
+  final Set<int> indisponiveis;
+
   const MontadorFila({
     required this.conteudo,
     required this.grafo,
     required this.retencoes,
     required this.proficiencias,
     required this.historico,
+    this.indisponiveis = const {},
   });
 
   double _dificuldade(Questao q) =>
@@ -57,7 +61,10 @@ class MontadorFila {
     final respondidas = historico.map((r) => r.idQuestao).toSet();
     final alvo = _alvo;
 
-    final noEscopo = conteudo.questoesDaMateria(idMateria);
+    final noEscopo = conteudo
+        .questoesDaMateria(idMateria)
+        .where((q) => !indisponiveis.contains(q.id))
+        .toList();
     final posicao = {
       for (final (i, id) in grafo.ordemTopologica().indexed) id: i,
     };
