@@ -179,3 +179,21 @@ Rodar: `flutter test`.
 - Matéria do MVP e curadoria do grafo (os dados de exemplo usam Matemática e História).
 - Telas do mapa de conhecimento e da trilha até um objetivo.
 - Como o app fará a integração: cliente HTTP, tratamento de erro e modo offline (RNF04).
+
+---
+
+## 9. Atualização da Sprint 3: conteúdo no Firestore
+
+As seções acima descrevem o protótipo de telas. Na Sprint 3 não há backend próprio, e o
+conteúdo passou para o Firestore, conforme
+[`Documentacao/03-sprint3-armazenamento-ia-grafos.md`](../Documentacao/03-sprint3-armazenamento-ia-grafos.md).
+
+- 14 matérias nas 4 áreas do ENEM, 78 assuntos e 95 arestas, 21 delas entre matérias.
+- 9 tabelas no SQLite, na versão 3, com as colunas `Materia.area`, `Questao.fonte`,
+  `Questao.explicacao_gerada`, `Questao.revisado` e `Questao.ativo`.
+- Ids fixos: assuntos 1–16 e questões 1–44 nunca mudam. Assuntos novos são
+  `id_materia * 100 + n`; questões do ENEM, `ano * 1000 + índice`, com 500 a mais em Espanhol;
+  autorais novas, `id_assunto * 10 + n`.
+- Pacote inicial gerado do Firestore, para o primeiro acesso funcionar sem internet.
+- Imagens por URL, com cache no aparelho.
+- A dificuldade `b` da IA é um campo do documento da questão.

@@ -6,22 +6,45 @@
 Telas ── Riverpod ── Repositórios ── SQLite (fonte de verdade)
                          │
     ServicoAprendizado ──┤           ServicoSincronizacao ── Firestore
-    (modelos e grafo)    │           (cópia, quando há internet)
+    (modelos e grafo)    │           (baixa o conteúdo, sobe o progresso)
                   Shared Preferences (configurações)
 ```
 
 As telas só leem e gravam pelo SQLite, e o app funciona offline. O Firebase cuida
-da conta e guarda uma cópia do progresso. Se ele não subir, o app abre só com o
+da conta, guarda o banco de questões e uma cópia do progresso. Se ele não subir, o app abre só com o
 SQLite. A IA e o grafo rodam no aparelho, em Dart; não há backend próprio.
 
-## SQLite (`adapta.db`, versão 1)
+## Conteúdo
+
+As questões vêm de provas reais do ENEM (INEP), obtidas pela API pública
+[enem.dev](https://enem.dev). Por enquanto, 2022 e 2023. A API traz só a área, então
+matéria, assunto e explicação foram classificados depois. Explicação gerada mostra um
+aviso na tela enquanto `revisado` for falso.
+
+O Firestore é a única fonte. Caminho: API → `ferramentas/conteudo/` → Firestore →
+pacote inicial → SQLite. O app nunca chama a API.
+
+- **Um documento por questão:** dá para baixar só o que mudou, e a conta de leituras
+  acompanha o que cada aparelho realmente precisa.
+- **Pacote inicial:** `lib/dados/banco/pacote_inicial.g.dart`, gerado do Firestore, traz
+  toda a estrutura e ~100 questões sem imagem de internet. Assim, o primeiro acesso
+  funciona em modo avião.
+- **Download:** ao abrir online e quando a rede volta, o app lê `meta/conteudo`. Com versão
+  nova, baixa `materias/*` e as questões por `atualizado_em`, em páginas de 300. Cada página
+  fica gravada, então uma queda continua de onde parou. `atualizado_em` é único por
+  documento, para o `startAfter` não pular ninguém.
+- **Imagens por URL:** ficam no enem.dev, sem Storage, com `cached_network_image`. Sem
+  cache e sem rede, a tela mostra a descrição, e a fila evita essas questões.
+- **`ativo: false`:** tira a questão do app sem apagar, e o histórico continua válido.
+
+## SQLite (`adapta.db`, versão 3)
 
 | Tabela | Conteúdo |
 |---|---|
 | `Usuario` | Linha local de cada pessoa. `uid_firebase` liga à conta; sem senha, que fica no Firebase Auth |
-| `Materia`, `Assunto` | Conteúdo. Cada assunto é um vértice do grafo |
+| `Materia`, `Assunto` | Conteúdo, com `area` na matéria. Cada assunto é um vértice do grafo |
 | `Grafo_Dependencia` | Arestas `pré-requisito → dependente` com peso; PK composta e índices nas duas pontas |
-| `Questao`, `Alternativa` | Questões, com imagem opcional e `dificuldade_calibrada` |
+| `Questao`, `Alternativa` | Questões, com imagem opcional, `dificuldade_calibrada`, `fonte`, `explicacao_gerada`, `revisado` e `ativo` |
 | `Historico_Estudo` | Cada resposta, com id uuid e `tempo_gasto` |
 | `Nivel_Memoria` | Retenção por usuário e assunto |
 | `Proficiencia` | θ por usuário e assunto |
@@ -29,13 +52,19 @@ SQLite. A IA e o grafo rodam no aparelho, em Dart; não há backend próprio.
 As três últimas têm `sincronizado` e `atualizado_em`: toda escrita de progresso
 grava `sincronizado = 0`.
 
-O seed roda uma vez: 14 assuntos de Matemática com 3 questões cada, os 2 de
-História e 3 questões com imagem. Se o aparelho tiver um `adapta.db` de build
+Migrações: a 2 acrescenta `area`, `fonte`, `explicacao_gerada` e `revisado`; a 3
+acrescenta `ativo`. `imagem_local` fica sem uso. O pacote inicial é aplicado na criação do
+banco e quando vier em versão maior que a salva. Se o aparelho tiver um `adapta.db` de build
 antigo, com outro schema, ele é renomeado para `adapta.db.antigo` e o banco é recriado.
 
 ## Firestore e regras
 
 ```
+meta/conteudo                      { versao, atualizado_em, total_questoes, dependencias_entre_materias }
+materias/{id}                      { id, nome, area, assuntos, dependencias }
+questoes/{id}                      { id, materia, assunto, dificuldade, dificuldade_irt, enunciado,
+                                     explicacao, imagem, imagem_descricao, fonte, explicacao_gerada,
+                                     revisado, ativo, confianca_classificacao, atualizado_em, alternativas }
 usuarios/{uid}                     { nome, email, tipo }
 usuarios/{uid}/historico/{id}
 usuarios/{uid}/memoria/{id_assunto}
@@ -44,7 +73,9 @@ usuarios/{uid}/proficiencia/{id_assunto}
 
 Pelas regras (`firestore.rules`), cada usuário lê e grava apenas o próprio documento
 e essas três subcoleções, conta nova nasce `aluno`, ninguém muda o próprio `tipo`
-e nada mais é acessível.
+e nada mais é acessível. `meta`, `materias` e `questoes` podem ser lidos por quem tem
+sessão, inclusive o visitante anônimo, e só o admin escreve. Os scripts usam a conta de
+serviço, que não passa pelas regras.
 
 Sincronização: ao abrir o app, ao trocar de usuário, ao fim de uma sessão e quando a
 internet volta, os pendentes sobem em `WriteBatch` de até 400 escritas. Em memória
@@ -60,7 +91,9 @@ mantém o uid e o progresso. Sair volta para um visitante novo.
 ## Shared Preferences (`lib/dados/preferencias.dart`)
 
 `tema_modo`, `id_materia_selecionada`, `seed_concluido`, `versao_conteudo`,
-`ultima_sincronizacao`, `data_ultima_sessao`.
+`ultima_sincronizacao`, `data_ultima_sessao`, `lingua_estrangeira`, `versao_banco`,
+`ultima_sincronizacao_conteudo`. `versao_banco` é separada de `versao_conteudo`: o pacote
+inicial sai com a mesma versão do Firestore, e o aparelho ainda precisa baixar o banco.
 
 ## Modelos de IA
 
@@ -74,15 +107,17 @@ suavização (acertos + 1) / (total + 2).
 
 | Modelo (teste com alunos não vistos) | AUC | Acurácia | Brier |
 |---|---:|---:|---:|
-| Regressão logística | 0,787 | 0,754 | 0,164 |
-| Fórmula fixa `exp(-dias / (1 + qtd_revisoes))` | 0,738 | 0,726 | 0,193 |
+| Regressão logística | 0,799 | 0,761 | 0,158 |
+| Fórmula fixa `exp(-dias / (1 + qtd_revisoes))` | 0,749 | 0,727 | 0,188 |
 
 A retenção é recalculada do histórico ao abrir a home e após cada resposta, e só é
 regravada se mudar ao menos 0,01, para não gerar pendências sem mudança real.
 
 **Proficiência:** Rasch, P(acerto) = sigmoide(θ − b). O `b` de cada questão vem de
-regressão logística com one-hot de aluno e questão, com correlação de 0,985 com o
-`b` da simulação. Após cada resposta, θ += 0,4·(acertou − p) e b −= 0,05·(acertou − p).
+regressão logística com one-hot de aluno e questão, com correlação de 0,817 com o
+`b` da simulação, sobre 410 questões. Ele fica em `questoes/{id}.dificuldade_irt` e chega
+ao aparelho com a questão, sem sobrescrever uma calibração local. Questão sem `b` usa
+`dificuldade - 2`. Após cada resposta, θ += 0,4·(acertou − p) e b −= 0,05·(acertou − p).
 
 **Fila (`MontadorFila`, RF03):** 10 questões, offline.
 
