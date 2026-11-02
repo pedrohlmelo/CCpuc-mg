@@ -25,11 +25,11 @@ class _Roteiro {
 const _roteiroAna = [
   _Roteiro(8, [28, 20, 8], 0.9),
   _Roteiro(9, [27, 18, 6], 0.85),
-  _Roteiro(16, [25, 14, 6, 2], 0.2),
+  _Roteiro(16, [25, 14, 9], 0.15),
   _Roteiro(706, [22, 10, 4], 0.8),
   _Roteiro(6, [20, 9, 3], 0.8),
   _Roteiro(1101, [19, 8, 3], 0.85),
-  _Roteiro(701, [15, 7, 1], 0.1),
+  _Roteiro(701, [15, 7, 3], 0.1),
 ];
 
 /// Bruno vai bem em tudo, mas não vê Funções há quase um mês.
