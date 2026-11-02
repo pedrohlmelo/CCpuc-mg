@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -153,7 +154,8 @@ class ServicoSincronizacao {
       }
       await _preferencias.gravarVersaoBanco(versao);
       return ResultadoConteudo.atualizado;
-    } catch (_) {
+    } catch (erro) {
+      debugPrint('Conteúdo não baixado: $erro');
       return ResultadoConteudo.falhou;
     }
   }
