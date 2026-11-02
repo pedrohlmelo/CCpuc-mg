@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../grafo/grafo_conhecimento.dart';
 import '../banco/banco_local.dart';
 import '../modelos.dart';
+import 'conteudo_repositorio.dart';
 
 class GrafoRepositorio {
   final BancoLocal _banco;
@@ -49,3 +51,13 @@ final grafoRepositorioProvider = Provider<GrafoRepositorio>(
 final dependenciasProvider = FutureProvider<List<Dependencia>>(
   (ref) => ref.watch(grafoRepositorioProvider).listar(),
 );
+
+/// Grafo completo, com todos os assuntos como vértices.
+final grafoProvider = FutureProvider<GrafoConhecimento>((ref) async {
+  final conteudo = await ref.watch(conteudoProvider.future);
+  final dependencias = await ref.watch(dependenciasProvider.future);
+  return GrafoConhecimento(
+    conteudo.assuntos.map((a) => a.id).toList(),
+    dependencias,
+  );
+});

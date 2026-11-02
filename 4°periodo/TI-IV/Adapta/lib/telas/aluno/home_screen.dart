@@ -168,25 +168,42 @@ class HomeScreen extends ConsumerWidget {
             ),
           ],
           const SizedBox(height: 24),
+          AppCartao(
+            key: const Key('atalho_mapa'),
+            padding: const EdgeInsets.all(16),
+            aoTocar: () => context.push('/mapa'),
+            child: Row(
+              children: [
+                const IconeCaixa(
+                  icone: Icons.account_tree_rounded,
+                  cor: AppCores.violeta,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Mapa de conhecimento', style: texto.titleSmall),
+                      Text(
+                        'Seu grafo de assuntos colorido pela memória.',
+                        style: texto.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right_rounded),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
           const TituloSecao('Em breve'),
           AppCartao(
             padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                const _LinhaFutura(
-                  icone: Icons.account_tree_rounded,
-                  cor: AppCores.violeta,
-                  titulo: 'Mapa de conhecimento',
-                  descricao: 'Seu grafo de assuntos colorido pela memória.',
-                ),
-                Divider(color: scheme.outline, height: 1, indent: 72),
-                const _LinhaFutura(
-                  icone: Icons.route_rounded,
-                  cor: AppCores.teal,
-                  titulo: 'Trilha até um objetivo',
-                  descricao: 'Caminho mais curto do que você sabe até a meta.',
-                ),
-              ],
+            child: const _LinhaFutura(
+              icone: Icons.route_rounded,
+              cor: AppCores.teal,
+              titulo: 'Trilha até um objetivo',
+              descricao: 'Caminho mais curto do que você sabe até a meta.',
             ),
           ),
         ],

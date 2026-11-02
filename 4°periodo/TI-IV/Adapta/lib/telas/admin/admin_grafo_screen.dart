@@ -4,22 +4,56 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../dados/modelos.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
+import '../../grafo/grafo_conhecimento.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/cartoes.dart';
 import 'admin_scaffold.dart';
 
 /// Dependências entre assuntos (RF11): `pré-requisito → dependente`, com a
-/// força da dependência. A validação do grafo (ciclos, DAG) é do backend.
+/// força da dependência. O grafo precisa continuar sendo um DAG.
 class AdminGrafoScreen extends ConsumerWidget {
   const AdminGrafoScreen({super.key});
 
-  Future<void> _nova(BuildContext context, List<Assunto> assuntos) async {
-    final aresta = await showDialog<bool>(
-      context: context,
-      builder: (_) => _DialogoAresta(assuntos: assuntos),
+  void _avisar(BuildContext context, String texto) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(texto), behavior: SnackBarBehavior.floating),
     );
-    if (aresta != true || !context.mounted) return;
-    avisarPrototipo(context, 'O cadastro de dependências');
+  }
+
+  /// Aresta que fecharia ciclo é recusada, mostrando o caminho que já existe.
+  Future<void> _nova(
+    BuildContext context,
+    WidgetRef ref,
+    Conteudo conteudo,
+    List<Dependencia> dependencias,
+  ) async {
+    final aresta = await showDialog<Dependencia>(
+      context: context,
+      builder: (_) => _DialogoAresta(assuntos: conteudo.assuntos),
+    );
+    if (aresta == null || !context.mounted) return;
+
+    final grafo = GrafoConhecimento(
+      conteudo.assuntos.map((a) => a.id).toList(),
+      dependencias,
+    );
+    final pre = aresta.prerequisito;
+    final dep = aresta.dependente;
+    if (grafo.criariaCiclo(pre, dep)) {
+      final caminho = [
+        ...grafo.caminho(dep, pre)!,
+        dep,
+      ].map(conteudo.nomeDoAssunto).join(' → ');
+      _avisar(context, 'Essa aresta fecharia um ciclo: $caminho');
+      return;
+    }
+    if (grafo.peso(pre, dep) != null) {
+      _avisar(context, 'Essa dependência já existe.');
+      return;
+    }
+    await ref.read(grafoRepositorioProvider).adicionar(aresta);
+    ref.invalidate(dependenciasProvider);
+    if (context.mounted) _avisar(context, 'Dependência salva.');
   }
 
   @override
@@ -34,7 +68,9 @@ class AdminGrafoScreen extends ConsumerWidget {
       titulo: 'Grafo de dependências',
       subtitulo: 'Pré-requisito → dependente',
       rotuloAdicionar: 'Nova aresta',
-      aoAdicionar: () => _nova(context, conteudo?.assuntos ?? const []),
+      aoAdicionar: conteudo == null
+          ? null
+          : () => _nova(context, ref, conteudo, dependencias),
       child: ListView.separated(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
         itemCount: conteudo == null ? 0 : dependencias.length,
@@ -124,7 +160,10 @@ class AdminGrafoScreen extends ConsumerWidget {
                       'A dependência',
                     );
                     if (!ok || !context.mounted) return;
-                    avisarPrototipo(context, 'A exclusão de dependências');
+                    await ref
+                        .read(grafoRepositorioProvider)
+                        .remover(d.prerequisito, d.dependente);
+                    ref.invalidate(dependenciasProvider);
                   },
                 ),
               ],
@@ -136,7 +175,7 @@ class AdminGrafoScreen extends ConsumerWidget {
   }
 }
 
-/// Formulário de nova aresta. Devolve `true` ao confirmar; nada é gravado.
+/// Formulário de nova aresta. Devolve a aresta ao confirmar.
 class _DialogoAresta extends StatefulWidget {
   final List<Assunto> assuntos;
   const _DialogoAresta({required this.assuntos});
@@ -213,7 +252,14 @@ class _DialogoArestaState extends State<_DialogoAresta> {
           style: FilledButton.styleFrom(minimumSize: const Size(120, 44)),
           onPressed: (_pre == null || _dep == null)
               ? null
-              : () => Navigator.pop(context, true),
+              : () => Navigator.pop(
+                  context,
+                  Dependencia(
+                    prerequisito: _pre!.id,
+                    dependente: _dep!.id,
+                    peso: _peso,
+                  ),
+                ),
           child: const Text('Salvar'),
         ),
       ],

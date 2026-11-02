@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'modelos.dart';
 import 'preferencias.dart';
+import 'repositorios/aprendizado_repositorio.dart';
 import 'repositorios/conteudo_repositorio.dart';
 import 'repositorios/historico_repositorio.dart';
 import 'repositorios/usuario_repositorio.dart';
@@ -105,6 +106,17 @@ final entrouProvider = Provider<bool>(
 final ehAdminProvider = Provider<bool>(
   (ref) => ref.watch(usuarioProvider)?.isAdmin ?? false,
 );
+
+/// Retenção por assunto do usuário atual. Assunto fora do mapa não foi
+/// estudado.
+final retencoesProvider = FutureProvider<Map<int, double>>((ref) async {
+  final usuario = ref.watch(usuarioProvider);
+  if (usuario == null) return const {};
+  final memorias = await ref
+      .watch(aprendizadoRepositorioProvider)
+      .memorias(usuario.id);
+  return {for (final m in memorias) m.idAssunto: m.retencao};
+});
 
 /// Questões respondidas pelo usuário atual, da mais recente para a mais
 /// antiga.

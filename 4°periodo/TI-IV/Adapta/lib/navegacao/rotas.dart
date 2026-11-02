@@ -12,6 +12,7 @@ import '../telas/admin/admin_questoes_screen.dart';
 import '../telas/aluno/historico_detalhe_screen.dart';
 import '../telas/aluno/historico_screen.dart';
 import '../telas/aluno/home_screen.dart';
+import '../telas/aluno/mapa_screen.dart';
 import '../telas/aluno/materias_screen.dart';
 import '../telas/aluno/perfil_screen.dart';
 import '../telas/aluno/sessao_screen.dart';
@@ -37,6 +38,8 @@ import 'casca_aluno.dart';
 /// | `/materias`           | escolha de matéria          |
 /// | `/sessao`             | questão sendo feita         |
 /// | `/sessao?questao=:id` | refazer uma questão         |
+/// | `/sessao?assunto=:id` | sessão só daquele assunto   |
+/// | `/mapa`               | mapa de conhecimento        |
 /// | `/login`, `/cadastro` | entrar e criar conta        |
 /// | `/admin/...`          | painel administrativo       |
 final routerProvider = Provider<GoRouter>((ref) {
@@ -96,10 +99,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(path: '/materias', builder: (_, _) => const MateriasScreen()),
+      GoRoute(path: '/mapa', builder: (_, _) => const MapaScreen()),
       GoRoute(
         path: '/sessao',
         builder: (_, estado) => SessaoScreen(
           idQuestao: int.tryParse(estado.uri.queryParameters['questao'] ?? ''),
+          idAssunto: int.tryParse(estado.uri.queryParameters['assunto'] ?? ''),
         ),
       ),
       GoRoute(

@@ -18,7 +18,10 @@ import '../../widgets/questao_widget.dart';
 /// histórico.
 class SessaoScreen extends ConsumerStatefulWidget {
   final int? idQuestao;
-  const SessaoScreen({this.idQuestao, super.key});
+
+  /// Com valor, a sessão fica só neste assunto (vem do mapa).
+  final int? idAssunto;
+  const SessaoScreen({this.idQuestao, this.idAssunto, super.key});
 
   @override
   ConsumerState<SessaoScreen> createState() => _SessaoScreenState();
@@ -42,8 +45,11 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
         : conteudo.questaoPorId(widget.idQuestao!);
     if (!mounted) return;
     setState(() {
+      final assunto = widget.idAssunto;
       _fila = unica != null
           ? [unica]
+          : assunto != null
+          ? conteudo.questoes.where((q) => q.idAssunto == assunto).toList()
           : conteudo.questoesDaMateria(ref.read(idMateriaSelecionadaProvider));
     });
     _cronometro.start();

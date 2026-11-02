@@ -1,6 +1,8 @@
 import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/firebase.dart';
+import 'package:adapta/dados/repositorios/grafo_repositorio.dart';
 import 'package:adapta/navegacao/rotas.dart';
+import 'package:adapta/telas/aluno/mapa_screen.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
@@ -298,6 +300,36 @@ void main() {
       expect(find.text('História'), findsOneWidget);
     });
 
+    testWidgets('mapa: abre, mostra o vértice e estuda o assunto', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.aluno);
+
+      await tocar(tester, find.byKey(const Key('atalho_mapa')));
+      expect(tela('mapa'), findsOneWidget);
+
+      final canvas = find.byKey(const Key('mapa_canvas'));
+      final contexto = tester.element(canvas);
+      final container = ProviderScope.containerOf(contexto);
+      final grafo = await tester.runAsync(
+        () => container.read(grafoProvider.future),
+      );
+      final area = LayoutMapa.de(grafo!).vertices[8]!;
+      await tester.tapAt(tester.getTopLeft(canvas) + area.center);
+      await assentar(tester);
+
+      expect(find.byKey(const Key('detalhe_vertice')), findsOneWidget);
+      expect(find.textContaining('Operações básicas'), findsWidgets);
+
+      await tocar(tester, find.byKey(const Key('botao_estudar_assunto')));
+      expect(tela('sessao'), findsOneWidget);
+      expect(find.textContaining('24 latas'), findsOneWidget);
+
+      await tocar(tester, find.byKey(const Key('botao_voltar')));
+      await tocar(tester, find.byKey(const Key('botao_voltar')));
+      expect(tela('mapa'), findsNothing);
+    });
+
     testWidgets('o aluno não vê o painel administrativo no perfil', (
       tester,
     ) async {
@@ -347,6 +379,36 @@ void main() {
   });
 
   group('com administrador na sessão', () {
+    testWidgets('aresta que fecharia ciclo é recusada e não é gravada', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.admin);
+      final contexto = tester.element(find.byType(MaterialApp));
+      final container = ProviderScope.containerOf(contexto);
+      container.read(routerProvider).go('/admin/grafo');
+      await assentar(tester);
+      await assentar(tester);
+
+      // Logaritmo → Potenciação: Potenciação já é pré-requisito de Logaritmo.
+      await tocar(tester, find.text('Nova aresta'));
+      await tester.tap(find.widgetWithText(InputDecorator, 'Pré-requisito'));
+      await assentar(tester);
+      await tester.tap(find.text('Logaritmo').last);
+      await assentar(tester);
+      await tester.tap(find.widgetWithText(InputDecorator, 'Dependente'));
+      await assentar(tester);
+      await tester.tap(find.text('Potenciação').last);
+      await assentar(tester);
+      await tester.tap(find.text('Salvar'));
+      await assentar(tester);
+
+      expect(find.textContaining('fecharia um ciclo'), findsOneWidget);
+      final arestas = await tester.runAsync(
+        () => container.read(grafoRepositorioProvider).listar(),
+      );
+      expect(arestas!.any((d) => d.prerequisito == 5), isFalse);
+    });
+
     testWidgets('o painel aparece no perfil e abre', (tester) async {
       await abrir(tester, Quem.admin);
 

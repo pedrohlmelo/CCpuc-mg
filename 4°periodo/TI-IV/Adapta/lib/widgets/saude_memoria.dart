@@ -21,7 +21,8 @@ String rotuloDaMemoria(EstadoMemoria estado) => switch (estado) {
 
 /// Legenda das cores usada embaixo das barras de saúde.
 class LegendaMemoria extends StatelessWidget {
-  const LegendaMemoria({super.key});
+  final bool comNaoEstudado;
+  const LegendaMemoria({this.comNaoEstudado = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,7 @@ class LegendaMemoria extends StatelessWidget {
         item(EstadoMemoria.consolidado),
         item(EstadoMemoria.emRisco),
         item(EstadoMemoria.critico),
+        if (comNaoEstudado) item(EstadoMemoria.naoEstudado),
       ],
     );
   }
