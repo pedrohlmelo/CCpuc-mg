@@ -71,7 +71,11 @@ class ConteudoRepositorio {
     return Conteudo(
       materias: [
         for (final m in materias)
-          Materia(id: m['id'] as int, nome: m['nome'] as String),
+          Materia(
+            id: m['id'] as int,
+            nome: m['nome'] as String,
+            area: m['area'] as String,
+          ),
       ],
       assuntos: [
         for (final a in assuntos)
@@ -94,6 +98,9 @@ class ConteudoRepositorio {
             imagemUrl: q['imagem_url'] as String?,
             imagemLocal: q['imagem_local'] as String?,
             imagemDescricao: q['imagem_descricao'] as String?,
+            fonte: q['fonte'] as String?,
+            explicacaoGerada: q['explicacao_gerada'] == 1,
+            revisado: q['revisado'] == 1,
             alternativas: porQuestao[q['id'] as int] ?? const [],
           ),
       ],

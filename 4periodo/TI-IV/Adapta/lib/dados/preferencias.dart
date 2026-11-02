@@ -44,8 +44,7 @@ class Preferencias {
         : p.setInt(idMateriaSelecionada, id),
   );
 
-  Future<bool> lerSeedConcluido() async =>
-      await _ler((p) => p.getBool(seedConcluido)) ?? false;
+  Future<int?> lerVersaoConteudo() => _ler((p) => p.getInt(versaoConteudo));
 
   Future<void> marcarSeedConcluido(int versao) => _gravar((p) async {
     await p.setBool(seedConcluido, true);

@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../preferencias.dart';
+import 'pacote_conteudo.dart';
 import 'seed.dart';
 
 const _tabelas = [
@@ -20,7 +22,8 @@ CREATE TABLE Usuario (
   '''
 CREATE TABLE Materia (
   id INTEGER PRIMARY KEY,
-  nome TEXT NOT NULL
+  nome TEXT NOT NULL,
+  area TEXT NOT NULL DEFAULT 'matematica'
 )''',
   '''
 CREATE TABLE Assunto (
@@ -46,7 +49,10 @@ CREATE TABLE Questao (
   dificuldade_calibrada REAL,
   imagem_url TEXT,
   imagem_local TEXT,
-  imagem_descricao TEXT
+  imagem_descricao TEXT,
+  fonte TEXT,
+  explicacao_gerada INTEGER NOT NULL DEFAULT 0,
+  revisado INTEGER NOT NULL DEFAULT 0
 )''',
   '''
 CREATE TABLE Alternativa (
@@ -95,23 +101,41 @@ CREATE TABLE Proficiencia (
 )''',
   'CREATE INDEX idx_grafo_prerequisito ON Grafo_Dependencia(id_prerequisito)',
   'CREATE INDEX idx_grafo_dependente ON Grafo_Dependencia(id_dependente)',
+  _indiceAlternativa,
+];
+
+const _indiceAlternativa =
+    'CREATE UNIQUE INDEX idx_alternativa_letra '
+    'ON Alternativa(id_questao, letra)';
+
+const _migracaoV2 = [
+  "ALTER TABLE Materia ADD COLUMN area TEXT NOT NULL DEFAULT 'matematica'",
+  'ALTER TABLE Questao ADD COLUMN fonte TEXT',
+  'ALTER TABLE Questao ADD COLUMN explicacao_gerada '
+      'INTEGER NOT NULL DEFAULT 0',
+  'ALTER TABLE Questao ADD COLUMN revisado INTEGER NOT NULL DEFAULT 0',
+  _indiceAlternativa,
 ];
 
 /// Abre o `adapta.db`, a fonte de verdade do app no aparelho, e garante o
 /// conteúdo inicial. A abertura é feita uma vez, no primeiro acesso.
 class BancoLocal {
   static const nomeArquivo = 'adapta.db';
-  static const versao = 1;
+  static const versao = 2;
 
   /// Nos testes, a fábrica do `sqflite_common_ffi` e um banco em memória.
   final DatabaseFactory? fabrica;
   final String? caminho;
   final Preferencias preferencias;
 
+  /// Nos testes, a leitura dos assets vem do disco.
+  final LeitorAsset? lerAsset;
+
   BancoLocal({
     this.fabrica,
     this.caminho,
     this.preferencias = const Preferencias(),
+    this.lerAsset,
   });
 
   Future<Database>? _aberto;
@@ -134,7 +158,8 @@ class BancoLocal {
   }
 
   /// Builds antigos do app usavam este mesmo arquivo, também na versão 1, com
-  /// outras colunas. O `onCreate` não roda nesse caso.
+  /// outras colunas. O `onCreate` não roda nesse caso, e o `onUpgrade` deixa
+  /// esse arquivo como está para ele ser guardado em [_abrir].
   Future<bool> _schemaAtual(Database banco) async {
     final colunas = await banco.rawQuery('PRAGMA table_info(Usuario)');
     return colunas.any((c) => c['name'] == 'uid_firebase');
@@ -160,23 +185,26 @@ class BancoLocal {
               await db.execute(comando);
             }
           },
+          onUpgrade: (db, de, _) async {
+            if (de >= 2 || !await _schemaAtual(db)) return;
+            for (final comando in _migracaoV2) {
+              await db.execute(comando);
+            }
+          },
         ),
       );
 
-  /// A preferência evita repetir o seed; a contagem cobre o caso de o banco
-  /// ter sido apagado enquanto a preferência sobreviveu.
+  /// A versão salva evita reaplicar o pacote; a contagem cobre o caso de o
+  /// banco ter sido apagado enquanto a preferência sobreviveu.
   Future<void> _garantirSeed(Database banco) async {
+    final ler = lerAsset ?? rootBundle.loadString;
     final linhas = await banco.rawQuery('SELECT COUNT(*) AS n FROM Materia');
     final vazio = (linhas.first['n'] as int) == 0;
-    if (!vazio && await preferencias.lerSeedConcluido()) return;
-    if (vazio) {
-      await banco.transaction((txn) async {
-        final lote = txn.batch();
-        gravarSeed((tabela, linha) => lote.insert(tabela, linha));
-        await lote.commit(noResult: true);
-      });
-    }
-    await preferencias.marcarSeedConcluido(versaoConteudoSeed);
+    final versaoLocal = await preferencias.lerVersaoConteudo() ?? 0;
+    if (!vazio && await lerVersaoDosAssets(ler) <= versaoLocal) return;
+    final pacote = await lerPacoteDosAssets(ler);
+    await aplicarConteudo(banco, pacote);
+    await preferencias.marcarSeedConcluido(pacote.versao);
   }
 
   Future<void> fechar() async {

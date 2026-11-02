@@ -1,7 +1,8 @@
-import 'package:adapta/dados/banco/seed.dart';
 import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/grafo/grafo_conhecimento.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../apoio/app_teste.dart';
 
 Dependencia d(int p, int q, [double w = 1]) =>
     Dependencia(prerequisito: p, dependente: q, peso: w);
@@ -13,13 +14,14 @@ void main() {
     [d(1, 2), d(1, 3), d(2, 4), d(3, 4), d(4, 5)],
   );
 
-  test('o grafo do seed é um DAG conexo com todos os assuntos', () {
+  test('o grafo do seed é um DAG conexo com todos os assuntos', () async {
+    final pacote = await pacoteDeTeste();
     final grafo = GrafoConhecimento(
-      assuntosSeed.map((a) => a.id).toList(),
-      dependenciasSeed,
+      pacote.assuntos.map((a) => a.id).toList(),
+      pacote.dependencias,
     );
     expect(grafo.temCiclo, isFalse);
-    expect(grafo.ordemTopologica(), hasLength(assuntosSeed.length));
+    expect(grafo.ordemTopologica(), hasLength(pacote.assuntos.length));
   });
 
   test('detecta ciclo existente', () {

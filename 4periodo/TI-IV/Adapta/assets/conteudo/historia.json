@@ -1,0 +1,108 @@
+{
+  "materia": 2,
+  "assuntos": [
+    {
+      "id": 6,
+      "nome": "Iluminismo",
+      "descricao": "Movimento de ideias do século XVIII."
+    },
+    {
+      "id": 7,
+      "nome": "Revolução Industrial",
+      "descricao": "Mudanças na produção a partir do século XVIII."
+    }
+  ],
+  "dependencias": [
+    {
+      "pre": 6,
+      "dep": 7,
+      "peso": 0.8
+    }
+  ],
+  "questoes": [
+    {
+      "id": 6,
+      "assunto": 6,
+      "dificuldade": 2,
+      "enunciado": "Qual pensador iluminista defendeu a separação dos três poderes?",
+      "explicacao": "Montesquieu, em \"O Espírito das Leis\" (1748).",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": false,
+      "revisado": true,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Voltaire",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Rousseau",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Montesquieu",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "John Locke",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "assunto": 7,
+      "dificuldade": 1,
+      "enunciado": "Em que país teve início a Revolução Industrial?",
+      "explicacao": "Na Inglaterra, na segunda metade do século XVIII.",
+      "imagem": null,
+      "imagem_descricao": null,
+      "fonte": "Autoral — Adapta",
+      "explicacao_gerada": false,
+      "revisado": true,
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "França",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "B",
+          "texto": "Inglaterra",
+          "correta": true,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "C",
+          "texto": "Alemanha",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        },
+        {
+          "letra": "D",
+          "texto": "Estados Unidos",
+          "correta": false,
+          "imagem": null,
+          "imagem_descricao": null
+        }
+      ]
+    }
+  ]
+}

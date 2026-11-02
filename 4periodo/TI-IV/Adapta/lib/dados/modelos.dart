@@ -37,7 +37,14 @@ class Usuario {
 class Materia {
   final int id;
   final String nome;
-  const Materia({required this.id, required this.nome});
+
+  /// `linguagens`, `humanas`, `natureza` ou `matematica`.
+  final String area;
+  const Materia({
+    required this.id,
+    required this.nome,
+    this.area = 'matematica',
+  });
 }
 
 /// Tópico de estudo. É também um vértice do grafo de conhecimento.
@@ -84,6 +91,11 @@ class Questao {
   final String? imagemUrl;
   final String? imagemLocal;
   final String? imagemDescricao;
+
+  /// De onde veio: "ENEM 2022, questão 136" ou "Autoral — Adapta".
+  final String? fonte;
+  final bool explicacaoGerada;
+  final bool revisado;
   final List<Alternativa> alternativas;
 
   const Questao({
@@ -97,6 +109,9 @@ class Questao {
     this.imagemUrl,
     this.imagemLocal,
     this.imagemDescricao,
+    this.fonte,
+    this.explicacaoGerada = false,
+    this.revisado = false,
   });
 
   Alternativa get gabarito => alternativas.firstWhere((a) => a.correta);

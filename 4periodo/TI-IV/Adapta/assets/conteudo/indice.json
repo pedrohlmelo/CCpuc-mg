@@ -1,0 +1,18 @@
+{
+  "versao": 2,
+  "materias": [
+    {
+      "id": 1,
+      "nome": "Matemática",
+      "area": "matematica",
+      "arquivo": "matematica.json"
+    },
+    {
+      "id": 2,
+      "nome": "História",
+      "area": "humanas",
+      "arquivo": "historia.json"
+    }
+  ],
+  "dependencias_entre_materias": []
+}

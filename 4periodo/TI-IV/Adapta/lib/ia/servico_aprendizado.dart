@@ -275,7 +275,7 @@ class ServicoAprendizado {
   /// [perfil] e reconstrói a proficiência resposta a resposta.
   Future<void> carregarDemo(Usuario usuario, PerfilDemo perfil) async {
     final conteudo = await _conteudo.carregar();
-    final respostas = historicoDemo(perfil, DateTime.now());
+    final respostas = historicoDemo(perfil, conteudo.questoes, DateTime.now());
     await _aprendizado.limpar(usuario.id);
     await _historico.substituir(usuario.id, perfil.name, respostas);
 

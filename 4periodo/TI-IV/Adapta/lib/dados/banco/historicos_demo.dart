@@ -4,7 +4,6 @@ library;
 import 'dart:math';
 
 import '../modelos.dart';
-import 'seed.dart';
 
 enum PerfilDemo { ana, bruno }
 
@@ -42,13 +41,17 @@ const _roteiroBruno = [
 
 /// Gera as respostas do perfil, da mais antiga para a mais recente. A semente
 /// é fixa: a demonstração sai igual em todo aparelho.
-List<Resposta> historicoDemo(PerfilDemo perfil, DateTime agora) {
+List<Resposta> historicoDemo(
+  PerfilDemo perfil,
+  List<Questao> todas,
+  DateTime agora,
+) {
   final aleatorio = Random(perfil == PerfilDemo.ana ? 7 : 11);
   final respostas = <Resposta>[];
 
   for (final roteiro
       in perfil == PerfilDemo.ana ? _roteiroAna : _roteiroBruno) {
-    final questoes = questoesSeed
+    final questoes = todas
         .where((q) => q.idAssunto == roteiro.idAssunto)
         .toList();
     for (final dias in roteiro.diasAtras) {
