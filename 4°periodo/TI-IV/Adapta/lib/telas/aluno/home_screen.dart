@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
 import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../ia/servico_aprendizado.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/cartoes.dart';
@@ -31,9 +31,9 @@ class HomeScreen extends ConsumerWidget {
     final respondidas = historico.length;
     final acertos = historico.where((r) => r.acertou).length;
     final taxa = respondidas == 0 ? 0 : (acertos / respondidas * 100).round();
-    final emRisco = saudeExemplo
-        .where((s) => s.estado != EstadoMemoria.consolidado)
-        .toList();
+    final panorama = ref.watch(panoramaProvider).valueOrNull ?? Panorama.vazio;
+    final alerta = panorama.alerta;
+    final lacuna = panorama.lacuna;
 
     return Scaffold(
       key: const Key('tela_inicial'),
@@ -113,8 +113,12 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           const SizedBox(height: 24),
-          if (emRisco.isNotEmpty) ...[
-            _AlertaRevisao(assunto: emRisco.first),
+          if (lacuna != null) ...[
+            _CartaoLacuna(lacuna: lacuna),
+            const SizedBox(height: 12),
+          ],
+          if (alerta != null) ...[
+            _AlertaRevisao(alerta: alerta),
             const SizedBox(height: 24),
           ],
           Row(
@@ -124,7 +128,17 @@ class HomeScreen extends ConsumerWidget {
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
             child: Column(
               children: [
-                for (final s in saudeExemplo)
+                if (panorama.saude.isEmpty)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      'Responda algumas questões para ver o que você lembra.',
+                      style: texto.bodyMedium?.copyWith(
+                        color: scheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                for (final s in panorama.saude.take(5))
                   BarraSaude(
                     nome: s.nome,
                     retencao: s.retencao,
@@ -264,17 +278,46 @@ class _ConviteEntrar extends StatelessWidget {
   }
 }
 
-/// Aviso de assunto prestes a ser esquecido (texto de exemplo).
-class _AlertaRevisao extends StatelessWidget {
-  final SaudeAssunto assunto;
-  const _AlertaRevisao({required this.assunto});
+/// Pré-requisito fraco por trás dos erros, achado no grafo.
+class _CartaoLacuna extends StatelessWidget {
+  final AvisoLacuna lacuna;
+  const _CartaoLacuna({required this.lacuna});
 
   @override
   Widget build(BuildContext context) {
     final texto = Theme.of(context).textTheme;
+    return AppCartao(
+      key: const Key('card_lacuna'),
+      cor: AppCores.violeta.withValues(alpha: 0.08),
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          const IconeCaixa(icone: Icons.hub_rounded, cor: AppCores.violeta),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Text(
+              'Seus erros em ${lacuna.assunto} apontam para uma lacuna em '
+              '${lacuna.raiz}.',
+              style: texto.bodyMedium,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Aviso de assunto prestes a ser esquecido, vindo do modelo.
+class _AlertaRevisao extends StatelessWidget {
+  final AlertaEsquecimento alerta;
+  const _AlertaRevisao({required this.alerta});
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = Theme.of(context).textTheme;
+    final assunto = alerta.assunto;
     final critico = assunto.estado == EstadoMemoria.critico;
     final cor = corDaMemoria(assunto.estado);
-    final chance = ((1 - assunto.retencao) * 100).round().clamp(1, 99);
 
     return AppCartao(
       cor: cor.withValues(alpha: 0.08),
@@ -298,7 +341,8 @@ class _AlertaRevisao extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Você tem $chance% de chance de esquecer ${assunto.nome}.',
+                  'Você tem ${alerta.chance}% de chance de esquecer '
+                  '${assunto.nome} amanhã.',
                   style: texto.bodyMedium,
                 ),
               ],

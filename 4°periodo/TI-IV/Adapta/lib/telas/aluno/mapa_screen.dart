@@ -7,6 +7,7 @@ import '../../dados/modelos.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
 import '../../grafo/grafo_conhecimento.dart';
+import '../../ia/servico_aprendizado.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
 import '../../widgets/cartoes.dart';

@@ -4,7 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../dados/preferencias.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
+import '../../dados/sincronizacao/servico_sincronizacao.dart';
+import '../../ia/servico_aprendizado.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
 import '../../widgets/cartoes.dart';
@@ -13,9 +16,8 @@ import '../../widgets/questao_widget.dart';
 
 /// Sessão de estudo: uma questão por vez, com feedback e explicação.
 ///
-/// Sem [idQuestao] percorre as questões da matéria escolhida. Com [idQuestao]
-/// abre só aquela, que é o caminho do botão "Refazer esta questão" do
-/// histórico.
+/// Sem parâmetros, a fila vem do [MontadorFila] (RF03). Com [idQuestao] abre só
+/// aquela, que é o caminho do botão "Refazer esta questão" do histórico.
 class SessaoScreen extends ConsumerStatefulWidget {
   final int? idQuestao;
 
@@ -43,20 +45,34 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
     final unica = widget.idQuestao == null
         ? null
         : conteudo.questaoPorId(widget.idQuestao!);
+    final assunto = widget.idAssunto;
+    final List<Questao> fila;
+    if (unica != null) {
+      fila = [unica];
+    } else if (assunto != null) {
+      fila = conteudo.questoes.where((q) => q.idAssunto == assunto).toList();
+    } else {
+      fila = await _montarFila();
+    }
     if (!mounted) return;
-    setState(() {
-      final assunto = widget.idAssunto;
-      _fila = unica != null
-          ? [unica]
-          : assunto != null
-          ? conteudo.questoes.where((q) => q.idAssunto == assunto).toList()
-          : conteudo.questoesDaMateria(ref.read(idMateriaSelecionadaProvider));
-    });
+    setState(() => _fila = fila);
     _cronometro.start();
   }
 
-  void _responder(Questao questao, Alternativa escolhida) {
-    ref
+  Future<List<Questao>> _montarFila() async {
+    final usuario = await ref.read(sessaoProvider.future);
+    final servico = await ref.read(servicoAprendizadoProvider.future);
+    return servico.montarFila(
+      usuario,
+      idMateria: ref.read(idMateriaSelecionadaProvider),
+    );
+  }
+
+  Future<void> _responder(Questao questao, Alternativa escolhida) async {
+    final usuario = ref.read(usuarioProvider);
+    final servico = ref.read(servicoAprendizadoProvider.future);
+    final versao = ref.read(versaoAprendizadoProvider.notifier);
+    await ref
         .read(historicoProvider.notifier)
         .registrar(
           idQuestao: questao.id,
@@ -64,11 +80,23 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
           acertou: escolhida.correta,
           tempoGasto: _cronometro.elapsed.inSeconds,
         );
+    if (usuario != null) {
+      await (await servico).registrarResposta(
+        usuario,
+        questao,
+        escolhida.correta,
+      );
+    }
+    versao.state++;
   }
 
   void _avancar() {
     _cronometro.reset();
     setState(() => _indice++);
+    if (_indice >= (_fila?.length ?? 0)) {
+      ref.read(preferenciasProvider).gravarDataUltimaSessao(DateTime.now());
+      ref.read(acaoSincronizarProvider)();
+    }
   }
 
   void _verHistorico() {

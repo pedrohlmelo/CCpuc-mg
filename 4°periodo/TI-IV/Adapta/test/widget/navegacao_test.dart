@@ -3,9 +3,11 @@ import 'package:adapta/dados/firebase.dart';
 import 'package:adapta/dados/repositorios/grafo_repositorio.dart';
 import 'package:adapta/navegacao/rotas.dart';
 import 'package:adapta/telas/aluno/mapa_screen.dart';
+import 'package:adapta/widgets/cartoes.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,6 +30,15 @@ Future<void> abrir(
   MockFirebaseAuth? auth,
   FakeFirebaseFirestore? firestore,
 ]) async {
+  // Tela alta: as listas só constroem o que cabe, e uma questão pode ser longa.
+  tester.view.physicalSize = const Size(800, 2000);
+  tester.view.devicePixelRatio = 1;
+  addTearDown(tester.view.reset);
+
+  // O bundle guarda a leitura dos modelos; a de um teste que já acabou não
+  // termina nunca.
+  rootBundle.clear();
+
   final banco = bancoDeTeste();
   await tester.runAsync(() async {
     await banco.db;
@@ -84,10 +95,23 @@ Future<void> prepararSessao(BancoLocal banco, Quem quem) async {
 
 /// Dá tempo às consultas ao banco e às animações.
 Future<void> assentar(WidgetTester tester) async {
-  for (var i = 0; i < 4; i++) {
-    await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+  for (
+    var i = 0;
+    i < 6 || (i < 60 && find.byType(Carregando).evaluate().isNotEmpty);
+    i++
+  ) {
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 15)),
+    );
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 200));
+    await tester.pump(const Duration(milliseconds: 150));
+  }
+}
+
+/// Espera o alvo aparecer: gravar e recalcular passam por vários passos no banco.
+Future<void> esperar(WidgetTester tester, Finder alvo) async {
+  for (var i = 0; i < 12 && alvo.evaluate().isEmpty; i++) {
+    await assentar(tester);
   }
 }
 
@@ -330,6 +354,20 @@ void main() {
       expect(tela('mapa'), findsNothing);
     });
 
+    testWidgets('histórico de exemplo muda a tela inicial', (tester) async {
+      await abrir(tester, Quem.aluno);
+
+      await tocar(tester, find.byKey(const Key('aba_perfil')));
+      await tocar(tester, find.byKey(const Key('demo_ana')));
+      await assentar(tester);
+      await tocar(tester, find.byIcon(Icons.home_outlined));
+      await assentar(tester);
+
+      await esperar(tester, find.byKey(const Key('card_lacuna')));
+      expect(find.byKey(const Key('card_lacuna')), findsOneWidget);
+      expect(find.textContaining('lacuna em Potenciação'), findsOneWidget);
+    });
+
     testWidgets('o aluno não vê o painel administrativo no perfil', (
       tester,
     ) async {
@@ -360,10 +398,12 @@ void main() {
       await tocar(tester, find.byKey(const Key('alternativa_A')));
       await tocar(tester, find.byKey(const Key('botao_voltar')));
 
-      expect(
-        find.descendant(of: tela('inicial'), matching: find.text('9')),
-        findsOneWidget,
+      final contador = find.descendant(
+        of: tela('inicial'),
+        matching: find.text('9'),
       );
+      await esperar(tester, contador);
+      expect(contador, findsOneWidget);
     });
 
     testWidgets('sair da conta devolve a tela inicial neutra', (tester) async {

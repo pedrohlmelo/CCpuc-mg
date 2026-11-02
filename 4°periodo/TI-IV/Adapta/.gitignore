@@ -45,3 +45,6 @@ app.*.map.json
 /android/app/release
 # PNGs gerados pelos testes de captura (o gerador em test/ é versionado)
 /capturas/
+
+# Dados sintéticos, regeneráveis com ia/gerar_dataset.py
+/ia/dados/

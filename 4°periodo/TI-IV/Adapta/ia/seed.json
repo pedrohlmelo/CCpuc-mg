@@ -1,0 +1,242 @@
+{
+  "assuntos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "questoes": [
+    {
+      "id": 1,
+      "id_assunto": 1,
+      "dificuldade": 1
+    },
+    {
+      "id": 2,
+      "id_assunto": 2,
+      "dificuldade": 1
+    },
+    {
+      "id": 3,
+      "id_assunto": 3,
+      "dificuldade": 2
+    },
+    {
+      "id": 4,
+      "id_assunto": 4,
+      "dificuldade": 1
+    },
+    {
+      "id": 5,
+      "id_assunto": 5,
+      "dificuldade": 3
+    },
+    {
+      "id": 6,
+      "id_assunto": 6,
+      "dificuldade": 2
+    },
+    {
+      "id": 7,
+      "id_assunto": 7,
+      "dificuldade": 1
+    },
+    {
+      "id": 8,
+      "id_assunto": 1,
+      "dificuldade": 2
+    },
+    {
+      "id": 9,
+      "id_assunto": 2,
+      "dificuldade": 2
+    },
+    {
+      "id": 10,
+      "id_assunto": 4,
+      "dificuldade": 3
+    },
+    {
+      "id": 11,
+      "id_assunto": 1,
+      "dificuldade": 2
+    },
+    {
+      "id": 12,
+      "id_assunto": 2,
+      "dificuldade": 2
+    },
+    {
+      "id": 13,
+      "id_assunto": 3,
+      "dificuldade": 2
+    },
+    {
+      "id": 14,
+      "id_assunto": 3,
+      "dificuldade": 3
+    },
+    {
+      "id": 15,
+      "id_assunto": 4,
+      "dificuldade": 1
+    },
+    {
+      "id": 16,
+      "id_assunto": 5,
+      "dificuldade": 2
+    },
+    {
+      "id": 17,
+      "id_assunto": 5,
+      "dificuldade": 3
+    },
+    {
+      "id": 18,
+      "id_assunto": 8,
+      "dificuldade": 1
+    },
+    {
+      "id": 19,
+      "id_assunto": 8,
+      "dificuldade": 2
+    },
+    {
+      "id": 20,
+      "id_assunto": 8,
+      "dificuldade": 2
+    },
+    {
+      "id": 21,
+      "id_assunto": 9,
+      "dificuldade": 2
+    },
+    {
+      "id": 22,
+      "id_assunto": 9,
+      "dificuldade": 1
+    },
+    {
+      "id": 23,
+      "id_assunto": 9,
+      "dificuldade": 2
+    },
+    {
+      "id": 24,
+      "id_assunto": 16,
+      "dificuldade": 2
+    },
+    {
+      "id": 25,
+      "id_assunto": 16,
+      "dificuldade": 2
+    },
+    {
+      "id": 26,
+      "id_assunto": 16,
+      "dificuldade": 1
+    },
+    {
+      "id": 27,
+      "id_assunto": 11,
+      "dificuldade": 2
+    },
+    {
+      "id": 28,
+      "id_assunto": 11,
+      "dificuldade": 2
+    },
+    {
+      "id": 29,
+      "id_assunto": 11,
+      "dificuldade": 1
+    },
+    {
+      "id": 30,
+      "id_assunto": 12,
+      "dificuldade": 2
+    },
+    {
+      "id": 31,
+      "id_assunto": 12,
+      "dificuldade": 1
+    },
+    {
+      "id": 32,
+      "id_assunto": 12,
+      "dificuldade": 2
+    },
+    {
+      "id": 33,
+      "id_assunto": 13,
+      "dificuldade": 3
+    },
+    {
+      "id": 34,
+      "id_assunto": 13,
+      "dificuldade": 3
+    },
+    {
+      "id": 35,
+      "id_assunto": 13,
+      "dificuldade": 3
+    },
+    {
+      "id": 36,
+      "id_assunto": 14,
+      "dificuldade": 1
+    },
+    {
+      "id": 37,
+      "id_assunto": 14,
+      "dificuldade": 2
+    },
+    {
+      "id": 38,
+      "id_assunto": 14,
+      "dificuldade": 2
+    },
+    {
+      "id": 39,
+      "id_assunto": 15,
+      "dificuldade": 2
+    },
+    {
+      "id": 40,
+      "id_assunto": 15,
+      "dificuldade": 1
+    },
+    {
+      "id": 41,
+      "id_assunto": 15,
+      "dificuldade": 2
+    },
+    {
+      "id": 42,
+      "id_assunto": 10,
+      "dificuldade": 2
+    },
+    {
+      "id": 43,
+      "id_assunto": 10,
+      "dificuldade": 1
+    },
+    {
+      "id": 44,
+      "id_assunto": 10,
+      "dificuldade": 1
+    }
+  ]
+}

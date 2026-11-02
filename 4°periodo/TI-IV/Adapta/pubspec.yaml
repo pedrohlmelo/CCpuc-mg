@@ -35,6 +35,7 @@ flutter:
   assets:
     - assets/mascote/
     - assets/questoes/
+    - assets/modelos/
   fonts:
     - family: PlusJakartaSans
       fonts:

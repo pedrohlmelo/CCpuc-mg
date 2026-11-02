@@ -163,40 +163,6 @@ const questoesExemplo = <Questao>[
   ),
 ];
 
-/// Saúde da memória por assunto — valores fixos, só para desenhar as barras.
-const saudeExemplo = <SaudeAssunto>[
-  SaudeAssunto(
-    idAssunto: 5,
-    nome: 'Logaritmo',
-    retencao: 0.22,
-    estado: EstadoMemoria.critico,
-  ),
-  SaudeAssunto(
-    idAssunto: 3,
-    nome: 'Equação do 2º grau',
-    retencao: 0.48,
-    estado: EstadoMemoria.emRisco,
-  ),
-  SaudeAssunto(
-    idAssunto: 1,
-    nome: 'Potenciação',
-    retencao: 0.61,
-    estado: EstadoMemoria.emRisco,
-  ),
-  SaudeAssunto(
-    idAssunto: 4,
-    nome: 'Funções',
-    retencao: 0.78,
-    estado: EstadoMemoria.consolidado,
-  ),
-  SaudeAssunto(
-    idAssunto: 2,
-    nome: 'Equação do 1º grau',
-    retencao: 0.91,
-    estado: EstadoMemoria.consolidado,
-  ),
-];
-
 // --- buscas simples nas listas acima ----------------------------------------
 
 Materia? materiaPorId(int id) =>

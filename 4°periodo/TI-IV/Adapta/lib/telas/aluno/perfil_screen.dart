@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../dados/banco/historicos_demo.dart';
 import '../../dados/estado_app.dart';
 import '../../dados/sincronizacao/servico_sincronizacao.dart';
+import '../../ia/servico_aprendizado.dart';
 import '../../tema/app_tema.dart';
 import '../../tema/tema_controller.dart';
 import '../../widgets/botao_tema.dart';
@@ -15,6 +18,28 @@ import '../../widgets/rodape_copyright.dart';
 /// administrativo: o app abre direto no estudo, sem passar por tela de login.
 class PerfilScreen extends ConsumerWidget {
   const PerfilScreen({super.key});
+
+  /// Ferramenta de demonstração: troca o progresso do usuário atual.
+  Future<void> _carregarDemo(
+    BuildContext context,
+    WidgetRef ref,
+    PerfilDemo perfil,
+  ) async {
+    final usuario = ref.read(usuarioProvider);
+    if (usuario == null) return;
+    final servico = await ref.read(servicoAprendizadoProvider.future);
+    await servico.carregarDemo(usuario, perfil);
+    ref.invalidate(historicoProvider);
+    ref.read(versaoAprendizadoProvider.notifier).state++;
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Histórico de exemplo carregado.'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -151,6 +176,35 @@ class PerfilScreen extends ConsumerWidget {
               ],
             ),
           ),
+          if (kDebugMode || (usuario?.isAdmin ?? false)) ...[
+            const SizedBox(height: 24),
+            const TituloSecao('Carregar histórico de exemplo'),
+            AppCartao(
+              padding: EdgeInsets.zero,
+              child: Column(
+                children: [
+                  _Item(
+                    key: const Key('demo_ana'),
+                    icone: Icons.science_outlined,
+                    cor: AppCores.violeta,
+                    titulo: 'Ana',
+                    descricao: 'Erra muito Logaritmo e Potenciação',
+                    aoTocar: () => _carregarDemo(context, ref, PerfilDemo.ana),
+                  ),
+                  Divider(height: 1, indent: 72, color: scheme.outline),
+                  _Item(
+                    key: const Key('demo_bruno'),
+                    icone: Icons.science_outlined,
+                    cor: AppCores.teal,
+                    titulo: 'Bruno',
+                    descricao: 'Vai bem em tudo, esqueceu Funções',
+                    aoTocar: () =>
+                        _carregarDemo(context, ref, PerfilDemo.bruno),
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 24),
           AppCartao(
             padding: const EdgeInsets.all(16),

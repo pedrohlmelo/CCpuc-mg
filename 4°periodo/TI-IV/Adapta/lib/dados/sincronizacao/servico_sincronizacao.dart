@@ -336,6 +336,12 @@ Future<void> sincronizarAgora(Ref ref) async {
   ref.read(versaoSincronizacaoProvider.notifier).state++;
 }
 
+/// Para as telas pedirem uma sincronização ao terminar uma sessão.
+final acaoSincronizarProvider = Provider<Future<void> Function()>(
+  (ref) =>
+      () => sincronizarAgora(ref),
+);
+
 /// Mantém a sincronização rodando: ao abrir o app, ao trocar de usuário e
 /// quando a internet volta. Sem Firebase, não faz nada.
 final sincronizadorProvider = Provider<void>((ref) {
