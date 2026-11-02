@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dados/dados_exemplo.dart';
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
@@ -14,22 +14,22 @@ import '../../widgets/saude_memoria.dart';
 
 /// Tela inicial do aluno e primeira tela do app: o Adapta não abre em login.
 ///
-/// Enquanto ninguém entrou, ela se apresenta sem nome nenhum e mostra a saúde
-/// da memória como amostra do que o app faz. Estudar e ver o próprio histórico
-/// exigem entrar.
+/// Quem não tem conta estuda como visitante: a tela se apresenta sem nome e
+/// convida a criar uma conta para guardar o progresso na nuvem.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final aluno = ref.watch(usuarioProvider);
+    final entrou = ref.watch(entrouProvider);
     final materia = ref.watch(materiaSelecionadaProvider);
-    final historico = ref.watch(historicoProvider);
+    final historico = ref.watch(historicoProvider).valueOrNull ?? const [];
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
     final respondidas = historico.length;
-    final acertos = historico.where(respostaCerta).length;
+    final acertos = historico.where((r) => r.acertou).length;
     final taxa = respondidas == 0 ? 0 : (acertos / respondidas * 100).round();
     final emRisco = saudeExemplo
         .where((s) => s.estado != EstadoMemoria.consolidado)
@@ -52,15 +52,15 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      aluno == null ? 'Vamos estudar?' : 'Olá, ${aluno.primeiroNome}',
+                      entrou ? 'Olá, ${aluno!.primeiroNome}' : 'Vamos estudar?',
                       key: const Key('saudacao'),
                       style: texto.headlineMedium,
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      aluno == null
-                          ? 'Entre para o Camu montar a sua fila.'
-                          : 'Pronto para mais um passo?',
+                      entrou
+                          ? 'Pronto para mais um passo?'
+                          : 'O Camu monta a sua fila de estudo.',
                       style: texto.bodyMedium?.copyWith(
                         color: scheme.onSurfaceVariant,
                       ),
@@ -85,9 +85,8 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 20),
-          if (aluno == null)
-            const _ConviteEntrar()
-          else
+          if (!entrou) ...[const _ConviteEntrar(), const SizedBox(height: 16)],
+          if (entrou || respondidas > 0)
             SizedBox(
               height: 120,
               child: Row(
@@ -114,15 +113,12 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           const SizedBox(height: 24),
-          if (aluno != null && emRisco.isNotEmpty) ...[
+          if (emRisco.isNotEmpty) ...[
             _AlertaRevisao(assunto: emRisco.first),
             const SizedBox(height: 24),
           ],
           Row(
-            children: [
-              const Expanded(child: TituloSecao('Saúde da memória')),
-              if (aluno == null) const _SeloExemplo(),
-            ],
+            children: [const Expanded(child: TituloSecao('Saúde da memória'))],
           ),
           AppCartao(
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
@@ -140,7 +136,7 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
           ),
-          if (aluno != null) ...[
+          if (respondidas > 0) ...[
             const SizedBox(height: 24),
             const TituloSecao('Seu estudo'),
             AppCartao(
@@ -199,7 +195,7 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-/// Cartão que aparece no lugar das estatísticas enquanto ninguém entrou.
+/// Convite para o visitante criar uma conta.
 class _ConviteEntrar extends StatelessWidget {
   const _ConviteEntrar();
 
@@ -213,13 +209,13 @@ class _ConviteEntrar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Sua fila de estudo é sua',
+            'Guarde o seu progresso',
             style: texto.titleLarge?.copyWith(color: Colors.white),
           ),
           const SizedBox(height: 6),
           Text(
-            'Entre para responder questões, acompanhar o que você lembra e '
-            'rever suas resoluções.',
+            'Você já pode estudar. Com uma conta, seu progresso fica salvo na '
+            'nuvem e acompanha você.',
             style: texto.bodyMedium?.copyWith(
               color: Colors.white.withValues(alpha: 0.9),
             ),
@@ -247,24 +243,6 @@ class _ConviteEntrar extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-/// Etiqueta que avisa que os números ao lado são só uma amostra.
-class _SeloExemplo extends StatelessWidget {
-  const _SeloExemplo();
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: scheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(99),
-      ),
-      child: Text('exemplo', style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }

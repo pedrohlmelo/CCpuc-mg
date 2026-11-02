@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-const _chavePreferencia = 'tema_modo';
+import '../dados/preferencias.dart';
 
 /// Modo lido do disco antes do app subir. `main.dart` faz o override;
 /// sem override (testes), o app segue o sistema.
@@ -10,16 +9,11 @@ final temaInicialProvider = Provider<ThemeMode>((_) => ThemeMode.system);
 
 /// Lê a preferência salva. Chamado uma vez em `main.dart`.
 Future<ThemeMode> carregarTemaSalvo() async {
-  try {
-    final prefs = await SharedPreferences.getInstance();
-    return switch (prefs.getString(_chavePreferencia)) {
-      'claro' => ThemeMode.light,
-      'escuro' => ThemeMode.dark,
-      _ => ThemeMode.system,
-    };
-  } catch (_) {
-    return ThemeMode.system;
-  }
+  return switch (await const Preferencias().lerTema()) {
+    'claro' => ThemeMode.light,
+    'escuro' => ThemeMode.dark,
+    _ => ThemeMode.system,
+  };
 }
 
 /// Estado do tema escolhido pelo usuário (claro/escuro/sistema).
@@ -42,16 +36,11 @@ class TemaController extends Notifier<ThemeMode> {
 
   Future<void> definir(ThemeMode modo) async {
     state = modo;
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(_chavePreferencia, switch (modo) {
-        ThemeMode.light => 'claro',
-        ThemeMode.dark => 'escuro',
-        ThemeMode.system => 'sistema',
-      });
-    } catch (_) {
-      // Sem persistência disponível (ex.: testes): mantém só em memória.
-    }
+    await ref.read(preferenciasProvider).gravarTema(switch (modo) {
+      ThemeMode.light => 'claro',
+      ThemeMode.dark => 'escuro',
+      ThemeMode.system => 'sistema',
+    });
   }
 }
 

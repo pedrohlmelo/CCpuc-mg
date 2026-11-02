@@ -1,18 +1,20 @@
-import 'package:adapta/app.dart';
 import 'package:adapta/tema/tema_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../apoio/app_teste.dart';
 
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
   testWidgets('botão sol/lua alterna o tema', (tester) async {
+    final banco = bancoDeTeste();
+    await tester.runAsync(() => banco.db);
     await tester.pumpWidget(
-      ProviderScope(
+      appDeTeste(
+        banco,
         overrides: [temaInicialProvider.overrideWithValue(ThemeMode.light)],
-        child: const AdaptaApp(),
       ),
     );
     await tester.pump();

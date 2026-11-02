@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
 import '../../widgets/mascote.dart';
 import 'moldura_auth.dart';
@@ -33,13 +33,12 @@ class _CadastroScreenState extends ConsumerState<CadastroScreen> {
     super.dispose();
   }
 
-  void _cadastrar() {
+  Future<void> _cadastrar() async {
     if (!_form.currentState!.validate()) return;
     // Cadastro pelo app cria aluno; contas do grupo são criadas por fora.
-    ref.read(usuarioProvider.notifier).state = Usuario(
-      nome: _nome.text.trim(),
-      email: _email.text.trim(),
-    );
+    await ref
+        .read(sessaoProvider.notifier)
+        .entrarLocal(_nome.text.trim(), _email.text.trim(), TipoUsuario.aluno);
 
     // A navegação espera o próximo frame: preencher a sessão faz o go_router
     // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.

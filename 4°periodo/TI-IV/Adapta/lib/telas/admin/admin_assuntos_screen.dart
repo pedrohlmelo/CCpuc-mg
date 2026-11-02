@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../dados/dados_exemplo.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../widgets/cartoes.dart';
 import '../../widgets/mascote.dart';
 import '../../widgets/paleta_materias.dart';
 import 'admin_scaffold.dart';
 
 /// Assuntos por matéria (RF11). Cada assunto é um vértice do grafo.
-class AdminAssuntosScreen extends StatefulWidget {
+class AdminAssuntosScreen extends ConsumerStatefulWidget {
   const AdminAssuntosScreen({super.key});
 
   @override
-  State<AdminAssuntosScreen> createState() => _AdminAssuntosScreenState();
+  ConsumerState<AdminAssuntosScreen> createState() =>
+      _AdminAssuntosScreenState();
 }
 
-class _AdminAssuntosScreenState extends State<AdminAssuntosScreen> {
-  Materia _materia = materiasExemplo.first;
+class _AdminAssuntosScreenState extends ConsumerState<AdminAssuntosScreen> {
+  int _idMateria = 1;
 
   Future<void> _novo() async {
     final nome = await mostrarDialogoTexto(context, 'Novo assunto', 'Nome');
@@ -26,7 +28,9 @@ class _AdminAssuntosScreenState extends State<AdminAssuntosScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final assuntos = assuntosDaMateria(_materia.id);
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final materias = conteudo?.materias ?? const <Materia>[];
+    final assuntos = conteudo?.assuntosDaMateria(_idMateria) ?? const [];
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -42,17 +46,17 @@ class _AdminAssuntosScreenState extends State<AdminAssuntosScreen> {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-              itemCount: materiasExemplo.length,
+              itemCount: materias.length,
               separatorBuilder: (_, _) => const SizedBox(width: 8),
               itemBuilder: (_, i) {
-                final m = materiasExemplo[i];
+                final m = materias[i];
                 final estilo = estiloMateria(m.nome, m.id);
                 return ChoiceChip(
                   key: Key('chip_materia_${m.id}'),
                   avatar: Icon(estilo.icone, size: 16, color: estilo.cor),
                   label: Text(m.nome),
-                  selected: _materia.id == m.id,
-                  onSelected: (_) => setState(() => _materia = m),
+                  selected: _idMateria == m.id,
+                  onSelected: (_) => setState(() => _idMateria = m.id),
                 );
               },
             ),
@@ -70,7 +74,7 @@ class _AdminAssuntosScreenState extends State<AdminAssuntosScreen> {
                     separatorBuilder: (_, _) => const SizedBox(height: 10),
                     itemBuilder: (_, i) {
                       final a = assuntos[i];
-                      final questoes = questoesExemplo
+                      final questoes = conteudo!.questoes
                           .where((q) => q.idAssunto == a.id)
                           .length;
                       return AppCartao(

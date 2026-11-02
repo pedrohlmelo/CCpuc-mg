@@ -49,12 +49,6 @@ void main() {
     }
   });
 
-  test('o histórico de exemplo só cita questões existentes', () {
-    for (final r in historicoExemplo()) {
-      expect(questaoPorId(r.idQuestao), isNotNull);
-    }
-  });
-
   test('o filtro por matéria devolve só questões daquela matéria', () {
     final historia = questoesDaMateria(2);
     expect(historia, isNotEmpty);

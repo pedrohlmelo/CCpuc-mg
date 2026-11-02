@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../dados/dados_exemplo.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
+import '../../dados/repositorios/grafo_repositorio.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/cartoes.dart';
 import 'admin_scaffold.dart';
 
 /// Dependências entre assuntos (RF11): `pré-requisito → dependente`, com a
 /// força da dependência. A validação do grafo (ciclos, DAG) é do backend.
-class AdminGrafoScreen extends StatelessWidget {
+class AdminGrafoScreen extends ConsumerWidget {
   const AdminGrafoScreen({super.key});
 
-  Future<void> _nova(BuildContext context) async {
+  Future<void> _nova(BuildContext context, List<Assunto> assuntos) async {
     final aresta = await showDialog<bool>(
       context: context,
-      builder: (_) => const _DialogoAresta(),
+      builder: (_) => _DialogoAresta(assuntos: assuntos),
     );
     if (aresta != true || !context.mounted) return;
     avisarPrototipo(context, 'O cadastro de dependências');
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final dependencias =
+        ref.watch(dependenciasProvider).valueOrNull ?? const [];
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -29,13 +34,13 @@ class AdminGrafoScreen extends StatelessWidget {
       titulo: 'Grafo de dependências',
       subtitulo: 'Pré-requisito → dependente',
       rotuloAdicionar: 'Nova aresta',
-      aoAdicionar: () => _nova(context),
+      aoAdicionar: () => _nova(context, conteudo?.assuntos ?? const []),
       child: ListView.separated(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
-        itemCount: dependenciasExemplo.length,
+        itemCount: conteudo == null ? 0 : dependencias.length,
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (_, i) {
-          final d = dependenciasExemplo[i];
+          final d = dependencias[i];
           return AppCartao(
             padding: const EdgeInsets.fromLTRB(16, 12, 6, 12),
             child: Row(
@@ -57,7 +62,7 @@ class AdminGrafoScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              nomeDoAssunto(d.prerequisito),
+                              conteudo!.nomeDoAssunto(d.prerequisito),
                               style: texto.bodyMedium?.copyWith(
                                 color: scheme.onSurfaceVariant,
                               ),
@@ -77,7 +82,7 @@ class AdminGrafoScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(
-                          nomeDoAssunto(d.dependente),
+                          conteudo.nomeDoAssunto(d.dependente),
                           style: texto.titleSmall,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -114,7 +119,10 @@ class AdminGrafoScreen extends StatelessWidget {
                     color: scheme.onSurfaceVariant,
                   ),
                   onPressed: () async {
-                    final ok = await confirmarExclusao(context, 'A dependência');
+                    final ok = await confirmarExclusao(
+                      context,
+                      'A dependência',
+                    );
                     if (!ok || !context.mounted) return;
                     avisarPrototipo(context, 'A exclusão de dependências');
                   },
@@ -130,7 +138,8 @@ class AdminGrafoScreen extends StatelessWidget {
 
 /// Formulário de nova aresta. Devolve `true` ao confirmar; nada é gravado.
 class _DialogoAresta extends StatefulWidget {
-  const _DialogoAresta();
+  final List<Assunto> assuntos;
+  const _DialogoAresta({required this.assuntos});
 
   @override
   State<_DialogoAresta> createState() => _DialogoArestaState();
@@ -152,7 +161,7 @@ class _DialogoArestaState extends State<_DialogoAresta> {
       isExpanded: true,
       decoration: InputDecoration(labelText: rotulo),
       items: [
-        for (final a in assuntosExemplo)
+        for (final a in widget.assuntos)
           DropdownMenuItem(
             value: a,
             child: Text(a.nome, overflow: TextOverflow.ellipsis),

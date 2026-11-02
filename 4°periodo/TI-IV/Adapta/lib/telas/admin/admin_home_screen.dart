@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
+import '../../dados/repositorios/grafo_repositorio.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
@@ -11,11 +13,13 @@ import '../../widgets/rodape_copyright.dart';
 
 /// Menu do painel administrativo (RF11), de uso interno do grupo. Chega-se
 /// aqui pela aba Perfil, e o botão de voltar retorna ao app do aluno.
-class AdminHomeScreen extends StatelessWidget {
+class AdminHomeScreen extends ConsumerWidget {
   const AdminHomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final dependencias = ref.watch(dependenciasProvider).valueOrNull;
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -87,25 +91,25 @@ class AdminHomeScreen extends StatelessWidget {
             ),
             children: [
               TileEstatistica(
-                valor: '${materiasExemplo.length}',
+                valor: '${conteudo?.materias.length ?? 0}',
                 rotulo: 'matérias',
                 icone: Icons.menu_book_rounded,
                 cor: scheme.primary,
               ),
               TileEstatistica(
-                valor: '${assuntosExemplo.length}',
+                valor: '${conteudo?.assuntos.length ?? 0}',
                 rotulo: 'assuntos (vértices)',
                 icone: Icons.hub_rounded,
                 cor: AppCores.violeta,
               ),
               TileEstatistica(
-                valor: '${dependenciasExemplo.length}',
+                valor: '${dependencias?.length ?? 0}',
                 rotulo: 'dependências (arestas)',
                 icone: Icons.account_tree_rounded,
                 cor: AppCores.teal,
               ),
               TileEstatistica(
-                valor: '${questoesExemplo.length}',
+                valor: '${conteudo?.questoes.length ?? 0}',
                 rotulo: 'questões',
                 icone: Icons.quiz_rounded,
                 cor: const Color(0xFFF59E0B),

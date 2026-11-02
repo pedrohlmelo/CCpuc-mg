@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../dados/dados_exemplo.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../widgets/cartoes.dart';
 import 'admin_scaffold.dart';
 
-/// Banco de questões (RF11). Lista as questões de exemplo com suas
+/// Banco de questões (RF11). Lista as questões cadastradas com suas
 /// alternativas e o gabarito destacado.
-class AdminQuestoesScreen extends StatelessWidget {
+class AdminQuestoesScreen extends ConsumerWidget {
   const AdminQuestoesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -21,10 +23,10 @@ class AdminQuestoesScreen extends StatelessWidget {
       aoAdicionar: () => avisarPrototipo(context, 'O cadastro de questões'),
       child: ListView.separated(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
-        itemCount: questoesExemplo.length,
+        itemCount: conteudo?.questoes.length ?? 0,
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (_, i) {
-          final q = questoesExemplo[i];
+          final q = conteudo!.questoes[i];
           return AppCartao(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -34,13 +36,13 @@ class AdminQuestoesScreen extends StatelessWidget {
                   children: [
                     Flexible(
                       child: _Etiqueta(
-                        nomeDoAssunto(q.idAssunto),
+                        conteudo.nomeDoAssunto(q.idAssunto),
                         scheme.primary,
                       ),
                     ),
                     const SizedBox(width: 8),
                     _Etiqueta(
-                      'Dificuldade ${q.dificuldade}/5',
+                      'Dificuldade ${q.dificuldade}/3',
                       scheme.onSurfaceVariant,
                     ),
                   ],
@@ -65,7 +67,7 @@ class AdminQuestoesScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          '${a.letra}) ${a.texto}',
+                          '${a.letra}) ${a.texto ?? a.imagemDescricao ?? 'imagem'}',
                           style: texto.labelMedium?.copyWith(
                             color: a.correta
                                 ? const Color(0xFF15803D)

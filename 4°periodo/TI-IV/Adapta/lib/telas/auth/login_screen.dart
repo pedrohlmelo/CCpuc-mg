@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
 import 'moldura_auth.dart';
 
@@ -32,22 +32,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.dispose();
   }
 
-  void _entrar() {
+  Future<void> _entrar() async {
     if (!_form.currentState!.validate()) return;
     final email = _email.text.trim();
     final apelido = email.split('@').first;
     // Sem backend, o papel sai do e-mail. Quem confere credenciais e devolve
     // o tipo do usuário é o servidor, quando ele existir.
-    final admin = email.toLowerCase() == emailAdminDemo;
-    ref.read(usuarioProvider.notifier).state = Usuario(
-      nome: admin
-          ? 'Administração'
-          : apelido.isEmpty
-          ? 'Aluno'
-          : apelido[0].toUpperCase() + apelido.substring(1),
-      email: email,
-      tipo: admin ? TipoUsuario.admin : TipoUsuario.aluno,
-    );
+    final admin = email.toLowerCase() == 'admin@adapta.app';
+    await ref
+        .read(sessaoProvider.notifier)
+        .entrarLocal(
+          admin
+              ? 'Administração'
+              : apelido.isEmpty
+              ? 'Aluno'
+              : apelido[0].toUpperCase() + apelido.substring(1),
+          email,
+          admin ? TipoUsuario.admin : TipoUsuario.aluno,
+        );
 
     // A navegação espera o próximo frame: preencher a sessão faz o go_router
     // reavaliar as rotas, e sair antes disso desfaria a saída desta tela.

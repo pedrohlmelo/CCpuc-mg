@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
 import '../../widgets/cartoes.dart';
@@ -17,7 +17,7 @@ class MateriasScreen extends ConsumerWidget {
   const MateriasScreen({super.key});
 
   void _escolher(BuildContext context, WidgetRef ref, Materia? materia) {
-    ref.read(materiaSelecionadaProvider.notifier).state = materia;
+    ref.read(idMateriaSelecionadaProvider.notifier).selecionar(materia);
     if (context.canPop()) {
       context.pop();
     } else {
@@ -27,7 +27,9 @@ class MateriasScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final entrou = ref.watch(entrouProvider);
     final aluno = ref.watch(usuarioProvider);
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
     final selecionada = ref.watch(materiaSelecionadaProvider);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -43,9 +45,9 @@ class MateriasScreen extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
         children: [
           Text(
-            aluno == null
-                ? 'O que vamos estudar?'
-                : 'O que vamos estudar, ${aluno.primeiroNome}?',
+            entrou
+                ? 'O que vamos estudar, ${aluno!.primeiroNome}?'
+                : 'O que vamos estudar?',
             style: texto.headlineMedium,
           ),
           const SizedBox(height: 6),
@@ -129,9 +131,9 @@ class MateriasScreen extends ConsumerWidget {
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
             ),
-            itemCount: materiasExemplo.length,
+            itemCount: conteudo?.materias.length ?? 0,
             itemBuilder: (_, i) {
-              final m = materiasExemplo[i];
+              final m = conteudo!.materias[i];
               final estilo = estiloMateria(m.nome, m.id);
               final ativa = selecionada?.id == m.id;
               return AppCartao(
@@ -151,7 +153,7 @@ class MateriasScreen extends ConsumerWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      '${assuntosDaMateria(m.id).length} assuntos',
+                      '${conteudo.assuntosDaMateria(m.id).length} assuntos',
                       style: texto.bodySmall,
                     ),
                   ],

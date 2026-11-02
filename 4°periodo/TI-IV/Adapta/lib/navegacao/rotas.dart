@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../dados/estado_prototipo.dart';
+import '../dados/estado_app.dart';
 import '../dados/modelos.dart';
 import '../telas/admin/admin_assuntos_screen.dart';
 import '../telas/admin/admin_grafo_screen.dart';
@@ -22,9 +22,7 @@ import 'casca_aluno.dart';
 /// Mapa de navegação do app.
 ///
 /// O app abre em `/`, a tela inicial do aluno: não há tela de login na
-/// abertura. A tela inicial se apresenta sem nome e, para estudar, manda
-/// entrar: quem chega em `/sessao` sem ter entrado é levado ao login e volta
-/// para a sessão depois.
+/// abertura, e quem não tem conta estuda como visitante (RF14).
 ///
 /// O painel administrativo é de uso interno do grupo. As rotas `/admin` só
 /// existem para quem entrou como administrador; para qualquer outra pessoa
@@ -59,12 +57,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       // grupo. Vai para a tela inicial em vez de avisar que a rota existe.
       if (local.startsWith('/admin')) {
         return (usuario?.isAdmin ?? false) ? null : '/';
-      }
-
-      // Estudar exige conta; depois do login a pessoa volta para a questão.
-      if (local == '/sessao' && usuario == null) {
-        final destino = Uri.encodeComponent(estado.uri.toString());
-        return '/login?apos=$destino';
       }
 
       return null;

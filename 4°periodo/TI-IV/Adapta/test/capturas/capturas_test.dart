@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:adapta/app.dart';
-import 'package:adapta/dados/estado_prototipo.dart';
+import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/navegacao/rotas.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,9 @@ void main() {
     child: ProviderScope(
       overrides: [
         if (comConta)
-          usuarioProvider.overrideWith((_) => comoAdmin ? admin : aluno),
+          sessaoProvider.overrideWith(
+            () => _SessaoFixa(comoAdmin ? admin : aluno),
+          ),
       ],
       child: const AdaptaApp(),
     ),
@@ -182,4 +184,13 @@ void main() {
     ir(tester, '/admin');
     await capturar(tester, '20_admin_escuro');
   }, skip: !ativo);
+}
+
+/// Sessão fixa: as capturas não dependem do banco para saber quem entrou.
+class _SessaoFixa extends SessaoController {
+  final Usuario usuario;
+  _SessaoFixa(this.usuario);
+
+  @override
+  Future<Usuario> build() async => usuario;
 }

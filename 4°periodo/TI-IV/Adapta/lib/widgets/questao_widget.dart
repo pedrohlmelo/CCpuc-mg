@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../dados/modelos.dart';
 import '../tema/app_tema.dart';
 import 'cartoes.dart';
+import 'imagem_questao.dart';
 import 'mascote.dart';
 
 /// Enunciado e alternativas de uma questão. Depois da escolha, mostra o
@@ -64,7 +65,20 @@ class _QuestaoWidgetState extends State<QuestaoWidget> {
       const SizedBox(height: 14),
       AppCartao(
         padding: const EdgeInsets.all(20),
-        child: Text(q.enunciado, style: texto.titleLarge?.copyWith(height: 1.4)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(q.enunciado, style: texto.titleLarge?.copyWith(height: 1.4)),
+            if (q.imagemUrl != null || q.imagemLocal != null) ...[
+              const SizedBox(height: 14),
+              ImagemQuestao(
+                url: q.imagemUrl,
+                caminhoLocal: q.imagemLocal,
+                descricao: q.imagemDescricao,
+              ),
+            ],
+          ],
+        ),
       ),
       const SizedBox(height: 18),
       for (final alt in q.alternativas) ...[
@@ -225,7 +239,21 @@ class _Alternativa extends StatelessWidget {
                   ),
                   const SizedBox(width: 14),
                   Expanded(
-                    child: Text(alternativa.texto, style: texto.bodyLarge),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (alternativa.texto != null)
+                          Text(alternativa.texto!, style: texto.bodyLarge),
+                        if (alternativa.imagemUrl != null ||
+                            alternativa.imagemLocal != null)
+                          ImagemQuestao(
+                            url: alternativa.imagemUrl,
+                            caminhoLocal: alternativa.imagemLocal,
+                            descricao: alternativa.imagemDescricao,
+                            alturaMaxima: 120,
+                          ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -255,7 +283,7 @@ class _Dificuldade extends StatelessWidget {
         children: [
           Text('Dificuldade', style: Theme.of(context).textTheme.labelSmall),
           const SizedBox(width: 8),
-          for (var i = 1; i <= 5; i++)
+          for (var i = 1; i <= 3; i++)
             Container(
               width: 7,
               height: 7,

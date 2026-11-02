@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../dados/estado_prototipo.dart';
 
 /// Moldura das três abas do aluno: Início, Histórico e Perfil.
 ///
 /// A barra de baixo é a navegação principal do app. Telas que abrem por cima
 /// (matérias, sessão, login, painel admin) ficam fora desta moldura e sempre
 /// têm botão de voltar.
-class CascaAluno extends ConsumerWidget {
+class CascaAluno extends StatelessWidget {
   final StatefulNavigationShell shell;
   const CascaAluno({required this.shell, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final naInicial = shell.currentIndex == 0;
-    final entrou = ref.watch(entrouProvider);
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -37,10 +33,8 @@ class CascaAluno extends ConsumerWidget {
                     elevation: 6,
                     shadowColor: scheme.primary.withValues(alpha: 0.4),
                   ),
-                  icon: Icon(
-                    entrou ? Icons.play_arrow_rounded : Icons.login_rounded,
-                  ),
-                  label: Text(entrou ? 'Estudar agora' : 'Entrar para estudar'),
+                  icon: const Icon(Icons.play_arrow_rounded),
+                  label: const Text('Estudar agora'),
                   onPressed: () => context.push('/sessao'),
                 ),
               ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/cartoes.dart';
@@ -27,19 +27,18 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final historico = ref.watch(historicoProvider);
-    final entrou = ref.watch(entrouProvider);
+    final historico = ref.watch(historicoProvider).valueOrNull ?? const [];
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
     final respondidas = historico.length;
-    final acertos = historico.where(respostaCerta).length;
+    final acertos = historico.where((r) => r.acertou).length;
     final taxa = respondidas == 0 ? 0 : (acertos / respondidas * 100).round();
 
     final lista = switch (_filtro) {
       _Filtro.tudo => historico,
-      _Filtro.acertos => historico.where(respostaCerta).toList(),
-      _Filtro.erros => historico.where((r) => !respostaCerta(r)).toList(),
+      _Filtro.acertos => historico.where((r) => r.acertou).toList(),
+      _Filtro.erros => historico.where((r) => !r.acertou).toList(),
     };
 
     return Scaffold(
@@ -48,19 +47,7 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
         title: const Text('Histórico de estudo'),
         actions: const [BotaoTema(), SizedBox(width: 4)],
       ),
-      body: !entrou
-          ? EstadoVazio(
-              ilustracao: const Mascote(pose: PoseCamu.pensativo, tamanho: 130),
-              titulo: 'Seu histórico fica guardado na sua conta',
-              descricao:
-                  'Entre para ver as questões que você respondeu e rever as resoluções.',
-              acao: FilledButton(
-                key: const Key('botao_entrar_historico'),
-                onPressed: () => context.push('/login'),
-                child: const Text('Entrar'),
-              ),
-            )
-          : historico.isEmpty
+      body: historico.isEmpty
           ? const EstadoVazio(
               ilustracao: Mascote(pose: PoseCamu.pensativo, tamanho: 130),
               titulo: 'Você ainda não respondeu nada',
@@ -156,18 +143,19 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
   }
 }
 
-class _ItemHistorico extends StatelessWidget {
+class _ItemHistorico extends ConsumerWidget {
   final Resposta resposta;
   const _ItemHistorico({required this.resposta});
 
   @override
-  Widget build(BuildContext context) {
-    final questao = questaoPorId(resposta.idQuestao);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final questao = conteudo?.questaoPorId(resposta.idQuestao);
     if (questao == null) return const SizedBox.shrink();
 
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
-    final certa = respostaCerta(resposta);
+    final certa = resposta.acertou;
     final cor = certa ? CoresMemoria.consolidado : CoresMemoria.critico;
 
     return AppCartao(
@@ -195,7 +183,7 @@ class _ItemHistorico extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  nomeDoAssunto(questao.idAssunto),
+                  conteudo!.nomeDoAssunto(questao.idAssunto),
                   style: texto.labelMedium?.copyWith(color: scheme.primary),
                 ),
                 const SizedBox(height: 2),

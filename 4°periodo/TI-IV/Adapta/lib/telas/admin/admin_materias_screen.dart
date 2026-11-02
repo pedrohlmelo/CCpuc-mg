@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../dados/dados_exemplo.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../widgets/cartoes.dart';
 import '../../widgets/paleta_materias.dart';
 import 'admin_scaffold.dart';
 
-/// Matérias cadastradas (RF11). Lista de exemplo: criar e excluir ainda não
-/// gravam nada.
-class AdminMateriasScreen extends StatelessWidget {
+/// Matérias cadastradas (RF11). Criar e excluir ainda não gravam nada.
+class AdminMateriasScreen extends ConsumerWidget {
   const AdminMateriasScreen({super.key});
 
   Future<void> _nova(BuildContext context) async {
@@ -17,7 +17,8 @@ class AdminMateriasScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -28,10 +29,10 @@ class AdminMateriasScreen extends StatelessWidget {
       aoAdicionar: () => _nova(context),
       child: ListView.separated(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
-        itemCount: materiasExemplo.length,
+        itemCount: conteudo?.materias.length ?? 0,
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (_, i) {
-          final m = materiasExemplo[i];
+          final m = conteudo!.materias[i];
           final estilo = estiloMateria(m.nome, m.id);
           return AppCartao(
             padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
@@ -45,7 +46,7 @@ class AdminMateriasScreen extends StatelessWidget {
                     children: [
                       Text(m.nome, style: texto.titleMedium),
                       Text(
-                        '${assuntosDaMateria(m.id).length} assuntos',
+                        '${conteudo.assuntosDaMateria(m.id).length} assuntos',
                         style: texto.bodySmall,
                       ),
                     ],

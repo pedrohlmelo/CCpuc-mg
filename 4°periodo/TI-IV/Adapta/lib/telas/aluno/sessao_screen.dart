@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../widgets/botao_tema.dart';
 import '../../widgets/botao_voltar.dart';
 import '../../widgets/cartoes.dart';
@@ -26,29 +26,44 @@ class SessaoScreen extends ConsumerStatefulWidget {
 
 class _SessaoScreenState extends ConsumerState<SessaoScreen> {
   int _indice = 0;
-  late final List<Questao> _fila;
+  List<Questao>? _fila;
+  final _cronometro = Stopwatch();
 
   @override
   void initState() {
     super.initState();
+    _carregar();
+  }
+
+  Future<void> _carregar() async {
+    final conteudo = await ref.read(conteudoProvider.future);
     final unica = widget.idQuestao == null
         ? null
-        : questaoPorId(widget.idQuestao!);
-    if (unica != null) {
-      _fila = [unica];
-    } else {
-      final materia = ref.read(materiaSelecionadaProvider);
-      _fila = questoesDaMateria(materia?.id);
-    }
+        : conteudo.questaoPorId(widget.idQuestao!);
+    if (!mounted) return;
+    setState(() {
+      _fila = unica != null
+          ? [unica]
+          : conteudo.questoesDaMateria(ref.read(idMateriaSelecionadaProvider));
+    });
+    _cronometro.start();
   }
 
   void _responder(Questao questao, Alternativa escolhida) {
     ref
         .read(historicoProvider.notifier)
-        .registrar(idQuestao: questao.id, letra: escolhida.letra);
+        .registrar(
+          idQuestao: questao.id,
+          letra: escolhida.letra,
+          acertou: escolhida.correta,
+          tempoGasto: _cronometro.elapsed.inSeconds,
+        );
   }
 
-  void _avancar() => setState(() => _indice++);
+  void _avancar() {
+    _cronometro.reset();
+    setState(() => _indice++);
+  }
 
   void _verHistorico() {
     // Fecha a sessão antes de trocar de aba, para não deixá-la na pilha.
@@ -60,7 +75,8 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final refazendo = widget.idQuestao != null;
-    final total = _fila.length;
+    final fila = _fila ?? const <Questao>[];
+    final total = fila.length;
     final acabou = _indice >= total;
 
     return Scaffold(
@@ -99,7 +115,9 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
           ),
         ],
       ),
-      body: total == 0
+      body: _fila == null
+          ? const Carregando()
+          : total == 0
           ? EstadoVazio(
               ilustracao: const Mascote(pose: PoseCamu.pensativo, tamanho: 140),
               titulo: 'Nenhuma questão nesta matéria',
@@ -129,18 +147,17 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
                   ),
                   const SizedBox(height: 10),
                   OutlinedButton(
-                    onPressed: () => context.canPop()
-                        ? context.pop()
-                        : context.go('/'),
+                    onPressed: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
                     child: const Text('Voltar ao início'),
                   ),
                 ],
               ),
             )
           : QuestaoWidget(
-              key: ValueKey(_fila[_indice].id),
-              questao: _fila[_indice],
-              aoResponder: (escolhida) => _responder(_fila[_indice], escolhida),
+              key: ValueKey(fila[_indice].id),
+              questao: fila[_indice],
+              aoResponder: (escolhida) => _responder(fila[_indice], escolhida),
               aoAvancar: _avancar,
               rotuloAvancar: _indice == total - 1 ? 'Concluir' : 'Continuar',
             ),

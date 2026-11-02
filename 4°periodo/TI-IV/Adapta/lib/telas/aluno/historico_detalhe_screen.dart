@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/dados_exemplo.dart';
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
+import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/botao_voltar.dart';
 import '../../widgets/cartoes.dart';
@@ -20,13 +20,13 @@ class HistoricoDetalheScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questao = questaoPorId(idQuestao);
-    final tentativas = ref
-        .watch(historicoProvider)
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    final questao = conteudo?.questaoPorId(idQuestao);
+    final tentativas = (ref.watch(historicoProvider).valueOrNull ?? const [])
         .where((r) => r.idQuestao == idQuestao)
         .toList();
 
-    if (questao == null || tentativas.isEmpty) {
+    if (conteudo == null || questao == null || tentativas.isEmpty) {
       return Scaffold(
         key: const Key('tela_resolucao'),
         appBar: AppBar(
@@ -44,9 +44,9 @@ class HistoricoDetalheScreen extends ConsumerWidget {
     final ultima = tentativas.first;
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
-    final certa = respostaCerta(ultima);
+    final certa = ultima.acertou;
     final cor = certa ? CoresMemoria.consolidado : CoresMemoria.critico;
-    final materia = materiaDaQuestao(questao);
+    final materia = conteudo.materiaDaQuestao(questao);
 
     return Scaffold(
       key: const Key('tela_resolucao'),
@@ -122,7 +122,7 @@ class HistoricoDetalheScreen extends ConsumerWidget {
             runSpacing: 8,
             children: [
               _Etiqueta(
-                nomeDoAssunto(questao.idAssunto),
+                conteudo.nomeDoAssunto(questao.idAssunto),
                 scheme.primary,
                 Icons.hub_rounded,
               ),
@@ -172,10 +172,10 @@ class HistoricoDetalheScreen extends ConsumerWidget {
                     ListTile(
                       dense: true,
                       leading: Icon(
-                        respostaCerta(t)
+                        t.acertou
                             ? Icons.check_circle_outline_rounded
                             : Icons.highlight_off_rounded,
-                        color: respostaCerta(t)
+                        color: t.acertou
                             ? CoresMemoria.consolidado
                             : CoresMemoria.critico,
                       ),
@@ -215,9 +215,7 @@ class _Etiqueta extends StatelessWidget {
         const SizedBox(width: 6),
         Text(
           texto,
-          style: Theme.of(
-            context,
-          ).textTheme.labelMedium?.copyWith(color: cor),
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(color: cor),
         ),
       ],
     ),

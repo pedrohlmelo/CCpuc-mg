@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../dados/estado_prototipo.dart';
+import '../../dados/estado_app.dart';
 import '../../tema/app_tema.dart';
 import '../../tema/tema_controller.dart';
 import '../../widgets/botao_tema.dart';
@@ -18,7 +18,7 @@ class PerfilScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioProvider);
-    final entrou = usuario != null;
+    final entrou = ref.watch(entrouProvider);
     final escuro = ref.read(temaProvider.notifier).estaEscuro(context);
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
@@ -41,7 +41,7 @@ class PerfilScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        usuario?.nome ?? 'Você ainda não entrou',
+                        entrou ? usuario!.nome : 'Você ainda não entrou',
                         style: texto.headlineSmall?.copyWith(
                           color: Colors.white,
                         ),
@@ -49,7 +49,8 @@ class PerfilScreen extends ConsumerWidget {
                       const SizedBox(height: 4),
                       Text(
                         usuario?.email ??
-                            'Entre para estudar e guardar seu progresso.',
+                            'Você estuda como visitante. Crie uma conta para '
+                                'guardar seu progresso na nuvem.',
                         style: texto.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: 0.85),
                         ),
@@ -73,8 +74,7 @@ class PerfilScreen extends ConsumerWidget {
                     cor: scheme.error,
                     titulo: 'Sair da conta',
                     descricao: 'Volta a estudar sem conta',
-                    aoTocar: () =>
-                        ref.read(usuarioProvider.notifier).state = null,
+                    aoTocar: () => ref.read(sessaoProvider.notifier).sair(),
                   )
                 else ...[
                   _Item(
@@ -135,12 +135,11 @@ class PerfilScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Sobre este protótipo', style: texto.titleSmall),
+                Text('Sobre o Adapta', style: texto.titleSmall),
                 const SizedBox(height: 6),
                 Text(
-                  'Esta versão mostra apenas as telas e a navegação do Adapta. '
-                  'Os dados são de exemplo e ficam em memória; as regras de '
-                  'estudo e a persistência serão do backend.',
+                  'Seu progresso fica neste aparelho e funciona sem internet. '
+                  'Com uma conexão, ele é copiado para a nuvem.',
                   style: texto.bodyMedium?.copyWith(
                     color: scheme.onSurfaceVariant,
                   ),

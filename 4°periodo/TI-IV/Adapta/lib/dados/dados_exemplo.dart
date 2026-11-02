@@ -1,8 +1,5 @@
-/// Dados falsos do protótipo, fixos e em memória.
-///
-/// Servem só para as telas terem conteúdo durante a navegação. Nada aqui é
-/// consultado, calculado ou salvo: quando o backend (Java + Spring) existir,
-/// este arquivo é substituído pelas chamadas de API.
+/// Conteúdo inicial escrito à mão. É só fonte do seed: as telas leem do SQLite
+/// (`banco/seed.dart` amplia estas listas e grava no banco).
 library;
 
 import 'modelos.dart';
@@ -22,7 +19,7 @@ const assuntosExemplo = <Assunto>[
   Assunto(id: 7, idMateria: 2, nome: 'Revolução Industrial'),
 ];
 
-/// Arestas `prerequisito → dependente` mostradas na tela do grafo (admin).
+/// Arestas `prerequisito → dependente` do conteúdo original.
 const dependenciasExemplo = <Dependencia>[
   Dependencia(prerequisito: 2, dependente: 3, peso: 0.9),
   Dependencia(prerequisito: 2, dependente: 4, peso: 0.8),
@@ -200,28 +197,7 @@ const saudeExemplo = <SaudeAssunto>[
   ),
 ];
 
-/// Histórico inicial: questões que o "aluno de demonstração" já respondeu.
-/// A tela de histórico lista isto, e cada item abre a resolução antiga.
-List<Resposta> historicoExemplo() {
-  final hoje = DateTime.now();
-  DateTime dias(int d, int h, int min) =>
-      DateTime(hoje.year, hoje.month, hoje.day, h, min).subtract(
-        Duration(days: d),
-      );
-
-  return [
-    Resposta(idQuestao: 5, letraEscolhida: 'A', quando: dias(0, 9, 12)),
-    Resposta(idQuestao: 3, letraEscolhida: 'B', quando: dias(1, 20, 5)),
-    Resposta(idQuestao: 8, letraEscolhida: 'B', quando: dias(2, 18, 40)),
-    Resposta(idQuestao: 1, letraEscolhida: 'B', quando: dias(2, 18, 31)),
-    Resposta(idQuestao: 4, letraEscolhida: 'C', quando: dias(5, 21, 2)),
-    Resposta(idQuestao: 2, letraEscolhida: 'C', quando: dias(6, 8, 55)),
-    Resposta(idQuestao: 6, letraEscolhida: 'A', quando: dias(9, 19, 18)),
-    Resposta(idQuestao: 7, letraEscolhida: 'B', quando: dias(12, 7, 44)),
-  ];
-}
-
-// --- buscas simples nas listas acima (nenhuma consulta a banco) -------------
+// --- buscas simples nas listas acima ----------------------------------------
 
 Materia? materiaPorId(int id) =>
     materiasExemplo.where((m) => m.id == id).firstOrNull;
@@ -232,8 +208,6 @@ Assunto? assuntoPorId(int id) =>
 Questao? questaoPorId(int id) =>
     questoesExemplo.where((q) => q.id == id).firstOrNull;
 
-String nomeDoAssunto(int id) => assuntoPorId(id)?.nome ?? 'Assunto #$id';
-
 List<Assunto> assuntosDaMateria(int idMateria) =>
     assuntosExemplo.where((a) => a.idMateria == idMateria).toList();
 
@@ -243,13 +217,3 @@ List<Questao> questoesDaMateria(int? idMateria) {
   final ids = assuntosDaMateria(idMateria).map((a) => a.id).toSet();
   return questoesExemplo.where((q) => ids.contains(q.idAssunto)).toList();
 }
-
-/// Matéria a que a questão pertence, via assunto.
-Materia? materiaDaQuestao(Questao questao) {
-  final assunto = assuntoPorId(questao.idAssunto);
-  return assunto == null ? null : materiaPorId(assunto.idMateria);
-}
-
-/// `true` se a letra marcada na resposta é a do gabarito.
-bool respostaCerta(Resposta resposta) =>
-    questaoPorId(resposta.idQuestao)?.gabarito.letra == resposta.letraEscolhida;
