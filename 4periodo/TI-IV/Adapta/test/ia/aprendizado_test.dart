@@ -196,6 +196,39 @@ void main() {
     expect(await servico.montarFila(usuario), hasLength(10));
   });
 
+  group('saúde logo depois de estudar', () {
+    Future<Map<int, double>> responder(bool acertou) async {
+      final conteudo = await ConteudoRepositorio(banco).carregar();
+      final assuntos = <int>{};
+      for (final q in conteudo.questoes) {
+        if (!assuntos.add(q.idAssunto) || assuntos.length > 5) continue;
+        await HistoricoRepositorio(banco).registrar(
+          idUsuario: usuario.id,
+          idQuestao: q.id,
+          letra: 'A',
+          acertou: acertou,
+          tempoGasto: 30,
+        );
+      }
+      return (await servico.recalcular(usuario)).retencoes;
+    }
+
+    test('quem errou tudo não fica consolidado', () async {
+      final retencoes = await responder(false);
+      expect(retencoes, isNotEmpty);
+      for (final r in retencoes.values) {
+        expect(estadoDaRetencao(r), EstadoMemoria.critico);
+      }
+    });
+
+    test('quem acertou tudo fica acima de quem errou', () async {
+      final retencoes = await responder(true);
+      for (final r in retencoes.values) {
+        expect(estadoDaRetencao(r), isNot(EstadoMemoria.critico));
+      }
+    });
+  });
+
   group('demonstração', () {
     test('Ana: a lacuna em Estequiometria vem de outra matéria', () async {
       await servico.carregarDemo(usuario, PerfilDemo.ana);

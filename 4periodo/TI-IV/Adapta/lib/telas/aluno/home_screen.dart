@@ -136,48 +136,43 @@ class HomeScreen extends ConsumerWidget {
             _AlertaRevisao(alerta: alerta),
             const SizedBox(height: 24),
           ],
-          Row(
-            children: [const Expanded(child: TituloSecao('Saúde da memória'))],
-          ),
-          AppCartao(
-            padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
-            child: Column(
+          if (saude.isNotEmpty) ...[
+            Row(
               children: [
-                if (saude.isEmpty)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      'Responda algumas questões para ver o que você lembra.',
-                      style: texto.bodyMedium?.copyWith(
-                        color: scheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ),
-                for (final s in saude.take(_assuntosNaHome)) _barra(s),
-                if (saude.length > _assuntosNaHome)
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      key: const Key('ver_todos_saude'),
-                      onPressed: () => showModalBottomSheet<void>(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (_) => SafeArea(
-                          child: ListView(
-                            shrinkWrap: true,
-                            padding: const EdgeInsets.all(20),
-                            children: [for (final s in saude) _barra(s)],
-                          ),
-                        ),
-                      ),
-                      child: const Text('Ver todos'),
-                    ),
-                  ),
-                const SizedBox(height: 6),
-                const LegendaMemoria(),
+                const Expanded(child: TituloSecao('Saúde da memória')),
               ],
             ),
-          ),
+            AppCartao(
+              key: const Key('saude_memoria'),
+              padding: const EdgeInsets.fromLTRB(18, 10, 18, 12),
+              child: Column(
+                children: [
+                  for (final s in saude.take(_assuntosNaHome)) _barra(s),
+                  if (saude.length > _assuntosNaHome)
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        key: const Key('ver_todos_saude'),
+                        onPressed: () => showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (_) => SafeArea(
+                            child: ListView(
+                              shrinkWrap: true,
+                              padding: const EdgeInsets.all(20),
+                              children: [for (final s in saude) _barra(s)],
+                            ),
+                          ),
+                        ),
+                        child: const Text('Ver todos'),
+                      ),
+                    ),
+                  const SizedBox(height: 6),
+                  const LegendaMemoria(),
+                ],
+              ),
+            ),
+          ],
           if (respondidas > 0) ...[
             const SizedBox(height: 24),
             const TituloSecao('Seu estudo'),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,6 +25,10 @@ const _mudancaMinima = 0.01;
 
 /// Quantas respostas recentes contam para achar o assunto com mais erros.
 const _janelaErros = 30;
+
+/// Menor intervalo visto no treino (`ia/gerar_dataset.py`). Abaixo dele o
+/// modelo extrapola e dá retenção alta para qualquer assunto recém-visto.
+const _diasMinimos = 0.5;
 
 /// "Seus erros em X apontam para uma lacuna em Y".
 class AvisoLacuna {
@@ -93,18 +98,23 @@ class ServicoAprendizado {
   ]);
 
   /// Retenção de cada assunto estudado daqui a [folga] dias, já com o
-  /// esquecimento propagado pelo grafo.
+  /// esquecimento propagado pelo grafo. O modelo diz quanto do que o aluno
+  /// sabia continua na memória; a taxa de acerto limita o quanto ele sabia,
+  /// então quem só errou não aparece como consolidado.
   Map<int, double> _prever(
     List<_Estudo> estudos,
     GrafoConhecimento grafo,
     double folga,
   ) => grafo.propagarEsquecimento({
     for (final e in estudos)
-      e.idAssunto: _esquecimento.probabilidadeLembrar(
-        dias: e.dias + folga,
-        qtdRevisoes: e.diasDeEstudo.length,
-        dificuldade: e.dificuldade,
-        taxaAcerto: e.taxaAcerto,
+      e.idAssunto: min(
+        _esquecimento.probabilidadeLembrar(
+          dias: max(e.dias + folga, _diasMinimos),
+          qtdRevisoes: e.diasDeEstudo.length,
+          dificuldade: e.dificuldade,
+          taxaAcerto: e.taxaAcerto,
+        ),
+        e.taxaAcerto,
       ),
   });
 

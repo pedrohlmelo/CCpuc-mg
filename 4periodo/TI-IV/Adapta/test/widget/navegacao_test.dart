@@ -187,6 +187,17 @@ void main() {
       expect(find.text('Você ainda não respondeu nada'), findsNothing);
     });
 
+    testWidgets('sem questões respondidas não há saúde da memória', (
+      tester,
+    ) async {
+      await abrir(tester);
+
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, -2000));
+      await assentar(tester);
+      expect(find.text('Saúde da memória'), findsNothing);
+      expect(find.byKey(const Key('saude_memoria')), findsNothing);
+    });
+
     testWidgets('o histórico começa vazio', (tester) async {
       await abrir(tester);
 
@@ -278,6 +289,15 @@ void main() {
         find.descendant(of: tela('inicial'), matching: find.text('8')),
         findsOneWidget,
       );
+
+      final saude = find.byKey(const Key('saude_memoria'));
+      await esperar(tester, find.text('Saúde da memória'));
+      await tester.scrollUntilVisible(
+        saude,
+        260,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(saude, findsOneWidget);
     });
 
     testWidgets('sessão de estudo: responder, ver feedback e fechar', (
