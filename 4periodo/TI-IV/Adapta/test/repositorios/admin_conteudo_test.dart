@@ -77,22 +77,22 @@ void main() {
       usuarioAtual: () => const Usuario(nome: 'Ana'),
     );
     expect(
-      () => aluno.criarMateria('Teste', 'matematica'),
+      () => aluno.criarMateria('Nova matéria X', 'matematica'),
       throwsA(isA<ErroAdmin>()),
     );
   });
 
   test('criar e editar matéria grava e marca pendente', () async {
-    final id = await admin.criarMateria('Teste', 'natureza');
+    final id = await admin.criarMateria('Nova matéria X', 'natureza');
     var m = await linha('Materia', id);
-    expect(m['nome'], 'Teste');
+    expect(m['nome'], 'Nova matéria X');
     expect(m['sincronizado'], 0);
     expect(m['atualizado_em'], isNotNull);
     expect(mudancas, 1);
 
-    await admin.editarMateria(id, 'Teste 2', 'humanas');
+    await admin.editarMateria(id, 'Nova 2', 'humanas');
     m = await linha('Materia', id);
-    expect(m['nome'], 'Teste 2');
+    expect(m['nome'], 'Nova 2');
     expect(m['area'], 'humanas');
     expect(await admin.contarPendentes(), 1);
 
@@ -108,7 +108,7 @@ void main() {
   });
 
   test('assunto ganha id da matéria e marca a matéria', () async {
-    final materia = await admin.criarMateria('Teste', 'natureza');
+    final materia = await admin.criarMateria('Nova matéria X', 'natureza');
     final a1 = await admin.criarAssunto(materia, 'Um', 'desc');
     final a2 = await admin.criarAssunto(materia, 'Dois', '');
     expect(a1, materia * 100 + 1);

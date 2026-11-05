@@ -37,14 +37,14 @@ pacote inicial → SQLite. O app nunca chama a API.
   cache e sem rede, a tela mostra a descrição, e a fila evita essas questões.
 - **`ativo: false`:** tira a questão do app sem apagar, e o histórico continua válido.
 
-## SQLite (`adapta.db`, versão 3)
+## SQLite (`adapta.db`, versão 4)
 
 | Tabela | Conteúdo |
 |---|---|
 | `Usuario` | Linha local de cada pessoa. `uid_firebase` liga à conta; sem senha, que fica no Firebase Auth |
-| `Materia`, `Assunto` | Conteúdo, com `area` na matéria. Cada assunto é um vértice do grafo |
+| `Materia`, `Assunto` | Conteúdo, com `area` e `ativo` nos dois; a matéria tem também `sincronizado` e `atualizado_em` para o painel admin. Cada assunto é um vértice do grafo |
 | `Grafo_Dependencia` | Arestas `pré-requisito → dependente` com peso; PK composta e índices nas duas pontas |
-| `Questao`, `Alternativa` | Questões, com imagem opcional, `dificuldade_calibrada`, `fonte`, `explicacao_gerada`, `revisado` e `ativo` |
+| `Questao`, `Alternativa` | Questões, com imagem opcional, `dificuldade_calibrada`, `fonte`, `explicacao_gerada`, `revisado`, `ativo`, `sincronizado` e `atualizado_em` |
 | `Historico_Estudo` | Cada resposta, com id uuid e `tempo_gasto` |
 | `Nivel_Memoria` | Retenção por usuário e assunto |
 | `Proficiencia` | θ por usuário e assunto |
@@ -53,7 +53,8 @@ As três últimas têm `sincronizado` e `atualizado_em`: toda escrita de progres
 grava `sincronizado = 0`.
 
 Migrações: a 2 acrescenta `area`, `fonte`, `explicacao_gerada` e `revisado`; a 3
-acrescenta `ativo`. `imagem_local` fica sem uso. O pacote inicial é aplicado na criação do
+acrescenta `ativo` na questão; a 4 acrescenta `ativo` em matéria e assunto e
+`sincronizado`/`atualizado_em` em matéria e questão, para o painel admin. Continuam 9 tabelas. `imagem_local` fica sem uso. O pacote inicial é aplicado na criação do
 banco e quando vier em versão maior que a salva. Se o aparelho tiver um `adapta.db` de build
 antigo, com outro schema, ele é renomeado para `adapta.db.antigo` e o banco é recriado.
 
@@ -76,6 +77,35 @@ e essas três subcoleções, conta nova nasce `aluno`, ninguém muda o próprio 
 e nada mais é acessível. `meta`, `materias` e `questoes` podem ser lidos por quem tem
 sessão, inclusive o visitante anônimo, e só o admin escreve. Os scripts usam a conta de
 serviço, que não passa pelas regras.
+
+## Painel administrativo (RF11), offline primeiro
+
+O admin grava no SQLite na hora, numa transação, sem esperar a rede
+(`lib/dados/repositorios/admin_conteudo_repositorio.dart`), e as telas releem o banco logo em
+seguida. O que ele mudou fica com `sincronizado = 0`: a questão, ou a matéria, já que assuntos
+e arestas moram no documento dela (uma aresta entre matérias marca as duas). Na lista, um ícone
+de nuvem riscada mostra o que ainda não subiu, e o painel inicial conta as alterações pendentes.
+
+- **Exclusão lógica.** Matéria, assunto e questão nunca são apagados, porque histórico, memória e
+  proficiência apontam para os ids. Excluir é `ativo = 0`, em cascata (matéria → assuntos →
+  questões), e tira as arestas que tocam os assuntos desativados. "Mostrar inativos" permite
+  reativar. O app do aluno ignora o que está inativo, e o histórico continua abrindo a questão.
+- **Ids.** Matéria: maior id + 1. Assunto: `id_materia * 100 + n`, com o menor `n` livre.
+  Questão do painel: de 9000001 a 9999999.
+- **Validação.** A mesma do pacote: assunto e matéria ativos, enunciado e explicação, dificuldade
+  1–3, 5 alternativas A–E com texto ou imagem e exatamente uma correta. Aresta que fecharia ciclo
+  no grafo inteiro é recusada com o caminho, e o peso vai de 0,1 a 1,0.
+- **Envio.** Logo depois de cada gravação, ao abrir o app e quando a rede volta, antes do
+  download: as matérias pendentes viram `materias/{id}` completos, as arestas entre matérias são
+  recalculadas para `meta/conteudo`, e cada questão pendente vira `questoes/{id}` com
+  `atualizado_em` novo e único. Tudo vai numa transação com `versao + 1` e `total_questoes`. Deu
+  certo: as linhas voltam a `sincronizado = 1` (só se não mudaram durante o envio) e, se o aparelho
+  estava em dia, a versão nova fica salva, para ele não baixar de novo. Falhou: nada muda, e a
+  próxima tentativa manda tudo outra vez.
+- **Download.** `aplicarConteudo` não sobrescreve matéria, assunto, aresta ou questão pendente:
+  a mudança local vence até subir.
+- `ferramentas/conteudo/estrutura.py` só cria matérias que não existem, para não desfazer o painel;
+  `--forcar` sobrescreve.
 
 Sincronização: ao abrir o app, ao trocar de usuário, ao fim de uma sessão e quando a
 internet volta, os pendentes sobem em `WriteBatch` de até 400 escritas. Em memória

@@ -663,7 +663,7 @@ void main() {
       await assentar(tester);
 
       await tocar(tester, find.text('Nova matéria'));
-      await tester.enterText(find.byKey(const Key('campo_nome')), 'Teste');
+      await tester.enterText(find.byKey(const Key('campo_nome')), 'Redação');
       await tester.tap(find.byKey(const Key('campo_area')));
       await assentar(tester);
       await tester.tap(find.text('Ciências da Natureza').last);
@@ -679,9 +679,9 @@ void main() {
         find.text('Salvo no aparelho; envio à nuvem pendente'),
         findsOneWidget,
       );
-      expect(find.text('Teste'), findsOneWidget);
+      expect(find.text('Redação'), findsOneWidget);
       final card = find.ancestor(
-        of: find.text('Teste'),
+        of: find.text('Redação'),
         matching: find.byType(AppCartao),
       );
       expect(

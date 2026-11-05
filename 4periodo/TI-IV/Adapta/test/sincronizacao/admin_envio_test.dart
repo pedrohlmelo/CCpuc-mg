@@ -81,7 +81,7 @@ void main() {
   tearDown(() => banco.fechar());
 
   test('matéria e questão criadas online sobem e a versão aumenta', () async {
-    final idMateria = await admin.criarMateria('Teste', 'natureza');
+    final idMateria = await admin.criarMateria('Nova matéria X', 'natureza');
     final idAssunto = await admin.criarAssunto(idMateria, 'Assunto teste', '');
     final idQuestao = await admin.salvarQuestao(
       questaoNova(idAssunto: idAssunto),
@@ -90,7 +90,7 @@ void main() {
     expect(await servico.enviarConteudoAdmin(_admin), 2);
 
     final materia = (await doc('materias', idMateria))!;
-    expect(materia['nome'], 'Teste');
+    expect(materia['nome'], 'Nova matéria X');
     expect(materia['ativo'], isTrue);
     expect((materia['assuntos'] as List).single['id'], idAssunto);
     final questao = (await doc('questoes', idQuestao))!;
@@ -188,7 +188,7 @@ void main() {
   });
 
   test('outro aparelho, de aluno, baixa a matéria e a questão novas', () async {
-    final idMateria = await admin.criarMateria('Teste', 'natureza');
+    final idMateria = await admin.criarMateria('Nova matéria X', 'natureza');
     final idAssunto = await admin.criarAssunto(idMateria, 'Assunto teste', '');
     final idQuestao = await admin.salvarQuestao(
       questaoNova(idAssunto: idAssunto, enunciado: 'Questão nova'),
@@ -210,7 +210,7 @@ void main() {
     expect(await outro.baixarConteudo(), ResultadoConteudo.atualizado);
 
     final conteudo = await ConteudoRepositorio(outroBanco).carregar();
-    expect(conteudo.materias.any((m) => m.nome == 'Teste'), isTrue);
+    expect(conteudo.materias.any((m) => m.nome == 'Nova matéria X'), isTrue);
     final questao = conteudo.questoes.firstWhere((q) => q.id == idQuestao);
     expect(questao.enunciado, 'Questão nova');
     expect(questao.gabarito.letra, 'C');

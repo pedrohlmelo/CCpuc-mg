@@ -189,11 +189,19 @@ conteúdo passou para o Firestore, conforme
 [`Documentacao/03-sprint3-armazenamento-ia-grafos.md`](../Documentacao/03-sprint3-armazenamento-ia-grafos.md).
 
 - 14 matérias nas 4 áreas do ENEM, 78 assuntos e 95 arestas, 21 delas entre matérias.
-- 9 tabelas no SQLite, na versão 3, com as colunas `Materia.area`, `Questao.fonte`,
-  `Questao.explicacao_gerada`, `Questao.revisado` e `Questao.ativo`.
+- 9 tabelas no SQLite, na versão 4, com as colunas `Materia.area`, `Questao.fonte`,
+  `Questao.explicacao_gerada`, `Questao.revisado` e `Questao.ativo`; a migração 3 → 4 acrescenta
+  `ativo` em matéria e assunto e `sincronizado`/`atualizado_em` em matéria e questão.
 - Ids fixos: assuntos 1–16 e questões 1–44 nunca mudam. Assuntos novos são
   `id_materia * 100 + n`; questões do ENEM, `ano * 1000 + índice`, com 500 a mais em Espanhol;
   autorais novas, `id_assunto * 10 + n`.
 - Pacote inicial gerado do Firestore, para o primeiro acesso funcionar sem internet.
 - Imagens por URL, com cache no aparelho.
 - A dificuldade `b` da IA é um campo do documento da questão.
+- Painel admin funcional e offline (RF11): grava no SQLite na hora, com exclusão lógica
+  (`ativo = 0`, nunca apaga, porque o progresso aponta para os ids) e marca o que mudou como
+  pendente (`sincronizado = 0`). As alterações sobem ao Firestore logo depois de salvar, ao abrir
+  o app ou quando a rede volta, numa transação que sobe `meta/conteudo.versao`. Enquanto não sobem,
+  o download não as sobrescreve. Questões criadas no painel usam ids de 9000001 a 9999999.
+- RF08: o alerta de esquecimento tem "Revisar agora". RF09: o card de lacuna abre a sessão do
+  pré-requisito. RF10: o Histórico mostra o desempenho por matéria e por assunto.
