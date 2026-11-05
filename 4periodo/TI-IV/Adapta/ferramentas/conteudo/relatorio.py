@@ -8,6 +8,8 @@ from gerar_pacote_inicial import escolher, tem_imagem_remota
 
 ULTIMO_ASSUNTO_ANTIGO = 16
 ULTIMA_QUESTAO_ANTIGA = 44
+# Questões criadas no painel admin do app.
+IDS_DO_PAINEL = range(9000001, 10000000)
 
 
 def contar(questoes, pacote):
@@ -29,7 +31,8 @@ def conferir(materias, questoes):
                 problemas.append(f"assunto {a['id']} fora da regra da matéria {id_materia}")
     for q in questoes.values():
         fora = (q["id"] // 1000 < 2000 if q["fonte"].startswith("ENEM")
-                else q["id"] > ULTIMA_QUESTAO_ANTIGA and q["id"] // 10 != q["assunto"])
+                else q["id"] not in IDS_DO_PAINEL
+                and q["id"] > ULTIMA_QUESTAO_ANTIGA and q["id"] // 10 != q["assunto"])
         if fora:
             problemas.append(f"questão {q['id']} fora da regra de ids")
         if q["ativo"] and not comum.alternativas_validas(q["alternativas"]):

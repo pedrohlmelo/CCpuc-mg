@@ -160,6 +160,234 @@ class ServicoSincronizacao {
     }
   }
 
+  bool _enviandoAdmin = false;
+  bool _repetirAdmin = false;
+
+  /// Sobe matérias e questões que o admin mudou no aparelho
+  /// (`sincronizado = 0`) e a nova `meta/conteudo.versao`, numa transação.
+  /// Devolve quantos documentos subiram, 0 se não havia nada ou -1 se falhou;
+  /// na falha nada muda no aparelho e a próxima tentativa manda tudo de novo.
+  Future<int> enviarConteudoAdmin(Usuario usuario) async {
+    final firestore = _firestore;
+    if (firestore == null || !usuario.isAdmin) return 0;
+    if (_enviandoAdmin) {
+      _repetirAdmin = true;
+      return 0;
+    }
+    _enviandoAdmin = true;
+    try {
+      if (!await _conectividade.online()) return -1;
+      return await _enviarConteudoAdmin(firestore);
+    } catch (erro) {
+      debugPrint('Conteúdo do admin não enviado: $erro');
+      return -1;
+    } finally {
+      _enviandoAdmin = false;
+      if (_repetirAdmin) {
+        _repetirAdmin = false;
+        unawaited(enviarConteudoAdmin(usuario));
+      }
+    }
+  }
+
+  Future<int> _enviarConteudoAdmin(FirebaseFirestore firestore) async {
+    final db = await _banco.db;
+    final materias = await db.query('Materia', where: 'sincronizado = 0');
+    final questoes = await db.query('Questao', where: 'sincronizado = 0');
+    if (materias.isEmpty && questoes.isEmpty) return 0;
+
+    final assuntos = await db.query('Assunto', orderBy: 'id');
+    final arestas = await db.query(
+      'Grafo_Dependencia',
+      orderBy: 'id_prerequisito, id_dependente',
+    );
+    final materiaDoAssunto = {
+      for (final a in assuntos) a['id'] as int: a['id_materia'] as int,
+    };
+    Map<String, Object?> aresta(Map<String, Object?> a) => {
+      'pre': a['id_prerequisito'],
+      'dep': a['id_dependente'],
+      'peso': a['peso'],
+    };
+    bool interna(Map<String, Object?> a) =>
+        materiaDoAssunto[a['id_prerequisito']] ==
+        materiaDoAssunto[a['id_dependente']];
+
+    final docsMaterias = {
+      for (final m in materias)
+        m['id'] as int: <String, Object?>{
+          'id': m['id'],
+          'nome': m['nome'],
+          'area': m['area'],
+          'ativo': m['ativo'] == 1,
+          'assuntos': [
+            for (final a in assuntos)
+              if (a['id_materia'] == m['id'])
+                {
+                  'id': a['id'],
+                  'nome': a['nome'],
+                  'descricao': a['descricao'],
+                  'ativo': a['ativo'] == 1,
+                },
+          ],
+          'dependencias': [
+            for (final a in arestas)
+              if (interna(a) &&
+                  materiaDoAssunto[a['id_prerequisito']] == m['id'])
+                aresta(a),
+          ],
+        },
+    };
+
+    final alternativas = <int, List<Map<String, Object?>>>{};
+    if (questoes.isNotEmpty) {
+      final ids = questoes.map((q) => q['id']).toList();
+      for (final a in await db.query(
+        'Alternativa',
+        where: 'id_questao IN (${ids.map((_) => '?').join(', ')})',
+        whereArgs: ids,
+        orderBy: 'letra',
+      )) {
+        (alternativas[a['id_questao'] as int] ??= []).add({
+          'letra': a['letra'],
+          'texto': a['texto'],
+          'correta': a['correta'] == 1,
+          'imagem': a['imagem_url'],
+          'imagem_descricao': a['imagem_descricao'],
+        });
+      }
+    }
+
+    // `atualizado_em` novo e único por questão, depois do cursor do aparelho:
+    // é por ele que os outros aparelhos paginam o download.
+    final cursor = await _preferencias.lerUltimaSincronizacaoConteudo();
+    var relogio = DateTime.now().toUtc();
+    final depoisDoCursor = cursor == null ? null : DateTime.tryParse(cursor);
+    if (depoisDoCursor != null && !relogio.isAfter(depoisDoCursor)) {
+      relogio = depoisDoCursor.toUtc();
+    }
+    String carimbo() {
+      relogio = relogio.add(const Duration(milliseconds: 1));
+      return '${relogio.toIso8601String().substring(0, 23)}Z';
+    }
+
+    final docsQuestoes = {
+      for (final q in questoes)
+        q['id'] as int: <String, Object?>{
+          'id': q['id'],
+          'materia': materiaDoAssunto[q['id_assunto']],
+          'assunto': q['id_assunto'],
+          'dificuldade': q['dificuldade'],
+          'enunciado': q['enunciado'],
+          'explicacao': q['explicacao'],
+          'imagem': q['imagem_url'],
+          'imagem_descricao': q['imagem_descricao'],
+          'fonte': q['fonte'],
+          'explicacao_gerada': q['explicacao_gerada'] == 1,
+          'revisado': q['revisado'] == 1,
+          'ativo': q['ativo'] == 1,
+          'atualizado_em': carimbo(),
+          'alternativas': alternativas[q['id']] ?? const [],
+        },
+    };
+
+    // Diferença no total de ativas, a partir do que já está na nuvem.
+    final colecaoQuestoes = firestore.collection('questoes');
+    final antes = await Future.wait([
+      for (final id in docsQuestoes.keys)
+        colecaoQuestoes.doc('$id').get().timeout(_esperaEnvio),
+    ]);
+    var diferenca = 0;
+    for (final doc in antes) {
+      final eraAtiva = doc.data()?['ativo'] as bool? ?? false;
+      final ficaAtiva = docsQuestoes[int.parse(doc.id)]!['ativo'] as bool;
+      diferenca += (ficaAtiva ? 1 : 0) - (eraAtiva ? 1 : 0);
+    }
+
+    // A transação aceita 500 escritas: o excedente de questões sobe antes,
+    // em lotes, e a versão só muda na transação, por último.
+    final itensQuestoes = docsQuestoes.entries.toList();
+    final naTransacao = itensQuestoes.take(_tamanhoLote).toList();
+    final antecipadas = itensQuestoes.skip(_tamanhoLote).toList();
+    for (var i = 0; i < antecipadas.length; i += _tamanhoLote) {
+      final lote = firestore.batch();
+      for (final e in antecipadas.skip(i).take(_tamanhoLote)) {
+        lote.set(
+          colecaoQuestoes.doc('${e.key}'),
+          e.value,
+          SetOptions(merge: true),
+        );
+      }
+      await lote.commit().timeout(_esperaEnvio);
+    }
+
+    final refMeta = firestore.collection('meta').doc('conteudo');
+    final versaoLocal = await _preferencias.lerVersaoBanco();
+    final (anterior, nova) = await firestore
+        .runTransaction((txn) async {
+          final meta = (await txn.get(refMeta)).data() ?? const {};
+          final anterior = meta['versao'] as int? ?? 0;
+          final nova = anterior + 1;
+          for (final e in docsMaterias.entries) {
+            txn.set(firestore.collection('materias').doc('${e.key}'), e.value);
+          }
+          for (final e in naTransacao) {
+            txn.set(
+              colecaoQuestoes.doc('${e.key}'),
+              e.value,
+              SetOptions(merge: true),
+            );
+          }
+          txn.set(refMeta, {
+            'versao': nova,
+            'atualizado_em': carimbo(),
+            'total_questoes':
+                ((meta['total_questoes'] as int?) ?? 0) + diferenca,
+            if (docsMaterias.isNotEmpty)
+              'dependencias_entre_materias': [
+                for (final a in arestas)
+                  if (!interna(a)) aresta(a),
+              ],
+          }, SetOptions(merge: true));
+          return (anterior, nova);
+        })
+        .timeout(_esperaEnvio);
+
+    // Só marca o que não mudou de novo durante o envio.
+    final lote = db.batch();
+    for (final (tabela, linhas) in [
+      ('Materia', materias),
+      ('Questao', questoes),
+    ]) {
+      for (final l in linhas) {
+        lote.update(
+          tabela,
+          {'sincronizado': 1},
+          where: l['atualizado_em'] == null
+              ? 'id = ? AND atualizado_em IS NULL'
+              : 'id = ? AND atualizado_em = ?',
+          whereArgs: [l['id'], ?l['atualizado_em']],
+        );
+      }
+    }
+    await lote.commit(noResult: true);
+
+    // O aparelho estava em dia com a versão anterior: a nova é a dele, e não
+    // há por que baixá-la. Senão, o download normal traz o que faltava.
+    if (versaoLocal == anterior) {
+      await _preferencias.gravarVersaoBanco(nova);
+      if (docsQuestoes.isNotEmpty) {
+        await _preferencias.gravarUltimaSincronizacaoConteudo(
+          docsQuestoes.values.last['atualizado_em'] as String,
+        );
+      }
+    }
+    if ((await _preferencias.lerVersaoConteudo() ?? 0) < nova) {
+      await _preferencias.marcarSeedConcluido(nova);
+    }
+    return docsMaterias.length + docsQuestoes.length;
+  }
+
   /// Sobe os pendentes do usuário. Devolve `true` se terminou tudo. Pedido
   /// feito durante um envio roda em seguida, para pegar o que entrou depois.
   Future<bool> sincronizar(Usuario usuario) async {
@@ -462,6 +690,8 @@ Future<ResultadoConteudo> atualizarConteudo(Ref ref) async {
 /// fica falso a cada resposta, para não gastar uma leitura do Firestore.
 Future<bool> sincronizarAgora(Ref ref, {bool baixar = true}) async {
   await ref.read(sessaoProvider.notifier).vincularVisitante();
+  // O que o admin mudou sobe antes do download, que não o desfaz.
+  if (baixar) await enviarConteudoAdmin(ref);
   final conteudo = baixar
       ? await atualizarConteudo(ref)
       : ResultadoConteudo.igual;
@@ -500,5 +730,13 @@ final sincronizadorProvider = Provider<void>((ref) {
   ref.onDispose(assinatura.cancel);
 });
 
-/// Sobe as alterações do painel admin. Preenchido na Etapa 3.
-Future<void> enviarConteudoAdmin(Ref ref) async {}
+/// Sobe as alterações do painel admin sem a tela esperar. Quando algo subiu,
+/// as telas releem o banco para apagar os ícones de pendente.
+Future<void> enviarConteudoAdmin(Ref ref) async {
+  final usuario = ref.read(usuarioProvider);
+  if (usuario == null || !usuario.isAdmin) return;
+  final enviados = await ref
+      .read(servicoSincronizacaoProvider)
+      .enviarConteudoAdmin(usuario);
+  if (enviados > 0) ref.invalidate(conteudoProvider);
+}

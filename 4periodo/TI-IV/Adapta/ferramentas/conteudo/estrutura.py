@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """Matérias, assuntos e arestas do Adapta: grava materias/* e as arestas entre matérias.
 
-    python estrutura.py [--simular]
+    python estrutura.py [--simular] [--forcar]
+
+Sem --forcar, só cria as matérias que ainda não existem no Firestore: o painel admin
+do app edita matérias, assuntos e arestas, e este script não pode desfazer isso.
+Com --forcar, sobrescreve tudo com o que está neste arquivo (inclusive as arestas
+entre matérias de meta/conteudo).
 
 Os ids nunca mudam: o progresso dos alunos aponta para eles. Ver README.md.
 """
@@ -179,21 +184,32 @@ def documentos():
 def main():
     args = argparse.ArgumentParser()
     args.add_argument("--simular", action="store_true")
+    args.add_argument("--forcar", action="store_true",
+                      help="sobrescreve o que o painel admin mudou no Firestore")
     args = args.parse_args()
 
     validar()
     db = comum.conectar(args.simular)
     docs, entre_materias = documentos()
     atuais = comum.ler_colecao(db, "materias")
-    mudaram = {i: d for i, d in docs.items() if atuais.get(str(i)) != d}
+    if args.forcar:
+        mudaram = {i: d for i, d in docs.items() if atuais.get(str(i)) != d}
+    else:
+        mudaram = {i: d for i, d in docs.items() if str(i) not in atuais}
+        ignoradas = sum(1 for i, d in docs.items() if str(i) in atuais and atuais[str(i)] != d)
+        if ignoradas:
+            print(f"{ignoradas} matérias diferem do Firestore e ficaram como estão "
+                  "(podem ter sido editadas no painel admin; use --forcar para sobrescrever)")
     comum.gravar_lotes(db, "materias", mudaram, args.simular)
-    print(f"{len(docs)} matérias ({len(mudaram)} alteradas), "
+    print(f"{len(docs)} matérias ({len(mudaram)} gravadas), "
           f"{sum(len(d['assuntos']) for d in docs.values())} assuntos, {len(ARESTAS)} arestas, "
           f"{len(entre_materias)} entre matérias")
     meta = db.collection("meta").document("conteudo").get().to_dict() if db else None
-    if mudaram or (meta or {}).get("dependencias_entre_materias") != entre_materias:
-        comum.subir_versao(db, comum.Relogio(), args.simular,
-                           dependencias_entre_materias=entre_materias)
+    arestas_atuais = (meta or {}).get("dependencias_entre_materias")
+    trocar_arestas = arestas_atuais != entre_materias and (args.forcar or not arestas_atuais)
+    if mudaram or trocar_arestas:
+        extras = {"dependencias_entre_materias": entre_materias} if trocar_arestas else {}
+        comum.subir_versao(db, comum.Relogio(), args.simular, **extras)
 
 
 if __name__ == "__main__":

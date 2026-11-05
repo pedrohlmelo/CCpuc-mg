@@ -26,7 +26,7 @@ export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 GCLOUD_PROJECT=demo-adapta
 
 | Script | O que faz |
 |---|---|
-| `estrutura.py` | Grava matérias, assuntos e arestas, definidos no próprio script |
+| `estrutura.py [--forcar]` | Cria as matérias, assuntos e arestas definidos no próprio script que ainda não existem; `--forcar` sobrescreve |
 | `autorais.py` | Grava as questões autorais, definidas no próprio script |
 | `importar_enem.py 2023 2022` | Grava as provas como questões inativas e sem assunto |
 | `classificar.py pendentes` | Mostra as próximas questões sem assunto |
@@ -38,6 +38,19 @@ export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 GCLOUD_PROJECT=demo-adapta
 Rodar de novo é seguro: questão que já existe não é sobrescrita pela importação nem por
 `autorais.py`, e `classificar.py` só toca questão ainda sem assunto. Todo script que muda conteúdo
 sobe `versao` em `meta/conteudo` por último.
+
+## Painel admin do app
+
+Desde a versão 4 do banco, o painel admin do app também grava `materias/*`, `questoes/*` e
+`meta/conteudo` (versão, `total_questoes` e `dependencias_entre_materias`), com a conta de um
+usuário `tipo == 'admin'`. O admin grava primeiro no aparelho e envia quando há internet.
+Matéria, assunto e questão nunca são apagados: excluir é `ativo: false`.
+
+Por isso `estrutura.py`, sem `--forcar`, só cria matérias que ainda não existem e só grava as
+arestas entre matérias quando `meta/conteudo` não tem nenhuma: o que o admin mudou fica. Use
+`--forcar` só para voltar de propósito à estrutura do script, sabendo que desfaz o painel.
+As questões criadas no painel usam ids de 9000001 a 9999999 e não colidem com as dos scripts.
+Rode `gerar_pacote_inicial.py` depois de mudanças no painel, para o pacote embutido acompanhar.
 
 ## API enem.dev
 
