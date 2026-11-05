@@ -499,3 +499,6 @@ final sincronizadorProvider = Provider<void>((ref) {
   });
   ref.onDispose(assinatura.cancel);
 });
+
+/// Sobe as alterações do painel admin. Preenchido na Etapa 3.
+Future<void> enviarConteudoAdmin(Ref ref) async {}

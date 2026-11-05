@@ -434,7 +434,50 @@ void main() {
     await banco.fechar();
   });
 
-  test('migração 2 → 3 ativa as questões e mantém o conteúdo', () async {
+  /// Volta o banco recém-criado ao esquema da versão [versao].
+  Future<void> rebaixar(Database db, int versao) async {
+    if (versao < 4) {
+      for (final c in ['ativo', 'sincronizado', 'atualizado_em']) {
+        await db.execute('ALTER TABLE Materia DROP COLUMN $c');
+      }
+      await db.execute('ALTER TABLE Assunto DROP COLUMN ativo');
+      for (final c in ['sincronizado', 'atualizado_em']) {
+        await db.execute('ALTER TABLE Questao DROP COLUMN $c');
+      }
+    }
+    if (versao < 3) await db.execute('ALTER TABLE Questao DROP COLUMN ativo');
+    await db.setVersion(versao);
+  }
+
+  test('migração 3 → 4 cria as colunas do painel sem pendentes', () async {
+    sqfliteFfiInit();
+    final pasta = Directory.systemTemp.createTempSync('adapta');
+    addTearDown(() => pasta.delete(recursive: true));
+    final caminho = '${pasta.path}/adapta.db';
+    BancoLocal abrir() =>
+        BancoLocal(fabrica: databaseFactoryFfiNoIsolate, caminho: caminho);
+
+    final atual = abrir();
+    await rebaixar(await atual.db, 3);
+    await atual.fechar();
+
+    final migrado = abrir();
+    final novo = await migrado.db;
+    expect(await novo.getVersion(), 4);
+    for (final tabela in ['Materia', 'Questao']) {
+      final pendentes = await novo.rawQuery(
+        'SELECT COUNT(*) AS n FROM $tabela WHERE sincronizado = 0',
+      );
+      expect(pendentes.first['n'], 0);
+    }
+    final inativos = await novo.rawQuery(
+      'SELECT COUNT(*) AS n FROM Assunto WHERE ativo = 0',
+    );
+    expect(inativos.first['n'], 0);
+    await migrado.fechar();
+  });
+
+  test('migração 2 → 4 ativa as questões e mantém o conteúdo', () async {
     sqfliteFfiInit();
     final pasta = Directory.systemTemp.createTempSync('adapta');
     addTearDown(() => pasta.delete(recursive: true));
@@ -444,8 +487,7 @@ void main() {
 
     final atual = abrir();
     final db = await atual.db;
-    await db.execute('ALTER TABLE Questao DROP COLUMN ativo');
-    await db.setVersion(2);
+    await rebaixar(db, 2);
     final questoes = await _contar(db, 'Questao');
     await atual.fechar();
 

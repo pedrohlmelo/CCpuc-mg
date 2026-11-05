@@ -49,6 +49,7 @@ class PacoteConteudo {
               id: m['id'] as int,
               nome: m['nome'] as String,
               area: m['area'] as String,
+              ativo: m['ativo'] as bool? ?? true,
             ),
         ],
         assuntos: [
@@ -59,6 +60,7 @@ class PacoteConteudo {
                 idMateria: m['id'] as int,
                 nome: a['nome'] as String,
                 descricao: a['descricao'] as String? ?? '',
+                ativo: a['ativo'] as bool? ?? true,
               ),
         ],
         dependencias: [
@@ -200,9 +202,41 @@ void _upsert(Batch lote, String tabela, Map<String, Object?> linha) {
 /// Grava o pacote numa transação. O progresso e a `imagem_local` ficam como
 /// estão, e a `dificuldade_calibrada` só é preenchida se ainda estiver vazia.
 /// O grafo só é reescrito quando o pacote traz arestas.
+///
+/// O que o admin mudou no aparelho e ainda não subiu (`sincronizado = 0`)
+/// vence: a matéria pendente, os assuntos e as arestas dela e a questão
+/// pendente ficam como estão.
 Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
   pacote.validar();
   await db.transaction((txn) async {
+    final materiasPendentes = {
+      for (final l in await txn.query(
+        'Materia',
+        columns: ['id'],
+        where: 'sincronizado = 0',
+      ))
+        l['id'] as int,
+    };
+    final assuntosPendentes = materiasPendentes.isEmpty
+        ? const <int>{}
+        : {
+            for (final l in await txn.query(
+              'Assunto',
+              columns: ['id'],
+              where:
+                  'id_materia IN (${materiasPendentes.map((_) => '?').join(', ')})',
+              whereArgs: materiasPendentes.toList(),
+            ))
+              l['id'] as int,
+          };
+    final questoesPendentes = {
+      for (final l in await txn.query(
+        'Questao',
+        columns: ['id'],
+        where: 'sincronizado = 0',
+      ))
+        l['id'] as int,
+    };
     final assuntosNoBanco = await txn.query('Assunto', columns: ['id']);
     final questoes = pacote.questoesValidas({
       ...pacote.assuntos.map((a) => a.id),
@@ -210,25 +244,52 @@ Future<void> aplicarConteudo(Database db, PacoteConteudo pacote) async {
     });
     final lote = txn.batch();
     for (final m in pacote.materias) {
-      _upsert(lote, 'Materia', {'id': m.id, 'nome': m.nome, 'area': m.area});
+      if (materiasPendentes.contains(m.id)) continue;
+      _upsert(lote, 'Materia', {
+        'id': m.id,
+        'nome': m.nome,
+        'area': m.area,
+        'ativo': m.ativo ? 1 : 0,
+      });
     }
     for (final a in pacote.assuntos) {
+      if (materiasPendentes.contains(a.idMateria) ||
+          assuntosPendentes.contains(a.id)) {
+        continue;
+      }
       _upsert(lote, 'Assunto', {
         'id': a.id,
         'id_materia': a.idMateria,
         'nome': a.nome,
         'descricao': a.descricao,
+        'ativo': a.ativo ? 1 : 0,
       });
     }
-    if (pacote.dependencias.isNotEmpty) lote.delete('Grafo_Dependencia');
+    bool tocaPendente(int pre, int dep) =>
+        assuntosPendentes.contains(pre) || assuntosPendentes.contains(dep);
+    if (pacote.dependencias.isNotEmpty) {
+      if (assuntosPendentes.isEmpty) {
+        lote.delete('Grafo_Dependencia');
+      } else {
+        final marcas = assuntosPendentes.map((_) => '?').join(', ');
+        lote.delete(
+          'Grafo_Dependencia',
+          where:
+              'id_prerequisito NOT IN ($marcas) AND id_dependente NOT IN ($marcas)',
+          whereArgs: [...assuntosPendentes, ...assuntosPendentes],
+        );
+      }
+    }
     for (final d in pacote.dependencias) {
+      if (tocaPendente(d.prerequisito, d.dependente)) continue;
       lote.insert('Grafo_Dependencia', {
         'id_prerequisito': d.prerequisito,
         'id_dependente': d.dependente,
         'peso': d.peso,
-      });
+      }, conflictAlgorithm: ConflictAlgorithm.ignore);
     }
     for (final q in questoes) {
+      if (questoesPendentes.contains(q.id)) continue;
       _upsert(lote, 'Questao', {
         'id': q.id,
         'id_assunto': q.idAssunto,

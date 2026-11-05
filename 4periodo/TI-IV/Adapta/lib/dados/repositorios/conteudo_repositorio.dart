@@ -5,29 +5,43 @@ import '../modelos.dart';
 
 /// Conteúdo já lido do banco, com buscas síncronas para as telas.
 class Conteudo {
+  /// Só as ativas, que são o que o aluno vê. O admin usa [todasMaterias].
   final List<Materia> materias;
+
+  /// Só os ativos, de matérias ativas. O admin usa [todosAssuntos].
   final List<Assunto> assuntos;
 
   /// Só as ativas. As inativas ficam em [questaoPorId], para o histórico.
   final List<Questao> questoes;
   final List<Questao> inativas;
 
+  final List<Materia> todasMaterias;
+  final List<Assunto> todosAssuntos;
+
   Conteudo({
     required this.materias,
     required this.assuntos,
     required this.questoes,
     this.inativas = const [],
-  });
+    List<Materia>? todasMaterias,
+    List<Assunto>? todosAssuntos,
+  }) : todasMaterias = todasMaterias ?? materias,
+       todosAssuntos = todosAssuntos ?? assuntos;
 
   late final _questoesPorId = {
     for (final q in [...questoes, ...inativas]) q.id: q,
   };
 
-  Materia? materiaPorId(int id) =>
-      materias.where((m) => m.id == id).firstOrNull;
+  late final List<Questao> todasQuestoes = [...questoes, ...inativas]
+    ..sort((a, b) => a.id.compareTo(b.id));
 
+  /// Inclui as inativas: o histórico ainda mostra o nome.
+  Materia? materiaPorId(int id) =>
+      todasMaterias.where((m) => m.id == id).firstOrNull;
+
+  /// Inclui os inativos: o histórico ainda mostra o nome.
   Assunto? assuntoPorId(int id) =>
-      assuntos.where((a) => a.id == id).firstOrNull;
+      todosAssuntos.where((a) => a.id == id).firstOrNull;
 
   Questao? questaoPorId(int id) => _questoesPorId[id];
 
@@ -91,30 +105,48 @@ class ConteudoRepositorio {
           explicacaoGerada: q['explicacao_gerada'] == 1,
           revisado: q['revisado'] == 1,
           ativo: q['ativo'] == 1,
+          pendente: q['sincronizado'] == 0,
           alternativas: porQuestao[q['id'] as int] ?? const [],
         ),
     ];
 
+    final todasMaterias = [
+      for (final m in materias)
+        Materia(
+          id: m['id'] as int,
+          nome: m['nome'] as String,
+          area: m['area'] as String,
+          ativo: m['ativo'] == 1,
+          pendente: m['sincronizado'] == 0,
+        ),
+    ];
+    final materiasAtivas = {
+      for (final m in todasMaterias)
+        if (m.ativo) m.id,
+    };
+    final todosAssuntos = [
+      for (final a in assuntos)
+        Assunto(
+          id: a['id'] as int,
+          idMateria: a['id_materia'] as int,
+          nome: a['nome'] as String,
+          descricao: a['descricao'] as String,
+          ativo: a['ativo'] == 1 && materiasAtivas.contains(a['id_materia']),
+        ),
+    ];
+    final assuntosAtivos = {
+      for (final a in todosAssuntos)
+        if (a.ativo) a.id,
+    };
+    bool visivel(Questao q) => q.ativo && assuntosAtivos.contains(q.idAssunto);
+
     return Conteudo(
-      materias: [
-        for (final m in materias)
-          Materia(
-            id: m['id'] as int,
-            nome: m['nome'] as String,
-            area: m['area'] as String,
-          ),
-      ],
-      assuntos: [
-        for (final a in assuntos)
-          Assunto(
-            id: a['id'] as int,
-            idMateria: a['id_materia'] as int,
-            nome: a['nome'] as String,
-            descricao: a['descricao'] as String,
-          ),
-      ],
-      questoes: todas.where((q) => q.ativo).toList(),
-      inativas: todas.where((q) => !q.ativo).toList(),
+      materias: todasMaterias.where((m) => m.ativo).toList(),
+      assuntos: todosAssuntos.where((a) => a.ativo).toList(),
+      questoes: todas.where(visivel).toList(),
+      inativas: todas.where((q) => !visivel(q)).toList(),
+      todasMaterias: todasMaterias,
+      todosAssuntos: todosAssuntos,
     );
   }
 

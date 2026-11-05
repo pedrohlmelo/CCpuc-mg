@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../dados/modelos.dart';
+import '../../dados/repositorios/admin_conteudo_repositorio.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
-import '../../grafo/grafo_conhecimento.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/cartoes.dart';
 import 'admin_scaffold.dart';
@@ -33,26 +33,17 @@ class AdminGrafoScreen extends ConsumerWidget {
     );
     if (aresta == null || !context.mounted) return;
 
-    final grafo = GrafoConhecimento(
-      conteudo.assuntos.map((a) => a.id).toList(),
-      dependencias,
-    );
-    final pre = aresta.prerequisito;
-    final dep = aresta.dependente;
-    if (grafo.criariaCiclo(pre, dep)) {
-      final caminho = [
-        ...grafo.caminho(dep, pre)!,
-        dep,
-      ].map(conteudo.nomeDoAssunto).join(' → ');
-      _avisar(context, 'Essa aresta fecharia um ciclo: $caminho');
+    try {
+      await ref.read(adminConteudoRepositorioProvider).criarAresta(aresta);
+    } on ErroAdmin catch (erro) {
+      if (!context.mounted) return;
+      final caminho = erro.caminho?.map(conteudo.nomeDoAssunto).join(' → ');
+      _avisar(
+        context,
+        caminho == null ? erro.mensagem : '${erro.mensagem} $caminho',
+      );
       return;
     }
-    if (grafo.peso(pre, dep) != null) {
-      _avisar(context, 'Essa dependência já existe.');
-      return;
-    }
-    await ref.read(grafoRepositorioProvider).adicionar(aresta);
-    ref.invalidate(dependenciasProvider);
     if (context.mounted) _avisar(context, 'Dependência salva.');
   }
 
@@ -161,9 +152,8 @@ class AdminGrafoScreen extends ConsumerWidget {
                     );
                     if (!ok || !context.mounted) return;
                     await ref
-                        .read(grafoRepositorioProvider)
-                        .remover(d.prerequisito, d.dependente);
-                    ref.invalidate(dependenciasProvider);
+                        .read(adminConteudoRepositorioProvider)
+                        .removerAresta(d.prerequisito, d.dependente);
                   },
                 ),
               ],

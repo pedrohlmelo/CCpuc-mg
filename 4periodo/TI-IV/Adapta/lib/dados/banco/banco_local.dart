@@ -22,14 +22,18 @@ CREATE TABLE Usuario (
 CREATE TABLE Materia (
   id INTEGER PRIMARY KEY,
   nome TEXT NOT NULL,
-  area TEXT NOT NULL DEFAULT 'matematica'
+  area TEXT NOT NULL DEFAULT 'matematica',
+  ativo INTEGER NOT NULL DEFAULT 1,
+  sincronizado INTEGER NOT NULL DEFAULT 1,
+  atualizado_em TEXT
 )''',
   '''
 CREATE TABLE Assunto (
   id INTEGER PRIMARY KEY,
   id_materia INTEGER NOT NULL REFERENCES Materia(id),
   nome TEXT NOT NULL,
-  descricao TEXT NOT NULL DEFAULT ''
+  descricao TEXT NOT NULL DEFAULT '',
+  ativo INTEGER NOT NULL DEFAULT 1
 )''',
   '''
 CREATE TABLE Grafo_Dependencia (
@@ -52,7 +56,9 @@ CREATE TABLE Questao (
   fonte TEXT,
   explicacao_gerada INTEGER NOT NULL DEFAULT 0,
   revisado INTEGER NOT NULL DEFAULT 0,
-  ativo INTEGER NOT NULL DEFAULT 1
+  ativo INTEGER NOT NULL DEFAULT 1,
+  sincronizado INTEGER NOT NULL DEFAULT 1,
+  atualizado_em TEXT
 )''',
   '''
 CREATE TABLE Alternativa (
@@ -121,11 +127,23 @@ const _migracaoV3 = [
   'ALTER TABLE Questao ADD COLUMN ativo INTEGER NOT NULL DEFAULT 1',
 ];
 
+/// Painel admin offline: exclusão lógica e o que ainda não subiu
+/// (`sincronizado = 0`). Assunto e aresta moram no documento da matéria, então
+/// a mudança neles marca a matéria.
+const _migracaoV4 = [
+  'ALTER TABLE Materia ADD COLUMN ativo INTEGER NOT NULL DEFAULT 1',
+  'ALTER TABLE Materia ADD COLUMN sincronizado INTEGER NOT NULL DEFAULT 1',
+  'ALTER TABLE Materia ADD COLUMN atualizado_em TEXT',
+  'ALTER TABLE Assunto ADD COLUMN ativo INTEGER NOT NULL DEFAULT 1',
+  'ALTER TABLE Questao ADD COLUMN sincronizado INTEGER NOT NULL DEFAULT 1',
+  'ALTER TABLE Questao ADD COLUMN atualizado_em TEXT',
+];
+
 /// Abre o `adapta.db`, a fonte de verdade do app no aparelho, e garante o
 /// conteúdo inicial. A abertura é feita uma vez, no primeiro acesso.
 class BancoLocal {
   static const nomeArquivo = 'adapta.db';
-  static const versao = 3;
+  static const versao = 4;
 
   /// Nos testes, a fábrica do `sqflite_common_ffi` e um banco em memória.
   final DatabaseFactory? fabrica;
@@ -190,6 +208,7 @@ class BancoLocal {
             for (final comando in [
               if (de < 2) ..._migracaoV2,
               if (de < 3) ..._migracaoV3,
+              if (de < 4) ..._migracaoV4,
             ]) {
               await db.execute(comando);
             }

@@ -40,10 +40,18 @@ class Materia {
 
   /// `linguagens`, `humanas`, `natureza` ou `matematica`.
   final String area;
+
+  /// Falso some do app do aluno; nunca é apagada, por causa do progresso.
+  final bool ativo;
+
+  /// Mudança do admin ainda não enviada ao Firestore.
+  final bool pendente;
   const Materia({
     required this.id,
     required this.nome,
     this.area = 'matematica',
+    this.ativo = true,
+    this.pendente = false,
   });
 }
 
@@ -53,11 +61,15 @@ class Assunto {
   final int idMateria;
   final String nome;
   final String descricao;
+
+  /// Falso some do app do aluno; nunca é apagado, por causa do progresso.
+  final bool ativo;
   const Assunto({
     required this.id,
     required this.idMateria,
     required this.nome,
     this.descricao = '',
+    this.ativo = true,
   });
 }
 
@@ -102,6 +114,9 @@ class Questao {
 
   /// Falso tira a questão do app sem apagar; o histórico continua válido.
   final bool ativo;
+
+  /// Mudança do admin ainda não enviada ao Firestore.
+  final bool pendente;
   final List<Alternativa> alternativas;
 
   const Questao({
@@ -120,6 +135,7 @@ class Questao {
     this.explicacaoGerada = false,
     this.revisado = false,
     this.ativo = true,
+    this.pendente = false,
   });
 
   /// A tela avisa quando a explicação ainda não passou pelo grupo.
