@@ -83,6 +83,8 @@ class _HistoricoScreenState extends ConsumerState<HistoricoScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                _DesempenhoPorMateria(historico: historico),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     for (final f in _Filtro.values) ...[
@@ -203,6 +205,166 @@ class _ItemHistorico extends ConsumerWidget {
           ),
           Icon(Icons.chevron_right_rounded, color: scheme.onSurfaceVariant),
         ],
+      ),
+    );
+  }
+}
+
+/// Respondidas e acertos de um grupo de respostas.
+class _Placar {
+  int respondidas = 0;
+  int acertos = 0;
+
+  int get taxa => respondidas == 0 ? 0 : (acertos / respondidas * 100).round();
+
+  void somar(Resposta r) {
+    respondidas++;
+    if (r.acertou) acertos++;
+  }
+}
+
+/// RF10: desempenho por matéria a partir do histórico local. Tocar numa
+/// matéria abre os assuntos dela, com os mesmos números.
+class _DesempenhoPorMateria extends ConsumerStatefulWidget {
+  final List<Resposta> historico;
+  const _DesempenhoPorMateria({required this.historico});
+
+  @override
+  ConsumerState<_DesempenhoPorMateria> createState() =>
+      _DesempenhoPorMateriaState();
+}
+
+class _DesempenhoPorMateriaState extends ConsumerState<_DesempenhoPorMateria> {
+  int? _aberta;
+
+  @override
+  Widget build(BuildContext context) {
+    final conteudo = ref.watch(conteudoProvider).valueOrNull;
+    if (conteudo == null) return const SizedBox.shrink();
+    final texto = Theme.of(context).textTheme;
+
+    final porMateria = <int, _Placar>{};
+    final porAssunto = <int, _Placar>{};
+    for (final r in widget.historico) {
+      final q = conteudo.questaoPorId(r.idQuestao);
+      if (q == null) continue;
+      final m = conteudo.materiaDaQuestao(q);
+      if (m == null) continue;
+      (porMateria[m.id] ??= _Placar()).somar(r);
+      (porAssunto[q.idAssunto] ??= _Placar()).somar(r);
+    }
+    if (porMateria.isEmpty) return const SizedBox.shrink();
+    final materias = porMateria.keys.toList()
+      ..sort(
+        (a, b) =>
+            porMateria[b]!.respondidas.compareTo(porMateria[a]!.respondidas),
+      );
+
+    return Column(
+      key: const Key('desempenho_por_materia'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text('Desempenho por matéria', style: texto.titleSmall),
+        const SizedBox(height: 10),
+        AppCartao(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          child: Column(
+            children: [
+              for (final id in materias) ...[
+                _LinhaDesempenho(
+                  key: Key('desempenho_materia_$id'),
+                  nome: conteudo.materiaPorId(id)?.nome ?? 'Matéria #$id',
+                  placar: porMateria[id]!,
+                  aberta: _aberta == id,
+                  aoTocar: () =>
+                      setState(() => _aberta = _aberta == id ? null : id),
+                ),
+                if (_aberta == id)
+                  for (final a in porAssunto.keys.where(
+                    (a) => conteudo.assuntoPorId(a)?.idMateria == id,
+                  ))
+                    _LinhaDesempenho(
+                      key: Key('desempenho_assunto_$a'),
+                      nome: conteudo.nomeDoAssunto(a),
+                      placar: porAssunto[a]!,
+                      recuo: true,
+                    ),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _LinhaDesempenho extends StatelessWidget {
+  final String nome;
+  final _Placar placar;
+  final bool recuo;
+  final bool aberta;
+  final VoidCallback? aoTocar;
+
+  const _LinhaDesempenho({
+    super.key,
+    required this.nome,
+    required this.placar,
+    this.recuo = false,
+    this.aberta = false,
+    this.aoTocar,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = Theme.of(context).textTheme;
+    final scheme = Theme.of(context).colorScheme;
+    final taxa = placar.taxa;
+    final cor = taxa >= 70
+        ? CoresMemoria.consolidado
+        : taxa >= 40
+        ? CoresMemoria.emRisco
+        : CoresMemoria.critico;
+    return InkWell(
+      onTap: aoTocar,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(recuo ? 32 : 16, 8, 12, 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    nome,
+                    style: recuo ? texto.bodyMedium : texto.titleSmall,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Text(
+                  '${placar.respondidas} resp. · $taxa%',
+                  style: texto.labelMedium,
+                ),
+                if (aoTocar != null)
+                  Icon(
+                    aberta
+                        ? Icons.expand_less_rounded
+                        : Icons.expand_more_rounded,
+                    color: scheme.onSurfaceVariant,
+                  ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(99),
+              child: LinearProgressIndicator(
+                value: taxa / 100,
+                minHeight: 6,
+                color: cor,
+                backgroundColor: scheme.surfaceContainerHighest,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

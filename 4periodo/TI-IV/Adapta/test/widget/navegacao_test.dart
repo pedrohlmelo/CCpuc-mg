@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../apoio/app_teste.dart';
@@ -145,6 +146,16 @@ Future<void> preencherLogin(WidgetTester tester) async {
 }
 
 Finder tela(String nome) => find.byKey(Key('tela_$nome'));
+
+/// Rota no topo da pilha, inclusive a aberta com `push`.
+Uri rotaAtual(ProviderContainer container) {
+  final configuracao = container
+      .read(routerProvider)
+      .routerDelegate
+      .currentConfiguration;
+  final topo = configuracao.matches.last;
+  return topo is ImperativeRouteMatch ? topo.matches.uri : configuracao.uri;
+}
 
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
@@ -410,6 +421,39 @@ void main() {
         find.textContaining('lacuna em Razão e proporção'),
         findsOneWidget,
       );
+      expect(find.byKey(const Key('botao_revisar_agora')), findsOneWidget);
+
+      // RF09: o card abre a sessão do pré-requisito.
+      await tocar(tester, find.byKey(const Key('card_lacuna')));
+      expect(tela('sessao'), findsOneWidget);
+      expect(rotaAtual(container).path, '/sessao');
+      expect(rotaAtual(container).queryParameters['assunto'], '16');
+      await tocar(tester, find.byKey(const Key('botao_voltar')));
+
+      // RF08: o alerta de esquecimento abre a revisão do assunto.
+      await tocar(tester, find.byKey(const Key('botao_revisar_agora')));
+      expect(tela('sessao'), findsOneWidget);
+      expect(rotaAtual(container).queryParameters['assunto'], isNotNull);
+    });
+
+    testWidgets('histórico mostra o desempenho por matéria e por assunto', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.aluno);
+
+      await tocar(tester, find.byKey(const Key('aba_historico')));
+      expect(find.text('Desempenho por matéria'), findsOneWidget);
+      final linha = find.byKey(const Key('desempenho_materia_1'));
+      expect(linha, findsOneWidget);
+      // 6 das 8 respostas da Ana são de Matemática, com 1 erro.
+      final numeros = find.descendant(
+        of: linha,
+        matching: find.textContaining('resp.'),
+      );
+      expect(tester.widget<Text>(numeros).data, '6 resp. · 83%');
+      expect(find.byKey(const Key('desempenho_assunto_1')), findsNothing);
+      await tocar(tester, linha);
+      expect(find.byKey(const Key('desempenho_assunto_1')), findsOneWidget);
     });
 
     testWidgets('o aluno não vê o painel administrativo no perfil', (

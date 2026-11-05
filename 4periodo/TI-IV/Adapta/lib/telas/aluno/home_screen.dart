@@ -300,10 +300,12 @@ class _CartaoLacuna extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final texto = Theme.of(context).textTheme;
+    // RF09: tocar leva direto ao pré-requisito fraco.
     return AppCartao(
       key: const Key('card_lacuna'),
       cor: AppCores.violeta.withValues(alpha: 0.08),
       padding: const EdgeInsets.all(16),
+      aoTocar: () => context.push('/sessao?assunto=${lacuna.idRaiz}'),
       child: Row(
         children: [
           const IconeCaixa(icone: Icons.hub_rounded, cor: AppCores.violeta),
@@ -311,10 +313,11 @@ class _CartaoLacuna extends StatelessWidget {
           Expanded(
             child: Text(
               'Seus erros em ${lacuna.assunto} apontam para uma lacuna em '
-              '${lacuna.raiz}.',
+              '${lacuna.raiz}. Toque para estudar ${lacuna.raiz}.',
               style: texto.bodyMedium,
             ),
           ),
+          const Icon(Icons.chevron_right_rounded, color: AppCores.violeta),
         ],
       ),
     );
@@ -358,6 +361,15 @@ class _AlertaRevisao extends StatelessWidget {
                   'Você tem ${alerta.chance}% de chance de esquecer '
                   '${assunto.nome} amanhã.',
                   style: texto.bodyMedium,
+                ),
+                const SizedBox(height: 8),
+                // RF08: a revisão abre direto no assunto do alerta.
+                FilledButton.tonalIcon(
+                  key: const Key('botao_revisar_agora'),
+                  onPressed: () =>
+                      context.push('/sessao?assunto=${assunto.idAssunto}'),
+                  icon: const Icon(Icons.replay_rounded, size: 18),
+                  label: const Text('Revisar agora'),
                 ),
               ],
             ),
