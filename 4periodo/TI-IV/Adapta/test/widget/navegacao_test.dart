@@ -2,6 +2,7 @@ import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/banco/historicos_demo.dart';
 import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/firebase.dart';
+import 'package:adapta/dados/repositorios/admin_conteudo_repositorio.dart';
 import 'package:adapta/dados/repositorios/conteudo_repositorio.dart';
 import 'package:adapta/dados/repositorios/grafo_repositorio.dart';
 import 'package:adapta/ia/servico_aprendizado.dart';
@@ -600,6 +601,124 @@ void main() {
       await tocar(tester, find.byKey(const Key('botao_entrar')));
 
       expect(find.byKey(const Key('item_admin')), findsOneWidget);
+    });
+
+    ProviderContainer irPara(WidgetTester tester, String rota) {
+      final container = ProviderScope.containerOf(
+        tester.element(find.byType(MaterialApp)),
+      );
+      container.read(routerProvider).go(rota);
+      return container;
+    }
+
+    testWidgets('matéria nova offline: salva, aparece e fica pendente', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.admin);
+      final container = irPara(tester, '/admin/materias');
+      await assentar(tester);
+
+      await tocar(tester, find.text('Nova matéria'));
+      await tester.enterText(find.byKey(const Key('campo_nome')), 'Teste');
+      await tester.tap(find.byKey(const Key('campo_area')));
+      await assentar(tester);
+      await tester.tap(find.text('Ciências da Natureza').last);
+      await assentar(tester);
+      await tester.tap(find.text('Salvar'));
+      await esperar(
+        tester,
+        find.text('Salvo no aparelho; envio à nuvem pendente'),
+      );
+      await assentar(tester);
+
+      expect(
+        find.text('Salvo no aparelho; envio à nuvem pendente'),
+        findsOneWidget,
+      );
+      expect(find.text('Teste'), findsOneWidget);
+      final card = find.ancestor(
+        of: find.text('Teste'),
+        matching: find.byType(AppCartao),
+      );
+      expect(
+        find.descendant(
+          of: card,
+          matching: find.byKey(const Key('icone_pendente')),
+        ),
+        findsOneWidget,
+      );
+      final pendentes = await tester.runAsync(
+        () =>
+            container.read(adminConteudoRepositorioProvider).contarPendentes(),
+      );
+      expect(pendentes, 1);
+    });
+
+    testWidgets('excluir assunto mostra o impacto e some da lista', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.admin);
+      irPara(tester, '/admin/assuntos');
+      await assentar(tester);
+
+      await tocar(tester, find.byKey(const Key('excluir_assunto_1')));
+      expect(
+        find.textContaining('questões, e as dependências'),
+        findsOneWidget,
+      );
+      await tester.tap(find.byKey(const Key('confirmar_exclusao')));
+      await esperar(tester, find.textContaining('envio à nuvem pendente'));
+      await assentar(tester);
+      expect(find.byKey(const Key('assunto_1')), findsNothing);
+
+      await tester.tap(find.byKey(const Key('chip_inativos')));
+      await assentar(tester);
+      expect(find.byKey(const Key('reativar_assunto_1')), findsOneWidget);
+    });
+
+    testWidgets('formulário de questão valida e cria a questão', (
+      tester,
+    ) async {
+      await abrir(tester, Quem.admin);
+      final container = irPara(tester, '/admin/questoes');
+      await assentar(tester);
+      await tocar(tester, find.text('Nova questão'));
+      expect(find.byKey(const Key('formulario_questao')), findsOneWidget);
+
+      await tocar(tester, find.byKey(const Key('salvar_questao')));
+      expect(find.text('Confira os campos destacados.'), findsOneWidget);
+      expect(find.text('Escolha o assunto'), findsOneWidget);
+
+      await tester.tap(find.byKey(const ValueKey('campo_assunto_1')));
+      await assentar(tester);
+      await tester.tap(find.text('Potenciação').last);
+      await assentar(tester);
+      await tester.enterText(
+        find.byKey(const Key('campo_enunciado')),
+        'Quanto vale 3² · 3?',
+      );
+      for (final (i, letra) in ['A', 'B', 'C', 'D', 'E'].indexed) {
+        await tester.enterText(
+          find.byKey(Key('alternativa_$letra')),
+          '${9 * (i + 1)}',
+        );
+      }
+      await tocar(tester, find.byKey(const Key('correta_C')));
+      await tester.enterText(
+        find.byKey(const Key('campo_explicacao')),
+        '3² · 3 = 3³ = 27.',
+      );
+      await tocar(tester, find.byKey(const Key('salvar_questao')));
+      await esperar(tester, find.byKey(const Key('busca_questoes')));
+
+      final conteudo = await tester.runAsync(
+        () => container.read(conteudoProvider.future),
+      );
+      final nova = conteudo!.questaoPorId(9000001)!;
+      expect(nova.enunciado, 'Quanto vale 3² · 3?');
+      expect(nova.gabarito.texto, '27');
+      expect(nova.pendente, isTrue);
+      expect(conteudo.questoes.any((q) => q.id == 9000001), isTrue);
     });
   });
 }

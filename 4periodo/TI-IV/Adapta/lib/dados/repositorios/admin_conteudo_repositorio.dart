@@ -583,23 +583,26 @@ class AdminConteudoRepositorio {
   }
 }
 
-final Provider<AdminConteudoRepositorio> adminConteudoRepositorioProvider =
-    Provider<AdminConteudoRepositorio>(
-      (ref) => AdminConteudoRepositorio(
-        ref.watch(bancoProvider),
-        usuarioAtual: () => ref.read(usuarioProvider),
-        aoMudar: () {
-          ref.invalidate(conteudoProvider);
-          ref.invalidate(dependenciasProvider);
-          ref.invalidate(grafoProvider);
-          ref.invalidate(pendentesAdminProvider);
-          // A gravação local já terminou; a tela não espera a nuvem.
-          unawaited(enviarConteudoAdmin(ref));
-        },
-      ),
-    );
-
-/// Para o painel inicial do admin.
-final FutureProvider<int> pendentesAdminProvider = FutureProvider<int>(
-  (ref) => ref.watch(adminConteudoRepositorioProvider).contarPendentes(),
+final adminConteudoRepositorioProvider = Provider<AdminConteudoRepositorio>(
+  (ref) => AdminConteudoRepositorio(
+    ref.watch(bancoProvider),
+    usuarioAtual: () => ref.read(usuarioProvider),
+    aoMudar: () {
+      ref.invalidate(conteudoProvider);
+      ref.invalidate(dependenciasProvider);
+      ref.invalidate(grafoProvider);
+      // A gravação local já terminou; a tela não espera a nuvem.
+      unawaited(enviarConteudoAdmin(ref));
+    },
+  ),
 );
+
+/// Para o painel inicial do admin. Relido sempre que o conteúdo muda, o que
+/// acontece depois de cada gravação e de cada envio.
+final pendentesAdminProvider = FutureProvider<int>((ref) async {
+  ref.watch(conteudoProvider);
+  return AdminConteudoRepositorio(
+    ref.watch(bancoProvider),
+    usuarioAtual: () => null,
+  ).contarPendentes();
+});

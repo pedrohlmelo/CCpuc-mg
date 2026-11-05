@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../dados/repositorios/admin_conteudo_repositorio.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
 import '../aluno/materias_screen.dart';
@@ -21,6 +22,7 @@ class AdminHomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final conteudo = ref.watch(conteudoProvider).valueOrNull;
     final dependencias = ref.watch(dependenciasProvider).valueOrNull;
+    final pendentes = ref.watch(pendentesAdminProvider).valueOrNull ?? 0;
     final texto = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
 
@@ -118,6 +120,61 @@ class AdminHomeScreen extends ConsumerWidget {
             ],
           ),
           if (conteudo != null) ...[
+            const SizedBox(height: 12),
+            AppCartao(
+              key: const Key('situacao_conteudo'),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _LinhaSituacao(
+                    'Matérias',
+                    conteudo.materias.length,
+                    conteudo.todasMaterias.length - conteudo.materias.length,
+                  ),
+                  _LinhaSituacao(
+                    'Assuntos',
+                    conteudo.assuntos.length,
+                    conteudo.todosAssuntos.length - conteudo.assuntos.length,
+                  ),
+                  _LinhaSituacao(
+                    'Questões',
+                    conteudo.questoes.length,
+                    conteudo.inativas.length,
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Não revisadas: '
+                    '${conteudo.questoes.where((q) => !q.revisado).length}',
+                    style: texto.bodyMedium,
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Icon(
+                        pendentes == 0
+                            ? Icons.cloud_done_rounded
+                            : Icons.cloud_off_rounded,
+                        size: 18,
+                        color: pendentes == 0
+                            ? AppCores.teal
+                            : scheme.onSurfaceVariant,
+                      ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: Text(
+                          pendentes == 0
+                              ? 'Tudo enviado à nuvem'
+                              : '$pendentes alterações pendentes de envio',
+                          key: const Key('pendentes_admin'),
+                          style: texto.titleSmall,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 24),
             const TituloSecao('Questões por matéria'),
             AppCartao(
@@ -160,7 +217,7 @@ class AdminHomeScreen extends ConsumerWidget {
                   icone: Icons.menu_book_rounded,
                   cor: scheme.primary,
                   titulo: 'Matérias',
-                  descricao: 'Cadastrar e listar matérias',
+                  descricao: 'Criar, editar e excluir matérias',
                   rota: '/admin/materias',
                 ),
                 Divider(height: 1, indent: 72, color: scheme.outline),
@@ -195,6 +252,22 @@ class AdminHomeScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _LinhaSituacao extends StatelessWidget {
+  final String nome;
+  final int ativos;
+  final int inativos;
+  const _LinhaSituacao(this.nome, this.ativos, this.inativos);
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 2),
+    child: Text(
+      '$nome: $ativos ativos · $inativos inativos',
+      style: Theme.of(context).textTheme.bodyMedium,
+    ),
+  );
 }
 
 int _totalDaArea(Conteudo conteudo, String area) => conteudo.materias

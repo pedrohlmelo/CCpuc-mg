@@ -38,6 +38,8 @@ void main() {
   setUpAll(() async {
     if (!ativo) return;
     dir.createSync(recursive: true);
+    // Aberto fora do relógio falso: aberto dentro do teste, ele não termina.
+    await banco.db;
     final fonte = FontLoader('PlusJakartaSans')
       ..addFont(rootBundle.load('assets/fontes/PlusJakartaSans.ttf'));
     await fonte.load();
@@ -62,10 +64,14 @@ void main() {
     ),
   );
 
+  /// O banco responde em tempo real: sem o `runAsync`, as listas saem vazias.
   Future<void> assentar(WidgetTester tester) async {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 8; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 20)),
+      );
       await tester.pump();
-      await tester.pump(const Duration(milliseconds: 500));
+      await tester.pump(const Duration(milliseconds: 300));
     }
   }
 
@@ -172,6 +178,9 @@ void main() {
 
     ir(tester, '/admin/materias');
     await capturar(tester, '16_admin_materias');
+
+    ir(tester, '/admin/questoes/1');
+    await capturar(tester, '21_admin_questao_formulario');
   }, skip: !ativo);
 
   testWidgets('tema escuro sem conta', (tester) async {

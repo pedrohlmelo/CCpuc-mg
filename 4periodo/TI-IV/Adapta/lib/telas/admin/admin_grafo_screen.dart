@@ -5,6 +5,7 @@ import '../../dados/modelos.dart';
 import '../../dados/repositorios/admin_conteudo_repositorio.dart';
 import '../../dados/repositorios/conteudo_repositorio.dart';
 import '../../dados/repositorios/grafo_repositorio.dart';
+import '../../dados/sincronizacao/servico_sincronizacao.dart';
 import '../../tema/app_tema.dart';
 import '../../widgets/cartoes.dart';
 import 'admin_scaffold.dart';
@@ -13,12 +14,6 @@ import 'admin_scaffold.dart';
 /// força da dependência. O grafo precisa continuar sendo um DAG.
 class AdminGrafoScreen extends ConsumerWidget {
   const AdminGrafoScreen({super.key});
-
-  void _avisar(BuildContext context, String texto) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(texto), behavior: SnackBarBehavior.floating),
-    );
-  }
 
   /// Aresta que fecharia ciclo é recusada, mostrando o caminho que já existe.
   Future<void> _nova(
@@ -29,7 +24,7 @@ class AdminGrafoScreen extends ConsumerWidget {
   ) async {
     final aresta = await showDialog<Dependencia>(
       context: context,
-      builder: (_) => _DialogoAresta(assuntos: conteudo.assuntos),
+      builder: (_) => _DialogoAresta(conteudo: conteudo),
     );
     if (aresta == null || !context.mounted) return;
 
@@ -38,13 +33,42 @@ class AdminGrafoScreen extends ConsumerWidget {
     } on ErroAdmin catch (erro) {
       if (!context.mounted) return;
       final caminho = erro.caminho?.map(conteudo.nomeDoAssunto).join(' → ');
-      _avisar(
+      avisar(
         context,
         caminho == null ? erro.mensagem : '${erro.mensagem} $caminho',
+        erro: true,
       );
       return;
     }
-    if (context.mounted) _avisar(context, 'Dependência salva.');
+    if (!context.mounted) return;
+    final online = await ref.read(conectividadeProvider).online();
+    if (context.mounted) {
+      avisar(
+        context,
+        online
+            ? 'Dependência salva.'
+            : 'Dependência salva no aparelho; envio à nuvem pendente',
+      );
+    }
+  }
+
+  Future<void> _editarPeso(
+    BuildContext context,
+    WidgetRef ref,
+    Dependencia d,
+  ) async {
+    final peso = await showDialog<double>(
+      context: context,
+      builder: (_) => _DialogoPeso(inicial: d.peso),
+    );
+    if (peso == null || !context.mounted) return;
+    await executarAdmin(
+      context,
+      ref,
+      () => ref
+          .read(adminConteudoRepositorioProvider)
+          .editarPeso(d.prerequisito, d.dependente, peso),
+    );
   }
 
   @override
@@ -68,7 +92,15 @@ class AdminGrafoScreen extends ConsumerWidget {
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (_, i) {
           final d = dependencias[i];
+          bool pendente(int idAssunto) {
+            final a = conteudo!.assuntoPorId(idAssunto);
+            return a != null &&
+                (conteudo.materiaPorId(a.idMateria)?.pendente ?? false);
+          }
+
           return AppCartao(
+            key: Key('aresta_${d.prerequisito}_${d.dependente}'),
+            aoTocar: () => _editarPeso(context, ref, d),
             padding: const EdgeInsets.fromLTRB(16, 12, 6, 12),
             child: Row(
               children: [
@@ -139,6 +171,9 @@ class AdminGrafoScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
+                IconePendente(
+                  pendente(d.prerequisito) || pendente(d.dependente),
+                ),
                 IconButton(
                   tooltip: 'Remover',
                   icon: Icon(
@@ -149,11 +184,18 @@ class AdminGrafoScreen extends ConsumerWidget {
                     final ok = await confirmarExclusao(
                       context,
                       'A dependência',
+                      mensagem:
+                          'A dependência será removida do grafo. Dá para '
+                          'criá-la de novo depois.',
                     );
                     if (!ok || !context.mounted) return;
-                    await ref
-                        .read(adminConteudoRepositorioProvider)
-                        .removerAresta(d.prerequisito, d.dependente);
+                    await executarAdmin(
+                      context,
+                      ref,
+                      () => ref
+                          .read(adminConteudoRepositorioProvider)
+                          .removerAresta(d.prerequisito, d.dependente),
+                    );
                   },
                 ),
               ],
@@ -167,8 +209,8 @@ class AdminGrafoScreen extends ConsumerWidget {
 
 /// Formulário de nova aresta. Devolve a aresta ao confirmar.
 class _DialogoAresta extends StatefulWidget {
-  final List<Assunto> assuntos;
-  const _DialogoAresta({required this.assuntos});
+  final Conteudo conteudo;
+  const _DialogoAresta({required this.conteudo});
 
   @override
   State<_DialogoAresta> createState() => _DialogoArestaState();
@@ -190,11 +232,38 @@ class _DialogoArestaState extends State<_DialogoAresta> {
       isExpanded: true,
       decoration: InputDecoration(labelText: rotulo),
       items: [
-        for (final a in widget.assuntos)
-          DropdownMenuItem(
-            value: a,
-            child: Text(a.nome, overflow: TextOverflow.ellipsis),
+        for (final m in widget.conteudo.materias) ...[
+          DropdownMenuItem<Assunto>(
+            enabled: false,
+            child: Text(
+              m.nome.toUpperCase(),
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
           ),
+          for (final a in widget.conteudo.assuntosDaMateria(m.id))
+            DropdownMenuItem(
+              value: a,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Text(a.nome, overflow: TextOverflow.ellipsis),
+              ),
+            ),
+        ],
+      ],
+      selectedItemBuilder: (_) => [
+        for (final m in widget.conteudo.materias) ...[
+          const SizedBox.shrink(),
+          for (final a in widget.conteudo.assuntosDaMateria(m.id))
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '${a.nome} (${m.nome})',
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+        ],
       ],
       onChanged: aoMudar,
     );
@@ -255,4 +324,55 @@ class _DialogoArestaState extends State<_DialogoAresta> {
       ],
     );
   }
+}
+
+/// Muda a força de uma dependência.
+class _DialogoPeso extends StatefulWidget {
+  final double inicial;
+  const _DialogoPeso({required this.inicial});
+
+  @override
+  State<_DialogoPeso> createState() => _DialogoPesoState();
+}
+
+class _DialogoPesoState extends State<_DialogoPeso> {
+  late double _peso = widget.inicial.clamp(0.1, 1.0);
+
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+    title: const Text('Força da dependência'),
+    content: SizedBox(
+      width: 380,
+      child: Row(
+        children: [
+          Expanded(
+            child: Slider(
+              key: const Key('slider_peso'),
+              value: _peso,
+              min: 0.1,
+              max: 1.0,
+              divisions: 9,
+              onChanged: (v) => setState(() => _peso = v),
+            ),
+          ),
+          Text(
+            _peso.toStringAsFixed(1),
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+        ],
+      ),
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.pop(context),
+        child: const Text('Cancelar'),
+      ),
+      FilledButton(
+        style: FilledButton.styleFrom(minimumSize: const Size(120, 44)),
+        onPressed: () =>
+            Navigator.pop(context, double.parse(_peso.toStringAsFixed(1))),
+        child: const Text('Salvar'),
+      ),
+    ],
+  );
 }

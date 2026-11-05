@@ -8,6 +8,7 @@ import '../telas/admin/admin_assuntos_screen.dart';
 import '../telas/admin/admin_grafo_screen.dart';
 import '../telas/admin/admin_home_screen.dart';
 import '../telas/admin/admin_materias_screen.dart';
+import '../telas/admin/admin_questao_form_screen.dart';
 import '../telas/admin/admin_questoes_screen.dart';
 import '../telas/aluno/historico_detalhe_screen.dart';
 import '../telas/aluno/historico_screen.dart';
@@ -133,6 +134,18 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'questoes',
             builder: (_, _) => const AdminQuestoesScreen(),
+            routes: [
+              GoRoute(
+                path: 'nova',
+                builder: (_, _) => const AdminQuestaoFormScreen(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (_, estado) => AdminQuestaoFormScreen(
+                  idQuestao: int.tryParse(estado.pathParameters['id'] ?? ''),
+                ),
+              ),
+            ],
           ),
         ],
       ),
