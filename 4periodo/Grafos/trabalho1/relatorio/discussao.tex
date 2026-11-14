@@ -1,0 +1,85 @@
+\section{Discussão}
+
+Todas as medições terminaram dentro do limite de 30 minutos. Em todas as execuções os dois métodos
+encontraram o mesmo conjunto de pontes e todos os caminhos eulerianos encontrados foram validados.
+Os grafos eulerianos e não eulerianos gerados contêm um ciclo hamiltoniano e, portanto, não têm pontes.
+Nos semi-eulerianos, a aresta removida pode deixar um vértice de grau 1; se ele estava no fim de uma
+cadeia de vértices de grau 2 do ciclo hamiltoniano, todas as arestas dessa cadeia viram pontes. Dos 24
+grafos semi-eulerianos usados, 6 tinham de 1 a 3 pontes. O número de pontes não altera o
+custo dos métodos, que examinam todas as arestas de qualquer forma. A presença de pontes também foi
+exercitada nos testes de corretude e, durante o Fleury, nos grafos intermediários, que passam a ter
+pontes à medida que as arestas são apagadas.
+
+\subsection{Identificação de todas as pontes}
+
+A diferença entre os dois métodos é a esperada pela análise assintótica. Com $n=100.000$ ($m\approx
+200.000$), o método de Tarjan encontrou todas as pontes em cerca de \textbf{17 a 20~ms}, enquanto o
+método naïve levou cerca de \textbf{830 segundos} (quase 14 minutos) -- aproximadamente
+\textbf{45.000 vezes} mais. A inclinação das curvas no gráfico log-log mede o expoente de crescimento
+(Tabela~\ref{tab:inclinacao}):
+
+\begin{table}[H]
+\centering
+\small
+\caption{Inclinação $\log_{10}(t_{10n}/t_n)$ entre tamanhos consecutivos (grafos eulerianos). Valores
+próximos de 1 indicam crescimento linear e próximos de 2, quadrático.}
+\label{tab:inclinacao}
+\begin{tabular}{lccc}
+\toprule
+Medida & $100\to1.000$ & $1.000\to10.000$ & $10.000\to100.000$ \\
+\midrule
+Pontes naïve   & 1,77 & 2,63 & 2,09 \\
+Pontes Tarjan  & 0,83 & 1,02 & 1,19 \\
+Fleury + naïve & 1,73 & 2,10 & 2,06 \\
+Fleury + Tarjan& 1,92 & 2,27 & 2,08 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+  \item \textbf{Tarjan} cresce linearmente ($O(n+m)$): a partir de 1.000 vértices, multiplicar o tamanho
+        por 10 multiplica o tempo por 10 a 15. O pequeno excesso acima de 1 entre 10.000 e 100.000 vértices provavelmente se deve
+        à memória cache: os vetores de um grafo com 100.000 vértices não cabem mais nas caches do
+        processador e os acessos da busca, que saltam entre vértices aleatórios, ficam mais caros.
+  \item \textbf{Naïve} cresce quadraticamente ($O(m(n+m))$): são $m$ buscas em largura, cada uma de
+        custo $O(n+m)$. A inclinação 2,63 entre 1.000 e 10.000 vértices provavelmente também é
+        efeito de cache -- um grafo com 1.000 vértices cabe inteiro na cache e cada busca é muito rápida;
+        com 10.000 já não cabe (não medimos isso diretamente). Entre 10.000 e 100.000 a inclinação volta a ser $\approx 2$.
+  \item Os tempos praticamente não dependem da classe do grafo (euleriano, semi ou não euleriano),
+        pois os três tipos de grafo têm o mesmo tamanho e a mesma estrutura geral.
+\end{itemize}
+
+\subsection{Método de Fleury}
+
+Para grafos eulerianos e semi-eulerianos, o Fleury é \textbf{quadrático com as duas estratégias}
+(inclinação $\approx 2$): ele atravessa $m$ arestas e, a cada passo em que o vértice atual tem grau
+maior que 1, faz uma identificação de ponte de custo $O(n+m)$. Com 100.000 vértices, o Fleury levou
+cerca de \textbf{4,8~minutos} com o teste naïve e \textbf{14,8~minutos} com Tarjan.
+
+Pode parecer contraditório que, dentro do Fleury, a estratégia naïve seja cerca de \textbf{três vezes
+mais rápida} que Tarjan, mas a explicação é que as duas fazem trabalhos diferentes a cada passo:
+
+\begin{itemize}
+  \item a estratégia \emph{naïve} só precisa saber se \emph{uma} aresta candidata é ponte. Como no
+        máximo uma aresta de $u$ pode ser ponte, em geral a primeira candidata já não é ponte e o passo
+        custa uma única busca em largura -- um percurso simples sobre o componente;
+  \item a estratégia \emph{Tarjan} calcula \emph{todas} as pontes do componente a cada passo: uma busca em
+        profundidade com pilha explícita e, depois, uma segunda passada sobre todas as arestas para
+        calcular $ND$, $L$ e $H$. O custo também é $O(n+m)$, mas com constante maior, e quase toda essa
+        informação é descartada no passo seguinte, pois o grafo muda.
+\end{itemize}
+
+Ou seja, a vantagem assintótica de Tarjan aparece quando se quer \emph{todas} as pontes de um grafo fixo
+(o que ele faz em uma passada, contra $m$ passadas do naïve). No Fleury, em que a pergunta é sobre uma
+única aresta e o grafo muda a cada passo, as duas estratégias ficam na mesma ordem $O(m(n+m))$ e a de
+menor constante vence.
+
+Para grafos \textbf{não eulerianos}, o Fleury nem chega a ser executado: a classificação (contagem de
+vértices de grau ímpar) detecta que o caminho não existe. Esse tempo é linear e muito pequeno
+(0,1~ms com 100.000 vértices), igual para as duas estratégias.
+
+Uma observação sobre a média: em grafos semi-eulerianos com $n=100$, uma das dez execuções do Fleury
+com o teste naïve levou 15,6~ms, enquanto as demais ficaram em torno de 0,23~ms, o que eleva a média
+para 1,77~ms. Essa execução isolada coincidiu provavelmente com uma pausa do coletor de lixo ou uma
+recompilação da JVM, e não com o algoritmo. Em tempos tão pequenos esse ruído é comum; a partir de
+1.000 vértices ele deixa de ser relevante.

@@ -1,0 +1,51 @@
+Limite por medicao: 1800 s, grau medio 4
+n        classe          medida           media (ms)  rodadas
+100      euleriano       pontes_naive          0.268       10
+100      euleriano       pontes_tarjan         0.018       10
+100      euleriano       fleury_naive          0.383       10
+100      euleriano       fleury_tarjan         0.470       10
+1000     euleriano       pontes_naive         15.801       10
+1000     euleriano       pontes_tarjan         0.124       10
+1000     euleriano       fleury_naive         20.554       10
+1000     euleriano       fleury_tarjan        39.556       10
+10000    euleriano       pontes_naive       6756.981        3
+10000    euleriano       pontes_tarjan         1.287        3
+10000    euleriano       fleury_naive       2568.212        3
+10000    euleriano       fleury_tarjan      7390.703        3
+100000   euleriano       pontes_naive     832584.923        1
+100000   euleriano       pontes_tarjan        19.866        1
+100000   euleriano       fleury_naive     294379.538        1
+100000   euleriano       fleury_tarjan    889605.681        1
+100      semi-euleriano  pontes_naive          0.254       10
+100      semi-euleriano  pontes_tarjan         0.025       10
+100      semi-euleriano  fleury_naive          1.769       10
+100      semi-euleriano  fleury_tarjan         0.395       10
+1000     semi-euleriano  pontes_naive         16.052       10
+1000     semi-euleriano  pontes_tarjan         0.119       10
+1000     semi-euleriano  fleury_naive         20.125       10
+1000     semi-euleriano  fleury_tarjan        39.131       10
+10000    semi-euleriano  pontes_naive       6816.035        3
+10000    semi-euleriano  pontes_tarjan         1.244        3
+10000    semi-euleriano  fleury_naive       2561.793        3
+10000    semi-euleriano  fleury_tarjan      7347.591        3
+100000   semi-euleriano  pontes_naive     822728.088        1
+100000   semi-euleriano  pontes_tarjan        17.183        1
+100000   semi-euleriano  fleury_naive     285468.260        1
+100000   semi-euleriano  fleury_tarjan    882547.634        1
+100      nao euleriano   pontes_naive          0.266       10
+100      nao euleriano   pontes_tarjan         0.025       10
+100      nao euleriano   fleury_naive          0.000       10
+100      nao euleriano   fleury_tarjan         0.000       10
+1000     nao euleriano   pontes_naive         16.407       10
+1000     nao euleriano   pontes_tarjan         0.104       10
+1000     nao euleriano   fleury_naive          0.001       10
+1000     nao euleriano   fleury_tarjan         0.001       10
+10000    nao euleriano   pontes_naive       6883.646        3
+10000    nao euleriano   pontes_tarjan         1.251        3
+10000    nao euleriano   fleury_naive          0.009        3
+10000    nao euleriano   fleury_tarjan         0.006        3
+100000   nao euleriano   pontes_naive     837576.445        1
+100000   nao euleriano   pontes_tarjan        16.886        1
+100000   nao euleriano   fleury_naive          0.103        1
+100000   nao euleriano   fleury_tarjan         0.083        1
+Resultados em /Users/pedrinho/github/CCpuc-mg/4periodo/Grafos/trabalho1/resultados/tempos.csv

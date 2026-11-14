@@ -1,0 +1,289 @@
+n,m,classe,repeticao,medida,tempo_ms,status
+100,201,euleriano,0,pontes_naive,0.2750,ok
+100,201,euleriano,0,pontes_tarjan,0.0328,ok
+100,201,euleriano,0,fleury_naive,1.1695,ok
+100,201,euleriano,0,fleury_tarjan,0.5675,ok
+100,202,euleriano,1,pontes_naive,0.2703,ok
+100,202,euleriano,1,pontes_tarjan,0.0173,ok
+100,202,euleriano,1,fleury_naive,0.3319,ok
+100,202,euleriano,1,fleury_tarjan,0.4645,ok
+100,201,euleriano,2,pontes_naive,0.2734,ok
+100,201,euleriano,2,pontes_tarjan,0.0180,ok
+100,201,euleriano,2,fleury_naive,0.3008,ok
+100,201,euleriano,2,fleury_tarjan,0.4679,ok
+100,204,euleriano,3,pontes_naive,0.2786,ok
+100,204,euleriano,3,pontes_tarjan,0.0173,ok
+100,204,euleriano,3,fleury_naive,0.3168,ok
+100,204,euleriano,3,fleury_tarjan,0.5075,ok
+100,201,euleriano,4,pontes_naive,0.2759,ok
+100,201,euleriano,4,pontes_tarjan,0.0165,ok
+100,201,euleriano,4,fleury_naive,0.2831,ok
+100,201,euleriano,4,fleury_tarjan,0.4651,ok
+100,200,euleriano,5,pontes_naive,0.2707,ok
+100,200,euleriano,5,pontes_tarjan,0.0178,ok
+100,200,euleriano,5,fleury_naive,0.2807,ok
+100,200,euleriano,5,fleury_tarjan,0.4125,ok
+100,204,euleriano,6,pontes_naive,0.2594,ok
+100,204,euleriano,6,pontes_tarjan,0.0163,ok
+100,204,euleriano,6,fleury_naive,0.3000,ok
+100,204,euleriano,6,fleury_tarjan,0.4723,ok
+100,202,euleriano,7,pontes_naive,0.2545,ok
+100,202,euleriano,7,pontes_tarjan,0.0157,ok
+100,202,euleriano,7,fleury_naive,0.2742,ok
+100,202,euleriano,7,fleury_tarjan,0.4543,ok
+100,200,euleriano,8,pontes_naive,0.2568,ok
+100,200,euleriano,8,pontes_tarjan,0.0169,ok
+100,200,euleriano,8,fleury_naive,0.2725,ok
+100,200,euleriano,8,fleury_tarjan,0.4328,ok
+100,202,euleriano,9,pontes_naive,0.2663,ok
+100,202,euleriano,9,pontes_tarjan,0.0163,ok
+100,202,euleriano,9,fleury_naive,0.2978,ok
+100,202,euleriano,9,fleury_tarjan,0.4595,ok
+1000,2004,euleriano,0,pontes_naive,16.2437,ok
+1000,2004,euleriano,0,pontes_tarjan,0.1113,ok
+1000,2004,euleriano,0,fleury_naive,20.3251,ok
+1000,2004,euleriano,0,fleury_tarjan,39.1878,ok
+1000,2002,euleriano,1,pontes_naive,15.8340,ok
+1000,2002,euleriano,1,pontes_tarjan,0.1135,ok
+1000,2002,euleriano,1,fleury_naive,21.5889,ok
+1000,2002,euleriano,1,fleury_tarjan,41.8265,ok
+1000,2000,euleriano,2,pontes_naive,15.7615,ok
+1000,2000,euleriano,2,pontes_tarjan,0.1440,ok
+1000,2000,euleriano,2,fleury_naive,20.3282,ok
+1000,2000,euleriano,2,fleury_tarjan,40.4758,ok
+1000,2006,euleriano,3,pontes_naive,16.1290,ok
+1000,2006,euleriano,3,pontes_tarjan,0.1217,ok
+1000,2006,euleriano,3,fleury_naive,20.9769,ok
+1000,2006,euleriano,3,fleury_tarjan,39.8865,ok
+1000,2004,euleriano,4,pontes_naive,15.6498,ok
+1000,2004,euleriano,4,pontes_tarjan,0.1298,ok
+1000,2004,euleriano,4,fleury_naive,20.7383,ok
+1000,2004,euleriano,4,fleury_tarjan,39.7725,ok
+1000,2002,euleriano,5,pontes_naive,15.9512,ok
+1000,2002,euleriano,5,pontes_tarjan,0.1194,ok
+1000,2002,euleriano,5,fleury_naive,21.1281,ok
+1000,2002,euleriano,5,fleury_tarjan,39.8429,ok
+1000,2001,euleriano,6,pontes_naive,15.7235,ok
+1000,2001,euleriano,6,pontes_tarjan,0.1178,ok
+1000,2001,euleriano,6,fleury_naive,20.1373,ok
+1000,2001,euleriano,6,fleury_tarjan,38.3076,ok
+1000,2002,euleriano,7,pontes_naive,15.5778,ok
+1000,2002,euleriano,7,pontes_tarjan,0.1534,ok
+1000,2002,euleriano,7,fleury_naive,20.0335,ok
+1000,2002,euleriano,7,fleury_tarjan,37.8878,ok
+1000,2001,euleriano,8,pontes_naive,15.5794,ok
+1000,2001,euleriano,8,pontes_tarjan,0.1135,ok
+1000,2001,euleriano,8,fleury_naive,20.0884,ok
+1000,2001,euleriano,8,fleury_tarjan,40.0392,ok
+1000,2003,euleriano,9,pontes_naive,15.5574,ok
+1000,2003,euleriano,9,pontes_tarjan,0.1129,ok
+1000,2003,euleriano,9,fleury_naive,20.1958,ok
+1000,2003,euleriano,9,fleury_tarjan,38.3335,ok
+10000,20000,euleriano,0,pontes_naive,6729.8332,ok
+10000,20000,euleriano,0,pontes_tarjan,1.2898,ok
+10000,20000,euleriano,0,fleury_naive,2562.5269,ok
+10000,20000,euleriano,0,fleury_tarjan,7460.4715,ok
+10000,20005,euleriano,1,pontes_naive,6774.2224,ok
+10000,20005,euleriano,1,pontes_tarjan,1.2862,ok
+10000,20005,euleriano,1,fleury_naive,2582.0355,ok
+10000,20005,euleriano,1,fleury_tarjan,7355.9892,ok
+10000,20006,euleriano,2,pontes_naive,6766.8886,ok
+10000,20006,euleriano,2,pontes_tarjan,1.2846,ok
+10000,20006,euleriano,2,fleury_naive,2560.0750,ok
+10000,20006,euleriano,2,fleury_tarjan,7355.6480,ok
+100000,200000,euleriano,0,pontes_naive,832584.9228,ok
+100000,200000,euleriano,0,pontes_tarjan,19.8658,ok
+100000,200000,euleriano,0,fleury_naive,294379.5376,ok
+100000,200000,euleriano,0,fleury_tarjan,889605.6809,ok
+100,200,semi-euleriano,0,pontes_naive,0.2544,ok
+100,200,semi-euleriano,0,pontes_tarjan,0.0952,ok
+100,200,semi-euleriano,0,fleury_naive,0.2536,ok
+100,200,semi-euleriano,0,fleury_tarjan,0.4043,ok
+100,199,semi-euleriano,1,pontes_naive,0.2542,ok
+100,199,semi-euleriano,1,pontes_tarjan,0.0192,ok
+100,199,semi-euleriano,1,fleury_naive,15.5873,ok
+100,199,semi-euleriano,1,fleury_tarjan,0.3654,ok
+100,201,semi-euleriano,2,pontes_naive,0.2523,ok
+100,201,semi-euleriano,2,pontes_tarjan,0.0204,ok
+100,201,semi-euleriano,2,fleury_naive,0.2224,ok
+100,201,semi-euleriano,2,fleury_tarjan,0.3846,ok
+100,204,semi-euleriano,3,pontes_naive,0.2581,ok
+100,204,semi-euleriano,3,pontes_tarjan,0.0158,ok
+100,204,semi-euleriano,3,fleury_naive,0.2238,ok
+100,204,semi-euleriano,3,fleury_tarjan,0.4123,ok
+100,202,semi-euleriano,4,pontes_naive,0.2485,ok
+100,202,semi-euleriano,4,pontes_tarjan,0.0160,ok
+100,202,semi-euleriano,4,fleury_naive,0.2386,ok
+100,202,semi-euleriano,4,fleury_tarjan,0.4081,ok
+100,201,semi-euleriano,5,pontes_naive,0.2677,ok
+100,201,semi-euleriano,5,pontes_tarjan,0.0298,ok
+100,201,semi-euleriano,5,fleury_naive,0.2242,ok
+100,201,semi-euleriano,5,fleury_tarjan,0.3826,ok
+100,206,semi-euleriano,6,pontes_naive,0.2527,ok
+100,206,semi-euleriano,6,pontes_tarjan,0.0150,ok
+100,206,semi-euleriano,6,fleury_naive,0.2361,ok
+100,206,semi-euleriano,6,fleury_tarjan,0.4158,ok
+100,199,semi-euleriano,7,pontes_naive,0.2343,ok
+100,199,semi-euleriano,7,pontes_tarjan,0.0139,ok
+100,199,semi-euleriano,7,fleury_naive,0.2216,ok
+100,199,semi-euleriano,7,fleury_tarjan,0.3690,ok
+100,200,semi-euleriano,8,pontes_naive,0.2619,ok
+100,200,semi-euleriano,8,pontes_tarjan,0.0150,ok
+100,200,semi-euleriano,8,fleury_naive,0.2322,ok
+100,200,semi-euleriano,8,fleury_tarjan,0.3998,ok
+100,200,semi-euleriano,9,pontes_naive,0.2527,ok
+100,200,semi-euleriano,9,pontes_tarjan,0.0146,ok
+100,200,semi-euleriano,9,fleury_naive,0.2490,ok
+100,200,semi-euleriano,9,fleury_tarjan,0.4054,ok
+1000,2000,semi-euleriano,0,pontes_naive,16.2739,ok
+1000,2000,semi-euleriano,0,pontes_tarjan,0.1366,ok
+1000,2000,semi-euleriano,0,fleury_naive,20.1554,ok
+1000,2000,semi-euleriano,0,fleury_tarjan,38.9135,ok
+1000,2002,semi-euleriano,1,pontes_naive,16.2982,ok
+1000,2002,semi-euleriano,1,pontes_tarjan,0.1051,ok
+1000,2002,semi-euleriano,1,fleury_naive,20.6931,ok
+1000,2002,semi-euleriano,1,fleury_tarjan,39.2048,ok
+1000,2000,semi-euleriano,2,pontes_naive,15.9642,ok
+1000,2000,semi-euleriano,2,pontes_tarjan,0.1025,ok
+1000,2000,semi-euleriano,2,fleury_naive,19.9161,ok
+1000,2000,semi-euleriano,2,fleury_tarjan,39.5957,ok
+1000,1999,semi-euleriano,3,pontes_naive,15.9964,ok
+1000,1999,semi-euleriano,3,pontes_tarjan,0.1072,ok
+1000,1999,semi-euleriano,3,fleury_naive,20.0876,ok
+1000,1999,semi-euleriano,3,fleury_tarjan,38.7741,ok
+1000,2003,semi-euleriano,4,pontes_naive,15.8933,ok
+1000,2003,semi-euleriano,4,pontes_tarjan,0.1333,ok
+1000,2003,semi-euleriano,4,fleury_naive,20.1632,ok
+1000,2003,semi-euleriano,4,fleury_tarjan,38.9635,ok
+1000,1999,semi-euleriano,5,pontes_naive,16.0730,ok
+1000,1999,semi-euleriano,5,pontes_tarjan,0.1080,ok
+1000,1999,semi-euleriano,5,fleury_naive,20.0902,ok
+1000,1999,semi-euleriano,5,fleury_tarjan,39.4340,ok
+1000,1999,semi-euleriano,6,pontes_naive,15.9444,ok
+1000,1999,semi-euleriano,6,pontes_tarjan,0.1380,ok
+1000,1999,semi-euleriano,6,fleury_naive,20.1468,ok
+1000,1999,semi-euleriano,6,fleury_tarjan,39.4804,ok
+1000,2006,semi-euleriano,7,pontes_naive,16.1476,ok
+1000,2006,semi-euleriano,7,pontes_tarjan,0.1168,ok
+1000,2006,semi-euleriano,7,fleury_naive,20.2138,ok
+1000,2006,semi-euleriano,7,fleury_tarjan,39.0461,ok
+1000,2001,semi-euleriano,8,pontes_naive,16.0218,ok
+1000,2001,semi-euleriano,8,pontes_tarjan,0.1221,ok
+1000,2001,semi-euleriano,8,fleury_naive,19.9087,ok
+1000,2001,semi-euleriano,8,fleury_tarjan,39.3202,ok
+1000,2002,semi-euleriano,9,pontes_naive,15.9096,ok
+1000,2002,semi-euleriano,9,pontes_tarjan,0.1186,ok
+1000,2002,semi-euleriano,9,fleury_naive,19.8750,ok
+1000,2002,semi-euleriano,9,fleury_tarjan,38.5815,ok
+10000,20003,semi-euleriano,0,pontes_naive,6775.5370,ok
+10000,20003,semi-euleriano,0,pontes_tarjan,1.2425,ok
+10000,20003,semi-euleriano,0,fleury_naive,2548.7690,ok
+10000,20003,semi-euleriano,0,fleury_tarjan,7323.4806,ok
+10000,20001,semi-euleriano,1,pontes_naive,6823.1952,ok
+10000,20001,semi-euleriano,1,pontes_tarjan,1.2503,ok
+10000,20001,semi-euleriano,1,fleury_naive,2567.3943,ok
+10000,20001,semi-euleriano,1,fleury_tarjan,7357.2145,ok
+10000,20002,semi-euleriano,2,pontes_naive,6849.3739,ok
+10000,20002,semi-euleriano,2,pontes_tarjan,1.2392,ok
+10000,20002,semi-euleriano,2,fleury_naive,2569.2145,ok
+10000,20002,semi-euleriano,2,fleury_tarjan,7362.0773,ok
+100000,200001,semi-euleriano,0,pontes_naive,822728.0877,ok
+100000,200001,semi-euleriano,0,pontes_tarjan,17.1830,ok
+100000,200001,semi-euleriano,0,fleury_naive,285468.2595,ok
+100000,200001,semi-euleriano,0,fleury_tarjan,882547.6341,ok
+100,204,nao euleriano,0,pontes_naive,0.2698,ok
+100,204,nao euleriano,0,pontes_tarjan,0.0794,ok
+100,204,nao euleriano,0,fleury_naive,0.0022,ok
+100,204,nao euleriano,0,fleury_tarjan,0.0004,ok
+100,204,nao euleriano,1,pontes_naive,0.2520,ok
+100,204,nao euleriano,1,pontes_tarjan,0.0150,ok
+100,204,nao euleriano,1,fleury_naive,0.0003,ok
+100,204,nao euleriano,1,fleury_tarjan,0.0003,ok
+100,202,nao euleriano,2,pontes_naive,0.2473,ok
+100,202,nao euleriano,2,pontes_tarjan,0.0137,ok
+100,202,nao euleriano,2,fleury_naive,0.0002,ok
+100,202,nao euleriano,2,fleury_tarjan,0.0002,ok
+100,203,nao euleriano,3,pontes_naive,0.2507,ok
+100,203,nao euleriano,3,pontes_tarjan,0.0361,ok
+100,203,nao euleriano,3,fleury_naive,0.0003,ok
+100,203,nao euleriano,3,fleury_tarjan,0.0003,ok
+100,205,nao euleriano,4,pontes_naive,0.2813,ok
+100,205,nao euleriano,4,pontes_tarjan,0.0286,ok
+100,205,nao euleriano,4,fleury_naive,0.0002,ok
+100,205,nao euleriano,4,fleury_tarjan,0.0002,ok
+100,206,nao euleriano,5,pontes_naive,0.2586,ok
+100,206,nao euleriano,5,pontes_tarjan,0.0141,ok
+100,206,nao euleriano,5,fleury_naive,0.0003,ok
+100,206,nao euleriano,5,fleury_tarjan,0.0003,ok
+100,209,nao euleriano,6,pontes_naive,0.3036,ok
+100,209,nao euleriano,6,pontes_tarjan,0.0139,ok
+100,209,nao euleriano,6,fleury_naive,0.0003,ok
+100,209,nao euleriano,6,fleury_tarjan,0.0003,ok
+100,203,nao euleriano,7,pontes_naive,0.2703,ok
+100,203,nao euleriano,7,pontes_tarjan,0.0183,ok
+100,203,nao euleriano,7,fleury_naive,0.0003,ok
+100,203,nao euleriano,7,fleury_tarjan,0.0003,ok
+100,204,nao euleriano,8,pontes_naive,0.2697,ok
+100,204,nao euleriano,8,pontes_tarjan,0.0187,ok
+100,204,nao euleriano,8,fleury_naive,0.0002,ok
+100,204,nao euleriano,8,fleury_tarjan,0.0002,ok
+100,203,nao euleriano,9,pontes_naive,0.2608,ok
+100,203,nao euleriano,9,pontes_tarjan,0.0149,ok
+100,203,nao euleriano,9,fleury_naive,0.0003,ok
+100,203,nao euleriano,9,fleury_tarjan,0.0002,ok
+1000,2020,nao euleriano,0,pontes_naive,16.6998,ok
+1000,2020,nao euleriano,0,pontes_tarjan,0.1072,ok
+1000,2020,nao euleriano,0,fleury_naive,0.0013,ok
+1000,2020,nao euleriano,0,fleury_tarjan,0.0009,ok
+1000,2023,nao euleriano,1,pontes_naive,16.2264,ok
+1000,2023,nao euleriano,1,pontes_tarjan,0.1060,ok
+1000,2023,nao euleriano,1,fleury_naive,0.0014,ok
+1000,2023,nao euleriano,1,fleury_tarjan,0.0008,ok
+1000,2021,nao euleriano,2,pontes_naive,16.1573,ok
+1000,2021,nao euleriano,2,pontes_tarjan,0.1066,ok
+1000,2021,nao euleriano,2,fleury_naive,0.0012,ok
+1000,2021,nao euleriano,2,fleury_tarjan,0.0011,ok
+1000,2023,nao euleriano,3,pontes_naive,16.3318,ok
+1000,2023,nao euleriano,3,pontes_tarjan,0.1009,ok
+1000,2023,nao euleriano,3,fleury_naive,0.0010,ok
+1000,2023,nao euleriano,3,fleury_tarjan,0.0008,ok
+1000,2023,nao euleriano,4,pontes_naive,16.1745,ok
+1000,2023,nao euleriano,4,pontes_tarjan,0.1010,ok
+1000,2023,nao euleriano,4,fleury_naive,0.0010,ok
+1000,2023,nao euleriano,4,fleury_tarjan,0.0010,ok
+1000,2023,nao euleriano,5,pontes_naive,16.2486,ok
+1000,2023,nao euleriano,5,pontes_tarjan,0.1053,ok
+1000,2023,nao euleriano,5,fleury_naive,0.0013,ok
+1000,2023,nao euleriano,5,fleury_tarjan,0.0012,ok
+1000,2020,nao euleriano,6,pontes_naive,16.6649,ok
+1000,2020,nao euleriano,6,pontes_tarjan,0.1058,ok
+1000,2020,nao euleriano,6,fleury_naive,0.0013,ok
+1000,2020,nao euleriano,6,fleury_tarjan,0.0008,ok
+1000,2020,nao euleriano,7,pontes_naive,16.5877,ok
+1000,2020,nao euleriano,7,pontes_tarjan,0.1032,ok
+1000,2020,nao euleriano,7,fleury_naive,0.0014,ok
+1000,2020,nao euleriano,7,fleury_tarjan,0.0009,ok
+1000,2023,nao euleriano,8,pontes_naive,16.6470,ok
+1000,2023,nao euleriano,8,pontes_tarjan,0.1034,ok
+1000,2023,nao euleriano,8,fleury_naive,0.0010,ok
+1000,2023,nao euleriano,8,fleury_tarjan,0.0008,ok
+1000,2020,nao euleriano,9,pontes_naive,16.3322,ok
+1000,2020,nao euleriano,9,pontes_tarjan,0.1030,ok
+1000,2020,nao euleriano,9,fleury_naive,0.0012,ok
+1000,2020,nao euleriano,9,fleury_tarjan,0.0008,ok
+10000,20201,nao euleriano,0,pontes_naive,6876.8712,ok
+10000,20201,nao euleriano,0,pontes_tarjan,1.2628,ok
+10000,20201,nao euleriano,0,fleury_naive,0.0088,ok
+10000,20201,nao euleriano,0,fleury_tarjan,0.0065,ok
+10000,20201,nao euleriano,1,pontes_naive,6923.5923,ok
+10000,20201,nao euleriano,1,pontes_tarjan,1.2374,ok
+10000,20201,nao euleriano,1,fleury_naive,0.0083,ok
+10000,20201,nao euleriano,1,fleury_tarjan,0.0065,ok
+10000,20200,nao euleriano,2,pontes_naive,6850.4749,ok
+10000,20200,nao euleriano,2,pontes_tarjan,1.2518,ok
+10000,20200,nao euleriano,2,fleury_naive,0.0088,ok
+10000,20200,nao euleriano,2,fleury_tarjan,0.0065,ok
+100000,202001,nao euleriano,0,pontes_naive,837576.4449,ok
+100000,202001,nao euleriano,0,pontes_tarjan,16.8857,ok
+100000,202001,nao euleriano,0,fleury_naive,0.1032,ok
+100000,202001,nao euleriano,0,fleury_tarjan,0.0826,ok

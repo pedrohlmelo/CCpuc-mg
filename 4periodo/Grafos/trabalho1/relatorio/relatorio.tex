@@ -1,0 +1,336 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[hidelinks]{hyperref}
+
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de algoritmos}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicforall{\textbf{para todo}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicreturn{\textbf{retorne}}
+\algrenewcommand\algorithmicend{\textbf{fim}}
+
+\lstset{basicstyle=\ttfamily\small, columns=fullflexible, frame=single, breaklines=true}
+
+\title{\textbf{Trabalho Prático 01}\\[2pt]
+\large Identificação de pontes (naïve e Tarjan) e caminhos eulerianos pelo método de Fleury}
+\author{Bernardo Barbosa Heronville \and Luiz Felipe Volpi \and Pedro Henrique Lopes de Melo\\[6pt]
+\small Teoria dos Grafos e Computabilidade -- Prof. Zenilton Kleber Gonçalves do Patrocínio Júnior\\
+\small Ciência da Computação -- PUC Minas}
+\date{Novembro de 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este trabalho implementa, em Java, dois métodos para identificar as pontes de um grafo simples
+não-direcionado -- um método naïve, que remove cada aresta e testa a conectividade do grafo
+resultante, e o método de Tarjan (1974) -- e usa cada um deles como subrotina do método de Fleury
+para encontrar um caminho (ou ciclo) euleriano, ou determinar que ele não existe. Foram realizados
+experimentos com grafos aleatórios eulerianos, semi-eulerianos e não eulerianos com 100, 1.000,
+10.000 e 100.000 vértices. Os resultados confirmam o custo linear do método de Tarjan contra o custo
+quadrático do método naïve para encontrar todas as pontes e mostram que o método de Fleury é
+quadrático com qualquer das duas estratégias.
+\end{abstract}
+
+\section{Introdução}
+
+Seja $G=(V,E)$ um grafo simples não-direcionado, com $n=|V|$ e $m=|E|$. Uma \emph{ponte} é uma
+aresta cuja remoção aumenta o número de componentes conexos do grafo (no caso de um grafo conexo,
+torna-o desconexo). Um \emph{caminho euleriano} é um caminho que passa por todas as arestas de $G$
+exatamente uma vez; se ele começa e termina no mesmo vértice, é um \emph{ciclo euleriano}.
+
+Pelo teorema de Euler, um grafo cujas arestas estão todas em um mesmo componente conexo
+\begin{itemize}
+  \item é \textbf{euleriano} (possui ciclo euleriano) se e somente se todos os vértices têm grau par;
+  \item é \textbf{semi-euleriano} (possui caminho euleriano, mas não ciclo) se e somente se possui
+        exatamente dois vértices de grau ímpar -- e todo caminho euleriano começa em um deles e termina no outro;
+\end{itemize}
+e, em qualquer outro caso, o grafo é \textbf{não euleriano}.
+
+O método de Fleury~\cite{fleury} constrói o caminho atravessando, a cada passo, uma aresta incidente ao vértice
+atual e apagando-a, com a única restrição de \emph{não atravessar uma ponte do grafo restante, a menos
+que não haja alternativa}. Por isso ele depende de um procedimento de identificação de pontes, que é o
+foco deste trabalho.
+
+O código-fonte está na pasta \texttt{codigo/} e este relatório (com seus fontes em \TeX) na pasta
+\texttt{relatorio/}. O Apêndice~\ref{ap:uso} descreve como compilar e executar.
+
+\section{Implementação}
+
+\subsection{Representação do grafo}
+
+A classe \texttt{Grafo} armazena os vértices numerados de $1$ a $n$ e as arestas numeradas de $0$
+a $m-1$, cada uma com suas extremidades \texttt{origem[e]} e \texttt{destino[e]}. A lista de
+adjacência de cada vértice guarda \emph{identificadores de arestas} e cada aresta guarda a sua posição
+na lista de cada extremidade. Com isso:
+
+\begin{itemize}
+  \item \textbf{remover} uma aresta custa $O(1)$: ela é trocada com a última aresta de cada lista e o
+        grau dos dois vértices é decrementado;
+  \item \textbf{reinserir} uma aresta (necessário no teste naïve, que remove e devolve) custa $O(1)$;
+  \item percorrer a vizinhança de $v$ visita apenas arestas ainda presentes, em $O(\deg(v))$.
+\end{itemize}
+
+Essa representação evita o custo de pular arestas já apagadas, o que seria importante no Fleury,
+em que todas as arestas acabam sendo removidas. A leitura de arquivo descarta laços e arestas
+repetidas, já que o enunciado trata de grafos simples. Todas as buscas são \emph{iterativas}, com pilha
+ou fila explícita, para que grafos com 100.000 vértices não estourem a pilha de chamadas da JVM.
+Os vetores auxiliares das buscas são alocados uma única vez por grafo; em vez de limpá-los a cada
+busca, usa-se uma marcação por ``rodada'' (um vértice está visitado se \texttt{visitado[v]} é igual ao
+número da rodada atual).
+
+\subsection{Método naïve}
+
+O método naïve segue a definição de ponte: para cada aresta $e$, remove-se $e$, conta-se o número de
+componentes conexos com uma busca em largura e devolve-se $e$ ao grafo. A aresta é ponte se o número de
+componentes aumentou (Algoritmo~\ref{alg:naive}). Cada teste custa $O(n+m)$, logo encontrar todas as
+pontes custa $O(m(n+m))$.
+
+\begin{algorithm}[H]
+\caption{Pontes pelo método naïve}\label{alg:naive}
+\begin{algorithmic}[1]
+\State $c_0 \gets$ número de componentes de $G$ \Comment{BFS, $O(n+m)$}
+\State $P \gets \emptyset$
+\ForAll{aresta $e \in E$}
+  \State remova $e$ de $G$
+  \If{número de componentes de $G > c_0$} $P \gets P \cup \{e\}$ \EndIf
+  \State reinsira $e$ em $G$
+\EndFor
+\State \Return $P$
+\end{algorithmic}
+\end{algorithm}
+
+Dentro do Fleury, não é preciso conhecer todas as pontes, apenas saber se uma aresta candidata
+$(u,v)$ é ponte. O teste naïve de uma única aresta (\texttt{ehPonteNaive}) remove $(u,v)$, faz uma busca
+em largura a partir de $u$ e verifica se $v$ continua alcançável -- isto é, se o componente de $u$
+continua conexo. Se $v$ não é alcançado, $(u,v)$ é ponte. O custo é $O(n+m)$ por teste.
+
+\subsection{Método de Tarjan (1974)}
+
+Implementamos o algoritmo descrito por Tarjan em \emph{A note on finding the bridges of a graph}
+\cite{tarjan1974}. A ideia é que uma aresta de árvore $(\mathrm{pai}(w), w)$ de uma árvore geradora $T$
+só pode ser ponte se nenhuma aresta fora de $T$ ligar a subárvore de $w$ a um vértice fora dela (arestas
+fora da árvore geradora nunca são pontes, pois fecham um ciclo com $T$). Para cada componente:
+
+\begin{enumerate}
+  \item Construir uma árvore geradora $T$ e numerar os vértices em pré-ordem de $T$, $\mathrm{pre}(v)$.
+        Usamos uma busca em profundidade iterativa; com essa numeração os descendentes de $w$ são
+        exatamente os vértices com números em $[\mathrm{pre}(w),\ \mathrm{pre}(w)+ND(w)-1]$.
+  \item Calcular $ND(v)$, o número de descendentes de $v$ em $T$ (incluindo o próprio $v$).
+  \item Calcular, em pós-ordem,
+  \begin{align*}
+    L(v) &= \min\big(\{\mathrm{pre}(v)\} \cup \{L(w) : w \text{ filho de } v\} \cup \{\mathrm{pre}(w) : (v,w)\in E\setminus T\}\big),\\
+    H(v) &= \max\big(\{\mathrm{pre}(v)\} \cup \{H(w) : w \text{ filho de } v\} \cup \{\mathrm{pre}(w) : (v,w)\in E\setminus T\}\big),
+  \end{align*}
+  ou seja, o menor e o maior número de pré-ordem alcançáveis a partir da subárvore de $v$ usando no
+  máximo uma aresta fora de $T$.
+  \item A aresta de árvore $(\mathrm{pai}(w), w)$ é ponte se e somente se
+  \[ L(w) = \mathrm{pre}(w) \quad\text{e}\quad H(w) < \mathrm{pre}(w) + ND(w). \]
+\end{enumerate}
+
+Como a pré-ordem coloca todo vértice antes dos seus descendentes, percorrer o vetor da pré-ordem
+\emph{de trás para frente} processa cada vértice depois de todos os seus filhos, o que dá a pós-ordem
+dos passos 2 e 3 sem recursão: ao terminar um vértice $v$, testa-se a condição do passo 4 para a aresta
+que o liga ao pai e propagam-se $ND(v)$, $L(v)$ e $H(v)$ para o pai. Cada vértice e cada aresta são
+examinados um número constante de vezes, então o custo é $O(n+m)$. O Algoritmo~\ref{alg:tarjan}
+resume a implementação (\texttt{Pontes.tarjanComponente}).
+
+\begin{algorithm}[H]
+\caption{Pontes pelo método de Tarjan (1974), para o componente de $r$}\label{alg:tarjan}
+\begin{algorithmic}[1]
+\State faça uma DFS iterativa a partir de $r$, registrando a pré-ordem $\mathit{ordem}[0..k-1]$,
+       $\mathrm{pre}(v)$ e a aresta-pai de cada vértice
+\State $ND(v)\gets 1$; $L(v)\gets H(v)\gets\mathrm{pre}(v)$ para todo $v$ visitado
+\For{$i \gets k-1$ \textbf{até} $0$}
+  \State $v \gets \mathit{ordem}[i]$
+  \ForAll{aresta $(v,w)$ que não pertence a $T$}
+     \State $L(v)\gets\min(L(v),\mathrm{pre}(w))$; \quad $H(v)\gets\max(H(v),\mathrm{pre}(w))$
+  \EndFor
+  \If{$v \neq r$}
+     \State $p \gets \mathrm{pai}(v)$
+     \If{$L(v)=\mathrm{pre}(v)$ \textbf{e} $H(v)<\mathrm{pre}(v)+ND(v)$} marque $(p,v)$ como ponte \EndIf
+     \State $ND(p)\gets ND(p)+ND(v)$; \quad $L(p)\gets\min(L(p),L(v))$; \quad $H(p)\gets\max(H(p),H(v))$
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+Para encontrar todas as pontes de um grafo possivelmente desconexo, o procedimento é repetido a partir
+de cada vértice ainda não visitado (uma árvore por componente, formando a floresta geradora do artigo).
+
+\subsection{Classificação e método de Fleury}
+
+A função \texttt{Fleury.classificar} conta os vértices de grau ímpar e verifica, por uma busca em
+largura, se todos os vértices com grau positivo estão no mesmo componente (vértices isolados são
+ignorados, pois o caminho só precisa cobrir as arestas). Isso custa $O(n+m)$ e decide a existência
+do caminho: se o grafo é não euleriano, o programa informa que não há caminho euleriano e Fleury não é
+executado.
+
+Caso exista caminho, ele começa em um vértice de grau ímpar (semi-euleriano) ou em qualquer vértice
+com arestas (euleriano), e o Algoritmo~\ref{alg:fleury} é executado sobre uma cópia do grafo.
+
+\begin{algorithm}[H]
+\caption{Método de Fleury}\label{alg:fleury}
+\begin{algorithmic}[1]
+\State $u \gets$ vértice inicial; $C \gets (u)$
+\While{$u$ tem arestas}
+  \If{$\deg(u) = 1$}
+    \State $e \gets$ a única aresta de $u$ \Comment{não há alternativa}
+  \Else
+    \State $e \gets$ uma aresta de $u$ que \textbf{não} é ponte do grafo atual
+  \EndIf
+  \State $w \gets$ outra extremidade de $e$; remova $e$; acrescente $w$ a $C$; $u \gets w$
+\EndWhile
+\State \Return $C$
+\end{algorithmic}
+\end{algorithm}
+
+A linha 6 é onde entram as duas estratégias:
+
+\begin{description}
+  \item[Fleury + naïve:] as arestas de $u$ são testadas uma a uma com \texttt{ehPonteNaive} até
+        encontrar a primeira que não é ponte.
+  \item[Fleury + Tarjan:] executa-se o método de Tarjan no componente de $u$ (que, durante o Fleury,
+        contém todas as arestas restantes) e escolhe-se a primeira aresta de $u$ não marcada como ponte.
+\end{description}
+
+Quando $\deg(u)\ge 2$ em um grafo que ainda possui caminho euleriano a partir de $u$, no máximo uma
+aresta de $u$ é ponte; logo a estratégia naïve faz no máximo dois testes por passo e quase sempre faz
+apenas um. Em ambos os casos o custo de um passo é $O(n+m)$, e o Fleury completo custa $O(m(n+m))$.
+Ao final, a função \texttt{Fleury.valido} confere que o caminho tem $m+1$ vértices e usa cada aresta
+exatamente uma vez; essa verificação é feita em todos os experimentos.
+
+\subsection{Geração dos grafos aleatórios}
+
+A classe \texttt{GeradorGrafos} produz grafos simples e conexos com grau médio aproximadamente igual a
+4 ($m\approx 2n$):
+
+\begin{description}
+  \item[Euleriano:] começa com um ciclo hamiltoniano sobre uma permutação aleatória dos vértices
+        (o que garante conexidade e graus pares) e acrescenta ciclos aleatórios de 3 a 8 vértices cujas
+        arestas ainda não existem. Cada ciclo soma 2 ao grau de seus vértices, mantendo todos os graus pares.
+  \item[Semi-euleriano:] um grafo euleriano do qual se remove uma aresta aleatória. O grafo continua
+        conexo (o ciclo hamiltoniano sem uma aresta ainda é um caminho hamiltoniano) e passa a ter
+        exatamente dois vértices de grau ímpar.
+  \item[Não euleriano:] um grafo euleriano ao qual se acrescentam $k=\max(2, n/50)$ arestas novas com
+        extremidades todas distintas, criando $2k\ge 4$ vértices de grau ímpar.
+\end{description}
+
+Ao final, a ordem das arestas é embaralhada para que a ordem de leitura não favoreça nenhum método.
+Todo grafo gerado é classificado novamente pelo programa antes das medições, para garantir que a classe
+está correta.
+
+\subsection{Testes de corretude}
+
+A classe \texttt{Testes} verifica: (i) o grafo da Figura~1 do enunciado, em que ambos os métodos
+encontram apenas a ponte $F$--$G$ e o grafo é classificado como não euleriano (os vértices $A$, $E$, $F$
+e $G$ têm grau ímpar); (ii) 3.000 grafos aleatórios pequenos, construídos a partir de florestas e
+portanto cheios de pontes, nos quais os métodos naïve e de Tarjan devem devolver exatamente o mesmo
+conjunto de pontes; (iii) 900 grafos gerados das três classes, nos quais o Fleury com as duas estratégias
+deve devolver um caminho válido (fechado, no caso euleriano) ou nenhum caminho (não euleriano).
+Todos os testes passam.
+
+\section{Metodologia experimental}
+
+Para cada $n\in\{100;\ 1.000;\ 10.000;\ 100.000\}$ e cada classe de grafo, foram gerados grafos
+aleatórios com semente fixa (o que torna os experimentos reproduzíveis) e medidos, com
+\texttt{System.nanoTime()}, os tempos de quatro tarefas:
+
+\begin{itemize}
+  \item \textbf{Pontes naïve} e \textbf{Pontes Tarjan}: encontrar todas as pontes do grafo;
+  \item \textbf{Fleury + naïve} e \textbf{Fleury + Tarjan}: classificar o grafo e, se possível,
+        encontrar o caminho euleriano pelo método de Fleury.
+\end{itemize}
+
+Foram usados 10 grafos por classe para $n=100$ e $n=1.000$, 3 para $n=10.000$ e 1 para $n=100.000$
+(cada execução de um método quadrático nesse tamanho leva vários minutos). Antes das medições, todas as
+tarefas são executadas várias vezes em grafos pequenos para que o compilador JIT da JVM já tenha
+compilado o código. Cada medição tem limite de 30 minutos; um método que estoure o limite não é
+executado nos tamanhos maiores. Em todas as execuções os conjuntos de pontes dos dois métodos foram
+comparados e os caminhos encontrados foram validados.
+
+\textbf{Ambiente:} Apple M2 com 8~GB de memória, macOS, OpenJDK 24.0.2, execução com um único thread.
+
+\section{Resultados}
+
+A Tabela~\ref{tab:resultados} mostra os tempos médios e as
+Figuras~\ref{fig:euleriano}, \ref{fig:semi-euleriano} e \ref{fig:nao-euleriano} apresentam os mesmos
+dados em escala log-log. Nessa escala, uma reta de inclinação 1 indica crescimento linear e uma reta
+de inclinação 2, crescimento quadrático.
+
+\input{resultados.tex}
+
+\input{discussao.tex}
+
+\section{Conclusão}
+
+Foram implementados os dois métodos de identificação de pontes pedidos -- o naïve, que testa a
+conectividade após a remoção de cada aresta, e o de Tarjan (1974), baseado em uma árvore geradora
+numerada em pré-ordem e nos valores $ND$, $L$ e $H$ -- e o método de Fleury usando cada um deles.
+O programa classifica qualquer grafo como euleriano, semi-euleriano ou não euleriano e, quando existe,
+devolve um caminho euleriano validado.
+
+Os experimentos confirmam a análise assintótica: para encontrar todas as pontes, Tarjan é linear e o
+método naïve é quadrático, com diferença de várias ordens de grandeza a partir de 10.000 vértices.
+Já no método de Fleury as duas estratégias são quadráticas, porque a identificação de pontes é refeita
+a cada uma das $m$ arestas atravessadas; nesse uso o teste naïve de uma única aresta mostrou-se até
+mais barato que recalcular todas as pontes com Tarjan. Melhorias possíveis seriam usar estruturas de
+conectividade dinâmica para o Fleury ou simplesmente o algoritmo de Hierholzer, que encontra o caminho
+euleriano em $O(n+m)$.
+
+\begin{thebibliography}{9}
+\bibitem{tarjan1974}
+TARJAN, R. E. A note on finding the bridges of a graph. \emph{Information Processing Letters},
+v.~2, n.~6, p.~160--161, 1974. \url{https://doi.org/10.1016/0020-0190(74)90003-9}.
+
+\bibitem{fleury}
+FLEURY, M. Deux problèmes de géométrie de situation. \emph{Journal de mathématiques élémentaires},
+v.~2, p.~257--261, 1883.
+\end{thebibliography}
+
+\appendix
+\section{Como compilar e executar}\label{ap:uso}
+
+\begin{lstlisting}
+cd codigo
+javac *.java
+
+java Testes                              # testes de corretude
+java Main ../exemplos/figura1.txt        # pontes + caminho euleriano de um arquivo
+java GeradorGrafos 1000 0 42 g.txt       # gera grafo (0=euleriano, 1=semi, 2=nao)
+java Experimentos 1800 4 ../resultados/tempos.csv   # experimentos (limite 1800 s, grau medio 4)
+
+cd ../relatorio
+python3 gerar_resultados.py              # tabela e graficos a partir do CSV
+tectonic relatorio.tex                   # ou pdflatex relatorio.tex
+\end{lstlisting}
+
+O arquivo de entrada tem o mesmo formato usado nas tarefas da disciplina: a primeira linha contém
+$n$ e $m$ e cada uma das $m$ linhas seguintes contém uma aresta $u\ v$, com vértices de $1$ a $n$.
+Para grafos com mais de 200 arestas, o \texttt{Main} grava o caminho em \texttt{caminho-naive.txt} e
+\texttt{caminho-tarjan.txt} em vez de imprimi-lo.
+
+\end{document}
