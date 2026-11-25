@@ -40,6 +40,7 @@ import 'casca_aluno.dart';
 /// | `/sessao`             | questão sendo feita         |
 /// | `/sessao?questao=:id` | refazer uma questão         |
 /// | `/sessao?assunto=:id` | sessão só daquele assunto   |
+/// | `/sessao?questao=:id&relampago=1` | questão do gesto de balançar |
 /// | `/mapa`               | mapa de conhecimento (admin) |
 /// | `/login`, `/cadastro` | entrar e criar conta        |
 /// | `/admin/...`          | painel administrativo       |
@@ -106,6 +107,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, estado) => SessaoScreen(
           idQuestao: int.tryParse(estado.uri.queryParameters['questao'] ?? ''),
           idAssunto: int.tryParse(estado.uri.queryParameters['assunto'] ?? ''),
+          relampago: estado.uri.queryParameters['relampago'] == '1',
         ),
       ),
       GoRoute(

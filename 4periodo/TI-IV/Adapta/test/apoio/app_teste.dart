@@ -5,6 +5,7 @@ import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/banco/pacote_conteudo.dart';
 import 'package:adapta/dados/banco/seed.dart';
 import 'package:adapta/dados/sincronizacao/servico_sincronizacao.dart';
+import 'package:adapta/sensores/detector_balanco.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -45,6 +46,8 @@ Widget appDeTeste(BancoLocal banco, {List<Override> overrides = const []}) =>
       overrides: [
         bancoProvider.overrideWithValue(banco),
         conectividadeProvider.overrideWithValue(ConectividadeFalsa()),
+        // O plugin do acelerômetro não existe nos testes.
+        aceleracaoProvider.overrideWithValue(const Stream.empty()),
         ...overrides,
       ],
       child: const AdaptaApp(),

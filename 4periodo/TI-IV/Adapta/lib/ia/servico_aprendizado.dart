@@ -49,6 +49,20 @@ class AlertaEsquecimento {
   const AlertaEsquecimento({required this.assunto, required this.chance});
 }
 
+/// Questão aberta ao balançar o celular, com o motivo da escolha.
+class QuestaoRelampago {
+  final Questao questao;
+  final MotivoFila motivo;
+  final String assunto;
+  final String explicacao;
+  const QuestaoRelampago({
+    required this.questao,
+    required this.motivo,
+    required this.assunto,
+    required this.explicacao,
+  });
+}
+
 /// O que a home e o mapa mostram sobre a memória do aluno.
 class Panorama {
   final List<SaudeAssunto> saude;
@@ -279,23 +293,81 @@ class ServicoAprendizado {
     int? idMateria,
     int? idMateriaOculta,
   }) async {
+    final (itens, _) = await _montarItens(
+      usuario,
+      idMateria: idMateria,
+      idMateriaOculta: idMateriaOculta,
+    );
+    return itens.map((i) => i.questao).toList();
+  }
+
+  /// A primeira questão da fila adaptativa, aberta ao balançar o celular, com
+  /// a frase que explica por que a IA a escolheu.
+  Future<QuestaoRelampago?> questaoRelampago(
+    Usuario usuario, {
+    int? idMateria,
+    int? idMateriaOculta,
+  }) async {
+    final (itens, panorama) = await _montarItens(
+      usuario,
+      idMateria: idMateria,
+      idMateriaOculta: idMateriaOculta,
+    );
+    final item = itens.firstOrNull;
+    if (item == null) return null;
+    final conteudo = await _conteudo.carregar();
+    final questao = item.questao;
+    final assunto = conteudo.nomeDoAssunto(questao.idAssunto);
+    final retencao = panorama.retencoes[questao.idAssunto];
+    final chance = ModeloProficiencia.probabilidadeAcerto(
+      panorama.proficiencias[questao.idAssunto] ?? 0,
+      _dificuldadeDe(questao),
+    );
+    String porcento(double v) => '${(v * 100).round()}%';
+    final lacuna = panorama.lacuna;
+    final explicacao = switch (item.motivo) {
+      MotivoFila.causaRaiz when lacuna != null =>
+        'Seus erros em ${lacuna.assunto} apontam para uma lacuna em '
+            '$assunto. A IA puxou esta questão para reforçar a base.',
+      MotivoFila.revisao when retencao != null =>
+        'Você está esquecendo $assunto: a memória estimada está em '
+            '${porcento(retencao)}. Revisar agora evita perder o assunto.',
+      MotivoFila.nova =>
+        'Conteúdo novo de $assunto no seu nível: a chance estimada de '
+            'acerto é de ${porcento(chance)}.',
+      _ => 'Uma questão de $assunto para continuar o estudo de hoje.',
+    };
+    return QuestaoRelampago(
+      questao: questao,
+      motivo: item.motivo,
+      assunto: assunto,
+      explicacao: explicacao,
+    );
+  }
+
+  Future<(List<ItemFila>, Panorama)> _montarItens(
+    Usuario usuario, {
+    int? idMateria,
+    int? idMateriaOculta,
+  }) async {
     final panorama = await recalcular(usuario);
     final conteudo = await _conteudo.carregar();
     final online = await _conectividade?.online() ?? true;
-    final fila = MontadorFila(
+    final proficiencias = await _aprendizado.proficiencias(usuario.id);
+    final itens = MontadorFila(
       conteudo: conteudo,
       grafo: await _montarGrafo(conteudo),
       retencoes: panorama.retencoes,
-      proficiencias: await _aprendizado.proficiencias(usuario.id),
+      proficiencias: proficiencias,
       historico: await _historico.listar(usuario.id),
       indisponiveis: {
         if (!online) ...await _semImagem(conteudo),
         if (idMateria == null && idMateriaOculta != null)
           ...conteudo.questoesDaMateria(idMateriaOculta).map((q) => q.id),
       },
-    ).montar(idMateria: idMateria, idCausaRaiz: panorama.lacuna?.idRaiz);
-    if (online) unawaited(_preCarregarImagens(fila));
-    return fila;
+    ).montarItens(idMateria: idMateria, idCausaRaiz: panorama.lacuna?.idRaiz);
+    if (online) unawaited(_preCarregarImagens(itens.map((i) => i.questao)));
+    return (itens, panorama);
   }
 
   /// Questões com alguma imagem fora do cache.
@@ -314,7 +386,7 @@ class ServicoAprendizado {
     return ids;
   }
 
-  Future<void> _preCarregarImagens(List<Questao> fila) async {
+  Future<void> _preCarregarImagens(Iterable<Questao> fila) async {
     final cache = _cacheImagens;
     if (cache == null) return;
     for (final url in fila.expand((q) => q.imagensRemotas)) {

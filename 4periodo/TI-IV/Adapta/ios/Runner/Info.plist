@@ -6,6 +6,8 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSMotionUsageDescription</key>
+	<string>O Adapta usa o movimento do celular para abrir uma questão quando você o balança.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Adapta</string>
 	<key>CFBundleExecutable</key>

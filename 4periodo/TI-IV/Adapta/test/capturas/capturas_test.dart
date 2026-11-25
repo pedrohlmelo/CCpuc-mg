@@ -9,6 +9,7 @@ import 'package:adapta/dados/banco/banco_local.dart';
 import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/modelos.dart';
 import 'package:adapta/navegacao/rotas.dart';
+import 'package:adapta/sensores/detector_balanco.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -55,6 +56,7 @@ void main() {
     child: ProviderScope(
       overrides: [
         bancoProvider.overrideWithValue(banco),
+        aceleracaoProvider.overrideWithValue(const Stream.empty()),
         if (comConta)
           sessaoProvider.overrideWith(
             () => _SessaoFixa(comoAdmin ? admin : aluno),

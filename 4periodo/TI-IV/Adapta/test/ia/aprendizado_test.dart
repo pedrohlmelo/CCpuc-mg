@@ -15,6 +15,7 @@ import 'package:adapta/dados/sincronizacao/servico_sincronizacao.dart';
 import 'package:adapta/dados/preferencias.dart';
 import 'package:adapta/ia/modelo_esquecimento.dart';
 import 'package:adapta/ia/modelo_proficiencia.dart';
+import 'package:adapta/ia/montador_fila.dart';
 import 'package:adapta/ia/servico_aprendizado.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -270,6 +271,24 @@ void main() {
       await servico.carregarDemo(usuario, PerfilDemo.ana);
       final fila = await servico.montarFila(usuario);
       expect(fila.where((q) => q.idAssunto == 701), isEmpty);
+    });
+
+    test('a fila da Ana diz por que cada questão entrou', () async {
+      await servico.carregarDemo(usuario, PerfilDemo.ana);
+      final relampago = await servico.questaoRelampago(usuario);
+
+      expect(relampago, isNotNull);
+      expect(relampago!.motivo, MotivoFila.causaRaiz);
+      expect(relampago.questao.idAssunto, 16);
+      expect(relampago.assunto, 'Razão e proporção');
+      expect(relampago.explicacao, contains('Estequiometria'));
+    });
+
+    test('a questão relâmpago é a primeira da fila', () async {
+      await servico.carregarDemo(usuario, PerfilDemo.bruno);
+      final fila = await servico.montarFila(usuario);
+      final relampago = await servico.questaoRelampago(usuario);
+      expect(relampago?.questao.id, fila.first.id);
     });
 
     test('recalcular de novo não cria pendências novas', () async {

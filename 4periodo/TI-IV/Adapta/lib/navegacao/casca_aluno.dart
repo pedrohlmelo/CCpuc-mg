@@ -1,17 +1,58 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import '../sensores/detector_balanco.dart';
+import '../widgets/questao_relampago.dart';
 
 /// Moldura das três abas do aluno: Início, Histórico e Perfil.
 ///
 /// A barra de baixo é a navegação principal do app. Telas que abrem por cima
 /// (matérias, sessão, login, painel admin) ficam fora desta moldura e sempre
 /// têm botão de voltar.
-class CascaAluno extends StatelessWidget {
+///
+/// Balançar o celular nas abas abre a questão relâmpago. Com outra tela por
+/// cima (sessão, login, admin, o próprio painel), o gesto é ignorado.
+class CascaAluno extends ConsumerStatefulWidget {
   final StatefulNavigationShell shell;
   const CascaAluno({required this.shell, super.key});
 
   @override
+  ConsumerState<CascaAluno> createState() => _CascaAlunoState();
+}
+
+class _CascaAlunoState extends ConsumerState<CascaAluno> {
+  StreamSubscription<void>? _balancos;
+  bool _abrindo = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _balancos = ref.read(balancoProvider).listen((_) => _aoBalancar());
+  }
+
+  @override
+  void dispose() {
+    _balancos?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _aoBalancar() async {
+    final noTopo = ModalRoute.of(context)?.isCurrent ?? true;
+    if (_abrindo || !noTopo) return;
+    _abrindo = true;
+    try {
+      await abrirQuestaoRelampago(context, ref);
+    } finally {
+      _abrindo = false;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final shell = widget.shell;
     final naInicial = shell.currentIndex == 0;
     final scheme = Theme.of(context).colorScheme;
 

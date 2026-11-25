@@ -23,7 +23,15 @@ class SessaoScreen extends ConsumerStatefulWidget {
 
   /// Com valor, a sessão fica só neste assunto (vem do mapa).
   final int? idAssunto;
-  const SessaoScreen({this.idQuestao, this.idAssunto, super.key});
+
+  /// A questão veio do gesto de balançar o celular.
+  final bool relampago;
+  const SessaoScreen({
+    this.idQuestao,
+    this.idAssunto,
+    this.relampago = false,
+    super.key,
+  });
 
   @override
   ConsumerState<SessaoScreen> createState() => _SessaoScreenState();
@@ -168,8 +176,15 @@ class _SessaoScreenState extends ConsumerState<SessaoScreen> {
                 pose: PoseCamu.feliz,
                 tamanho: 150,
               ),
-              titulo: refazendo ? 'Questão refeita' : 'Sessão concluída',
-              descricao: refazendo
+              titulo: widget.relampago
+                  ? 'Questão relâmpago respondida'
+                  : refazendo
+                  ? 'Questão refeita'
+                  : 'Sessão concluída',
+              descricao: widget.relampago
+                  ? 'A IA já atualizou seu nível e sua memória. Balance de '
+                        'novo para a próxima.'
+                  : refazendo
                   ? 'A nova tentativa entrou no seu histórico.'
                   : 'Você respondeu todas as questões desta fila.',
               acao: Column(
