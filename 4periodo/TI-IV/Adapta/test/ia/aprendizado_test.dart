@@ -291,6 +291,52 @@ void main() {
       expect(relampago?.questao.id, fila.first.id);
     });
 
+    test('fila antes e depois: um pré-requisito fica crítico', () async {
+      await servico.carregarDemo(usuario, PerfilDemo.ana);
+      final s = await servico.simularVirada(usuario);
+
+      expect(s, isNotNull);
+      final id = s!.idPrerequisito;
+      expect(estadoDaRetencao(s.retencaoAntes), isNot(EstadoMemoria.critico));
+      expect(estadoDaRetencao(s.retencaoDepois), EstadoMemoria.critico);
+      expect(s.depois.dias, greaterThan(0));
+      expect(s.dependentes, isNotEmpty);
+
+      final bloqueados = s.mudancas.where((m) => m.bloqueado).toList();
+      expect(bloqueados, isNotEmpty);
+      final depois = s.depois.itens.map((i) => i.questao.idAssunto).toSet();
+      for (final m in bloqueados) {
+        expect(s.dependentes, contains(m.idAssunto));
+        expect(depois, isNot(contains(m.idAssunto)));
+      }
+      expect(s.antes.itens, hasLength(MontadorFila.tamanho));
+      expect(s.depois.itens, hasLength(MontadorFila.tamanho));
+      expect(s.depois.retencoes[id]!, lessThan(s.antes.retencoes[id]!));
+    });
+
+    test('simular não grava memória nem cria pendências', () async {
+      final sincronizacao = ServicoSincronizacao(
+        banco,
+        null,
+        const Preferencias(),
+        ConectividadeFalsa(),
+      );
+      await servico.carregarDemo(usuario, PerfilDemo.bruno);
+      final db = await banco.db;
+      await db.update('Nivel_Memoria', {'sincronizado': 1});
+      final memoria = await db.query('Nivel_Memoria', orderBy: 'id_assunto');
+      final pendentes = await sincronizacao.contarPendentes(usuario.id);
+
+      expect(await servico.simularVirada(usuario), isNotNull);
+
+      expect(await sincronizacao.contarPendentes(usuario.id), pendentes);
+      expect(await db.query('Nivel_Memoria', orderBy: 'id_assunto'), memoria);
+    });
+
+    test('sem histórico não há o que simular', () async {
+      expect(await servico.simularVirada(usuario), isNull);
+    });
+
     test('recalcular de novo não cria pendências novas', () async {
       final sincronizacao = ServicoSincronizacao(
         banco,

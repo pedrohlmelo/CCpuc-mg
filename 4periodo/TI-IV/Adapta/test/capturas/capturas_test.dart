@@ -6,8 +6,10 @@ import 'dart:ui' as ui;
 
 import 'package:adapta/app.dart';
 import 'package:adapta/dados/banco/banco_local.dart';
+import 'package:adapta/dados/banco/historicos_demo.dart';
 import 'package:adapta/dados/estado_app.dart';
 import 'package:adapta/dados/modelos.dart';
+import 'package:adapta/ia/servico_aprendizado.dart';
 import 'package:adapta/navegacao/rotas.dart';
 import 'package:adapta/sensores/detector_balanco.dart';
 import 'package:flutter/material.dart';
@@ -51,20 +53,21 @@ void main() {
 
   /// Sem [comConta], o app aparece como quem abre pela primeira vez. Com
   /// [comoAdmin], quem entrou é do grupo e enxerga o painel.
-  Widget app({bool comConta = true, bool comoAdmin = false}) => RepaintBoundary(
-    key: chaveRaiz,
-    child: ProviderScope(
-      overrides: [
-        bancoProvider.overrideWithValue(banco),
-        aceleracaoProvider.overrideWithValue(const Stream.empty()),
-        if (comConta)
-          sessaoProvider.overrideWith(
-            () => _SessaoFixa(comoAdmin ? admin : aluno),
-          ),
-      ],
-      child: const AdaptaApp(),
-    ),
-  );
+  Widget app({bool comConta = true, bool comoAdmin = false, Usuario? quem}) =>
+      RepaintBoundary(
+        key: chaveRaiz,
+        child: ProviderScope(
+          overrides: [
+            bancoProvider.overrideWithValue(banco),
+            aceleracaoProvider.overrideWithValue(const Stream.empty()),
+            if (comConta)
+              sessaoProvider.overrideWith(
+                () => _SessaoFixa(quem ?? (comoAdmin ? admin : aluno)),
+              ),
+          ],
+          child: const AdaptaApp(),
+        ),
+      );
 
   /// O banco responde em tempo real: sem o `runAsync`, as listas saem vazias.
   Future<void> assentar(WidgetTester tester) async {
@@ -111,6 +114,7 @@ void main() {
     bool escuro = false,
     bool comConta = true,
     bool comoAdmin = false,
+    Usuario? quem,
   }) async {
     tester.view.physicalSize = const Size(390 * 2, 844 * 2);
     tester.view.devicePixelRatio = 2;
@@ -119,7 +123,9 @@ void main() {
         : Brightness.light;
     addTearDown(tester.view.reset);
     addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
-    await tester.pumpWidget(app(comConta: comConta, comoAdmin: comoAdmin));
+    await tester.pumpWidget(
+      app(comConta: comConta, comoAdmin: comoAdmin, quem: quem),
+    );
     await assentar(tester);
     await precarregarImagens(tester);
   }
@@ -162,6 +168,41 @@ void main() {
 
     ir(tester, '/cadastro');
     await capturar(tester, '11_cadastro');
+  }, skip: !ativo);
+
+  testWidgets('fila antes e depois', (tester) async {
+    for (final escuro in [false, true]) {
+      final ana = await tester.runAsync(() async {
+        final db = await banco.db;
+        final id = await db.insert('Usuario', {
+          'nome': 'Ana Souza',
+          'email': 'ana${escuro ? 2 : 1}@adapta.test',
+          'tipo': 'aluno',
+        });
+        return Usuario(id: id, nome: 'Ana Souza', email: 'ana@adapta.test');
+      });
+      await iniciar(tester, quem: ana, escuro: escuro);
+      final contexto = tester.element(find.byType(MaterialApp));
+      final container = ProviderScope.containerOf(contexto);
+      await tester.runAsync(() async {
+        final servico = await container.read(servicoAprendizadoProvider.future);
+        await servico.carregarDemo(ana!, PerfilDemo.ana);
+      });
+      container.read(versaoAprendizadoProvider.notifier).state++;
+      final sufixo = escuro ? '_escuro' : '';
+      await capturar(tester, '22_inicial_por_que_fila$sufixo');
+
+      ir(tester, '/fila');
+      await capturar(tester, '23_fila_hoje$sufixo');
+      await tester.tap(
+        find.descendant(
+          of: find.byKey(const Key('alternar_momento')),
+          matching: find.textContaining('Daqui a'),
+        ),
+      );
+      await capturar(tester, '24_fila_depois$sufixo');
+      ir(tester, '/');
+    }
   }, skip: !ativo);
 
   testWidgets('painel administrativo', (tester) async {

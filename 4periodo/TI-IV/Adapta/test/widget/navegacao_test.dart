@@ -399,6 +399,43 @@ void main() {
       expect(tela('mapa'), findsNothing);
     });
 
+    testWidgets('por que essa fila: antes e depois na tela', (tester) async {
+      await abrir(tester, Quem.aluno);
+
+      final contexto = tester.element(find.byType(MaterialApp));
+      final container = ProviderScope.containerOf(contexto);
+      final servico = await tester.runAsync(
+        () => container.read(servicoAprendizadoProvider.future),
+      );
+      servico!
+          .carregarDemo(container.read(usuarioProvider)!, PerfilDemo.ana)
+          .then((_) {
+            container.invalidate(historicoProvider);
+            container.read(versaoAprendizadoProvider.notifier).state++;
+          });
+      await assentar(tester);
+
+      await esperar(tester, find.byKey(const Key('card_por_que_fila')));
+      await tocar(tester, find.byKey(const Key('card_por_que_fila')));
+      expect(tela('fila_explicada'), findsOneWidget);
+      await esperar(tester, find.byKey(const Key('cartao_mudancas')));
+
+      expect(find.byKey(const Key('cabecalho_virada')), findsOneWidget);
+      expect(find.textContaining('Crítico'), findsOneWidget);
+      expect(find.byKey(const Key('linha_bloqueados')), findsOneWidget);
+      expect(find.text('sai'), findsWidgets);
+      expect(find.text('entra'), findsNothing);
+
+      await tester.tap(
+        find.descendant(
+          of: find.byKey(const Key('alternar_momento')),
+          matching: find.textContaining('Daqui a'),
+        ),
+      );
+      await assentar(tester);
+      expect(find.text('sai'), findsNothing);
+    });
+
     testWidgets('histórico com lacuna muda a tela inicial', (tester) async {
       await abrir(tester, Quem.aluno);
 

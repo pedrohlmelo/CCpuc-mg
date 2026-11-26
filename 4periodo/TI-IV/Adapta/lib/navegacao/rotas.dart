@@ -10,6 +10,7 @@ import '../telas/admin/admin_home_screen.dart';
 import '../telas/admin/admin_materias_screen.dart';
 import '../telas/admin/admin_questao_form_screen.dart';
 import '../telas/admin/admin_questoes_screen.dart';
+import '../telas/aluno/fila_explicada_screen.dart';
 import '../telas/aluno/historico_detalhe_screen.dart';
 import '../telas/aluno/historico_screen.dart';
 import '../telas/aluno/home_screen.dart';
@@ -41,6 +42,7 @@ import 'casca_aluno.dart';
 /// | `/sessao?questao=:id` | refazer uma questão         |
 /// | `/sessao?assunto=:id` | sessão só daquele assunto   |
 /// | `/sessao?questao=:id&relampago=1` | questão do gesto de balançar |
+/// | `/fila`               | por que essa fila: antes e depois |
 /// | `/mapa`               | mapa de conhecimento (admin) |
 /// | `/login`, `/cadastro` | entrar e criar conta        |
 /// | `/admin/...`          | painel administrativo       |
@@ -102,6 +104,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(path: '/materias', builder: (_, _) => const MateriasScreen()),
       GoRoute(path: '/mapa', builder: (_, _) => const MapaScreen()),
+      GoRoute(path: '/fila', builder: (_, _) => const FilaExplicadaScreen()),
       GoRoute(
         path: '/sessao',
         builder: (_, estado) => SessaoScreen(

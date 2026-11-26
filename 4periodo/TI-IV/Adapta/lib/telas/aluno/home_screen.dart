@@ -137,6 +137,10 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 24),
           ],
           if (saude.isNotEmpty) ...[
+            const _CartaoPorQueFila(),
+            const SizedBox(height: 24),
+          ],
+          if (saude.isNotEmpty) ...[
             Row(
               children: [
                 const Expanded(child: TituloSecao('Saúde da memória')),
@@ -286,6 +290,42 @@ class _ConviteEntrar extends StatelessWidget {
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Abre o antes e o depois da fila quando um pré-requisito fica crítico.
+class _CartaoPorQueFila extends StatelessWidget {
+  const _CartaoPorQueFila();
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = Theme.of(context).textTheme;
+    final scheme = Theme.of(context).colorScheme;
+    return AppCartao(
+      key: const Key('card_por_que_fila'),
+      padding: const EdgeInsets.all(16),
+      aoTocar: () => context.push('/fila'),
+      child: Row(
+        children: [
+          IconeCaixa(icone: Icons.insights_rounded, cor: scheme.primary),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Por que essa fila?', style: texto.titleSmall),
+                const SizedBox(height: 2),
+                Text(
+                  'Veja o que muda quando um assunto-base é esquecido.',
+                  style: texto.bodySmall,
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.chevron_right_rounded, color: scheme.primary),
         ],
       ),
     );

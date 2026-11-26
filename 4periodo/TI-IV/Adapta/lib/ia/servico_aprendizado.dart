@@ -18,6 +18,7 @@ import '../grafo/grafo_conhecimento.dart';
 import 'modelo_esquecimento.dart';
 import 'modelo_proficiencia.dart';
 import 'montador_fila.dart';
+import 'simulador_fila.dart';
 
 /// Abaixo desta diferença a memória não é regravada: abrir o app não deve
 /// gerar pendências de sincronização sem mudança real.
@@ -360,14 +361,127 @@ class ServicoAprendizado {
       retencoes: panorama.retencoes,
       proficiencias: proficiencias,
       historico: await _historico.listar(usuario.id),
-      indisponiveis: {
-        if (!online) ...await _semImagem(conteudo),
-        if (idMateria == null && idMateriaOculta != null)
-          ...conteudo.questoesDaMateria(idMateriaOculta).map((q) => q.id),
-      },
+      indisponiveis: await _indisponiveis(
+        conteudo,
+        online,
+        idMateria,
+        idMateriaOculta,
+      ),
     ).montarItens(idMateria: idMateria, idCausaRaiz: panorama.lacuna?.idRaiz);
     if (online) unawaited(_preCarregarImagens(itens.map((i) => i.questao)));
     return (itens, panorama);
+  }
+
+  Future<Set<int>> _indisponiveis(
+    Conteudo conteudo,
+    bool online,
+    int? idMateria,
+    int? idMateriaOculta,
+  ) async => {
+    if (!online) ...await _semImagem(conteudo),
+    if (idMateria == null && idMateriaOculta != null)
+      ...conteudo.questoesDaMateria(idMateriaOculta).map((q) => q.id),
+  };
+
+  /// Procura, dia a dia, o primeiro pré-requisito que hoje não é crítico e que
+  /// o modelo prevê que vai ficar crítico sem estudo, e monta a fila de hoje e
+  /// a daquele dia. Não grava nada: nem memória, nem pendência de envio.
+  Future<SimulacaoFila?> simularVirada(
+    Usuario usuario, {
+    int? idMateria,
+    int? idMateriaOculta,
+    DateTime? agora,
+    int horizonte = 30,
+  }) async {
+    final instante = agora ?? DateTime.now();
+    final conteudo = await _conteudo.carregar();
+    final grafo = await _montarGrafo(conteudo);
+    final respostas = await _historico.listar(usuario.id);
+    if (respostas.isEmpty) return null;
+
+    final estudos = _agrupar(respostas, conteudo, instante);
+    final proficiencias = await _aprendizado.proficiencias(usuario.id);
+    final online = await _conectividade?.online() ?? true;
+    final indisponiveis = await _indisponiveis(
+      conteudo,
+      online,
+      idMateria,
+      idMateriaOculta,
+    );
+    final noEscopo = {
+      for (final q in conteudo.questoesDaMateria(idMateria))
+        if (!indisponiveis.contains(q.id)) q.idAssunto,
+    };
+    bool critico(double? r) => estadoDaRetencao(r) == EstadoMemoria.critico;
+    int dependentesNoEscopo(int id) =>
+        grafo.dependentes(id).where(noEscopo.contains).length;
+
+    final hoje = _prever(estudos, grafo, 0);
+    final candidatos = hoje.keys
+        .where((id) => !critico(hoje[id]) && dependentesNoEscopo(id) > 0)
+        .toList();
+    if (candidatos.isEmpty) return null;
+
+    // Primeiro dia em que cada candidato fica crítico.
+    final viradas = <int, int>{};
+    final previsoes = <int, Map<int, double>>{};
+    for (var dias = 1; dias <= horizonte; dias++) {
+      final futuro = _prever(estudos, grafo, dias.toDouble());
+      previsoes[dias] = futuro;
+      for (final id in candidatos) {
+        if (!viradas.containsKey(id) && critico(futuro[id])) viradas[id] = dias;
+      }
+    }
+    if (viradas.isEmpty) return null;
+
+    // O que trava mais assuntos; no empate, o que vira antes.
+    final id =
+        (viradas.keys.toList()..sort((a, b) {
+              final porDependentes = dependentesNoEscopo(
+                b,
+              ).compareTo(dependentesNoEscopo(a));
+              if (porDependentes != 0) return porDependentes;
+              return viradas[a]!.compareTo(viradas[b]!);
+            }))
+            .first;
+    final dias = viradas[id]!;
+
+    // Sem matéria escolhida, compara a fila da matéria do pré-requisito: é
+    // nela que os assuntos dependentes aparecem e somem.
+    final materia = idMateria ?? conteudo.assuntoPorId(id)?.idMateria;
+
+    MomentoFila momento(int dias, Map<int, double> retencoes) => MomentoFila(
+      dias: dias,
+      retencoes: retencoes,
+      itens:
+          MontadorFila(
+            conteudo: conteudo,
+            grafo: grafo,
+            retencoes: retencoes,
+            proficiencias: proficiencias,
+            historico: respostas,
+            indisponiveis: indisponiveis,
+          ).montarItens(
+            idMateria: materia,
+            idCausaRaiz: _acharLacuna(
+              respostas,
+              conteudo,
+              grafo,
+              retencoes,
+              proficiencias,
+            )?.idRaiz,
+            agora: instante.add(Duration(days: dias)),
+          ),
+    );
+
+    return SimulacaoFila(
+      idPrerequisito: id,
+      materia: materia == null ? null : conteudo.materiaPorId(materia)?.nome,
+      nomes: {for (final a in conteudo.assuntos) a.id: a.nome},
+      dependentes: grafo.dependentes(id).toList(),
+      antes: momento(0, hoje),
+      depois: momento(dias, previsoes[dias]!),
+    );
   }
 
   /// Questões com alguma imagem fora do cache.
